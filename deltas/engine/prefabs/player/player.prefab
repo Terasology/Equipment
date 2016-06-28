@@ -1,0 +1,30 @@
+{
+    "Equipment": {
+        "equipmentSlots": [
+            {
+                "name": "Head",
+                "type": "Head"
+            },
+            {
+                "name": "Body",
+                "type": "Body"
+            },
+            {
+                "name": "Arms",
+                "type": "Arms"
+            },
+            {
+                "name": "Hands",
+                "type": "Hands"
+            },
+            {
+                "name": "Legs",
+                "type": "Legs"
+            },
+            {
+                "name": "Feet",
+                "type": "Feet"
+            }
+        ]
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "engine:items#axe",
+        "damageType" : "axeDamage"
+    },
+    "DisplayName" : {
+        "name" : "Wood Axe",
+        "description" : "An axe used by trainees."
+    },
+    "EquipmentItem" : {
+        "level" : 0,
+        "quality" : 3,
+        "type" : "Melee Weapon",
+        "location" : "Hands",
+        "attack" : 4,
+        "defense" : 0,
+        "weight" : 2,
+        "speed" : 3
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "persisted" : true,
+  "Network" : {
+      "replicateMode" : "ALWAYS"
+  },
+  "Inventory": {
+  },
+  "SelectedInventorySlot": {
+  },
+  "EquipmentInventory": {
+  }
+}

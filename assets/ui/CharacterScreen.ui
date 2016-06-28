@@ -1,0 +1,122 @@
+{
+    "type": "CharacterScreenWindow",
+    "skin": "Equipment:CharacterScreen",
+    "contents": {
+        "type": "relativeLayout",
+        "contents": [
+            {
+                "type": "relativeLayout",
+                "contents": [
+                    {
+                        "type": "InventoryGrid",
+                        "id": "playerInventory",
+                        "maxHorizontalCells" : 6,
+                        "layoutInfo": {
+                            "width": 560,
+                            "height": 168,
+                            "position-left": {
+                                "offset": 52
+                            },
+                            "position-top": {
+                                "offset": 377
+                            }
+                        }
+                    }
+                ],
+                "layoutInfo": {
+                    "width": 665,
+                    "height": 550,
+                    "position-horizontal-center": {},
+                    "position-vertical-center": {}
+                }
+            },
+            {
+                "type" : "columnLayout",
+                "verticalSpacing" : 4,
+                "contents" : [
+                    {
+                        "type" : "UILabel",
+                        "text" : "Character Attributes"
+                    },
+                    {
+                        "type" : "UISpace",
+                        "size" : [1, 16]
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "STR",
+                        "text" : "Strength: 10"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "DEX",
+                        "text" : "Dexterity: 14"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "CON",
+                        "text" : "Constitution: 10"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "THA",
+                        "text" : "Thaumacity: 6"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "DEF",
+                        "text" : "Defense: 10"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "RES",
+                        "text" : "Resistance: 4"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "INT",
+                        "text" : "Intelligence: 14"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "WIS",
+                        "text" : "Wisdom: 12"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "WIL",
+                        "text" : "Will: 12"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "FOR",
+                        "text" : "Fortitude: 12"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "AGI",
+                        "text" : "Agility: 8"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "CHA",
+                        "text" : "Charisma: 10"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "LUC",
+                        "text" : "Luck: 8"
+                    }
+                ],
+                "layoutInfo" : {
+                    "use-content-width" : true,
+                    "use-content-height" : true,
+                    "position-left": {
+                        "offset": 150
+                    },
+                    "position-vertical-center" : {}
+                }
+            }
+        ]
+    }
+}

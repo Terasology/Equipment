@@ -1,0 +1,21 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "engine:items#axe",
+        "damageType" : "axeDamage"
+    },
+    "DisplayName" : {
+        "name" : "Bronze Axe",
+        "description" : "An axe that can be used for woodcutting or even self-defense."
+    },
+    "EquipmentItem" : {
+        "level" : 1,
+        "quality" : 3,
+        "type" : "Melee Weapon",
+        "location" : "Hands",
+        "attack" : 9,
+        "defense" : 0,
+        "weight" : 5,
+        "speed" : 3
+    }
+}
