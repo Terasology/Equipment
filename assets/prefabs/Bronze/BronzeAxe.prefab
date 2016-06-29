@@ -1,7 +1,7 @@
 {
     "parent" : "engine:iconItem",
     "Item" : {
-        "icon" : "engine:items#axe",
+        "icon" : "Equipment:BronzeAxe",
         "damageType" : "axeDamage"
     },
     "DisplayName" : {
@@ -16,6 +16,6 @@
         "attack" : 9,
         "defense" : 0,
         "weight" : 5,
-        "speed" : 3
+        "speed" : 6
     }
 }

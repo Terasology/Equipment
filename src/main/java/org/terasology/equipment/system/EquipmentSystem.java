@@ -115,7 +115,14 @@ public class EquipmentSystem extends BaseComponentSystem {
         DisplayNameComponent d = item.getComponent(DisplayNameComponent.class);
         event.getTooltipLines().add(new TooltipLine(d.description));
         event.getTooltipLines().add(new TooltipLine(""));
-        event.getTooltipLines().add(new TooltipLine("Level " + eqItem.level + " Common " + eqItem.type));
+
+        if (eqItem.quality == 5) {
+            event.getTooltipLines().add(new TooltipLine("Level " + eqItem.level + " Rare " + eqItem.type));
+        }
+        else {
+            event.getTooltipLines().add(new TooltipLine("Level " + eqItem.level + " Common " + eqItem.type));
+        }
+
         event.getTooltipLines().add(new TooltipLine("Equippable on " + eqItem.location + "."));
         event.getTooltipLines().add(new TooltipLine("Physical Attack: " + eqItem.attack));
         event.getTooltipLines().add(new TooltipLine("Physical Defense: " + eqItem.defense));

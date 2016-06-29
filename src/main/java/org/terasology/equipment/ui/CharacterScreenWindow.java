@@ -44,6 +44,9 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
     private UILabel physicalAttackPower;
     private UILabel physicalDefensePower;
+    private UILabel magicalAttackPower;
+    private UILabel magicalDefensePower;
+    private UILabel speedPower;
 
     private InventoryGrid playerInventory;
     private InventoryGrid playerEQInventory;
@@ -63,6 +66,9 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
         physicalAttackPower = find("PhyAttackPower", UILabel.class);
         physicalDefensePower = find("PhyDefensePower", UILabel.class);
+        magicalAttackPower = find("MagAttackPower", UILabel.class);
+        magicalDefensePower = find("MagDefensePower", UILabel.class);
+        speedPower = find("SpeedPower", UILabel.class);
 
         playerInventory = find("playerInventory", InventoryGrid.class);
         playerInventory.setTargetEntity(CoreRegistry.get(LocalPlayer.class).getCharacterEntity());
@@ -196,10 +202,13 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
             int phyAtkTotal = 0;
             int phyDefTotal = 0;
+            int speedTotal = 0;
 
             // Temp values until stat system is in place.
             int strength = 10;
             int defense = 10;
+            int thaumacity = 6;
+            int resistance = 4;
 
             // Hard-coded for humans now.
             String[] names = {"Head", "Body", "Arms", "Hands", "Legs", "Feet"};
@@ -207,16 +216,21 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
             for (int i = 0; (i < names.length) && (i < eq.equipmentSlots.size()); i++) {
                 if (eq.equipmentSlots.get(i).itemRef == EntityRef.NULL) {
-                    labels[i].setText(names[i] + ": None");
+                    labels[i].setText(eq.equipmentSlots.get(i).name + ": None");
                 } else {
-                    labels[i].setText(names[i] + ": " + eq.equipmentSlots.get(i).itemRef.getComponent(DisplayNameComponent.class).name);
+                    labels[i].setText(eq.equipmentSlots.get(i).name + ": " +
+                            eq.equipmentSlots.get(i).itemRef.getComponent(DisplayNameComponent.class).name);
                     phyAtkTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).attack;
                     phyDefTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).defense;
+                    speedTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).speed;
                 }
             }
 
             physicalAttackPower.setText("Physical Attack: " + (phyAtkTotal + (strength / 2)));
             physicalDefensePower.setText("Physical Defense: " + (phyDefTotal + (defense / 2)));
+            magicalAttackPower.setText("Magic Attack: " + (0 + (thaumacity / 2)));
+            magicalDefensePower.setText("Magic Defense: " + (0 + (resistance / 2)));
+            speedPower.setText("Speed: " + speedTotal);
         }
     }
 }
