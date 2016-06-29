@@ -160,30 +160,6 @@ public class EquipmentSystem extends BaseComponentSystem {
                 // If there's already an equipment of the same type in a different slot, swap.
                 if (eSlot.itemRef != EntityRef.NULL) {
                     InventoryManager inventoryManager = CoreRegistry.get(InventoryManager.class);
-                    //CharacterComponent c = character.getComponent(CharacterComponent.class);
-                    //InventoryComponent xsd = c.movingItem.getComponent(InventoryComponent.class);
-
-                    // TODO: Dumb search. Replace with better one.
-                    //int index = InventoryUtils.getSlotWithItem(character, item);
-                    //int index2 = InventoryUtils.getSlotWithItem(c.movingItem, item);
-
-                    /*
-                    boolean found = false;
-                    int index = 0;
-                    InventoryComponent charInv = character.getComponent(InventoryComponent.class);
-                    for (int i = 0; i < charInv.itemSlots.size() && !found;
-                         i++) {
-                        if (item == charInv.itemSlots.get(i)) {
-                            found = true;
-                            index = i;
-                        }
-                    }
-                    */
-
-                    /*
-                    InventoryUtils.moveToFreeSlots(eqInvEntRef, character, InventoryUtils.getSlotWithItem(eqInvEntRef, eSlot.itemRef),
-                            eqInvEntRef, new ArrayList<>(Arrays.asList(0, 1)));
-                    */
 
                     int index = 0;
                     boolean found = false;
@@ -220,7 +196,6 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
 
         return false;
-        //slot.itemRef = item;
     }
 
     private boolean unequipItem(EntityRef character, EntityRef item) {
@@ -235,7 +210,6 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
 
         return false;
-        //slot.itemRef = item;
     }
 
     public void unequipItem(EntityRef character, EquipmentSlot slot) {

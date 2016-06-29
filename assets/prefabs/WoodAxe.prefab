@@ -12,7 +12,7 @@
         "level" : 0,
         "quality" : 3,
         "type" : "Melee Weapon",
-        "location" : "Hands",
+        "location" : "Weapon",
         "attack" : 4,
         "defense" : 0,
         "weight" : 2,

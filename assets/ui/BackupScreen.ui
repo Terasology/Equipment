@@ -166,6 +166,11 @@
                     },
                     {
                         "type" : "UILabel",
+                        "id" : "WeaponEQ",
+                        "text" : "Weapon: None"
+                    },
+                    {
+                        "type" : "UILabel",
                         "id" : "HeadEQ",
                         "text" : "Head: None"
                     },

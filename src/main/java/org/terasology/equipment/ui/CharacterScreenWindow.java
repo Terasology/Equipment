@@ -35,6 +35,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
     private EntityManager entityManager;
 
     private InventoryGrid ingredientsInventory;
+    private UILabel weaponEQ;
     private UILabel headEQ;
     private UILabel bodyEQ;
     private UILabel armsEQ;
@@ -57,6 +58,8 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
     @Override
     public void initialise() {
         ingredientsInventory = find("ingredientsInventory", InventoryGrid.class);
+
+        weaponEQ = find("WeaponEQ", UILabel.class);
         headEQ = find("HeadEQ", UILabel.class);
         bodyEQ = find("BodyEQ", UILabel.class);
         armsEQ = find("ArmsEQ", UILabel.class);
@@ -89,7 +92,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         EquipmentComponent eqC = player.getComponent(EquipmentComponent.class);
         playerEQInventory.setTargetEntity(eqC.equipmentInventory);
         playerEQInventory.setCellOffset(0);
-        playerEQInventory.setMaxCellCount(6);
+        playerEQInventory.setMaxCellCount(eqC.equipmentSlots.size());
     }
 
     @Override
@@ -103,85 +106,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         */
 
         handsEQ.setText("Hands: Unarmed");
-
-        /*
-        if (CoreRegistry.get(LocalPlayer.class).getCharacterEntity().hasComponent(EquipmentComponent.class)) {
-            int xd = 0;
-        }
-        */
         updateStats();
-        /*
-        if (player.hasComponent(EquipmentComponent.class)) {
-            EquipmentComponent eq = player.getComponent(EquipmentComponent.class);
-
-            int phyAtkTotal = 0;
-            int phyDefTotal = 0;
-
-            // Temp values until stat system is in place.
-            int strength = 10;
-            int defense = 10;
-
-            // Hard-coded for humans now.
-            String[] names = {"Head", "Body", "Arms", "Hands", "Legs", "Feet"};
-            UILabel[] labels = {headEQ, bodyEQ, armsEQ, handsEQ, legsEQ, feetEQ};
-
-            for (int i = 0; (i < names.length) && (i < eq.equipmentSlots.size()); i++) {
-                if (eq.equipmentSlots.get(i).itemRef == EntityRef.NULL) {
-                    labels[i].setText(names[i] + ": None");
-                } else {
-                    labels[i].setText(names[i] + ": " + eq.equipmentSlots.get(i).itemRef.getComponent(DisplayNameComponent.class).name);
-                    phyAtkTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).attack;
-                    phyDefTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).defense;
-                }
-            }
-
-            physicalAttackPower.setText("Physical Attack: " + (phyAtkTotal + (strength/2)));
-            physicalDefensePower.setText("Physical Defense: " + (phyDefTotal + (defense/2)));
-
-
-            if (eq.equipmentSlots.get(i).itemRef == EntityRef.NULL) {
-                headEQ.setText("Head: None");
-            } else {
-                headEQ.setText("Head: " + eq.equipmentSlots.get(i).itemRef.getComponent(DisplayNameComponent.class).name);
-            }
-
-            i++;
-            if (eq.equipmentSlots.get(i).itemRef == EntityRef.NULL) {
-                headEQ.setText("Body: None");
-            } else {
-                headEQ.setText("Body: " + eq.equipmentSlots.get(i).itemRef.getComponent(DisplayNameComponent.class).name);
-            }
-
-            i++;
-            if (eq.equipmentSlots.get(i).itemRef == EntityRef.NULL) {
-                headEQ.setText("Arms: None");
-            } else {
-                headEQ.setText("Arms: " + eq.equipmentSlots.get(i).itemRef.getComponent(DisplayNameComponent.class).name);
-            }
-
-            i++;
-            if (eq.equipmentSlots.get(i).itemRef == EntityRef.NULL) {
-                headEQ.setText("Hands: None");
-            } else {
-                headEQ.setText("Hands: " + eq.equipmentSlots.get(i).itemRef.getComponent(DisplayNameComponent.class).name);
-            }
-
-            i++;
-            if (eq.equipmentSlots.get(i).itemRef == EntityRef.NULL) {
-                headEQ.setText("Legs: None");
-            } else {
-                headEQ.setText("Legs: " + eq.equipmentSlots.get(i).itemRef.getComponent(DisplayNameComponent.class).name);
-            }
-
-            i++;
-            if (eq.equipmentSlots.get(i).itemRef == EntityRef.NULL) {
-                headEQ.setText("Feet: None");
-            } else {
-                headEQ.setText("Feet: " + eq.equipmentSlots.get(i).itemRef.getComponent(DisplayNameComponent.class).name);
-            }
-
-        }
-        */
     }
 
     @Override
@@ -211,8 +136,8 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
             int resistance = 4;
 
             // Hard-coded for humans now.
-            String[] names = {"Head", "Body", "Arms", "Hands", "Legs", "Feet"};
-            UILabel[] labels = {headEQ, bodyEQ, armsEQ, handsEQ, legsEQ, feetEQ};
+            String[] names = {"L Hand", "R Hand", "Head", "Body", "Arms", "Hands", "Legs", "Feet"};
+            UILabel[] labels = {weaponEQ, headEQ, bodyEQ, armsEQ, handsEQ, legsEQ, feetEQ};
 
             for (int i = 0; (i < names.length) && (i < eq.equipmentSlots.size()); i++) {
                 if (eq.equipmentSlots.get(i).itemRef == EntityRef.NULL) {

@@ -2,6 +2,10 @@
     "Equipment": {
         "equipmentSlots": [
             {
+                "name": "Weapon",
+                "type": "Weapon"
+            },
+            {
                 "name": "Head",
                 "type": "Head"
             },
