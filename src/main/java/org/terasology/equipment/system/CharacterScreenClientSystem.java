@@ -15,6 +15,7 @@
  */
 package org.terasology.equipment.system;
 
+import org.terasology.audio.AudioManager;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
@@ -23,8 +24,10 @@ import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.equipment.event.CharacterScreenButton;
 import org.terasology.input.ButtonState;
 import org.terasology.network.ClientComponent;
+import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.NUIManager;
+import org.terasology.utilities.Assets;
 
 @RegisterSystem(RegisterMode.CLIENT)
 public class CharacterScreenClientSystem extends BaseComponentSystem {
@@ -38,6 +41,7 @@ public class CharacterScreenClientSystem extends BaseComponentSystem {
                                ClientComponent clientComponent) {
         if (event.getState() == ButtonState.DOWN) {
             nuiManager.toggleScreen(CHARACTER_SCREEN_NAME);
+            CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:cloth-inventory").get(), 1.0f);
         }
     }
 }

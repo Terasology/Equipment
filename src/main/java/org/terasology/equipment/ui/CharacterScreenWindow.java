@@ -97,14 +97,6 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
     @Override
     protected void initializeWithInteractionTarget(final EntityRef screen) {
-
-        /*
-        EquipmentComponent eqC = player.getComponent(EquipmentComponent.class);
-        playerEQInventory.setTargetEntity(eqC.equipmentInventory);
-        playerEQInventory.setCellOffset(0);
-        playerEQInventory.setMaxCellCount(6);
-        */
-
         handsEQ.setText("Hands: Unarmed");
         updateStats();
     }
@@ -136,7 +128,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
             int resistance = 4;
 
             // Hard-coded for humans now.
-            String[] names = {"L Hand", "R Hand", "Head", "Body", "Arms", "Hands", "Legs", "Feet"};
+            String[] names = {"Weapon", "Head", "Body", "Arms", "Hands", "Legs", "Feet"};
             UILabel[] labels = {weaponEQ, headEQ, bodyEQ, armsEQ, handsEQ, legsEQ, feetEQ};
 
             for (int i = 0; (i < names.length) && (i < eq.equipmentSlots.size()); i++) {

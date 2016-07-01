@@ -16,6 +16,7 @@
 package org.terasology.equipment.system;
 
 import com.google.common.collect.Lists;
+import org.terasology.audio.AudioManager;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
@@ -39,6 +40,7 @@ import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
 import org.terasology.rendering.nui.widgets.TooltipLine;
+import org.terasology.utilities.Assets;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -184,12 +186,14 @@ public class EquipmentSystem extends BaseComponentSystem {
                         //inventoryManager.switchItem(character, character, index, eqInvEntRef, slotNumber);
                         eSlot.itemRef = item;
                         character.saveComponent(eq);
+                        CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash").get(), 1.0f);
                         return true;
                     }
                 }
                 else {
                     eSlot.itemRef = item;
                     character.saveComponent(eq);
+                    CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash").get(), 1.0f);
                     return true;
                 }
             }
@@ -205,6 +209,7 @@ public class EquipmentSystem extends BaseComponentSystem {
             if (eSlot.type.equalsIgnoreCase(item.getComponent(EquipmentItemComponent.class).location)) {
                 eSlot.itemRef = EntityRef.NULL;
                 character.saveComponent(eq);
+                CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash-reverse").get(), 1.0f);
                 return true;
             }
         }

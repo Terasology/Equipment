@@ -7,3 +7,7 @@ This module adds a basic equipment system, a character screen, and a few pieces 
 Credits for images:
 
 http://opengameart.org/content/pixelart-basic-hero-equipments-icons
+
+Credits for sounds:
+
+Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
