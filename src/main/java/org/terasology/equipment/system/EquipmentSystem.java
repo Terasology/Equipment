@@ -28,8 +28,10 @@ import org.terasology.equipment.component.EquipmentItemComponent;
 import org.terasology.equipment.component.EquipmentSlot;
 import org.terasology.equipment.event.EquipItemEvent;
 import org.terasology.logic.characters.CharacterComponent;
+import org.terasology.logic.characters.GetMaxSpeedEvent;
 import org.terasology.logic.common.DisplayNameComponent;
 import org.terasology.logic.delay.DelayManager;
+import org.terasology.logic.health.BeforeDamagedEvent;
 import org.terasology.logic.inventory.InventoryComponent;
 import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.logic.inventory.InventoryUtils;
@@ -146,7 +148,6 @@ public class EquipmentSystem extends BaseComponentSystem {
                 else {
                     eSlot.itemRef = eEvent.getItem();
                     return;
-                    //equipItem(instigator, eEvent.getItem(), eqComponent)
                 }
             }
         }
@@ -217,7 +218,40 @@ public class EquipmentSystem extends BaseComponentSystem {
         return false;
     }
 
-    public void unequipItem(EntityRef character, EquipmentSlot slot) {
-        slot.itemRef = EntityRef.NULL;
+    @ReceiveEvent
+    public void doingDamage(BeforeDamagedEvent event, EntityRef damageTarget) {
+        if (event.getInstigator().hasComponent(EquipmentComponent.class)) {
+
+            EquipmentComponent eq = event.getInstigator().getComponent(EquipmentComponent.class);
+            int phyAtkTotal = 0;
+
+            for (int i = 0; i < eq.equipmentSlots.size(); i++) {
+                if (eq.equipmentSlots.get(i).itemRef != EntityRef.NULL) {
+                    phyAtkTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).attack;
+                }
+            }
+
+            event.add(phyAtkTotal);
+        }
     }
+
+    @ReceiveEvent
+    public void takingDamage(BeforeDamagedEvent event, EntityRef damageTarget) {
+        if (damageTarget.hasComponent(EquipmentComponent.class)) {
+
+            // TODO: Ascertain why this call sometimes fails when the damage is caused by falling.
+            boolean result = damageTarget.hasComponent(EquipmentComponent.class);
+            EquipmentComponent eq = damageTarget.getComponent(EquipmentComponent.class);
+            int phyDefTotal = 0;
+
+            for (int i = 0; i < eq.equipmentSlots.size(); i++) {
+                if (eq.equipmentSlots.get(i).itemRef != EntityRef.NULL) {
+                    phyDefTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).defense;
+                }
+            }
+
+            event.add(-phyDefTotal);
+        }
+    }
+
 }

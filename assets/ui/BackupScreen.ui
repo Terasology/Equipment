@@ -33,6 +33,26 @@
                     },
                     {
                         "type" : "UILabel",
+                        "id" : "END",
+                        "text" : "Endurance: 10"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "AGI",
+                        "text" : "Agility: 8"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "CHA",
+                        "text" : "Charisma: 10"
+                    },
+                    {
+                        "type" : "UILabel",
+                        "id" : "LUK",
+                        "text" : "Luck: 8"
+                    },
+                    {
+                        "type" : "UILabel",
                         "id" : "THA",
                         "text" : "Thaumacity: 6"
                     },
@@ -65,21 +85,6 @@
                         "type" : "UILabel",
                         "id" : "FOR",
                         "text" : "Fortitude: 12"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "AGI",
-                        "text" : "Agility: 8"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "CHA",
-                        "text" : "Charisma: 10"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "LUC",
-                        "text" : "Luck: 8"
                     }
                 ],
                 "layoutInfo" : {

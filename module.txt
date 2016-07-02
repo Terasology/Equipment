@@ -8,7 +8,12 @@
         {
             "id" : "Core",
             "minVersion" : "1.0.0"
+        },
+        {
+            "id" : "PhysicalStats",
+            "minVersion" : "0.1.0"
         }
+
     ],
     "serverSideOnly" : false
 }
