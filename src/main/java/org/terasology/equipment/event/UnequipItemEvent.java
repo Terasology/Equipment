@@ -19,18 +19,18 @@ import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.Event;
 import org.terasology.equipment.component.EquipmentSlot;
 
-public class EquipItemEvent implements Event {
+public class UnequipItemEvent implements Event {
     private EntityRef character;
     private EntityRef item;
     private EquipmentSlot equipmentSlot;
 
-    public EquipItemEvent() {
+    public UnequipItemEvent() {
     }
 
-    public EquipItemEvent(EntityRef character, EntityRef item, EquipmentSlot eequipmentSlot) {
+    public UnequipItemEvent(EntityRef character, EntityRef item, EquipmentSlot equipmentSlot) {
         this.character = character;
         this.item = item;
-        this.equipmentSlot = eequipmentSlot;
+        this.equipmentSlot = equipmentSlot;
     }
 
     public EntityRef getCharacter() {

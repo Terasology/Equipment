@@ -24,6 +24,8 @@ import org.terasology.logic.characters.CharacterComponent;
 import org.terasology.logic.common.DisplayNameComponent;
 import org.terasology.logic.players.LocalPlayer;
 import org.terasology.physicalstats.component.PhysicalStatsComponent;
+import org.terasology.physicalstats.component.PhysicalStatsModifier;
+import org.terasology.physicalstats.component.PhysicalStatsModifierComponent;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.BaseInteractionScreen;
@@ -109,17 +111,8 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
         playerEQInventory = find("playerEQInventory", InventoryGrid.class);
 
-        // TODO: Only for testing.
-        player = CoreRegistry.get(LocalPlayer.class).getCharacterEntity();
-        /*
-        for (EntityRef clientEntity : entityManager.getEntitiesWith(EquipmentComponent.class)) {
-            if (clientEntity.hasComponent(CharacterComponent.class)) {
 
-                player = clientEntity;
-                break;
-            }
-        }
-        */
+        player = CoreRegistry.get(LocalPlayer.class).getCharacterEntity();
 
         EquipmentComponent eqC = player.getComponent(EquipmentComponent.class);
         playerEQInventory.setTargetEntity(eqC.equipmentInventory);
@@ -137,29 +130,60 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         super.update(delta);
         lastUpdate += delta;
 
-        // Only update the stats every second. Replace with smarter system later.
-        if (lastUpdate >= 1.0) {
-            updateStats();
+        // Only manually update the stats every 30 seconds. Replace with smarter system later.
+        if (lastUpdate >= 30.0) {
+            updateAllStats();
             lastUpdate = 0f;
         }
     }
 
-    private void updateStats() {
+    public void updateAllStats() {
+        updateStats();
+    }
+
+    public void updateStats() {
         if (player.hasComponent(EquipmentComponent.class)) {
             EquipmentComponent eq = player.getComponent(EquipmentComponent.class);
             PhysicalStatsComponent phy = player.getComponent(PhysicalStatsComponent.class);
+            PhysicalStatsModifierComponent mods = player.getComponent(PhysicalStatsModifierComponent.class);
 
             // Update attributes UILabels. TODO: Listen for OnStatChangedEvents instead of updating every second.
-            strLabel.setText("Strength: " + phy.strength);
-            dexLabel.setText("Dexterity: " + phy.dexterity);
-            conLabel.setText("Constitution: " + phy.constitution);
-            endLabel.setText("Endurance: " + phy.endurance);
-            agiLabel.setText("Agility: " + phy.agility);
-            chaLabel.setText("Charisma: " + phy.charisma);
-            lukLabel.setText("Luck: " + phy.luck);
+            int strTemp = phy.strength;
+            int dexTemp = phy.dexterity;
+            int conTemp = phy.constitution;
+            int endTemp = phy.endurance;
+            int agiTemp = phy.agility;
+            int chaTemp = phy.charisma;
+            int lukTemp = phy.luck;
+
+            if (mods != null) {
+                for (PhysicalStatsModifier mod : mods.modifiers.values()) {
+                    strTemp += mod.strength;
+                    dexTemp += mod.dexterity;
+                    conTemp += mod.constitution;
+                    endTemp += mod.endurance;
+                    agiTemp += mod.agility;
+                    chaTemp += mod.charisma;
+                    lukTemp += mod.luck;
+                }
+            }
+            strLabel.setText("Strength: " + strTemp);
+            dexLabel.setText("Dexterity: " + dexTemp);
+            conLabel.setText("Constitution: " + conTemp);
+            endLabel.setText("Endurance: " + endTemp);
+            agiLabel.setText("Agility: " + agiTemp);
+            chaLabel.setText("Charisma: " + chaTemp);
+            lukLabel.setText("Luck: " + lukTemp);
+
+            strLabel.setText(strLabel.getText() + " (" + phy.strength + ")");
+            dexLabel.setText(dexLabel.getText() + " (" + phy.dexterity + ")");
+            conLabel.setText(conLabel.getText() + " (" + phy.constitution + ")");
+            endLabel.setText(endLabel.getText() + " (" + phy.endurance + ")");
+            agiLabel.setText(agiLabel.getText() + " (" + phy.agility + ")");
+            chaLabel.setText(chaLabel.getText() + " (" + phy.charisma + ")");
+            lukLabel.setText(lukLabel.getText() + " (" + phy.luck + ")");
 
             // Calculating the derived stat values.
-            int strength = phy.strength;
             int defense = 0;
             int thaumacity = 0;
             int resistance = 0;
@@ -186,7 +210,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
                 }
             }
 
-            physicalAttackPower.setText("Physical Attack: " + (phyAtkTotal + (strength / 2)));
+            physicalAttackPower.setText("Physical Attack: " + (phyAtkTotal + (strTemp / 2)));
             physicalDefensePower.setText("Physical Defense: " + (phyDefTotal + (defense / 2)));
             magicalAttackPower.setText("Magic Attack: " + (0 + (thaumacity / 2)));
             magicalDefensePower.setText("Magic Defense: " + (0 + (resistance / 2)));

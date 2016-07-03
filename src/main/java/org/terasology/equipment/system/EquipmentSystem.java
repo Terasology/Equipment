@@ -27,6 +27,8 @@ import org.terasology.equipment.component.EquipmentInventoryComponent;
 import org.terasology.equipment.component.EquipmentItemComponent;
 import org.terasology.equipment.component.EquipmentSlot;
 import org.terasology.equipment.event.EquipItemEvent;
+import org.terasology.equipment.event.UnequipItemEvent;
+import org.terasology.equipment.ui.CharacterScreenWindow;
 import org.terasology.logic.characters.CharacterComponent;
 import org.terasology.logic.characters.GetMaxSpeedEvent;
 import org.terasology.logic.common.DisplayNameComponent;
@@ -38,8 +40,13 @@ import org.terasology.logic.inventory.InventoryUtils;
 import org.terasology.logic.inventory.events.BeforeItemPutInInventory;
 import org.terasology.logic.inventory.events.BeforeItemRemovedFromInventory;
 import org.terasology.logic.players.event.OnPlayerSpawnedEvent;
+import org.terasology.physicalstats.event.OnPhysicalStatChangedEvent;
+import org.terasology.physicalstats.event.OnPhysicalStatsModifierAddedEvent;
+import org.terasology.physicalstats.event.OnPhysicalStatsModifierRemovedEvent;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
+import org.terasology.rendering.nui.NUIManager;
+import org.terasology.rendering.nui.UIScreenLayer;
 import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
 import org.terasology.rendering.nui.widgets.TooltipLine;
 import org.terasology.utilities.Assets;
@@ -51,6 +58,9 @@ import java.util.Arrays;
 public class EquipmentSystem extends BaseComponentSystem {
     @In
     EntityManager entityManager;
+
+    @In
+    private NUIManager nuiManager;
 
     @Override
     public void initialise() {
@@ -141,7 +151,7 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
 
         for (EquipmentSlot eSlot : eqComponent.equipmentSlots) {
-            if (eSlot.type.equalsIgnoreCase(eEvent.getSlotName())) {
+            if (eSlot.type.equalsIgnoreCase(eEvent.getEquipmentSlot().type)) {
                 if (eSlot.itemRef != EntityRef.NULL) {
                     return;
                 }
@@ -187,6 +197,7 @@ public class EquipmentSystem extends BaseComponentSystem {
                         //inventoryManager.switchItem(character, character, index, eqInvEntRef, slotNumber);
                         eSlot.itemRef = item;
                         character.saveComponent(eq);
+                        character.send(new EquipItemEvent(character, item, eSlot));
                         CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash").get(), 1.0f);
                         return true;
                     }
@@ -194,6 +205,7 @@ public class EquipmentSystem extends BaseComponentSystem {
                 else {
                     eSlot.itemRef = item;
                     character.saveComponent(eq);
+                    character.send(new EquipItemEvent(character, item, eSlot));
                     CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash").get(), 1.0f);
                     return true;
                 }
@@ -210,12 +222,43 @@ public class EquipmentSystem extends BaseComponentSystem {
             if (eSlot.type.equalsIgnoreCase(item.getComponent(EquipmentItemComponent.class).location)) {
                 eSlot.itemRef = EntityRef.NULL;
                 character.saveComponent(eq);
+                character.send(new UnequipItemEvent(character, item, eSlot));
                 CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash-reverse").get(), 1.0f);
                 return true;
             }
         }
 
         return false;
+    }
+
+    @ReceiveEvent
+    public void onStatChanged(OnPhysicalStatChangedEvent event, EntityRef entity, EquipmentComponent eq) {
+        CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
+        screen.updateStats();
+    }
+
+    @ReceiveEvent
+    public void onStatChanged(OnPhysicalStatsModifierAddedEvent event, EntityRef entity, EquipmentComponent eq) {
+        CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
+        screen.updateStats();
+    }
+
+    @ReceiveEvent
+    public void onStatChanged(OnPhysicalStatsModifierRemovedEvent event, EntityRef entity, EquipmentComponent eq) {
+        CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
+        screen.updateStats();
+    }
+
+    @ReceiveEvent
+    public void onEquipChanged(EquipItemEvent event, EntityRef entity, EquipmentComponent eq) {
+        CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
+        screen.updateStats();
+    }
+
+    @ReceiveEvent
+    public void onEquipChanged(UnequipItemEvent event, EntityRef entity, EquipmentComponent eq) {
+        CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
+        screen.updateStats();
     }
 
     @ReceiveEvent
@@ -242,16 +285,19 @@ public class EquipmentSystem extends BaseComponentSystem {
             // TODO: Ascertain why this call sometimes fails when the damage is caused by falling.
             boolean result = damageTarget.hasComponent(EquipmentComponent.class);
             EquipmentComponent eq = damageTarget.getComponent(EquipmentComponent.class);
+
             int phyDefTotal = 0;
 
-            for (int i = 0; i < eq.equipmentSlots.size(); i++) {
-                if (eq.equipmentSlots.get(i).itemRef != EntityRef.NULL) {
-                    phyDefTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).defense;
+            // Physical defense ONLY protects against physical damage. Not direct/pierce or magical damage.
+            if (event.getDamageType().getUrn().getResourceName().toString().equalsIgnoreCase("physicalDamage")) {
+                for (int i = 0; i < eq.equipmentSlots.size(); i++) {
+                    if (eq.equipmentSlots.get(i).itemRef != EntityRef.NULL) {
+                        phyDefTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).defense;
+                    }
                 }
             }
 
             event.add(-phyDefTotal);
         }
     }
-
 }
