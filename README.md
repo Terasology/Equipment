@@ -7,6 +7,7 @@ This module adds a basic equipment system, a character screen, and a few pieces 
 Credits for images:
 
 http://opengameart.org/content/pixelart-basic-hero-equipments-icons
+http://opengameart.org/content/melee-weapons
 
 Credits for sounds:
 

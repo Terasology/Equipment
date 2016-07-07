@@ -2,7 +2,8 @@
     "parent" : "engine:iconItem",
     "Item" : {
         "icon" : "Equipment:BronzeAxe",
-        "damageType" : "axeDamage"
+        "damageType" : "axeDamage",
+        "cooldownTime" : 750
     },
     "DisplayName" : {
         "name" : "Bronze Axe",

@@ -1,0 +1,22 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SteelDagger",
+        "damageType" : "knifeDamage",
+        "cooldownTime" : 250
+    },
+    "DisplayName" : {
+        "name" : "Steel Dagger",
+        "description" : "A dagger made out of steel."
+    },
+    "EquipmentItem" : {
+        "level" : 20,
+        "quality" : 3,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 10,
+        "defense" : 0,
+        "weight" : 6,
+        "speed" : 15
+    }
+}

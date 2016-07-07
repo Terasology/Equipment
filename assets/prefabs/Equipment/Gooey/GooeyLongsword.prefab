@@ -1,0 +1,30 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:GooeyLongsword",
+        "damageType" : "swordDamage",
+        "cooldownTime" : 475
+    },
+    "DisplayName" : {
+        "name" : "Gooey's Long Sword",
+        "description" : "A unique longsword crafted by Gooey."
+    },
+    "EquipmentItem" : {
+        "level" : 20,
+        "quality" : 5,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 30,
+        "defense" : 3,
+        "weight" : 12,
+        "speed" : 9
+    },
+    "PlaySoundAction" : {
+        "sounds" : [
+            "Slime1",
+            "Slime2",
+            "Slime5",
+            "Slime6"
+        ]
+    }
+}

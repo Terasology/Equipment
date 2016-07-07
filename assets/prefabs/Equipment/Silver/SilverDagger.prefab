@@ -1,0 +1,22 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SilverDagger",
+        "damageType" : "knifeDamage",
+        "cooldownTime" : 300
+    },
+    "DisplayName" : {
+        "name" : "Silver Dagger",
+        "description" : "A dagger made out of silver."
+    },
+    "EquipmentItem" : {
+        "level" : 30,
+        "quality" : 3,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 14,
+        "defense" : 1,
+        "weight" : 9,
+        "speed" : 13
+    }
+}

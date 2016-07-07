@@ -190,7 +190,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
             int phyAtkTotal = 0;
             int phyDefTotal = 0;
-            int speedTotal = 0;
+            int speedTotal = Math.round(phy.dexterity / 2f);
 
             maxHealth.setText("Health: " + phy.constitution*10);
 

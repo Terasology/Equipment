@@ -1,0 +1,22 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:IronLongsword",
+        "damageType" : "axeDamage",
+        "cooldownTime" : 500
+    },
+    "DisplayName" : {
+        "name" : "Iron Long Sword",
+        "description" : "A standard-issue long sword made out of iron."
+    },
+    "EquipmentItem" : {
+        "level" : 10,
+        "quality" : 3,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 15,
+        "defense" : 0,
+        "weight" : 8,
+        "speed" : 7
+    }
+}
