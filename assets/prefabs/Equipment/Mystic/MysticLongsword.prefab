@@ -3,11 +3,12 @@
     "Item" : {
         "icon" : "Equipment:GooeyLongsword",
         "damageType" : "swordDamage",
-        "cooldownTime" : 475
+        "baseCooldownTime" : 350,
+        "cooldownTime" : 350
     },
     "DisplayName" : {
-        "name" : "Gooey's Long Sword",
-        "description" : "A unique longsword crafted by Gooey."
+        "name" : "Mystic Long Sword",
+        "description" : "A mystical longsword."
     },
     "EquipmentItem" : {
         "level" : 20,

@@ -3,7 +3,8 @@
     "Item" : {
         "icon" : "Equipment:SteelDagger",
         "damageType" : "knifeDamage",
-        "cooldownTime" : 250
+        "baseCooldownTime" : 225,
+        "cooldownTime" : 225
     },
     "DisplayName" : {
         "name" : "Steel Dagger",

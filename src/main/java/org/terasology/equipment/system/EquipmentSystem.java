@@ -234,31 +234,46 @@ public class EquipmentSystem extends BaseComponentSystem {
     @ReceiveEvent
     public void onStatChanged(OnPhysicalStatChangedEvent event, EntityRef entity, EquipmentComponent eq) {
         CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
-        screen.updateStats();
+
+        if (screen != null) {
+            screen.updateStats();
+        }
     }
 
     @ReceiveEvent
     public void onStatChanged(OnPhysicalStatsModifierAddedEvent event, EntityRef entity, EquipmentComponent eq) {
         CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
-        screen.updateStats();
+
+        if (screen != null) {
+            screen.updateStats();
+        }
     }
 
     @ReceiveEvent
     public void onStatChanged(OnPhysicalStatsModifierRemovedEvent event, EntityRef entity, EquipmentComponent eq) {
         CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
-        screen.updateStats();
+
+        if (screen != null) {
+            screen.updateStats();
+        }
     }
 
     @ReceiveEvent
     public void onEquipChanged(EquipItemEvent event, EntityRef entity, EquipmentComponent eq) {
         CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
-        screen.updateStats();
+
+        if (screen != null) {
+            screen.updateStats();
+        }
     }
 
     @ReceiveEvent
     public void onEquipChanged(UnequipItemEvent event, EntityRef entity, EquipmentComponent eq) {
         CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
-        screen.updateStats();
+
+        if (screen != null) {
+            screen.updateStats();
+        }
     }
 
     @ReceiveEvent

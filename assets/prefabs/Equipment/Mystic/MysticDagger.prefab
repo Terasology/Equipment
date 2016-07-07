@@ -3,11 +3,12 @@
     "Item" : {
         "icon" : "Equipment:GooeyDagger",
         "damageType" : "knifeDamage",
-        "cooldownTime" : 225
+        "baseCooldownTime" : 200,
+        "cooldownTime" : 200
     },
     "DisplayName" : {
-        "name" : "Gooey's Dagger",
-        "description" : "A unique dagger crafted by Gooey."
+        "name" : "Mystic Dagger",
+        "description" : "A mystical dagger."
     },
     "EquipmentItem" : {
         "level" : 15,

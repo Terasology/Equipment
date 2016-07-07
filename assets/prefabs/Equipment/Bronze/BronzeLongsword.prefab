@@ -3,7 +3,8 @@
     "Item" : {
         "icon" : "Equipment:BronzeLongsword",
         "damageType" : "axeDamage",
-        "cooldownTime" : 500
+        "baseCooldownTime" : 400,
+        "cooldownTime" : 400
     },
     "DisplayName" : {
         "name" : "Bronze Long Sword",

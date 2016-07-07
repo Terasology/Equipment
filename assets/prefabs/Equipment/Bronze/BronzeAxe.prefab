@@ -3,7 +3,8 @@
     "Item" : {
         "icon" : "Equipment:BronzeAxe",
         "damageType" : "axeDamage",
-        "cooldownTime" : 750
+        "baseCooldownTime" : 600,
+        "cooldownTime" : 600
     },
     "DisplayName" : {
         "name" : "Bronze Axe",

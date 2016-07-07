@@ -3,7 +3,8 @@
     "Item" : {
         "icon" : "Equipment:SilverDagger",
         "damageType" : "knifeDamage",
-        "cooldownTime" : 300
+        "baseCooldownTime" : 225,
+        "cooldownTime" : 225
     },
     "DisplayName" : {
         "name" : "Silver Dagger",

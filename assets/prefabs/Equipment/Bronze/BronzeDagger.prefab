@@ -3,6 +3,7 @@
     "Item" : {
         "icon" : "Equipment:BronzeDagger",
         "damageType" : "knifeDamage",
+        "baseCooldownTime" : 250,
         "cooldownTime" : 250
     },
     "DisplayName" : {

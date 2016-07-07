@@ -3,7 +3,8 @@
     "Item" : {
         "icon" : "Equipment:SilverLongsword",
         "damageType" : "axeDamage",
-        "cooldownTime" : 500
+        "baseCooldownTime" : 400,
+        "cooldownTime" : 400
     },
     "DisplayName" : {
         "name" : "Silver Long Sword",
