@@ -159,6 +159,7 @@
             },
             {
                 "type" : "columnLayout",
+                "id" : "eqSlotNamesLayout",
                 "verticalSpacing" : 4,
                 "contents" : [
                     {
@@ -168,48 +169,13 @@
                     {
                         "type" : "UISpace",
                         "size" : [1, 16]
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "WeaponEQ",
-                        "text" : "Weapon: None"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "HeadEQ",
-                        "text" : "Head: None"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "BodyEQ",
-                        "text" : "Body: None"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "ArmsEQ",
-                        "text" : "Arms: None"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "HandsEQ",
-                        "text" : "Hands: None"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "LegsEQ",
-                        "text" : "Legs: Trousers"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "FeetEQ",
-                        "text" : "Feet: Shoes"
-                    },
+                    }
                 ],
                 "layoutInfo" : {
-                    "use-content-width" : true,
+                    "width": 450,
                     "use-content-height" : true,
                     "position-left": {
-                        "offset": 600
+                        "offset": 400
                     },
                     "position-top": {
                         "offset": 15

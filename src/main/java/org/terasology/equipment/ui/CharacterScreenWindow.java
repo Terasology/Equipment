@@ -19,10 +19,12 @@ import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.equipment.component.EquipmentComponent;
 import org.terasology.equipment.component.EquipmentItemComponent;
+import org.terasology.equipment.component.EquipmentSlot;
 import org.terasology.input.events.MouseButtonEvent;
 import org.terasology.logic.characters.CharacterComponent;
 import org.terasology.logic.common.DisplayNameComponent;
 import org.terasology.logic.players.LocalPlayer;
+import org.terasology.math.geom.Vector2i;
 import org.terasology.physicalstats.component.PhysicalStatsComponent;
 import org.terasology.physicalstats.component.PhysicalStatsModifier;
 import org.terasology.physicalstats.component.PhysicalStatsModifierComponent;
@@ -31,7 +33,12 @@ import org.terasology.registry.In;
 import org.terasology.rendering.nui.BaseInteractionScreen;
 import org.terasology.rendering.nui.CoreScreenLayer;
 import org.terasology.rendering.nui.layers.ingame.inventory.InventoryGrid;
+import org.terasology.rendering.nui.layouts.ColumnLayout;
 import org.terasology.rendering.nui.widgets.UILabel;
+import org.terasology.rendering.nui.widgets.UISpace;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterScreenWindow extends BaseInteractionScreen {
     @In
@@ -54,15 +61,8 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
     private UILabel chaLabel;
     private UILabel lukLabel;
 
-
-
-    private UILabel weaponEQ;
-    private UILabel headEQ;
-    private UILabel bodyEQ;
-    private UILabel armsEQ;
-    private UILabel handsEQ;
-    private UILabel legsEQ;
-    private UILabel feetEQ;
+    private ColumnLayout eqSlotLabelsLayout;
+    private List<UILabel> eqSlotLabels;
 
     private UILabel maxHealth;
     private UILabel physicalAttackPower;
@@ -89,14 +89,6 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         chaLabel = find("CHA", UILabel.class);
         lukLabel = find("LUK", UILabel.class);
 
-        weaponEQ = find("WeaponEQ", UILabel.class);
-        headEQ = find("HeadEQ", UILabel.class);
-        bodyEQ = find("BodyEQ", UILabel.class);
-        armsEQ = find("ArmsEQ", UILabel.class);
-        handsEQ = find("HandsEQ", UILabel.class);
-        legsEQ = find("LegsEQ", UILabel.class);
-        feetEQ = find("FeetEQ", UILabel.class);
-
         maxHealth = find("HealthPoints", UILabel.class);
         physicalAttackPower = find("PhyAttackPower", UILabel.class);
         physicalDefensePower = find("PhyDefensePower", UILabel.class);
@@ -118,6 +110,15 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         playerEQInventory.setTargetEntity(eqC.equipmentInventory);
         playerEQInventory.setCellOffset(0);
         playerEQInventory.setMaxCellCount(eqC.equipmentSlots.size());
+
+        eqSlotLabels = new ArrayList<UILabel>();
+        eqSlotLabelsLayout = find("eqSlotNamesLayout", ColumnLayout.class);
+        for (EquipmentSlot equipmentSlot : eqC.equipmentSlots) {
+            UILabel newLabel = new UILabel();
+            newLabel.setText(equipmentSlot.name + ": None");
+            eqSlotLabelsLayout.addWidget(newLabel);
+            eqSlotLabels.add(newLabel);
+        }
     }
 
     @Override
@@ -147,7 +148,6 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
             PhysicalStatsComponent phy = player.getComponent(PhysicalStatsComponent.class);
             PhysicalStatsModifierComponent mods = player.getComponent(PhysicalStatsModifierComponent.class);
 
-            // Update attributes UILabels. TODO: Listen for OnStatChangedEvents instead of updating every second.
             int strTemp = phy.strength;
             int dexTemp = phy.dexterity;
             int conTemp = phy.constitution;
@@ -194,15 +194,11 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
             maxHealth.setText("Health: " + phy.constitution*10);
 
-            // Hard-coded for humans now.
-            String[] names = {"Weapon", "Head", "Body", "Arms", "Hands", "Legs", "Feet"};
-            UILabel[] labels = {weaponEQ, headEQ, bodyEQ, armsEQ, handsEQ, legsEQ, feetEQ};
-
-            for (int i = 0; (i < names.length) && (i < eq.equipmentSlots.size()); i++) {
+            for (int i = 0; (i < eqSlotLabels.size()) && (i < eq.equipmentSlots.size()); i++) {
                 if (eq.equipmentSlots.get(i).itemRef == EntityRef.NULL) {
-                    labels[i].setText(eq.equipmentSlots.get(i).name + ": None");
+                    eqSlotLabels.get(i).setText(eq.equipmentSlots.get(i).name + ": None");
                 } else {
-                    labels[i].setText(eq.equipmentSlots.get(i).name + ": " +
+                    eqSlotLabels.get(i).setText(eq.equipmentSlots.get(i).name + ": " +
                             eq.equipmentSlots.get(i).itemRef.getComponent(DisplayNameComponent.class).name);
                     phyAtkTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).attack;
                     phyDefTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).defense;
