@@ -70,11 +70,13 @@ public class EquipmentSystem extends BaseComponentSystem {
     public void itemPutIntoEquipmentSlot(BeforeItemPutInInventory event, EntityRef entity,
                                          EquipmentInventoryComponent eqInv, InventoryComponent inventory) {
 
+        // Ensure that this item is actually a piece of equipment. If not, consume the event and return.
         if (!event.getItem().hasComponent(EquipmentItemComponent.class)) {
             event.consume();
             return;
         }
 
+        // If the equip action fails, consume the event.
         if (!equipItem(event.getInstigator(), event.getItem(), event.getSlot(), entity)) {
             event.consume();
         }
@@ -91,11 +93,14 @@ public class EquipmentSystem extends BaseComponentSystem {
     @ReceiveEvent
     public void itemRemovedFromEquipmentSlot(BeforeItemRemovedFromInventory event, EntityRef entity,
                                              EquipmentInventoryComponent eqInv, InventoryComponent inventory) {
+
+        // Ensure that this item is actually a piece of equipment. If not, return.
         if (!event.getItem().hasComponent(EquipmentItemComponent.class)) {
             //event.consume();
             return;
         }
 
+        // If the unequip action fails, consume the event.
         if (!unequipItem(event.getInstigator(), event.getItem())) {
             event.consume();
         }
@@ -109,6 +114,7 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
     }
 
+    // Instaniate the EquipmentInventory entity companion and store a refernce to it in the player's EquipmentComponent.
     @ReceiveEvent
     public void onPlayerSpawn(OnPlayerSpawnedEvent event, EntityRef player, EquipmentComponent eq) {
         if (eq.equipmentInventory == EntityRef.NULL) {
@@ -132,6 +138,7 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
     }
 
+    // Set the equipment item's tooltip based on the item's stats. 
     @ReceiveEvent
     public void setItemTooltip(GetItemTooltip event, EntityRef item, EquipmentItemComponent eqItem) {
         DisplayNameComponent d = item.getComponent(DisplayNameComponent.class);
@@ -176,11 +183,13 @@ public class EquipmentSystem extends BaseComponentSystem {
     private boolean equipItem(EntityRef character, EntityRef item, int slotNumber, EntityRef eqInvEntRef) {
         EquipmentComponent eq = character.getComponent(EquipmentComponent.class);
 
+        // Search through all the equipment slots for a slot that has the same type as the item intended to be equipped.
         for (EquipmentSlot eSlot : eq.equipmentSlots) {
+            // If this slot has the same type as the item.
             if (eSlot.type.equalsIgnoreCase(item.getComponent(EquipmentItemComponent.class).location)) {
-                // Check to see if there'a an empty slot first.
-                boolean isSlotEmpty = false;
-                int atIndex = 0;
+                // Check to see if this contains an empty slot first.
+                boolean isSlotEmpty = false; // Flag indicating if there's an empty slot.
+                int atIndex = 0;             // The index of the empty slot.
                 for (int i = 0; i < eSlot.itemRefs.size() && !isSlotEmpty; i++) {
                     if (eSlot.itemRefs.get(i) == EntityRef.NULL) {
                         isSlotEmpty = true;
@@ -188,12 +197,13 @@ public class EquipmentSystem extends BaseComponentSystem {
                     }
                 }
 
-                // If there's already an equipment of the same type in a different slot, swap.
+                // If all of the slots of this type are already filled, swap the one in the first slot with the new item.
                 if (!isSlotEmpty) {
                     InventoryManager inventoryManager = CoreRegistry.get(InventoryManager.class);
 
-                    int index = 0;
-                    boolean found = false;
+                    // Find an empty spot in the character's inventory to move the swapped item out to.
+                    int index = 0;         // Index of the empty spot in the player's inventory.
+                    boolean found = false; // Flag indicating whether an empty spot was found.
                     InventoryComponent charInv = character.getComponent(InventoryComponent.class);
                     for (int i = 0; i < charInv.itemSlots.size() && !found; i++) {
                         if (charInv.itemSlots.get(i) == EntityRef.NULL) {
@@ -202,6 +212,7 @@ public class EquipmentSystem extends BaseComponentSystem {
                         }
                     }
 
+                    // If an empty spot was found in the character's inventory.
                     if (found) {
                         /*
                         Replace with
@@ -209,24 +220,33 @@ public class EquipmentSystem extends BaseComponentSystem {
                         c.movingItem.getComponent(InventoryComponent.class).itemSlots.get(0) = remItem;
 
                          */
+
+                        // Move the equipped item in the first available slot of this equipment slot to the character's inventory.
                         inventoryManager.moveItem(eqInvEntRef, eqInvEntRef, InventoryUtils.getSlotWithItem(eqInvEntRef, eSlot.itemRefs.get(0)),
                                 character, index, 1);
+
+                        // Unequip the moved item.
                         unequipItem(character, eSlot.itemRefs.get(0));
 
+                        // Equip the desired item in the now free slot.
                         eSlot.itemRefs.set(atIndex, item);
                         character.saveComponent(eq);
 
+                        // Send an EquipItemEvent, play a sound, and return true, indicating that the equip action was successful.
                         character.send(new EquipItemEvent(character, item, eSlot));
                         CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash").get(), 1.0f);
                         return true;
                     }
                 }
+                // If there's an empty slot available in this equipment slot.
                 else {
                     eSlot.itemRef = item;
 
+                    // Equip the desired item in the free slot.
                     eSlot.itemRefs.set(atIndex, item);
                     character.saveComponent(eq);
 
+                    // Send an EquipItemEvent, play a sound, and return true, indicating that the equip action was successful.
                     character.send(new EquipItemEvent(character, item, eSlot));
                     CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash").get(), 1.0f);
                     return true;
@@ -234,24 +254,33 @@ public class EquipmentSystem extends BaseComponentSystem {
             }
         }
 
+        // If the execution reaches here, that means the equip action failed due to either no space left in the character's inventory, or no appropriate
+        // slot type.
         return false;
     }
 
     private boolean unequipItem(EntityRef character, EntityRef item) {
         EquipmentComponent eq = character.getComponent(EquipmentComponent.class);
 
+        // If this entity doesn't have an EquipmentComponent, just return true.
         if (eq == null) {
             return true;
         }
 
+        // Iterate through all of the equipment slots.
         for (EquipmentSlot eSlot : eq.equipmentSlots) {
+            // If this slot's accepted type matches the item's location.
             if (eSlot.type.equalsIgnoreCase(item.getComponent(EquipmentItemComponent.class).location)) {
+                // Look through all of the item ref slots of this equipment slot.
                 for (int i = 0; i < eSlot.itemRefs.size(); i++) {
-                    // Remove the matching item from the equipment slot.
+                    // If the item is found in one of the item ref slots, remove the matching item from the ref slot.
                     if (eSlot.itemRefs.get(i).equals(item))
                     {
+                        // Remove the reference for this item.
                         eSlot.itemRefs.set(i, EntityRef.NULL);
                         character.saveComponent(eq);
+
+                        // Send an UnequipItemEvent, play a sound, and return true, indicating that the unequip action was successful.
                         character.send(new UnequipItemEvent(character, item, eSlot));
                         CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash-reverse").get(), 1.0f);
                         return true;
@@ -260,6 +289,8 @@ public class EquipmentSystem extends BaseComponentSystem {
             }
         }
 
+
+        // If the execution reaches here, that means the unequip action failed due to the item not being found.
         return false;
     }
 
