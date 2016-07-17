@@ -1,33 +1,47 @@
 {
     "Equipment": {
+        "numberOfSlots": 9,
         "equipmentSlots": [
             {
                 "name": "Weapon",
-                "type": "Weapon"
+                "type": "Weapon",
+                "itemRefs": [0]
             },
             {
                 "name": "Head",
-                "type": "Head"
+                "type": "Head",
+                "itemRefs": [0]
             },
             {
                 "name": "Body",
-                "type": "Body"
+                "type": "Body",
+                "itemRefs": [0]
             },
             {
                 "name": "Arms",
-                "type": "Arms"
+                "type": "Arms",
+                "itemRefs": [0]
             },
             {
                 "name": "Hands",
-                "type": "Hands"
+                "type": "Hands",
+                "itemRefs": [0]
             },
             {
                 "name": "Legs",
-                "type": "Legs"
+                "type": "Legs",
+                "itemRefs": [0]
             },
             {
                 "name": "Feet",
-                "type": "Feet"
+                "type": "Feet",
+                "itemRefs": [0]
+            },
+            {
+                "name": "Ring",
+                "type": "Ring",
+                "numSlotsOfSameType": 2,
+                "itemRefs": [0, 0]
             }
         ]
     }

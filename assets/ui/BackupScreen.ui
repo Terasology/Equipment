@@ -175,7 +175,7 @@
                     "width": 450,
                     "use-content-height" : true,
                     "position-left": {
-                        "offset": 400
+                        "offset": 425
                     },
                     "position-top": {
                         "offset": 15
@@ -202,7 +202,7 @@
                     {
                         "type": "InventoryGrid",
                         "id": "playerEQInventory",
-                        "maxHorizontalCells" : 1,
+                        "maxHorizontalCells" : 2,
                         "layoutInfo": {
                             "width": 560,
                             "height": 168,

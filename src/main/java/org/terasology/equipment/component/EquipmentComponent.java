@@ -26,6 +26,9 @@ import java.util.List;
 public final class EquipmentComponent implements Component {
     public EntityRef equipmentInventory = EntityRef.NULL;
 
+    // Total number of inventory slots. Make sure to update when an element of the list below is changed.
+    public int numberOfSlots = 0;
+
     // List of equipment slots. Replace or add a map?
     @Replicate
     public List<EquipmentSlot> equipmentSlots = Lists.newArrayList();

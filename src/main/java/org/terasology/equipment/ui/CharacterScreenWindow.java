@@ -109,15 +109,28 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         EquipmentComponent eqC = player.getComponent(EquipmentComponent.class);
         playerEQInventory.setTargetEntity(eqC.equipmentInventory);
         playerEQInventory.setCellOffset(0);
-        playerEQInventory.setMaxCellCount(eqC.equipmentSlots.size());
+        playerEQInventory.setMaxCellCount(eqC.numberOfSlots);
 
+        // Create list of labels for each equipment slot.
         eqSlotLabels = new ArrayList<UILabel>();
         eqSlotLabelsLayout = find("eqSlotNamesLayout", ColumnLayout.class);
+
+        // Iterate through the list of equipment slots.
         for (EquipmentSlot equipmentSlot : eqC.equipmentSlots) {
-            UILabel newLabel = new UILabel();
-            newLabel.setText(equipmentSlot.name + ": None");
-            eqSlotLabelsLayout.addWidget(newLabel);
-            eqSlotLabels.add(newLabel);
+            // For each slot present in this type, add a label to the layout and eqSlotLabels list.
+            for (int i = 0; i < equipmentSlot.numSlotsOfSameType; i++) {
+                UILabel newLabel = new UILabel();
+
+                if (equipmentSlot.numSlotsOfSameType == 1) {
+                    newLabel.setText(equipmentSlot.name + ": None");
+                }
+                else {
+                    newLabel.setText(equipmentSlot.name + " #" + (i + 1) + ": None");
+                }
+
+                eqSlotLabelsLayout.addWidget(newLabel);
+                eqSlotLabels.add(newLabel);
+            }
         }
     }
 
@@ -194,18 +207,48 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
             maxHealth.setText("Health: " + phy.constitution*10);
 
-            for (int i = 0; (i < eqSlotLabels.size()) && (i < eq.equipmentSlots.size()); i++) {
-                if (eq.equipmentSlots.get(i).itemRef == EntityRef.NULL) {
-                    eqSlotLabels.get(i).setText(eq.equipmentSlots.get(i).name + ": None");
-                } else {
-                    eqSlotLabels.get(i).setText(eq.equipmentSlots.get(i).name + ": " +
-                            eq.equipmentSlots.get(i).itemRef.getComponent(DisplayNameComponent.class).name);
-                    phyAtkTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).attack;
-                    phyDefTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).defense;
-                    speedTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).speed;
+            int c = 0; // Counter for storing which label in eqSlotLabels to access.
+            // Iterate through the list of equipment slots.
+            for (int i = 0; (i < eq.equipmentSlots.size()); i++) {
+                // For each slot present in this type.
+                for (int j = 0; j < eq.equipmentSlots.get(i).numSlotsOfSameType; j++) {
+                    // If nothing's equipped in this slot, update the appropriate label.
+                    if (eq.equipmentSlots.get(i).itemRefs.get(j) == EntityRef.NULL) {
+
+                        if (eq.equipmentSlots.get(i).numSlotsOfSameType == 1) {
+                            eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + ": None");
+                        }
+                        else {
+                            eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + " #" + (j + 1) + ": None");
+                        }
+                    }
+                    // If something's equipped in this slot, update the appropriate label.
+                    else {
+
+                        if (eq.equipmentSlots.get(i).numSlotsOfSameType == 1) {
+                            eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + ": " +
+                                    eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(DisplayNameComponent.class).name);
+                        }
+                        else {
+                            eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + " #" + (j + 1) + ": " +
+                                    eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(DisplayNameComponent.class).name);
+                        }
+
+                        // Add the stat bonuses from the equipped item.
+                        phyAtkTotal +=
+                                eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(EquipmentItemComponent.class).attack;
+                        phyDefTotal +=
+                                eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(EquipmentItemComponent.class).defense;
+                        speedTotal +=
+                                eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(EquipmentItemComponent.class).speed;
+                    }
+
+                    // As we are done with this equipment slot (and associated label), increment the counter.
+                    c++;
                 }
             }
 
+            // Update the labels of the derived stats.
             physicalAttackPower.setText("Physical Attack: " + (phyAtkTotal + (strTemp / 2)));
             physicalDefensePower.setText("Physical Defense: " + (phyDefTotal + (defense / 2)));
             magicalAttackPower.setText("Magic Attack: " + (0 + (thaumacity / 2)));
