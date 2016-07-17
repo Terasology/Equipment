@@ -115,7 +115,15 @@ public class EquipmentSystem extends BaseComponentSystem {
             eq.equipmentInventory = entityManager.create("Equipment:EquipmentInventory");
             InventoryComponent inv =  eq.equipmentInventory.getComponent(InventoryComponent.class);
 
+            /*
+            int sizeOfEQInv = 0;
+
             for (int i = 0; i < eq.equipmentSlots.size(); i++) {
+                sizeOfEQInv += eq.equipmentSlots.get(i).numSlotsOfSameType;
+            }
+            */
+
+            for (int i = 0; i < eq.numberOfSlots; i++) {
                 inv.itemSlots.add(EntityRef.NULL);
             }
 
@@ -170,8 +178,18 @@ public class EquipmentSystem extends BaseComponentSystem {
 
         for (EquipmentSlot eSlot : eq.equipmentSlots) {
             if (eSlot.type.equalsIgnoreCase(item.getComponent(EquipmentItemComponent.class).location)) {
+                // Check to see if there'a an empty slot first.
+                boolean isSlotEmpty = false;
+                int atIndex = 0;
+                for (int i = 0; i < eSlot.itemRefs.size() && !isSlotEmpty; i++) {
+                    if (eSlot.itemRefs.get(i) == EntityRef.NULL) {
+                        isSlotEmpty = true;
+                        atIndex = i;
+                    }
+                }
+
                 // If there's already an equipment of the same type in a different slot, swap.
-                if (eSlot.itemRef != EntityRef.NULL) {
+                if (!isSlotEmpty) {
                     InventoryManager inventoryManager = CoreRegistry.get(InventoryManager.class);
 
                     int index = 0;
@@ -191,12 +209,13 @@ public class EquipmentSystem extends BaseComponentSystem {
                         c.movingItem.getComponent(InventoryComponent.class).itemSlots.get(0) = remItem;
 
                          */
-                        inventoryManager.moveItem(eqInvEntRef, eqInvEntRef, InventoryUtils.getSlotWithItem(eqInvEntRef, eSlot.itemRef),
+                        inventoryManager.moveItem(eqInvEntRef, eqInvEntRef, InventoryUtils.getSlotWithItem(eqInvEntRef, eSlot.itemRefs.get(0)),
                                 character, index, 1);
+                        unequipItem(character, eSlot.itemRefs.get(0));
 
-                        //inventoryManager.switchItem(character, character, index, eqInvEntRef, slotNumber);
-                        eSlot.itemRef = item;
+                        eSlot.itemRefs.set(atIndex, item);
                         character.saveComponent(eq);
+
                         character.send(new EquipItemEvent(character, item, eSlot));
                         CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash").get(), 1.0f);
                         return true;
@@ -204,7 +223,10 @@ public class EquipmentSystem extends BaseComponentSystem {
                 }
                 else {
                     eSlot.itemRef = item;
+
+                    eSlot.itemRefs.set(atIndex, item);
                     character.saveComponent(eq);
+
                     character.send(new EquipItemEvent(character, item, eSlot));
                     CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash").get(), 1.0f);
                     return true;
@@ -218,13 +240,23 @@ public class EquipmentSystem extends BaseComponentSystem {
     private boolean unequipItem(EntityRef character, EntityRef item) {
         EquipmentComponent eq = character.getComponent(EquipmentComponent.class);
 
+        if (eq == null) {
+            return true;
+        }
+
         for (EquipmentSlot eSlot : eq.equipmentSlots) {
             if (eSlot.type.equalsIgnoreCase(item.getComponent(EquipmentItemComponent.class).location)) {
-                eSlot.itemRef = EntityRef.NULL;
-                character.saveComponent(eq);
-                character.send(new UnequipItemEvent(character, item, eSlot));
-                CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash-reverse").get(), 1.0f);
-                return true;
+                for (int i = 0; i < eSlot.itemRefs.size(); i++) {
+                    // Remove the matching item from the equipment slot.
+                    if (eSlot.itemRefs.get(i).equals(item))
+                    {
+                        eSlot.itemRefs.set(i, EntityRef.NULL);
+                        character.saveComponent(eq);
+                        character.send(new UnequipItemEvent(character, item, eSlot));
+                        CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash-reverse").get(), 1.0f);
+                        return true;
+                    }
+                }
             }
         }
 

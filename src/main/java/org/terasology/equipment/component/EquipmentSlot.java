@@ -15,8 +15,11 @@
  */
 package org.terasology.equipment.component;
 
+import com.google.common.collect.Lists;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.reflection.MappedContainer;
+
+import java.util.List;
 
 @MappedContainer
 public class EquipmentSlot {
@@ -24,4 +27,6 @@ public class EquipmentSlot {
     public String name;
     public String type;
     public EntityRef itemRef = EntityRef.NULL;
+    public int numSlotsOfSameType = 1;
+    public List<EntityRef> itemRefs = Lists.newArrayList();
 }

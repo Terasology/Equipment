@@ -109,15 +109,24 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         EquipmentComponent eqC = player.getComponent(EquipmentComponent.class);
         playerEQInventory.setTargetEntity(eqC.equipmentInventory);
         playerEQInventory.setCellOffset(0);
-        playerEQInventory.setMaxCellCount(eqC.equipmentSlots.size());
+        playerEQInventory.setMaxCellCount(eqC.numberOfSlots);
 
         eqSlotLabels = new ArrayList<UILabel>();
         eqSlotLabelsLayout = find("eqSlotNamesLayout", ColumnLayout.class);
         for (EquipmentSlot equipmentSlot : eqC.equipmentSlots) {
-            UILabel newLabel = new UILabel();
-            newLabel.setText(equipmentSlot.name + ": None");
-            eqSlotLabelsLayout.addWidget(newLabel);
-            eqSlotLabels.add(newLabel);
+            for (int i = 0; i < equipmentSlot.numSlotsOfSameType; i++) {
+                UILabel newLabel = new UILabel();
+
+                if (equipmentSlot.numSlotsOfSameType == 1) {
+                    newLabel.setText(equipmentSlot.name + ": None");
+                }
+                else {
+                    newLabel.setText(equipmentSlot.name + " #" + (i + 1) + ": None");
+                }
+
+                eqSlotLabelsLayout.addWidget(newLabel);
+                eqSlotLabels.add(newLabel);
+            }
         }
     }
 
@@ -194,7 +203,42 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
             maxHealth.setText("Health: " + phy.constitution*10);
 
-            for (int i = 0; (i < eqSlotLabels.size()) && (i < eq.equipmentSlots.size()); i++) {
+            int c = 0;
+            for (int i = 0; (i < eq.equipmentSlots.size()); i++) {
+                for (int j = 0; j < eq.equipmentSlots.get(i).numSlotsOfSameType; j++) {
+                    if (eq.equipmentSlots.get(i).itemRefs.get(j) == EntityRef.NULL) {
+
+                        if (eq.equipmentSlots.get(i).numSlotsOfSameType == 1) {
+                            eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + ": None");
+                        }
+                        else {
+                            eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + " #" + (j + 1) + ": None");
+                        }
+                    } else {
+
+                        if (eq.equipmentSlots.get(i).numSlotsOfSameType == 1) {
+                            //eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + ": None");
+                            eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + ": " +
+                                    eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(DisplayNameComponent.class).name);
+                        }
+                        else {
+                            //eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + "#" + (i + 1) + ": None");
+                            eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + " #" + (j + 1) + ": " +
+                                    eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(DisplayNameComponent.class).name);
+                        }
+
+                        phyAtkTotal +=
+                                eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(EquipmentItemComponent.class).attack;
+                        phyDefTotal +=
+                                eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(EquipmentItemComponent.class).defense;
+                        speedTotal +=
+                                eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(EquipmentItemComponent.class).speed;
+                    }
+
+                    c++;
+                }
+
+                /*
                 if (eq.equipmentSlots.get(i).itemRef == EntityRef.NULL) {
                     eqSlotLabels.get(i).setText(eq.equipmentSlots.get(i).name + ": None");
                 } else {
@@ -204,6 +248,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
                     phyDefTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).defense;
                     speedTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).speed;
                 }
+                */
             }
 
             physicalAttackPower.setText("Physical Attack: " + (phyAtkTotal + (strTemp / 2)));
