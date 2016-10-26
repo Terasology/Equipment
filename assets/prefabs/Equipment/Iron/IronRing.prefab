@@ -1,14 +1,14 @@
 {
     "parent" : "engine:iconItem",
     "Item" : {
-        "icon" : "Equipment:CopperRing"
+        "icon" : "Equipment:BronzeDagger"
     },
     "DisplayName" : {
-        "name" : "Copper Ring",
-        "description" : "An ornamental ring made out of copper."
+        "name" : "Iron Ring",
+        "description" : "An ornamental ring made out of iron."
     },
     "EquipmentItem" : {
-        "level" : 1,
+        "level" : 10,
         "quality" : 3,
         "type" : "Ring",
         "location" : "Ring",
