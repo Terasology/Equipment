@@ -8,7 +8,7 @@
         "description" : "An ornamental ring made out of silver."
     },
     "EquipmentItem" : {
-        "level" : 10,
+        "level" : 30,
         "quality" : 3,
         "type" : "Ring",
         "location" : "Ring",
