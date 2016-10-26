@@ -4,7 +4,7 @@
         "icon" : "Equipment:BronzeDagger"
     },
     "DisplayName" : {
-        "name" : "Copper Ring",
+        "name" : "Mystic Ring",
         "description" : "An ornamental ring made out of mystic."
     },
     "EquipmentItem" : {
