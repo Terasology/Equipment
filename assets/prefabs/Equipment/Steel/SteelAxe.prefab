@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SteelAxe",
+        "damageType" : "axeDamage",
+        "baseCooldownTime" : 600,
+        "cooldownTime" : 600
+    },
+    "DisplayName" : {
+        "name" : "Steel Axe",
+        "description" : "An axe that can be used for woodcutting or even self-defense."
+    },
+    "EquipmentItem" : {
+        "level" : 6,
+        "quality" : 8,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 14,
+        "defense" : 0,
+        "weight" : 0,
+        "speed" : 11
+    }
+}
