@@ -4,11 +4,11 @@
         "icon" : "Equipment:BronzeDagger"
     },
     "DisplayName" : {
-        "name" : "Copper Ring",
+        "name" : "Iron Ring",
         "description" : "An ornamental ring made out of iron."
     },
     "EquipmentItem" : {
-        "level" : 20,
+        "level" : 10,
         "quality" : 3,
         "type" : "Ring",
         "location" : "Ring",
