@@ -20,22 +20,17 @@ import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.equipment.component.EquipmentComponent;
 import org.terasology.equipment.component.EquipmentItemComponent;
 import org.terasology.equipment.component.EquipmentSlot;
-import org.terasology.input.events.MouseButtonEvent;
-import org.terasology.logic.characters.CharacterComponent;
 import org.terasology.logic.common.DisplayNameComponent;
 import org.terasology.logic.players.LocalPlayer;
-import org.terasology.math.geom.Vector2i;
 import org.terasology.physicalstats.component.PhysicalStatsComponent;
-import org.terasology.physicalstats.component.PhysicalStatsModifier;
 import org.terasology.physicalstats.component.PhysicalStatsModifierComponent;
+import org.terasology.physicalstats.component.PhysicalStatsModifiersListComponent;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.BaseInteractionScreen;
-import org.terasology.rendering.nui.CoreScreenLayer;
 import org.terasology.rendering.nui.layers.ingame.inventory.InventoryGrid;
 import org.terasology.rendering.nui.layouts.ColumnLayout;
 import org.terasology.rendering.nui.widgets.UILabel;
-import org.terasology.rendering.nui.widgets.UISpace;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -159,7 +154,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         if (player.hasComponent(EquipmentComponent.class)) {
             EquipmentComponent eq = player.getComponent(EquipmentComponent.class);
             PhysicalStatsComponent phy = player.getComponent(PhysicalStatsComponent.class);
-            PhysicalStatsModifierComponent mods = player.getComponent(PhysicalStatsModifierComponent.class);
+            PhysicalStatsModifiersListComponent mods = player.getComponent(PhysicalStatsModifiersListComponent.class);
 
             int strTemp = phy.strength;
             int dexTemp = phy.dexterity;
@@ -170,7 +165,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
             int lukTemp = phy.luck;
 
             if (mods != null) {
-                for (PhysicalStatsModifier mod : mods.modifiers.values()) {
+                for (PhysicalStatsModifierComponent mod : mods.modifiers.values()) {
                     strTemp += mod.strength;
                     dexTemp += mod.dexterity;
                     conTemp += mod.constitution;
