@@ -115,14 +115,6 @@ public class EquipmentSystem extends BaseComponentSystem {
             eq.equipmentInventory = entityManager.create("Equipment:EquipmentInventory");
             InventoryComponent inv =  eq.equipmentInventory.getComponent(InventoryComponent.class);
 
-            /*
-            int sizeOfEQInv = 0;
-
-            for (int i = 0; i < eq.equipmentSlots.size(); i++) {
-                sizeOfEQInv += eq.equipmentSlots.get(i).numSlotsOfSameType;
-            }
-            */
-
             for (int i = 0; i < eq.numberOfSlots; i++) {
                 inv.itemSlots.add(EntityRef.NULL);
             }
@@ -208,13 +200,6 @@ public class EquipmentSystem extends BaseComponentSystem {
 
                     // If an empty spot was found in the character's inventory.
                     if (found) {
-                        /*
-                        Replace with
-                        EntityRef remItem = EntityRef removeItem(EntityRef inventory, EntityRef instigator, EntityRef item, boolean destroyRemoved, int count);
-                        c.movingItem.getComponent(InventoryComponent.class).itemSlots.get(0) = remItem;
-
-                         */
-
                         // Move the equipped item in the first available slot of this equipment slot to the character's inventory.
                         inventoryManager.moveItem(eqInvEntRef, eqInvEntRef, InventoryUtils.getSlotWithItem(eqInvEntRef, eSlot.itemRefs.get(0)),
                                 character, index, 1);
@@ -222,24 +207,8 @@ public class EquipmentSystem extends BaseComponentSystem {
                         // Unequip the moved item.
                         unequipItem(character, eSlot.itemRefs.get(0));
 
-                        // If this equipment item has a physical stats modifier.
-                        if (item.getComponent(PhysicalStatsModifierComponent.class) != null) {
-                            // Add the physical stats modifier list to the character if it doesn't exist.
-                            if (character.getComponent(PhysicalStatsModifiersListComponent.class) == null) {
-                                character.addComponent(new PhysicalStatsModifiersListComponent());
-                            }
-
-                            // Add the item modifier to the character.
-                            PhysicalStatsModifiersListComponent pStatsMod = character.getComponent(PhysicalStatsModifiersListComponent.class);
-                            PhysicalStatsModifierComponent eqStatsMod = item.getComponent(PhysicalStatsModifierComponent.class);
-
-                            if (eqStatsMod != null) {
-                                pStatsMod.modifiers.put("" + eqStatsMod.hashCode(), eqStatsMod);
-                            }
-
-                            // Save the component.
-                            character.saveComponent(pStatsMod);
-                        }
+                        // Add item's stat modifier (if any) to the character.
+                        addModifier(character, item);
 
                         // Equip the desired item in the now free slot.
                         eSlot.itemRefs.set(atIndex, item);
@@ -259,24 +228,8 @@ public class EquipmentSystem extends BaseComponentSystem {
                     eSlot.itemRefs.set(atIndex, item);
                     character.saveComponent(eq);
 
-                    // If this equipment item has a physical stats modifier.
-                    if (item.getComponent(PhysicalStatsModifierComponent.class) != null) {
-                        // Add the physical stats modifier list to the character if it doesn't exist.
-                        if (character.getComponent(PhysicalStatsModifiersListComponent.class) == null) {
-                            character.addComponent(new PhysicalStatsModifiersListComponent());
-                        }
-
-                        // Add the item modifier to the character.
-                        PhysicalStatsModifiersListComponent pStatsMod = character.getComponent(PhysicalStatsModifiersListComponent.class);
-                        PhysicalStatsModifierComponent eqStatsMod = item.getComponent(PhysicalStatsModifierComponent.class);
-
-                        if (eqStatsMod != null) {
-                            pStatsMod.modifiers.put("" + eqStatsMod.hashCode(), eqStatsMod);
-                        }
-
-                        // Save the component.
-                        character.saveComponent(pStatsMod);
-                    }
+                    // Add item's stat modifier (if any) to the character.
+                    addModifier(character, item);
 
                     // Send an EquipItemEvent, play a sound, and return true, indicating that the equip action was successful.
                     character.send(new EquipItemEvent(character, item, eSlot));
@@ -312,18 +265,7 @@ public class EquipmentSystem extends BaseComponentSystem {
                         eSlot.itemRefs.set(i, EntityRef.NULL);
                         character.saveComponent(eq);
 
-                        // Remove the physical stat modifier from the character if it exists.
-                        if (character.getComponent(PhysicalStatsModifiersListComponent.class) != null) {
-
-                            PhysicalStatsModifiersListComponent pStatsModList = character.getComponent(PhysicalStatsModifiersListComponent.class);
-                            PhysicalStatsModifierComponent eqStatsMod = item.getComponent(PhysicalStatsModifierComponent.class);
-
-                            if (eqStatsMod != null) {
-                                pStatsModList.modifiers.remove("" + eqStatsMod.hashCode());
-                            }
-
-                            character.saveComponent(pStatsModList);
-                        }
+                        removeModifier(character, item);
 
                         // Send an UnequipItemEvent, play a sound, and return true, indicating that the unequip action was successful.
                         character.send(new UnequipItemEvent(character, item, eSlot));
@@ -337,6 +279,45 @@ public class EquipmentSystem extends BaseComponentSystem {
 
         // If the execution reaches here, that means the unequip action failed due to the item not being found.
         return false;
+    }
+
+    // Adds physical stat modifier from item (if any) to character.
+    public void addModifier(EntityRef character, EntityRef item) {
+        // If this equipment item has a physical stats modifier.
+        if (item.getComponent(PhysicalStatsModifierComponent.class) != null) {
+            // Add the physical stats modifier list to the character if it doesn't exist.
+            if (character.getComponent(PhysicalStatsModifiersListComponent.class) == null) {
+                character.addComponent(new PhysicalStatsModifiersListComponent());
+            }
+
+            // Add the item modifier to the character.
+            PhysicalStatsModifiersListComponent pStatsMod = character.getComponent(PhysicalStatsModifiersListComponent.class);
+            PhysicalStatsModifierComponent eqStatsMod = item.getComponent(PhysicalStatsModifierComponent.class);
+
+            if (eqStatsMod != null) {
+                eqStatsMod.id = item.toFullDescription();
+                pStatsMod.modifiers.put(eqStatsMod.id, eqStatsMod);
+                //pStatsMod.modifiers.put("" + eqStatsMod.hashCode(), eqStatsMod);
+            }
+
+            // Save the component.
+            character.saveComponent(pStatsMod);
+        }
+    }
+
+    // Removes this item's physical stat modifier (if any) from the character.
+    public void removeModifier(EntityRef character, EntityRef item) {
+        if (character.getComponent(PhysicalStatsModifiersListComponent.class) != null) {
+
+            PhysicalStatsModifiersListComponent pStatsModList = character.getComponent(PhysicalStatsModifiersListComponent.class);
+            PhysicalStatsModifierComponent eqStatsMod = item.getComponent(PhysicalStatsModifierComponent.class);
+
+            if (eqStatsMod != null) {
+                pStatsModList.modifiers.remove(eqStatsMod.id);
+            }
+
+            character.saveComponent(pStatsModList);
+        }
     }
 
     @ReceiveEvent
