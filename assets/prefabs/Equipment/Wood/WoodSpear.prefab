@@ -1,23 +1,23 @@
 {
     "parent" : "engine:iconItem",
     "Item" : {
-        "icon" : "engine:items#axe",
-        "damageType" : "axeDamage",
+        "icon" : "engine:items#spear",
+        "damageType" : "spearDamage",
         "baseCooldownTime" : 300,
         "cooldownTime" : 300
     },
     "DisplayName" : {
-        "name" : "Wood Axe",
-        "description" : "An axe used by trainees."
+        "name" : "Wood Spear",
+        "description" : "A spear made out of wood."
     },
     "EquipmentItem" : {
         "level" : 0,
         "quality" : 3,
         "type" : "Melee Weapon",
         "location" : "Weapon",
-        "attack" : 4,
+        "attack" : 7,
         "defense" : 0,
-        "weight" : 2,
-        "speed" : 3
+        "weight" : 1,
+        "speed" : 8
     }
 }
