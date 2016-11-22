@@ -15,7 +15,6 @@
  */
 package org.terasology.equipment.system;
 
-import com.google.common.collect.Lists;
 import org.terasology.audio.AudioManager;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
@@ -29,10 +28,7 @@ import org.terasology.equipment.component.EquipmentSlot;
 import org.terasology.equipment.event.EquipItemEvent;
 import org.terasology.equipment.event.UnequipItemEvent;
 import org.terasology.equipment.ui.CharacterScreenWindow;
-import org.terasology.logic.characters.CharacterComponent;
-import org.terasology.logic.characters.GetMaxSpeedEvent;
 import org.terasology.logic.common.DisplayNameComponent;
-import org.terasology.logic.delay.DelayManager;
 import org.terasology.logic.health.BeforeDamagedEvent;
 import org.terasology.logic.inventory.InventoryComponent;
 import org.terasology.logic.inventory.InventoryManager;
@@ -40,19 +36,17 @@ import org.terasology.logic.inventory.InventoryUtils;
 import org.terasology.logic.inventory.events.BeforeItemPutInInventory;
 import org.terasology.logic.inventory.events.BeforeItemRemovedFromInventory;
 import org.terasology.logic.players.event.OnPlayerSpawnedEvent;
+import org.terasology.physicalstats.component.PhysicalStatsModifierComponent;
+import org.terasology.physicalstats.component.PhysicalStatsModifiersListComponent;
 import org.terasology.physicalstats.event.OnPhysicalStatChangedEvent;
 import org.terasology.physicalstats.event.OnPhysicalStatsModifierAddedEvent;
 import org.terasology.physicalstats.event.OnPhysicalStatsModifierRemovedEvent;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.NUIManager;
-import org.terasology.rendering.nui.UIScreenLayer;
 import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
 import org.terasology.rendering.nui.widgets.TooltipLine;
 import org.terasology.utilities.Assets;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 @RegisterSystem
 public class EquipmentSystem extends BaseComponentSystem {
@@ -120,14 +114,6 @@ public class EquipmentSystem extends BaseComponentSystem {
         if (eq.equipmentInventory == EntityRef.NULL) {
             eq.equipmentInventory = entityManager.create("Equipment:EquipmentInventory");
             InventoryComponent inv =  eq.equipmentInventory.getComponent(InventoryComponent.class);
-
-            /*
-            int sizeOfEQInv = 0;
-
-            for (int i = 0; i < eq.equipmentSlots.size(); i++) {
-                sizeOfEQInv += eq.equipmentSlots.get(i).numSlotsOfSameType;
-            }
-            */
 
             for (int i = 0; i < eq.numberOfSlots; i++) {
                 inv.itemSlots.add(EntityRef.NULL);
@@ -214,19 +200,15 @@ public class EquipmentSystem extends BaseComponentSystem {
 
                     // If an empty spot was found in the character's inventory.
                     if (found) {
-                        /*
-                        Replace with
-                        EntityRef remItem = EntityRef removeItem(EntityRef inventory, EntityRef instigator, EntityRef item, boolean destroyRemoved, int count);
-                        c.movingItem.getComponent(InventoryComponent.class).itemSlots.get(0) = remItem;
-
-                         */
-
                         // Move the equipped item in the first available slot of this equipment slot to the character's inventory.
                         inventoryManager.moveItem(eqInvEntRef, eqInvEntRef, InventoryUtils.getSlotWithItem(eqInvEntRef, eSlot.itemRefs.get(0)),
                                 character, index, 1);
 
                         // Unequip the moved item.
                         unequipItem(character, eSlot.itemRefs.get(0));
+
+                        // Add item's stat modifier (if any) to the character.
+                        addModifier(character, item);
 
                         // Equip the desired item in the now free slot.
                         eSlot.itemRefs.set(atIndex, item);
@@ -245,6 +227,9 @@ public class EquipmentSystem extends BaseComponentSystem {
                     // Equip the desired item in the free slot.
                     eSlot.itemRefs.set(atIndex, item);
                     character.saveComponent(eq);
+
+                    // Add item's stat modifier (if any) to the character.
+                    addModifier(character, item);
 
                     // Send an EquipItemEvent, play a sound, and return true, indicating that the equip action was successful.
                     character.send(new EquipItemEvent(character, item, eSlot));
@@ -280,6 +265,8 @@ public class EquipmentSystem extends BaseComponentSystem {
                         eSlot.itemRefs.set(i, EntityRef.NULL);
                         character.saveComponent(eq);
 
+                        removeModifier(character, item);
+
                         // Send an UnequipItemEvent, play a sound, and return true, indicating that the unequip action was successful.
                         character.send(new UnequipItemEvent(character, item, eSlot));
                         CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash-reverse").get(), 1.0f);
@@ -292,6 +279,45 @@ public class EquipmentSystem extends BaseComponentSystem {
 
         // If the execution reaches here, that means the unequip action failed due to the item not being found.
         return false;
+    }
+
+    // Adds physical stat modifier from item (if any) to character.
+    public void addModifier(EntityRef character, EntityRef item) {
+        // If this equipment item has a physical stats modifier.
+        if (item.getComponent(PhysicalStatsModifierComponent.class) != null) {
+            // Add the physical stats modifier list to the character if it doesn't exist.
+            if (character.getComponent(PhysicalStatsModifiersListComponent.class) == null) {
+                character.addComponent(new PhysicalStatsModifiersListComponent());
+            }
+
+            // Add the item modifier to the character.
+            PhysicalStatsModifiersListComponent pStatsMod = character.getComponent(PhysicalStatsModifiersListComponent.class);
+            PhysicalStatsModifierComponent eqStatsMod = item.getComponent(PhysicalStatsModifierComponent.class);
+
+            if (eqStatsMod != null) {
+                eqStatsMod.id = item.toFullDescription();
+                pStatsMod.modifiers.put(eqStatsMod.id, eqStatsMod);
+                //pStatsMod.modifiers.put("" + eqStatsMod.hashCode(), eqStatsMod);
+            }
+
+            // Save the component.
+            character.saveComponent(pStatsMod);
+        }
+    }
+
+    // Removes this item's physical stat modifier (if any) from the character.
+    public void removeModifier(EntityRef character, EntityRef item) {
+        if (character.getComponent(PhysicalStatsModifiersListComponent.class) != null) {
+
+            PhysicalStatsModifiersListComponent pStatsModList = character.getComponent(PhysicalStatsModifiersListComponent.class);
+            PhysicalStatsModifierComponent eqStatsMod = item.getComponent(PhysicalStatsModifierComponent.class);
+
+            if (eqStatsMod != null) {
+                pStatsModList.modifiers.remove(eqStatsMod.id);
+            }
+
+            character.saveComponent(pStatsModList);
+        }
     }
 
     @ReceiveEvent
