@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SteelSpear",
+        "damageType" : "spearDamage",
+        "baseCooldownTime" : 500,
+        "cooldownTime" : 500
+    },
+    "DisplayName" : {
+        "name" : "Steel Spear",
+        "description" : "A standard-issue spear made out of steel."
+    },
+    "EquipmentItem" : {
+        "level" : 20,
+        "quality" : 3,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 26,
+        "defense" : 0,
+        "weight" : 17,
+        "speed" : 8
+    }
+}
