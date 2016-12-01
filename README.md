@@ -8,6 +8,7 @@ Credits for images:
 
 http://opengameart.org/content/pixelart-basic-hero-equipments-icons
 http://opengameart.org/content/melee-weapons
+http://opengameart.org/content/scimitar-sword
 
 Credits for sounds:
 
