@@ -8,7 +8,7 @@
     },
     "DisplayName" : {
         "name" : "Steel Battle Axe",
-        "description" : "A menacing double-edged battleaxe of Nordic origin."
+        "description" : "A menacing battleaxe of Nordic origin."
     },
     "EquipmentItem" : {
         "level" : 20,
