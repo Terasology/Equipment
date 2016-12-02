@@ -1,14 +1,14 @@
 {
     "parent" : "engine:iconItem",
     "Item" : {
-        "icon" : "Equipment:SteelDagger",
+        "icon" : "Equipment:SteelPernach",
         "damageType" : "axeDamage",
         "baseCooldownTime" : 500,
         "cooldownTime" : 500
     },
     "DisplayName" : {
-        "name" : "Pernach",
-        "description" : "a type of flanged mace made out of steel."
+        "name" : "SteelPernach",
+        "description" : "A type of flanged mace made out of steel."
     },
     "EquipmentItem" : {
         "level" : 25,
