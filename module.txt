@@ -12,6 +12,10 @@
         {
             "id" : "PhysicalStats",
             "minVersion" : "0.1.0"
+        },
+        {
+            "id" : "AlterationEffects",
+            "minVersion" : "0.2.0"
         }
 
     ],
