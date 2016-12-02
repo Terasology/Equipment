@@ -48,6 +48,9 @@ import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
 import org.terasology.rendering.nui.widgets.TooltipLine;
 import org.terasology.utilities.Assets;
 
+/**
+ * This system handles all equipment-related operations.
+ */
 @RegisterSystem
 public class EquipmentSystem extends BaseComponentSystem {
     @In
@@ -56,10 +59,21 @@ public class EquipmentSystem extends BaseComponentSystem {
     @In
     private NUIManager nuiManager;
 
+    /**
+     * Called on startup for initialization.
+     */
     @Override
     public void initialise() {
     }
 
+    /**
+     * Method that defines what happens when an item is put into an equipment slot.
+     *
+     * @param event     the event associated with the insertion of the item into the equipment slot
+     * @param entity    the entity who has inserted the item into the slot
+     * @param eqInv     the equipment inventory component containing the equipment slot
+     * @param inventory the inventory component assiciated with the entity
+     */
     @ReceiveEvent
     public void itemPutIntoEquipmentSlot(BeforeItemPutInInventory event, EntityRef entity,
                                          EquipmentInventoryComponent eqInv, InventoryComponent inventory) {
@@ -84,6 +98,14 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
     }
 
+    /**
+     * Defines what to do when an item is removed from an equipment slot.
+     *
+     * @param event     the event corresponding to the removal of the item from the equipment slot
+     * @param entity    the entity who has removed the item from the equipment slot
+     * @param eqInv     the equipment inventory component containing the equipment slot
+     * @param inventory the inventory component assiciated with the entity
+     */
     @ReceiveEvent
     public void itemRemovedFromEquipmentSlot(BeforeItemRemovedFromInventory event, EntityRef entity,
                                              EquipmentInventoryComponent eqInv, InventoryComponent inventory) {
@@ -108,6 +130,13 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
     }
 
+    /**
+     * Initializes equipment- and inventory-related components when the player spawns.
+     *
+     * @param event  the event corresponding to the spawning of the player
+     * @param player an EntityRef pointing to the player
+     * @param eq     the player's equipment component
+     */
     // Instaniate the EquipmentInventory entity companion and store a refernce to it in the player's EquipmentComponent.
     @ReceiveEvent
     public void onPlayerSpawn(OnPlayerSpawnedEvent event, EntityRef player, EquipmentComponent eq) {
@@ -124,7 +153,13 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
     }
 
-    // Set the equipment item's tooltip based on the item's stats. 
+    /**
+     * Sets an item's tooltip based on the item's stats.
+     *
+     * @param event  the event corresponding to a request to get the tooltip for an item
+     * @param item   the item who's tooltip is to be set
+     * @param eqItem the equipment item component associated with the item
+     */
     @ReceiveEvent
     public void setItemTooltip(GetItemTooltip event, EntityRef item, EquipmentItemComponent eqItem) {
         DisplayNameComponent d = item.getComponent(DisplayNameComponent.class);
@@ -145,6 +180,13 @@ public class EquipmentSystem extends BaseComponentSystem {
         event.getTooltipLines().add(new TooltipLine("Weight: " + eqItem.weight));
     }
 
+    /**
+     * Defines what to do when a request to equip an item is received.
+     *
+     * @param eEvent      the event corresponding to the equipment of the item
+     * @param instigator  the entity instigating the item's equipment
+     * @param eqComponent the equipment component associated with the entity
+     */
     @ReceiveEvent
     public void uponReceiveEquipRequest(EquipItemEvent eEvent, EntityRef instigator, EquipmentComponent eqComponent) {
         if (!eEvent.getItem().hasComponent(EquipmentItemComponent.class)) {
@@ -281,7 +323,12 @@ public class EquipmentSystem extends BaseComponentSystem {
         return false;
     }
 
-    // Adds physical stat modifier from item (if any) to character.
+    /**
+     * Adds physical stat modifiers of an item (if any) to a character
+     *
+     * @param character the charaacter to whom the stat modifiers are to be applied
+     * @param item      the item whose stat modifiers are to be applied
+     */
     public void addModifier(EntityRef character, EntityRef item) {
         // If this equipment item has a physical stats modifier.
         if (item.getComponent(PhysicalStatsModifierComponent.class) != null) {
@@ -305,7 +352,12 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
     }
 
-    // Removes this item's physical stat modifier (if any) from the character.
+    /**
+     * Removes an item's physical stat modifiers (if any) from a character.
+     *
+     * @param character the character from whom the stat modifiers are to be removed
+     * @param item      the item whose stat modifiers are to be removed
+     */
     public void removeModifier(EntityRef character, EntityRef item) {
         if (character.getComponent(PhysicalStatsModifiersListComponent.class) != null) {
 
@@ -320,6 +372,13 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
     }
 
+    /**
+     * Defines what to do when a stat of an entity is changed.
+     *
+     * @param event  the event corresponding to the changing of the stat
+     * @param entity the entity who's stat has been changed
+     * @param eq     the equipment component associated with the entity
+     */
     @ReceiveEvent
     public void onStatChanged(OnPhysicalStatChangedEvent event, EntityRef entity, EquipmentComponent eq) {
         CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
@@ -329,6 +388,13 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
     }
 
+    /**
+     * Defines what to do when a physical stat modifier is added to an entity.
+     *
+     * @param event  the event corresponding to the adding of the physical stat modifier
+     * @param entity the entity to whom hte stat modifier has been added
+     * @param eq     the equipment component associated with the entity
+     */
     @ReceiveEvent
     public void onStatChanged(OnPhysicalStatsModifierAddedEvent event, EntityRef entity, EquipmentComponent eq) {
         CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
@@ -338,6 +404,13 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
     }
 
+    /**
+     * Defines what to do when a physical stat modifier is removed from an entity.
+     *
+     * @param event  the event corresponding to the removal of the physical stat modifier
+     * @param entity the entity from whom hte stat modifier has been removed
+     * @param eq     the equipment component associated with the entity
+     */
     @ReceiveEvent
     public void onStatChanged(OnPhysicalStatsModifierRemovedEvent event, EntityRef entity, EquipmentComponent eq) {
         CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
@@ -347,6 +420,13 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
     }
 
+    /**
+     * Defines what to do when an item is equipped by an entity.
+     *
+     * @param event  the event corresponding to the equipment of the item
+     * @param entity the entity who has equipped the item
+     * @param eq     the equipment component associated with the entity
+     */
     @ReceiveEvent
     public void onEquipChanged(EquipItemEvent event, EntityRef entity, EquipmentComponent eq) {
         CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
@@ -356,6 +436,13 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
     }
 
+    /**
+     * Defines what to do when an item is unequipped by an entity.
+     *
+     * @param event  the event corresponding to the unequipment of the item
+     * @param entity the entity who has unequipped the item
+     * @param eq     the equipment component associated with the entity
+     */
     @ReceiveEvent
     public void onEquipChanged(UnequipItemEvent event, EntityRef entity, EquipmentComponent eq) {
         CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
@@ -365,6 +452,12 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
     }
 
+    /**
+     * Applies item stats (attack boosts, for example) while dealing damage.
+     *
+     * @param event        the event corresponding to the attack on the target
+     * @param damageTarget an entity reference to the target of the attack
+     */
     @ReceiveEvent
     public void doingDamage(BeforeDamagedEvent event, EntityRef damageTarget) {
         if (event.getInstigator().hasComponent(EquipmentComponent.class)) {
@@ -382,6 +475,12 @@ public class EquipmentSystem extends BaseComponentSystem {
         }
     }
 
+    /**
+     * Applies item stats (defense boosts, for example) while taking damage.
+     *
+     * @param event        the event corresponding to the entity taking damage
+     * @param damageTarget the entity dealing damage
+     */
     @ReceiveEvent
     public void takingDamage(BeforeDamagedEvent event, EntityRef damageTarget) {
         if (damageTarget.hasComponent(EquipmentComponent.class)) {
