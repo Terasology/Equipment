@@ -46,12 +46,10 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
     @In
     private Context context;
 
-    Logger logger = LoggerFactory.getLogger(EquipmentEffectsSystem.class);
-
     /**
-     * Maps the EquipmentEffectComponents to their corresponding EffectComponent so that
+     * Maps the EquipmentEffectComponents to their corresponding EffectComponents so that
      * 1. the system knows which EquipmentEffectComponents to look out for
-     * 2. the system knows which EffectComponents to remove from the entity
+     * 2. the system knows which EffectComponents to remove from the entity on unequip
      */
     private Map<Class, Class<? extends  Component>> effectComponents = new HashMap<>();
 
@@ -63,21 +61,20 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
 
     @ReceiveEvent
     public void onEquip(EquipItemEvent event, EntityRef entity, EquipmentComponent eq) {
-        for (Entry<Class, Class<? extends Component>> entry: effectComponents.entrySet()){
-            if (event.getItem().hasComponent(entry.getKey())) {
-                EquipmentEffectComponent eec = (EquipmentEffectComponent) event.getItem().getComponent(entry.getKey());
-                if (eec != null && eec.affectsUser){
-                    applyEffect(eec,entity,entity);
-                }
+        //loops through known EquipmentEffectComponents
+        for (Entry<Class, Class<? extends Component>> entry: effectComponents.entrySet()) {
+            EquipmentEffectComponent eec = (EquipmentEffectComponent) event.getItem().getComponent(entry.getKey());
+            if (eec != null && eec.affectsUser) {
+                applyEffect(eec, entity, entity);
             }
         }
     }
 
     @ReceiveEvent
     public void onUnequip(UnequipItemEvent event, EntityRef entity, EquipmentComponent eq) {
-        for (Entry<Class, Class<? extends Component>> entry: effectComponents.entrySet()){
+        for (Entry<Class, Class<? extends Component>> entry: effectComponents.entrySet()) {
             EquipmentEffectComponent eec = (EquipmentEffectComponent) event.getItem().getComponent(entry.getKey());
-            if (eec != null && eec.affectsUser){
+            if (eec != null && eec.affectsUser) {
                 entity.removeComponent(entry.getValue());
             }
         }
@@ -86,22 +83,27 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
     @ReceiveEvent
     public void takingDamage(BeforeDamagedEvent event, EntityRef damageTarget) {
         EntityRef item = event.getDirectCause();
-        for (Entry<Class, Class<? extends Component>> entry: effectComponents.entrySet()){
+        for (Entry<Class, Class<? extends Component>> entry: effectComponents.entrySet()) {
             EquipmentEffectComponent eec = (EquipmentEffectComponent) item.getComponent(entry.getKey());
-            if (eec != null && eec.affectsEnemies ){
-                applyEffect(eec,event.getInstigator(),damageTarget);
+            if (eec != null && eec.affectsEnemies) {
+                applyEffect(eec, event.getInstigator(), damageTarget);
             }
         }
     }
 
-    public void applyEffect(EquipmentEffectComponent eec, EntityRef instigator, EntityRef entity){
+    private void applyEffect(EquipmentEffectComponent eec, EntityRef instigator, EntityRef entity) {
         AlterationEffect alterationEffect = null;
-        if (eec.getClass() == StunEffectComponent.class)
+        if (eec.getClass() == StunEffectComponent.class) {
             alterationEffect = new StunAlterationEffect(context);
-        else if (eec.getClass() == RegenEffectComponent.class)
+        } else if (eec.getClass() == RegenEffectComponent.class) {
             alterationEffect = new RegenerationAlterationEffect(context);
-
-        if (alterationEffect != null)
-            alterationEffect.applyEffect(instigator,entity,eec.magnitude,eec.duration);
+        }
+        if (alterationEffect != null) {
+            if (eec.id != null) {
+                alterationEffect.applyEffect(instigator, entity, eec.id, eec.magnitude, eec.duration);
+            } else {
+                alterationEffect.applyEffect(instigator, entity, eec.magnitude, eec.duration);
+            }
+        }
     }
 }

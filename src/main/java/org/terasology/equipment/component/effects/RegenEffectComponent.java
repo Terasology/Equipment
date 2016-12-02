@@ -15,8 +15,7 @@
  */
 package org.terasology.equipment.component.effects;
 
-import org.terasology.entitySystem.Component;
 import org.terasology.equipment.component.EquipmentEffectComponent;
 
-public class RegenEffectComponent extends EquipmentEffectComponent implements Component {
+public class RegenEffectComponent extends EquipmentEffectComponent {
 }

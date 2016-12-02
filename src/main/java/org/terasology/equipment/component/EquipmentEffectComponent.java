@@ -17,21 +17,20 @@ package org.terasology.equipment.component;
 
 import org.terasology.entitySystem.Component;
 
-public class EquipmentEffectComponent{
-    /**
-     * the duration for which the effect lasts
-     */
-    public int duration = 0;
-    /**
-     * the magnitude of the effect
-     */
-    public int magnitude = 0;
-    /**
-     * whether the effect affects the entity which equips the item
-     */
+public class EquipmentEffectComponent implements Component {
+
+    //the duration for which the effect lasts
+    public int duration;
+
+    //the magnitude of the effect
+    public int magnitude;
+
+     //whether the effect affects the entity which equips the item
     public boolean affectsUser;
-    /**
-     * whether the effect affects enemies damaged by the item
-     */
+
+     //whether the effect affects enemies damaged by the item
     public boolean affectsEnemies;
+
+    //optional id for certain effects
+    public String id;
 }
