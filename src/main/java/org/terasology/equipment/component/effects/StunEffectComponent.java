@@ -15,7 +15,6 @@
  */
 package org.terasology.equipment.component.effects;
 
-import org.terasology.entitySystem.Component;
 import org.terasology.equipment.component.EquipmentEffectComponent;
 
 public class StunEffectComponent extends EquipmentEffectComponent {

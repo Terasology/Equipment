@@ -15,22 +15,40 @@
  */
 package org.terasology.equipment.system;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.terasology.alterationEffects.AlterationEffect;
+import org.terasology.alterationEffects.boost.HealthBoostAlterationEffect;
+import org.terasology.alterationEffects.breath.WaterBreathingAlterationEffect;
+import org.terasology.alterationEffects.damageOverTime.CureAllDamageOverTimeAlterationEffect;
+import org.terasology.alterationEffects.damageOverTime.DamageOverTimeAlterationEffect;
+import org.terasology.alterationEffects.decover.DecoverAlterationEffect;
 import org.terasology.alterationEffects.regenerate.RegenerationAlterationEffect;
-import org.terasology.alterationEffects.regenerate.RegenerationComponent;
-import org.terasology.alterationEffects.speed.*;
+import org.terasology.alterationEffects.resist.ResistDamageAlterationEffect;
+import org.terasology.alterationEffects.speed.ItemUseSpeedAlterationEffect;
+import org.terasology.alterationEffects.speed.JumpSpeedAlterationEffect;
+import org.terasology.alterationEffects.speed.MultiJumpAlterationEffect;
+import org.terasology.alterationEffects.speed.StunAlterationEffect;
+import org.terasology.alterationEffects.speed.SwimSpeedAlterationEffect;
+import org.terasology.alterationEffects.speed.WalkSpeedAlterationEffect;
 import org.terasology.context.Context;
-import org.terasology.entitySystem.Component;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.equipment.component.effects.BoostEffectComponent;
+import org.terasology.equipment.component.effects.BreathingEffectComponent;
+import org.terasology.equipment.component.effects.CureDamageOverTimeEffectComponent;
+import org.terasology.equipment.component.effects.DamageOverTimeEffectComponent;
+import org.terasology.equipment.component.effects.DecoverEffectComponent;
+import org.terasology.equipment.component.effects.ItemUseSpeedEffectComponent;
+import org.terasology.equipment.component.effects.JumpSpeedEffectComponent;
+import org.terasology.equipment.component.effects.MultiJumpEffectComponent;
 import org.terasology.equipment.component.effects.RegenEffectComponent;
+import org.terasology.equipment.component.effects.ResistEffectComponent;
 import org.terasology.equipment.component.effects.StunEffectComponent;
 import org.terasology.equipment.component.EquipmentComponent;
 import org.terasology.equipment.component.EquipmentEffectComponent;
+import org.terasology.equipment.component.effects.SwimSpeedEffectComponent;
+import org.terasology.equipment.component.effects.WalkSpeedEffectComponent;
 import org.terasology.equipment.event.EquipItemEvent;
 import org.terasology.equipment.event.UnequipItemEvent;
 import org.terasology.logic.health.BeforeDamagedEvent;
@@ -49,33 +67,48 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
     /**
      * Maps the EquipmentEffectComponents to their corresponding EffectComponents so that
      * 1. the system knows which EquipmentEffectComponents to look out for
-     * 2. the system knows which EffectComponents to remove from the entity on unequip
+     * 2. the system knows which AlterationEffect to apply
      */
-    private Map<Class, Class<? extends  Component>> effectComponents = new HashMap<>();
+    private Map<Class, AlterationEffect> effectComponents = new HashMap<>();
 
     @Override
     public void initialise() {
-        effectComponents.put(StunEffectComponent.class, StunComponent.class);
-        effectComponents.put(RegenEffectComponent.class, RegenerationComponent.class);
+        addEffect(BoostEffectComponent.class, new HealthBoostAlterationEffect(context));
+        addEffect(BreathingEffectComponent.class, new WaterBreathingAlterationEffect(context));
+        addEffect(CureDamageOverTimeEffectComponent.class, new CureAllDamageOverTimeAlterationEffect(context));
+        addEffect(DamageOverTimeEffectComponent.class, new DamageOverTimeAlterationEffect(context));
+        addEffect(DecoverEffectComponent.class, new DecoverAlterationEffect(context));
+        addEffect(RegenEffectComponent.class, new RegenerationAlterationEffect(context));
+        addEffect(ResistEffectComponent.class, new ResistDamageAlterationEffect(context));
+        addEffect(ItemUseSpeedEffectComponent.class, new ItemUseSpeedAlterationEffect(context));
+        addEffect(JumpSpeedEffectComponent.class, new JumpSpeedAlterationEffect(context));
+        addEffect(MultiJumpEffectComponent.class, new MultiJumpAlterationEffect(context));
+        addEffect(SwimSpeedEffectComponent.class, new SwimSpeedAlterationEffect(context));
+        addEffect(StunEffectComponent.class, new StunAlterationEffect(context));
+        addEffect(WalkSpeedEffectComponent.class, new WalkSpeedAlterationEffect(context));
     }
 
     @ReceiveEvent
     public void onEquip(EquipItemEvent event, EntityRef entity, EquipmentComponent eq) {
         //loops through known EquipmentEffectComponents
-        for (Entry<Class, Class<? extends Component>> entry: effectComponents.entrySet()) {
-            EquipmentEffectComponent eec = (EquipmentEffectComponent) event.getItem().getComponent(entry.getKey());
-            if (eec != null && eec.affectsUser) {
-                applyEffect(eec, entity, entity);
+        for (Entry<Class, AlterationEffect> entry: effectComponents.entrySet()) {
+            if (event.getItem().hasComponent(entry.getKey())) {
+                EquipmentEffectComponent eec = (EquipmentEffectComponent) event.getItem().getComponent(entry.getKey());
+                if (eec != null && eec.affectsUser) {
+                    applyEffect(entry.getValue(), eec, entity, entity);
+                }
             }
         }
     }
 
     @ReceiveEvent
     public void onUnequip(UnequipItemEvent event, EntityRef entity, EquipmentComponent eq) {
-        for (Entry<Class, Class<? extends Component>> entry: effectComponents.entrySet()) {
-            EquipmentEffectComponent eec = (EquipmentEffectComponent) event.getItem().getComponent(entry.getKey());
-            if (eec != null && eec.affectsUser) {
-                entity.removeComponent(entry.getValue());
+        for (Entry<Class, AlterationEffect> entry: effectComponents.entrySet()) {
+            if (event.getItem().hasComponent(entry.getKey())) {
+                EquipmentEffectComponent eec = (EquipmentEffectComponent) event.getItem().getComponent(entry.getKey());
+                if (eec != null && eec.affectsUser) {
+                    removeEffect(entry.getValue(), eec, entity, entity);
+                }
             }
         }
     }
@@ -83,27 +116,39 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
     @ReceiveEvent
     public void takingDamage(BeforeDamagedEvent event, EntityRef damageTarget) {
         EntityRef item = event.getDirectCause();
-        for (Entry<Class, Class<? extends Component>> entry: effectComponents.entrySet()) {
-            EquipmentEffectComponent eec = (EquipmentEffectComponent) item.getComponent(entry.getKey());
-            if (eec != null && eec.affectsEnemies) {
-                applyEffect(eec, event.getInstigator(), damageTarget);
+        for (Entry<Class, AlterationEffect> entry: effectComponents.entrySet()) {
+            if (event.getDirectCause().hasComponent(entry.getKey())) {
+                EquipmentEffectComponent eec = (EquipmentEffectComponent) item.getComponent(entry.getKey());
+                if (eec != null && eec.affectsEnemies) {
+                    applyEffect(entry.getValue(), eec, event.getInstigator(), damageTarget);
+                }
             }
         }
     }
 
-    private void applyEffect(EquipmentEffectComponent eec, EntityRef instigator, EntityRef entity) {
-        AlterationEffect alterationEffect = null;
-        if (eec.getClass() == StunEffectComponent.class) {
-            alterationEffect = new StunAlterationEffect(context);
-        } else if (eec.getClass() == RegenEffectComponent.class) {
-            alterationEffect = new RegenerationAlterationEffect(context);
-        }
+    public void addEffect(Class eec, AlterationEffect alterationEffect) {
+        effectComponents.put(eec, alterationEffect);
+    }
+
+    private void applyEffect(AlterationEffect alterationEffect, EquipmentEffectComponent eec, EntityRef instigator, EntityRef entity) {
+            if (alterationEffect != null) {
+                if (eec.id != null) {
+                    alterationEffect.applyEffect(instigator, entity, eec.id, eec.magnitude, eec.duration);
+                } else {
+                    alterationEffect.applyEffect(instigator, entity, eec.magnitude, eec.duration);
+                }
+            }
+    }
+
+    //workaround to remove effect by setting duration to 0
+    private void removeEffect(AlterationEffect alterationEffect, EquipmentEffectComponent eec, EntityRef instigator, EntityRef entity) {
         if (alterationEffect != null) {
             if (eec.id != null) {
-                alterationEffect.applyEffect(instigator, entity, eec.id, eec.magnitude, eec.duration);
+                alterationEffect.applyEffect(instigator, entity, eec.id, eec.magnitude, 0);
             } else {
-                alterationEffect.applyEffect(instigator, entity, eec.magnitude, eec.duration);
+                alterationEffect.applyEffect(instigator, entity, eec.magnitude, 0);
             }
         }
     }
+
 }

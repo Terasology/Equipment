@@ -13,24 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.equipment.component;
+package org.terasology.equipment.component.effects;
 
-import org.terasology.entitySystem.Component;
+import org.terasology.equipment.component.EquipmentEffectComponent;
 
-public class EquipmentEffectComponent implements Component {
-
-    /** the duration for which the effect lasts */
-    public int duration;
-
-    /** the magnitude of the effect */
-    public int magnitude;
-
-    /** whether the effect affects the entity which equips the item */
-    public boolean affectsUser;
-
-    /** whether the effect affects enemies damaged by the item */
-    public boolean affectsEnemies;
-
-    /** optional id for certain effects */
-    public String id;
+public class JumpSpeedEffectComponent extends EquipmentEffectComponent {
 }
