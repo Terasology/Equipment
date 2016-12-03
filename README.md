@@ -18,3 +18,7 @@ Credits for images:
 * GoldDagger inspired by: https://www.pinterest.com/pin/109353097179198323/
 
 * Falchion: http://opengameart.org/content/32x-sword-icon
+
+Credits for sounds:
+
+Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
