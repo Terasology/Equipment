@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SteelMaul",
+        "damageType" : "axeDamage",
+        "baseCooldownTime" : 600,
+        "cooldownTime" : 600
+    },
+    "DisplayName" : {
+        "name" : "Steel Maul",
+        "description" : "A Mighty Maul to SMASH your foes."
+    },
+    "EquipmentItem" : {
+        "level" : 5,
+        "quality" : 7,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 15,
+        "defense" : 0,
+        "weight" : 6,
+        "speed" : 4
+    }
+}
