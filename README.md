@@ -6,14 +6,8 @@ This module adds a basic equipment system, a character screen, and a few pieces 
 
 Credits for images:
 
-http://opengameart.org/content/pixelart-basic-hero-equipments-icons
+https://images-na.ssl-images-amazon.com/images/I/31WFtDbLUjL.jpg
 
-http://opengameart.org/content/melee-weapons
+http://iceyfresh.com/media/catalog/product/cache/1/image/650x/040ec09b1e35df139433887a97daa66f/1/8/18k-gold-dagger-knife-blade-pendant-charm-hiphop-steel-5.jpg
 
-http://opengameart.org/content/scimitar-sword
-
-http://opengameart.org/content/war-axe-64x64
-
-Credits for sounds:
-
-Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
+http://www.gdfb.co.uk/ekmps/shops/11b299/images/medieval-falchion-blunt-30823-p.png
