@@ -2,7 +2,7 @@
   "parent" : "engine:iconItem",
   "Item" : {
     "icon" : "Equipment:Falchion",
-    "damageType" : "axeDamage",
+    "damageType" : "swordDamage",
     "baseCooldownTime" : 400,
     "cooldownTime" : 400
   },
