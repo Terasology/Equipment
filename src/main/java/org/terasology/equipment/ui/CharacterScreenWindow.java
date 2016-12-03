@@ -35,6 +35,9 @@ import org.terasology.rendering.nui.widgets.UILabel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents the Character Screen window, a screen that contains information about the character's inventory.
+ */
 public class CharacterScreenWindow extends BaseInteractionScreen {
     @In
     private EntityManager entityManager;
@@ -70,8 +73,11 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
     private InventoryGrid playerEQInventory;
 
     private EntityRef player;
-    private float lastUpdate = 0;
+    private float lastUpdate;
 
+    /**
+     * Initializes the character screen
+     */
     @Override
     public void initialise() {
         ingredientsInventory = find("ingredientsInventory", InventoryGrid.class);
@@ -118,8 +124,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
                 if (equipmentSlot.numSlotsOfSameType == 1) {
                     newLabel.setText(equipmentSlot.name + ": None");
-                }
-                else {
+                } else {
                     newLabel.setText(equipmentSlot.name + " #" + (i + 1) + ": None");
                 }
 
@@ -134,6 +139,11 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         updateStats();
     }
 
+    /**
+     * Updates the character's stats every 30 seconds. Called every time the game updates.
+     *
+     * @param delta the time since the last update
+     */
     @Override
     public void update(float delta) {
         super.update(delta);
@@ -146,10 +156,16 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         }
     }
 
+    /**
+     * Updates all stats of the character.
+     */
     public void updateAllStats() {
         updateStats();
     }
 
+    /**
+     * Updates the character's stats.
+     */
     public void updateStats() {
         if (player.hasComponent(EquipmentComponent.class)) {
             EquipmentComponent eq = player.getComponent(EquipmentComponent.class);
@@ -200,7 +216,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
             int phyDefTotal = 0;
             int speedTotal = Math.round(phy.dexterity / 2f);
 
-            maxHealth.setText("Health: " + phy.constitution*10);
+            maxHealth.setText("Health: " + phy.constitution * 10);
 
             int c = 0; // Counter for storing which label in eqSlotLabels to access.
             // Iterate through the list of equipment slots.
@@ -212,19 +228,14 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
                         if (eq.equipmentSlots.get(i).numSlotsOfSameType == 1) {
                             eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + ": None");
-                        }
-                        else {
+                        } else {
                             eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + " #" + (j + 1) + ": None");
                         }
-                    }
-                    // If something's equipped in this slot, update the appropriate label.
-                    else {
-
+                    } else { // If something's equipped in this slot, update the appropriate label.
                         if (eq.equipmentSlots.get(i).numSlotsOfSameType == 1) {
                             eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + ": " +
                                     eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(DisplayNameComponent.class).name);
-                        }
-                        else {
+                        } else {
                             eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + " #" + (j + 1) + ": " +
                                     eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(DisplayNameComponent.class).name);
                         }

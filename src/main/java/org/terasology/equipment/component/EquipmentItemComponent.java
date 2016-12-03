@@ -17,6 +17,9 @@ package org.terasology.equipment.component;
 
 import org.terasology.entitySystem.Component;
 
+/**
+ * A component that indicates that an entity is an equipment item. It stores all attributes of the item.
+ */
 public class EquipmentItemComponent implements Component {
     // Dummy stats for now.
     public int level;

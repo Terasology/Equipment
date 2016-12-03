@@ -22,14 +22,17 @@ import org.terasology.network.Replicate;
 
 import java.util.List;
 
-// Including this to a prefab allows to entity to equip items.
+/**
+ * A component that allows an entity to equip items.
+ */
 public final class EquipmentComponent implements Component {
     public EntityRef equipmentInventory = EntityRef.NULL;
 
-    // Total number of inventory slots. Make sure to update when an element of the list below is changed.
-    public int numberOfSlots = 0;
+    /** The total number of inventory slots. Should be updated when an element of 'equipmentSlots' (List) is changed. */
+    public int numberOfSlots;
 
-    // List of equipment slots. Replace or add a map?
+    /** A List of equipment slots. */
+    // Replace or add a map?
     @Replicate
     public List<EquipmentSlot> equipmentSlots = Lists.newArrayList();
 }

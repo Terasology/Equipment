@@ -19,6 +19,9 @@ import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.Event;
 import org.terasology.equipment.component.EquipmentSlot;
 
+/**
+ * This event is sent to indicate that an entity is about to equip an item.
+ */
 public class EquipItemEvent implements Event {
     private EntityRef character;
     private EntityRef item;
@@ -27,20 +30,42 @@ public class EquipItemEvent implements Event {
     public EquipItemEvent() {
     }
 
-    public EquipItemEvent(EntityRef character, EntityRef item, EquipmentSlot eequipmentSlot) {
+    /**
+     * Parameterized constructor.
+     *
+     * @param character      an EntityRef pointing to the character who is equipping an item
+     * @param item           an EntityRef pointing to the item that is being equipped
+     * @param equipmentSlot the equipment slot being used to equip the item
+     */
+    public EquipItemEvent(EntityRef character, EntityRef item, EquipmentSlot equipmentSlot) {
         this.character = character;
         this.item = item;
-        this.equipmentSlot = eequipmentSlot;
+        this.equipmentSlot = equipmentSlot;
     }
 
+    /**
+     * Accessor function that returns the character who is equipping an item.
+     *
+     * @return an EntityRef pointing to the character who is equipping an item
+     */
     public EntityRef getCharacter() {
         return character;
     }
 
+    /**
+     * Accessor function that returns the item that is being equipped
+     *
+     * @return an EntityRef pointing to the item being equipped
+     */
     public EntityRef getItem() {
         return item;
     }
 
+    /**
+     * Accessor function that returns the equipment slot being used to equip the item
+     *
+     * @return the equipment slot being used to equip the item
+     */
     public EquipmentSlot getEquipmentSlot() {
         return equipmentSlot;
     }

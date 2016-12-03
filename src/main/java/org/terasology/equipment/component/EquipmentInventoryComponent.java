@@ -17,6 +17,8 @@ package org.terasology.equipment.component;
 
 import org.terasology.entitySystem.Component;
 
-// Used to indicate that the entity is an equipment inventory holder.
+/**
+ * A component used to indicate that an entity is an equipment inventory holder.
+ */
 public class EquipmentInventoryComponent implements Component {
 }
