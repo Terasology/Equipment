@@ -1,0 +1,23 @@
+{
+  "parent" : "engine:iconItem",
+  "Item" : {
+    "icon" : "Equipment:GoldDagger",
+    "damageType" : "knifeDamage",
+    "baseCooldownTime" : 200,
+    "cooldownTime" : 200
+  },
+  "DisplayName" : {
+    "name" : "GoldDagger",
+    "description" : "A short double-edged blade made of gold."
+  },
+  "EquipmentItem" : {
+    "level" : 10,
+    "quality" : 4,
+    "type" : "Melee Weapon",
+    "location" : "Weapon",
+    "attack" : 25,
+    "defense" : 0,
+    "weight" : 10,
+    "speed" : 9
+  }
+}
