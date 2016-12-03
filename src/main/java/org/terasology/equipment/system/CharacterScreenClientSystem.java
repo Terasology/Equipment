@@ -34,21 +34,20 @@ import org.terasology.utilities.Assets;
  */
 @RegisterSystem(RegisterMode.CLIENT)
 public class CharacterScreenClientSystem extends BaseComponentSystem {
+    private static final String CHARACTER_SCREEN_NAME = "Equipment:BackupScreen";
+
     @In
     private NUIManager nuiManager;
 
-    private static final String CHARACTER_SCREEN_NAME = "Equipment:BackupScreen";
-
     /**
-     * This method is executed when the player presses the 'character screen' button
+     * This method is executed when the player presses the 'character screen' button.
      *
      * @param event           the event corresponding to the button being pressed
      * @param entity          the button being pressed
      * @param clientComponent the client component associated with the player's client
      */
     @ReceiveEvent
-    public void craftRequested(CharacterScreenButton event, EntityRef entity,
-                               ClientComponent clientComponent) {
+    public void craftRequested(CharacterScreenButton event, EntityRef entity, ClientComponent clientComponent) {
         if (event.getState() == ButtonState.DOWN) {
             nuiManager.toggleScreen(CHARACTER_SCREEN_NAME);
             CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:cloth-inventory").get(), 1.0f);

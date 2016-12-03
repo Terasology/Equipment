@@ -35,12 +35,12 @@ public class EquipItemEvent implements Event {
      *
      * @param character      an EntityRef pointing to the character who is equipping an item
      * @param item           an EntityRef pointing to the item that is being equipped
-     * @param eequipmentSlot the equipment slot being used to equip the item
+     * @param equipmentSlot the equipment slot being used to equip the item
      */
-    public EquipItemEvent(EntityRef character, EntityRef item, EquipmentSlot eequipmentSlot) {
+    public EquipItemEvent(EntityRef character, EntityRef item, EquipmentSlot equipmentSlot) {
         this.character = character;
         this.item = item;
-        this.equipmentSlot = eequipmentSlot;
+        this.equipmentSlot = equipmentSlot;
     }
 
     /**

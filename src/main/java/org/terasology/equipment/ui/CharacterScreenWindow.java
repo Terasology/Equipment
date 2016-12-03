@@ -73,7 +73,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
     private InventoryGrid playerEQInventory;
 
     private EntityRef player;
-    private float lastUpdate = 0;
+    private float lastUpdate;
 
     /**
      * Initializes the character screen
@@ -124,8 +124,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
                 if (equipmentSlot.numSlotsOfSameType == 1) {
                     newLabel.setText(equipmentSlot.name + ": None");
-                }
-                else {
+                } else {
                     newLabel.setText(equipmentSlot.name + " #" + (i + 1) + ": None");
                 }
 
@@ -217,7 +216,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
             int phyDefTotal = 0;
             int speedTotal = Math.round(phy.dexterity / 2f);
 
-            maxHealth.setText("Health: " + phy.constitution*10);
+            maxHealth.setText("Health: " + phy.constitution * 10);
 
             int c = 0; // Counter for storing which label in eqSlotLabels to access.
             // Iterate through the list of equipment slots.
@@ -229,19 +228,14 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
                         if (eq.equipmentSlots.get(i).numSlotsOfSameType == 1) {
                             eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + ": None");
-                        }
-                        else {
+                        } else {
                             eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + " #" + (j + 1) + ": None");
                         }
-                    }
-                    // If something's equipped in this slot, update the appropriate label.
-                    else {
-
+                    } else { // If something's equipped in this slot, update the appropriate label.
                         if (eq.equipmentSlots.get(i).numSlotsOfSameType == 1) {
                             eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + ": " +
                                     eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(DisplayNameComponent.class).name);
-                        }
-                        else {
+                        } else {
                             eqSlotLabels.get(c).setText(eq.equipmentSlots.get(i).name + " #" + (j + 1) + ": " +
                                     eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(DisplayNameComponent.class).name);
                         }

@@ -29,7 +29,7 @@ public final class EquipmentComponent implements Component {
     public EntityRef equipmentInventory = EntityRef.NULL;
 
     /** The total number of inventory slots. Should be updated when an element of 'equipmentSlots' (List) is changed. */
-    public int numberOfSlots = 0;
+    public int numberOfSlots;
 
     /** A List of equipment slots. */
     // Replace or add a map?

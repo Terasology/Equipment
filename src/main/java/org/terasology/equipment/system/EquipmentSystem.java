@@ -154,7 +154,7 @@ public class EquipmentSystem extends BaseComponentSystem {
     }
 
     /**
-     * Sets an item's tooltip based on the item's stats.
+     * Sets an item's tooltip based on its stats.
      *
      * @param event  the event corresponding to a request to get the tooltip for an item
      * @param item   the item who's tooltip is to be set
@@ -168,8 +168,7 @@ public class EquipmentSystem extends BaseComponentSystem {
 
         if (eqItem.quality == 5) {
             event.getTooltipLines().add(new TooltipLine("Level " + eqItem.level + " Rare " + eqItem.type));
-        }
-        else {
+        } else {
             event.getTooltipLines().add(new TooltipLine("Level " + eqItem.level + " Common " + eqItem.type));
         }
 
@@ -197,8 +196,7 @@ public class EquipmentSystem extends BaseComponentSystem {
             if (eSlot.type.equalsIgnoreCase(eEvent.getEquipmentSlot().type)) {
                 if (eSlot.itemRef != EntityRef.NULL) {
                     return;
-                }
-                else {
+                } else {
                     eSlot.itemRef = eEvent.getItem();
                     return;
                 }
@@ -261,9 +259,7 @@ public class EquipmentSystem extends BaseComponentSystem {
                         CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash").get(), 1.0f);
                         return true;
                     }
-                }
-                // If there's an empty slot available in this equipment slot.
-                else {
+                } else { // If there's an empty slot available in this equipment slot.
                     eSlot.itemRef = item;
 
                     // Equip the desired item in the free slot.
@@ -301,8 +297,7 @@ public class EquipmentSystem extends BaseComponentSystem {
                 // Look through all of the item ref slots of this equipment slot.
                 for (int i = 0; i < eSlot.itemRefs.size(); i++) {
                     // If the item is found in one of the item ref slots, remove the matching item from the ref slot.
-                    if (eSlot.itemRefs.get(i).equals(item))
-                    {
+                    if (eSlot.itemRefs.get(i).equals(item)) {
                         // Remove the reference for this item.
                         eSlot.itemRefs.set(i, EntityRef.NULL);
                         character.saveComponent(eq);
@@ -318,15 +313,14 @@ public class EquipmentSystem extends BaseComponentSystem {
             }
         }
 
-
         // If the execution reaches here, that means the unequip action failed due to the item not being found.
         return false;
     }
 
     /**
-     * Adds physical stat modifiers of an item (if any) to a character
+     * Adds physical stat modifiers of an item (if any) to a character.
      *
-     * @param character the charaacter to whom the stat modifiers are to be applied
+     * @param character the character to whom the stat modifiers are to be applied
      * @param item      the item whose stat modifiers are to be applied
      */
     public void addModifier(EntityRef character, EntityRef item) {
@@ -392,7 +386,7 @@ public class EquipmentSystem extends BaseComponentSystem {
      * Defines what to do when a physical stat modifier is added to an entity.
      *
      * @param event  the event corresponding to the adding of the physical stat modifier
-     * @param entity the entity to whom hte stat modifier has been added
+     * @param entity the entity to whom the stat modifier has been added
      * @param eq     the equipment component associated with the entity
      */
     @ReceiveEvent
@@ -408,7 +402,7 @@ public class EquipmentSystem extends BaseComponentSystem {
      * Defines what to do when a physical stat modifier is removed from an entity.
      *
      * @param event  the event corresponding to the removal of the physical stat modifier
-     * @param entity the entity from whom hte stat modifier has been removed
+     * @param entity the entity from whom the stat modifier has been removed
      * @param eq     the equipment component associated with the entity
      */
     @ReceiveEvent
