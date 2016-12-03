@@ -9,6 +9,7 @@ Credits for images:
 * http://opengameart.org/content/melee-weapons
 * http://opengameart.org/content/scimitar-sword
 * http://opengameart.org/content/war-axe-64x64
+* http://opengameart.org/content/golden-items-rip-upgrade-pack
 
 Credits for sounds:
 
