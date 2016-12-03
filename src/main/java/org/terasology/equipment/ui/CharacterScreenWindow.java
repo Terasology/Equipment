@@ -35,6 +35,9 @@ import org.terasology.rendering.nui.widgets.UILabel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents the Character Screen window, a screen that contains information about the character's inventory.
+ */
 public class CharacterScreenWindow extends BaseInteractionScreen {
     @In
     private EntityManager entityManager;
@@ -72,6 +75,9 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
     private EntityRef player;
     private float lastUpdate = 0;
 
+    /**
+     * Initializes the character screen
+     */
     @Override
     public void initialise() {
         ingredientsInventory = find("ingredientsInventory", InventoryGrid.class);
@@ -134,6 +140,11 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         updateStats();
     }
 
+    /**
+     * Updates the character's stats every 30 seconds. Called every time the game updates.
+     *
+     * @param delta the time since the last update
+     */
     @Override
     public void update(float delta) {
         super.update(delta);
@@ -146,10 +157,16 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         }
     }
 
+    /**
+     * Updates all stats of the character.
+     */
     public void updateAllStats() {
         updateStats();
     }
 
+    /**
+     * Updates the character's stats.
+     */
     public void updateStats() {
         if (player.hasComponent(EquipmentComponent.class)) {
             EquipmentComponent eq = player.getComponent(EquipmentComponent.class);
