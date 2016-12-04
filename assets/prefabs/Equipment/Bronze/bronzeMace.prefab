@@ -8,7 +8,7 @@
     },
     "DisplayName" : {
         "name" : "Bronze Mace",
-        "description" : "a weapon with a heavy head on a solid shaft used to bludgeon opponents made out of bronze."
+        "description" : "a weapon with a heavy head on a solid shaft used to bludgeon opponents, made out of bronze."
     },
     "EquipmentItem" : {
         "level" : 1,
