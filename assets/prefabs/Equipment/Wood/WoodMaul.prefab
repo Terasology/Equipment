@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:WoodMaul",
+        "damageType" : "axeDamage",
+        "baseCooldownTime" : 600,
+        "cooldownTime" : 600
+    },
+    "DisplayName" : {
+        "name" : "Wooden Maul",
+        "description" : "A Mighty Maul to SMASH your foes."
+    },
+    "EquipmentItem" : {
+        "level" : 1,
+        "quality" : 1,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 10,
+        "defense" : 0,
+        "weight" : 6,
+        "speed" : 4
+    }
+}
