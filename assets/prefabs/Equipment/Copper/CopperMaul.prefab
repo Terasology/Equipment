@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:CopperMaul",
+        "damageType" : "axeDamage",
+        "baseCooldownTime" : 600,
+        "cooldownTime" : 600
+    },
+    "DisplayName" : {
+        "name" : "Copper Maul",
+        "description" : "A Mighty Maul to SMASH your foes."
+    },
+    "EquipmentItem" : {
+        "level" : 2,
+        "quality" : 4,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 12,
+        "defense" : 0,
+        "weight" : 6,
+        "speed" : 4
+    }
+}
