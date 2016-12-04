@@ -1,7 +1,7 @@
 {
     "parent" : "engine:iconItem",
     "Item" : {
-        "icon" : "Equipment:Reaper",
+        "icon" : "Equipment:SilverReaper",
         "damageType" : "axeDamage",
         "baseCooldownTime" : 600,
         "cooldownTime" : 600
