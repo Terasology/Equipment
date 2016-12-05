@@ -1,0 +1,20 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SilverPharaoh'sHeadress"
+    },
+    "DisplayName" : {
+        "name" : "Silver Pharaoh's Headress",
+        "description" : "A helmet made out of silver originally for ancient egyptian rulers."
+    },
+    "EquipmentItem" : {
+        "level" : 6,
+        "quality" : 7,
+        "type" : "Head Armor",
+        "location" : "Head",
+        "attack" : 0,
+        "defense" : 11,
+        "weight" : 6,
+        "speed" : -1
+    }
+}
