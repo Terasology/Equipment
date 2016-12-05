@@ -10,6 +10,7 @@ Credits for images:
 * http://opengameart.org/content/scimitar-sword
 * http://opengameart.org/content/war-axe-64x64
 * http://opengameart.org/content/golden-items-rip-upgrade-pack
+* http://connect.learnpad.com/content/profile.cfm?id=59952
 * GreatSword inspired by: https://www.amazon.com/Cold-Steel-Handed-Great-Sword/dp/B000Q9GD2Y
 * GoldDagger inspired by: https://www.pinterest.com/pin/109353097179198323/
 * Falchion: http://opengameart.org/content/32x-sword-icon
