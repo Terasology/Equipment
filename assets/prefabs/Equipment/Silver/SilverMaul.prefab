@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SilverMaul",
+        "damageType" : "axeDamage",
+        "baseCooldownTime" : 600,
+        "cooldownTime" : 600
+    },
+    "DisplayName" : {
+        "name" : "Silver Maul",
+        "description" : "A Mighty Maul to SMASH your foes."
+    },
+    "EquipmentItem" : {
+        "level" : 4,
+        "quality" : 6,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 14,
+        "defense" : 0,
+        "weight" : 6,
+        "speed" : 4
+    }
+}
