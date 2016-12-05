@@ -1,0 +1,20 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:CopperPharaoh'sHeadress"
+    },
+    "DisplayName" : {
+        "name" : "Copper Pharaoh's Headress",
+        "description" : "A helmet made out of copper originally for ancient egyptian rulers."
+    },
+    "EquipmentItem" : {
+        "level" : 2,
+        "quality" : 4,
+        "type" : "Head Armor",
+        "location" : "Head",
+        "attack" : 0,
+        "defense" : 7,
+        "weight" : 6,
+        "speed" : -1
+    }
+}
