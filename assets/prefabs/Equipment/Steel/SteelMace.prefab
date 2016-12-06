@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SteelMace",
+        "damageType" : "bluntDamage",
+        "baseCooldownTime" : 950,
+        "cooldownTime" : 950
+    },
+    "DisplayName" : {
+        "name" : "Steel Mace",
+        "description" : "a weapon with a heavy head on a solid shaft used to bludgeon opponents, made out of steel."
+    },
+    "EquipmentItem" : {
+        "level" : 15,
+        "quality" : 4,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 30,
+        "defense" : 2,
+        "weight" : 10,
+        "speed" : 4
+    }
+}
