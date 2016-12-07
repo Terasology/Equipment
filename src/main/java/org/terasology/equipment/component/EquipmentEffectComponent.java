@@ -17,17 +17,20 @@ package org.terasology.equipment.component;
 
 import org.terasology.entitySystem.Component;
 
-/**
- * A component that indicates that an entity is an equipment item. It stores all attributes of the item.
- */
-public class EquipmentItemComponent implements Component {
-    // Dummy stats for now.
-    public int level;
-    public int quality;
-    public String type;
-    public String location;
-    public int attack;
-    public int defense;
-    public int weight;
-    public int speed;
+public class EquipmentEffectComponent implements Component {
+
+    /** the duration for which the effect lasts */
+    public int duration;
+
+    /** the magnitude of the effect */
+    public int magnitude;
+
+    /** whether the effect affects the entity which equips the item */
+    public boolean affectsUser;
+
+    /** whether the effect affects enemies damaged by the item */
+    public boolean affectsEnemies;
+
+    /** optional id for certain effects */
+    public String id;
 }

@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SilverReaper",
+        "damageType" : "axeDamage",
+        "baseCooldownTime" : 600,
+       "cooldownTime" : 600
+   },
+   "DisplayName" : {
+       "name" : "SilverReaper",
+       "description" : "A double sided axe that can cut anything into two halves."
+   },
+   "EquipmentItem" : {
+       "level" : 10,
+       "quality" : 10,
+       "type" : "Melee Weapon",
+       "location" : "Weapon",
+       "attack" : 20,
+       "defense" : 0,
+       "weight" : 2,
+       "speed" : 15
+   }
+}

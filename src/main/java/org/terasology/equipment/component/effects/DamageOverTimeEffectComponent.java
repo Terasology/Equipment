@@ -13,21 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.equipment.component;
+package org.terasology.equipment.component.effects;
 
-import org.terasology.entitySystem.Component;
+import org.terasology.equipment.component.EquipmentEffectComponent;
 
-/**
- * A component that indicates that an entity is an equipment item. It stores all attributes of the item.
- */
-public class EquipmentItemComponent implements Component {
-    // Dummy stats for now.
-    public int level;
-    public int quality;
-    public String type;
-    public String location;
-    public int attack;
-    public int defense;
-    public int weight;
-    public int speed;
+public class DamageOverTimeEffectComponent extends EquipmentEffectComponent {
 }

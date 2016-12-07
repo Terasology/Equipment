@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SteelBattleAxe",
+        "damageType" : "axeDamage",
+        "baseCooldownTime" : 500,
+        "cooldownTime" : 500
+    },
+    "DisplayName" : {
+        "name" : "Steel Battle Axe",
+        "description" : "A menacing battleaxe of Nordic origin."
+    },
+    "EquipmentItem" : {
+        "level" : 20,
+        "quality" : 5,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 40,
+        "defense" : 0,
+        "weight" : 22,
+        "speed" : 5
+    }
+}

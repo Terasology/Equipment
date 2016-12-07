@@ -21,6 +21,9 @@ import org.terasology.reflection.MappedContainer;
 
 import java.util.List;
 
+/**
+ * This component represents a single equipment slot, and contains the slot's attributes.
+ */
 @MappedContainer
 public class EquipmentSlot {
     // * Associated Anatomy part (optional)
