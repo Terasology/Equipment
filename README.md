@@ -15,6 +15,10 @@ Credits for images:
 * Falchion: http://opengameart.org/content/32x-sword-icon
 * GoldRing.png by Camellia, original work
 
+Gold and Wooden Mace Inspired by: http://poisonedaxiom.deviantart.com/art/Minecraft-Arsenal-303630313
+Silver Mace Inspired by: http://lotrminecraftmod.wikia.com/wiki/File:Winged_Dalish_Mace.png
+Steel Mace Inspired by: https://sites.google.com/site/auraofzephyr/gallery
+Bronze Mace Inspired by: http://www.planetminecraft.com/blog/hackmine-motivation/
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
