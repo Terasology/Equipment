@@ -13,6 +13,9 @@ Credits for images:
 * Silver Mace Inspired by: http://lotrminecraftmod.wikia.com/wiki/File:Winged_Dalish_Mace.png
 * Steel Mace Inspired by: https://sites.google.com/site/auraofzephyr/gallery
 * Bronze Mace Inspired by: http://www.planetminecraft.com/blog/hackmine-motivation/
+* Copper Mace Inspired by: http://minecraft.novaskin.me/gallery/tag/mace?next=E-ABAOsB8gEKdm90ZV9jb3VudPoBAggA7AHrAfIBBWFkZGVk-gEJCMKIt4WvwbgC7AGCAh1qDHN-c2tpbmVkaXRvcnINCxIEU2tpbhi3uMwKDBQ=
+* Mystic Mace Inspired by: http://www.keyword-suggestions.com/cmVkIG1hdHRlciBoYW1tZXI/
+* Iron Mace Inspired by: http://www.keyword-suggestions.com/bWluZWNyYWZ0IG1hY2U/
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
