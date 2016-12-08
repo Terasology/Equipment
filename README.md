@@ -14,6 +14,7 @@ Credits for images:
 * GoldDagger inspired by: https://www.pinterest.com/pin/109353097179198323/
 * Falchion: http://opengameart.org/content/32x-sword-icon
 * GoldRing.png by Camellia, original work
+* WoodenNunchaku.png, IronNunchaku.png, SilverChain.png by gkaretka
 
 Credits for sounds:
 
