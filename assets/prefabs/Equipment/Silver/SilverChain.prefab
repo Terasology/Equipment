@@ -1,14 +1,14 @@
 {
     "parent" : "engine:iconItem",
     "Item" : {
-        "icon" : "Equipment:SilverAxe",
+        "icon" : "Equipment:SilverChain",
         "damageType" : "axeDamage",
         "baseCooldownTime" : 600,
         "cooldownTime" : 600
     },
     "DisplayName" : {
         "name" : "Silver Chain",
-        "description" : "An chain that can be used for wearing."
+        "description" : "Magic chain for attack"
     },
     "EquipmentItem" : {
         "level" : 5,
