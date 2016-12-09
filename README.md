@@ -30,6 +30,7 @@ Credits for images:
 * Gold Ring of Survival by Mandar Juvekar (mjuvekar7) 
 * Gold Spear by Arpit Kamboj (digitalripperynr) 
 * Iron War Hammer by Dane Claessen (Dane99) 
+* WoodPendant.png, BronzePendant.png, CopperPendant.png, IronPendant.png, SteelPendant.png, SilverPendant.png, GoldPendant.png, and MysticPendant.png Created by: Patrick Wang
 
 Credits for sounds:
 
