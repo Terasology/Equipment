@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:IronKeris",
+        "damageType" : "knifeDamage",
+        "baseCooldownTime" : 225,
+        "cooldownTime" : 225
+    },
+    "DisplayName" : {
+        "name" : "Iron Keris",
+        "description" : "Keris is an asymmetrical dagger with distinctive blade-patterning achieved through alternating laminations of iron and nickelous iron."
+    },
+    "EquipmentItem" : {
+        "level" : 10,
+        "quality" : 3,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 7,
+        "defense" : 0,
+        "weight" : 2,
+        "speed" : 15
+    }
+}
