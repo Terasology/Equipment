@@ -22,6 +22,9 @@ Credits for images:
 * Copper Mace Inspired by: http://minecraft.novaskin.me/gallery/tag/mace?next=E-ABAOsB8gEKdm90ZV9jb3VudPoBAggA7AHrAfIBBWFkZGVk-gEJCMKIt4WvwbgC7AGCAh1qDHN-c2tpbmVkaXRvcnINCxIEU2tpbhi3uMwKDBQ=
 * Mystic Mace Inspired by: http://www.keyword-suggestions.com/cmVkIG1hdHRlciBoYW1tZXI/
 * Iron Mace Inspired by: http://www.keyword-suggestions.com/bWluZWNyYWZ0IG1hY2U/
+* Walking Cane Inspired by: http://dontstarve.wikia.com/wiki/Walking_Cane
+* WalkingCane.png by ElBatanony
+* Maul Art by ElBatanony
 
 Credits for sounds:
 
