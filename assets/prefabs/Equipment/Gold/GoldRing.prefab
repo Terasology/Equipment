@@ -1,0 +1,30 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:GoldRing"
+    },
+    "DisplayName" : {
+        "name" : "Gold Ring of Agility and Dexterity",
+        "description" : "An fancy ring (necklace) made out of gold, which boosts your dexterity and agility by 15. It also boosts strength and endurance by 1."
+    },
+    "EquipmentItem" : {
+        "level" : 10,
+        "quality" : 4,
+        "type" : "Ring",
+        "location" : "Ring",
+        "attack" : 2,
+        "defense" : 5,
+        "weight" : 0,
+        "speed" : 0
+    },
+    "PhysicalStatsModifier" : {
+        "id" : "Gold Ring of Agility and Dexterity",
+        "strength" : 1,
+        "dexterity" : 15,
+        "constitution" : 0,
+        "agility" : 15,
+        "endurance" : 1,
+        "charisma" : 0,
+        "luck" : 0
+    }
+}

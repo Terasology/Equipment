@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:IronNunchaku",
+        "damageType" : "knifeDamage",
+        "baseCooldownTime" : 250,
+        "cooldownTime" : 250
+    },
+    "DisplayName" : {
+        "name" : "Iron Nunchaku",
+        "description" : "A traditional Okinawan martial arts weapon."
+    },
+    "EquipmentItem" : {
+        "level" : 3,
+        "quality" : 5,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 10,
+        "defense" : 0,
+        "weight" :3,
+        "speed" :3
+    }
+}
