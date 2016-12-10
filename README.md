@@ -27,6 +27,7 @@ Credits for images:
 * Walking Cane Inspired by: http://dontstarve.wikia.com/wiki/Walking_Cane
 * WalkingCane.png by ElBatanony
 * Maul Art by ElBatanony
+* Gold Ring of Survival by Mandar Juvekar (mjuvekar7) 
 
 Credits for sounds:
 
