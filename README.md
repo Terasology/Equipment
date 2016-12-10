@@ -24,6 +24,9 @@ Credits for images:
 * Iron Mace Inspired by: http://www.keyword-suggestions.com/bWluZWNyYWZ0IG1hY2U/
 * Iron Keris (Resized & Modified): https://commons.wikimedia.org/wiki/File:Semar_Kris_(no_background).png
 * Mystic Necklace (Cropped & Resized): https://pixabay.com/p-665691/?no_redirect
+* Walking Cane Inspired by: http://dontstarve.wikia.com/wiki/Walking_Cane
+* WalkingCane.png by ElBatanony
+* Maul Art by ElBatanony
 
 Credits for sounds:
 
