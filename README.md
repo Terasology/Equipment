@@ -28,6 +28,7 @@ Credits for images:
 * WalkingCane.png by ElBatanony
 * Maul Art by ElBatanony
 * Gold Ring of Survival by Mandar Juvekar (mjuvekar7) 
+* Gold Spear by Arpit Kamboj (digitalripperynr) 
 
 Credits for sounds:
 
