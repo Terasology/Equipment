@@ -22,7 +22,7 @@ Credits for images:
 * Copper Mace Inspired by: http://minecraft.novaskin.me/gallery/tag/mace?next=E-ABAOsB8gEKdm90ZV9jb3VudPoBAggA7AHrAfIBBWFkZGVk-gEJCMKIt4WvwbgC7AGCAh1qDHN-c2tpbmVkaXRvcnINCxIEU2tpbhi3uMwKDBQ=
 * Mystic Mace Inspired by: http://www.keyword-suggestions.com/cmVkIG1hdHRlciBoYW1tZXI/
 * Iron Mace Inspired by: http://www.keyword-suggestions.com/bWluZWNyYWZ0IG1hY2U/
-
+* WoodPendant.png, BronzePendant.png, CopperPendant.png, IronPendant.png, SteelPendant.png, SilverPendant.png, GoldPendant.png, and MysticPendant.png Created by: Patrick Wang
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
