@@ -29,6 +29,7 @@ Credits for images:
 * Maul Art by ElBatanony
 * Gold Ring of Survival by Mandar Juvekar (mjuvekar7) 
 * Gold Spear by Arpit Kamboj (digitalripperynr) 
+* Iron War Hammer by Dane Claessen (Dane99) 
 
 Credits for sounds:
 
