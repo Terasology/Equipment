@@ -29,6 +29,7 @@ Credits for images:
 * Maul Art by ElBatanony
 * Gold Ring of Survival by Mandar Juvekar (mjuvekar7) 
 * Gold Spear by Arpit Kamboj (digitalripperynr) 
+* Mystic Pendant of Endurance edited by NicholasBatesNZ from: https://pixabay.com/p-1430952/?no_redirect
 
 Credits for sounds:
 
