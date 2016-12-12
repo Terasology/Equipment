@@ -34,6 +34,7 @@ Credits for images:
 * Iron Scythe: https://openclipart.org/detail/86677/scythe-64x64-icon
 * Laser Sword: https://commons.wikimedia.org/wiki/File:Lightsaber_blue.svg 
 * Gold Katana: http://robloxianuniverse.blogspot.ch/2013/03/high-tech-weapons.html
+* Magic Gold Necklace by Minege
 
 Credits for sounds:
 
