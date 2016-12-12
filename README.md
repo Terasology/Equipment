@@ -33,6 +33,7 @@ Credits for images:
 * WoodPendant.png, BronzePendant.png, CopperPendant.png, IronPendant.png, SteelPendant.png, SilverPendant.png, GoldPendant.png, and MysticPendant.png Created by: Patrick Wang
 * Iron Scythe: https://openclipart.org/detail/86677/scythe-64x64-icon
 * Laser Sword: https://commons.wikimedia.org/wiki/File:Lightsaber_blue.svg 
+* Mystic Pendant of Endurance edited by NicholasBatesNZ from: https://pixabay.com/p-1430952/?no_redirect
 
 Credits for sounds:
 
