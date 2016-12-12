@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:LaserSword",
+        "damageType" : "swordDamage",
+        "baseCooldownTime" : 500,
+        "cooldownTime" : 50
+    },
+    "DisplayName" : {
+        "name" : "Laser Sword",
+        "description" : "A Laser Sword. Deals continuous damage."
+    },
+    "EquipmentItem" : {
+        "level" : 10,
+        "quality" : 5,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 3,
+        "defense" : 0,
+        "weight" : 2,
+        "speed" : 12
+    }
+}
