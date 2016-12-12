@@ -1,0 +1,21 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:HanumanGada",
+        "damageType" : "bluntDamage"
+    },
+    "DisplayName" : {
+        "name" : "The Hanuman Gada",
+        "description" : "A Gada to SMASH anything you want to"
+    },
+    "EquipmentItem" : {
+        "level" : 10,
+        "quality" : 5,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 30,
+        "defense" : 0,
+        "weight" : 10,
+        "speed" : 3
+    }
+}
