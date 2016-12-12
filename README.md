@@ -32,7 +32,8 @@ Credits for images:
 * Iron War Hammer by Dane Claessen (Dane99) 
 * WoodPendant.png, BronzePendant.png, CopperPendant.png, IronPendant.png, SteelPendant.png, SilverPendant.png, GoldPendant.png, and MysticPendant.png Created by: Patrick Wang
 * Iron Scythe: https://openclipart.org/detail/86677/scythe-64x64-icon
-* ArchangelFury: https://commons.wikimedia.org/wiki/File:Fist.svg
+* Archangel's Fury: https://commons.wikimedia.org/wiki/File:Fist.svg (Resized)
+* Archangel's Heart: Original (Jellysnake)
 
 Credits for sounds:
 
