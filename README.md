@@ -31,6 +31,7 @@ Credits for images:
 * Gold Spear by Arpit Kamboj (digitalripperynr) 
 * Iron War Hammer by Dane Claessen (Dane99) 
 * WoodPendant.png, BronzePendant.png, CopperPendant.png, IronPendant.png, SteelPendant.png, SilverPendant.png, GoldPendant.png, and MysticPendant.png Created by: Patrick Wang
+* Iron Scythe: https://openclipart.org/detail/86677/scythe-64x64-icon
 
 Credits for sounds:
 
