@@ -4,7 +4,7 @@
         "icon" : "Equipment:LaserSword",
         "damageType" : "swordDamage",
         "baseCooldownTime" : 500,
-        "cooldownTime" : 0
+        "cooldownTime" : 50
     },
     "DisplayName" : {
         "name" : "Laser Sword",
