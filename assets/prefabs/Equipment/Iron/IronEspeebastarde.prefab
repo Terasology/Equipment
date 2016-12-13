@@ -1,7 +1,7 @@
 {
     "parent" : "engine:iconItem",
     "Item" : {
-        "icon" : "Equipment:Espeebastarde”,
+        "icon" : "Equipment:IronEspeebastarde”,
         "damageType" : "axeDamage",
         "baseCooldownTime" : 200,
         "cooldownTime" : 200
