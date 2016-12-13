@@ -4,7 +4,7 @@
         "icon" : "Equipment:GoldRingOfSwiftness"
     },
     "DisplayName" : {
-        "name" : Gold Ring of Swiftness",
+        "name" : "Gold Ring of Swiftness",
         "description" : "A golden ring infused with adrenaline. Increases agility by 20."
     },
     "EquipmentItem" : {
