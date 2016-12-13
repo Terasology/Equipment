@@ -35,6 +35,7 @@ Credits for images:
 * Iron Scythe: https://openclipart.org/detail/86677/scythe-64x64-icon
 * Laser Sword: https://commons.wikimedia.org/wiki/File:Lightsaber_blue.svg 
 * Mystic Pendant of Endurance edited by NicholasBatesNZ from: https://pixabay.com/p-1430952/?no_redirect
+* ArchangelFury: https://commons.wikimedia.org/wiki/File:Fist.svg
 
 Credits for sounds:
 
