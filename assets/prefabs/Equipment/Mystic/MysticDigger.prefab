@@ -1,0 +1,13 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:MysticDigger",
+        "damageType" : "bluntDamage",
+        "baseCooldownTime" : 0,
+        "cooldownTime" : 0
+    },
+    "DisplayName" : {
+        "name" : "Mystic Digger",
+        "description" : "A magical tool that can instasntly mine any block to allow for the fast clearing of space."
+    }
+}
