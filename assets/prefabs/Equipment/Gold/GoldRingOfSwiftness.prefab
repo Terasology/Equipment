@@ -1,0 +1,30 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:GoldRingOfSwiftness"
+    },
+    "DisplayName" : {
+        "name" : Gold Ring of Swiftness",
+        "description" : "A golden ring infused with adrenaline. Increases agility by 20."
+    },
+    "EquipmentItem" : {
+        "level" : 4,
+        "quality" : 5,
+        "type" : "Ring",
+        "location" : "Ring",
+        "attack" : 0,
+        "defense" : 2,
+        "weight" : 0,
+        "speed" : 3
+    },
+    "PhysicalStatsModifier" : {
+        "id" : "Mystic Ring of Swiftness",
+        "strength" : 0,
+        "dexterity" : 0,
+        "constitution" : 0,
+        "agility" : 20,
+        "endurance" :0,
+        "charisma" : 0,
+        "luck" : 0
+    }
+}
