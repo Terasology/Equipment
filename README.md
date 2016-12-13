@@ -37,6 +37,7 @@ Credits for images:
 * Mystic Pendant of Endurance edited by NicholasBatesNZ from: https://pixabay.com/p-1430952/?no_redirect
 * Archangel's Fury: https://commons.wikimedia.org/wiki/File:Fist.svg (Resized)
 * Archangel's Heart: Original (Jellysnake)
+* Gold Ring of Swiftness by Jeff Sieu
 
 Credits for sounds:
 
