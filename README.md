@@ -36,6 +36,7 @@ Credits for images:
 * Laser Sword: https://commons.wikimedia.org/wiki/File:Lightsaber_blue.svg 
 * Mystic Pendant of Endurance edited by NicholasBatesNZ from: https://pixabay.com/p-1430952/?no_redirect
 * ArchangelFury: https://commons.wikimedia.org/wiki/File:Fist.svg
+* Iron Bastard sword: https://openclipart.org/detail/169233/classic-medieval-sword
 
 Credits for sounds:
 
