@@ -46,6 +46,7 @@ Credits for images:
 * MysticDigger by capybara512, original work (using color palette of existing mystic items)
 * SilverPen: https://pixabay.com/en/pen-compose-indite-writer-33237/
 * Gold Ring of Nimbleness: https://openclipart.org/detail/3967/ring
+* Mystic Espee bastard :https://openclipart.org/detail/4472/jeweled-sword
 
 Credits for sounds:
 
