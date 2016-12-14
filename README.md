@@ -33,7 +33,7 @@ Credits for images:
 * WoodPendant.png, BronzePendant.png, CopperPendant.png, IronPendant.png, SteelPendant.png, SilverPendant.png, GoldPendant.png, and MysticPendant.png Created by: Patrick Wang
 * Iron Scythe: https://openclipart.org/detail/86677/scythe-64x64-icon
 * Laser Sword: https://commons.wikimedia.org/wiki/File:Lightsaber_blue.svg 
-* Gold Katana by Minege inspired by http://minecraft.novaskin.me/skin/6511031442472960/Diamond-Katana
+* Gold Katana: by Minege inspired by http://minecraft.novaskin.me/skin/6511031442472960/Diamond-Katana
 * Diamond Katana: http://minecraft.novaskin.me/skin/6511031442472960/Diamond-Katana
 * Magic Gold Necklace by Minege
 
