@@ -39,6 +39,7 @@ Credits for images:
 * Archangel's Heart: Original (Jellysnake)
 * Gold Ring of Swiftness by Jeff Sieu
 * Katana: https://pixabay.com/en/katana-japan-ninja-samurai-sword-154938/
+* Steel Sword: https://pixabay.com/en/sword-knight-fantasy-middle-ages-1762560/
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
