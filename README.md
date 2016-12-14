@@ -37,6 +37,7 @@ Credits for images:
 * Mystic Pendant of Endurance edited by NicholasBatesNZ from: https://pixabay.com/p-1430952/?no_redirect
 * ArchangelFury: https://commons.wikimedia.org/wiki/File:Fist.svg
 * Iron Bastard sword: https://openclipart.org/detail/169233/classic-medieval-sword
+* Special Iron Bastard sword :https://openclipart.org/detail/20402/two-handed-sword
 
 Credits for sounds:
 
