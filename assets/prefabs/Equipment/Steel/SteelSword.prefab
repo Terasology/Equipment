@@ -1,0 +1,22 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SteelSword",
+        "damageType" : "swordDamage",
+        "baseCooldownTime" : 300,
+        "cooldownTime" : 300
+    },
+    "DisplayName" : {
+        "name" : "Steel Sword",
+        "description" : "The most classic weapon made of steel."
+    },
+    "EquipmentItem" : {
+        "level" : 15,
+        "quality" : 2,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 30,
+        "defense" : 0,
+        "weight" : 14,
+        "speed" : 20
+    }
