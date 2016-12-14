@@ -41,6 +41,7 @@ Credits for images:
 * Katana: https://pixabay.com/en/katana-japan-ninja-samurai-sword-154938/
 * Iron Espee bastard sword :https://openclipart.org/detail/169233/classic-medieval-sword
 * Steel Sword: https://pixabay.com/en/sword-knight-fantasy-middle-ages-1762560/ (Rezised)
+* Special Iron Espee bastard: https://openclipart.org/detail/20402/two-handed-sword
 
 Credits for sounds:
 
