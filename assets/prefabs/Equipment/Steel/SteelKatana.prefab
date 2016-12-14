@@ -1,7 +1,7 @@
 {
     "parent" : "engine:iconItem",
     "Item" : {
-        "icon" : "Equipment:SteeKatana",
+        "icon" : "Equipment:SteelKatana",
         "damageType" : "swordDamage",
         "baseCooldownTime" : 400,
         "cooldownTime" : 400
