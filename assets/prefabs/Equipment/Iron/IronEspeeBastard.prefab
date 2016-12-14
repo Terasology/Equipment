@@ -1,13 +1,13 @@
 {
     "parent" : "engine:iconItem",
     "Item" : {
-        "icon" : "Equipment:IronEspeebastarde",
+        "icon" : "Equipment:IronEspeebastard",
         "damageType" : "swordDamage",
         "baseCooldownTime" : 200,
         "cooldownTime" : 200
     },
     "DisplayName" : {
-        "name" : "Espee Bastarde",
+        "name" : "Espee Bastard",
         "description" : "A great sword for either one handed or two handed use, with a special half grip! also known as the bastard sword."
     },
     "EquipmentItem" : {
