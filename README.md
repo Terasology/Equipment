@@ -47,5 +47,5 @@ Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
 
-SteelDamascus:https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Japanese_knife_blade_types_B.svg/1280pxJapanese_knife_blade_types_B.svg.png (Resized) 
+SteelDamascus:https://cdn.pixabay.com/photo/2013/07/12/13/54/knife-147545_960_720.png (Resized) 
 
