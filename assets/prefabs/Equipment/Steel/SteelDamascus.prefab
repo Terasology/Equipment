@@ -1,0 +1,22 @@
+
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SteelDamascus",
+        "damageType" : "damascusDamage",
+        "baseCooldownTime" : 300,
+        "cooldownTime" : 300
+    },
+    "DisplayName" : {
+        "name" : "Damascus",
+        "description" : "The most dangoures weapon made of steel."
+    },
+    "EquipmentItem" : {
+        "level" : 15,
+        "quality" : 2,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 30,
+        "defense" : 1,
+        "weight" : 14,
+        "speed" : 20
+    }

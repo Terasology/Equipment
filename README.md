@@ -46,3 +46,6 @@ Credits for images:
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
+
+SteelDamascus:https://cdn.pixabay.com/photo/2013/07/12/13/54/knife-147545_960_720.png (Resized) 
+
