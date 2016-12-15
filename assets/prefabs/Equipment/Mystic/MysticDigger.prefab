@@ -3,11 +3,20 @@
     "Item" : {
         "icon" : "Equipment:MysticDigger",
         "damageType" : "bluntDamage",
-        "baseCooldownTime" : 0,
-        "cooldownTime" : 0
+        "baseCooldownTime" : 1,
+        "cooldownTime" : 1
     },
     "DisplayName" : {
         "name" : "Mystic Digger",
-        "description" : "A magical tool that can instasntly mine any block to allow for the fast clearing of space."
+        "description" : "A magical tool that can instantly mine any block to allow for the fast clearing of space."
+    },
+    "EquipmentItem" : {
+        "level" : 20,
+        "quality" : 5,
+        "type" : "Tool",
+        "Location" : "Hotbar",
+        "Attack" : 30,
+        "Weight" : 6,
+        "speed" : 1
     }
 }
