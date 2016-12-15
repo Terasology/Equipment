@@ -43,6 +43,8 @@ Credits for images:
 * Steel Sword: https://pixabay.com/en/sword-knight-fantasy-middle-ages-1762560/ (Rezised)
 * Gold Katana, Diamond Katana and Magic Gold Necklace by Minege
 
+* Steel Sabre, http://www.zombietools.net/shop/dcapitan-sabre/ (Resized)
+
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
