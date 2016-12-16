@@ -1,4 +1,5 @@
-"parent" : "engine:iconItem",
+{
+    "parent" : "engine:iconItem",
     "Item" : {
         "icon" : "Equipment:GoldStrengthnLuck"
     },
