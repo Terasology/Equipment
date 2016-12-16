@@ -3,8 +3,8 @@
     "Item" : {
         "icon" : "Equipment:MysticDigger",
         "damageType" : "bluntDamage",
-        "baseCooldownTime" : 1,
-        "cooldownTime" : 1
+        "baseCooldownTime" : 75,
+        "cooldownTime" : 75
     },
     "DisplayName" : {
         "name" : "Mystic Digger",

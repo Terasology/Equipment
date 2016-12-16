@@ -1,22 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:SteelKatana",
-        "damageType" : "swordDamage",
-        "baseCooldownTime" : 400,
-        "cooldownTime" : 400
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:SteelKatana",
+        "damageType": "swordDamage",
+        "baseCooldownTime": 400,
+        "cooldownTime": 400
     },
-    "DisplayName" : {
-        "name" : "Steel Katana",
-        "description" : "A curved sword that the warriors used to use made out of steel."
+    "DisplayName": {
+        "name": "Steel Katana",
+        "description": "A curved sword that the warriors used to use made out of steel."
     },
-    "EquipmentItem" : {
-        "level" : 20,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 27,
-        "defense" : 0,
-        "weight" : 12,
-        "speed" : 12
+    "EquipmentItem": {
+        "level": 20,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 27,
+        "defense": 0,
+        "weight": 12,
+        "speed": 12
     }
+}

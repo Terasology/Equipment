@@ -18,6 +18,6 @@
         "attack" : 10,
         "defense" : 0,
         "weight" : 3,
-        "speed" : 10,
-    },
+        "speed" : 10
+    }
 }
