@@ -1,0 +1,20 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SilverPen"
+    },
+       "DisplayName" : {
+        "name" : "Silver Pen",
+        "description" : "A pen that can be transformed into a sword and can always be found in the user's pocket at any given time. Best for defence as well as for attack"
+    },
+    "EquipmentItem" : {
+        "level" : 9,
+        "quality" : 18,
+        "type" : "Pen/Sword",
+        "location" : "Pen",
+        "attack" : 9,
+        "defense" : 3,
+        "weight" : 2,
+        "speed" : 5
+    }
+}
