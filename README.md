@@ -44,6 +44,7 @@ Credits for images:
 * Gold Katana, Diamond Katana and Magic Gold Necklace by Minege
 * SteelDamascus:https://cdn.pixabay.com/photo/2013/07/12/13/54/knife-147545_960_720.png (Resized)
 * MysticDigger by capybara512, original work (using color palette of existing mystic items)
+* Gold Ring of Nimbleness: https://openclipart.org/detail/3967/ring
 
 Credits for sounds:
 
