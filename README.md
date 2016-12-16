@@ -42,10 +42,9 @@ Credits for images:
 * Iron Espee bastard sword :https://openclipart.org/detail/169233/classic-medieval-sword
 * Steel Sword: https://pixabay.com/en/sword-knight-fantasy-middle-ages-1762560/ (Rezised)
 * Gold Katana, Diamond Katana and Magic Gold Necklace by Minege
+* SteelDamascus:https://cdn.pixabay.com/photo/2013/07/12/13/54/knife-147545_960_720.png (Resized)
+* MysticDigger by capybara512, original work (using color palette of existing mystic items)
 
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
-
-SteelDamascus:https://cdn.pixabay.com/photo/2013/07/12/13/54/knife-147545_960_720.png (Resized) 
-
