@@ -10,8 +10,8 @@
     "EquipmentItem" : {
         "level" : 9,
         "quality" : 18,
-        "type" : "Pen/Sword",
-        "location" : "Pen",
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
         "attack" : 9,
         "defense" : 3,
         "weight" : 2,
