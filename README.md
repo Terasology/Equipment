@@ -47,7 +47,7 @@ Credits for images:
 * SilverPen: https://pixabay.com/en/pen-compose-indite-writer-33237/
 * Gold Ring of Nimbleness: https://openclipart.org/detail/3967/ring
 * Mystic Espee bastard :https://openclipart.org/detail/4472/jeweled-sword
-
+* Lucky Copper Sword: https://openclipart.org/detail/2664/sword-or-yellow
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
