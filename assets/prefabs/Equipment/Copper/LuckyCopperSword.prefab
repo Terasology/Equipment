@@ -2,9 +2,9 @@
     "parent" : "engine:iconItem",
     "Item" : {
         "icon" : "Equipment:LuckyCopperSword",
-        "damageType" : "knifeDamage",
-        "baseCooldownTime" : 210,
-        "cooldownTime" : 210
+        "damageType" : "swordDamage",
+        "baseCooldownTime" : 310,
+        "cooldownTime" : 310
     },
     "DisplayName" : {
         "name" : "Lucky Copper Sword",
