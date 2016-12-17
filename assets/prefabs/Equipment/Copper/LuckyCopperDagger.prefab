@@ -1,0 +1,33 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:LuckyCopperDagger",
+        "damageType" : "knifeDamage",
+        "baseCooldownTime" : 210,
+        "cooldownTime" : 210
+    },
+    "DisplayName" : {
+        "name" : "Lucky Copper Dagger",
+        "description" : "A mysterious highly worn copper dagger. Boosts luck by 5."
+    },
+    "EquipmentItem" : {
+        "level" : 30,
+        "quality" : 4,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 17,
+        "defense" : 2,
+        "weight" : 1,
+        "speed" : 13
+    },
+    "PhysicalStatsModifier" : {
+        "id" : "Lucky Copper Dagger",
+        "strength" : 0,
+        "dexterity" : 0,
+        "constitution" : 0,
+        "agility" : 0,
+        "endurance" : 0,
+        "charisma" : 0,
+        "luck" : 5
+    }
+}
