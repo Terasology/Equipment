@@ -48,6 +48,7 @@ Credits for images:
 * Gold Ring of Nimbleness: https://openclipart.org/detail/3967/ring
 * Mystic Espee bastard :https://openclipart.org/detail/4472/jeweled-sword
 * Steel Armor: https://pixabay.com/en/shield-swords-knight-medieval-309126/(Resized)
+* Lucky Copper Sword: https://openclipart.org/detail/2664/sword-or-yellow
 
 Credits for sounds:
 
