@@ -48,6 +48,8 @@ Credits for images:
 * Gold Ring of Nimbleness: https://openclipart.org/detail/3967/ring
 * Mystic Espee bastard :https://openclipart.org/detail/4472/jeweled-sword
 
+* Steel Sabre, http://www.zombietools.net/shop/dcapitan-sabre/ (Resized)
+
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
