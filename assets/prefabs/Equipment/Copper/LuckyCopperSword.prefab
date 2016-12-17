@@ -1,14 +1,14 @@
 {
     "parent" : "engine:iconItem",
     "Item" : {
-        "icon" : "Equipment:LuckyCopperDagger",
+        "icon" : "Equipment:LuckyCopperSword",
         "damageType" : "knifeDamage",
         "baseCooldownTime" : 210,
         "cooldownTime" : 210
     },
     "DisplayName" : {
-        "name" : "Lucky Copper Dagger",
-        "description" : "A mysterious highly worn copper dagger. Boosts luck by 5."
+        "name" : "Lucky Copper Sword",
+        "description" : "A mysterious highly worn copper sword. Boosts luck by 5."
     },
     "EquipmentItem" : {
         "level" : 30,
@@ -21,7 +21,7 @@
         "speed" : 13
     },
     "PhysicalStatsModifier" : {
-        "id" : "Lucky Copper Dagger",
+        "id" : "Lucky Copper Sword",
         "strength" : 0,
         "dexterity" : 0,
         "constitution" : 0,
