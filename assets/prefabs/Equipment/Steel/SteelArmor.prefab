@@ -10,15 +10,15 @@
     "EquipmentItem" : {
         "level" : 15,
         "quality" : 20,
-        "type" : "Armor",
-        "location" : "Armor",
+        "type" : "Body Armor",
+        "location" : "Body",
         "attack" : 0,
         "defense" : 3,
         "weight" : 2,
         "speed" : 0
     },
     "PhysicalStatsModifier" : {
-        "id" : "Copper Ring of Minor Strength",
+        "id" : "Steel Armor",
         "strength" : 3,
         "dexterity" : 0,
         "constitution" : 0,
