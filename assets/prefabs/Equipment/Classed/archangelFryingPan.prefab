@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:ArchangelFryingPan",
+        "damageType" : "bluntDamage",
+        "baseCooldownTime" : 250,
+        "cooldownTime" : 250
+    },
+    "DisplayName" : {
+        "name" : "Archangel Frying Pan",
+        "description" : "A frying pan forged out of the most precious material, to serve the archangel."
+    },
+    "EquipmentItem" : {
+        "level" : 5,
+        "quality" : 2,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 3,
+        "defense" : 0,
+        "weight" : 2,
+        "speed" : 10
+    }
+}
