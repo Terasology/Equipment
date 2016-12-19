@@ -42,6 +42,7 @@ Credits for images:
 * Iron Espee bastard sword :https://openclipart.org/detail/169233/classic-medieval-sword
 * Steel Sword: https://pixabay.com/en/sword-knight-fantasy-middle-ages-1762560/ (Rezised)
 * Gold Katana, Diamond Katana and Magic Gold Necklace by Minege
+* Diamond Shield Armor: https://pixabay.com/en/shields-protection-armor-badge-150633/(Resized)
 
 Credits for sounds:
 
