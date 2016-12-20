@@ -50,7 +50,7 @@ Credits for images:
 * Steel Sabre made my SufurElite 
 * Steel Armor: https://pixabay.com/en/shield-swords-knight-medieval-309126/(Resized)
 * Lucky Copper Sword: https://openclipart.org/detail/2664/sword-or-yellow
-
+* Wooden Bo Staff: Made by TheJYKoder (own work)
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
