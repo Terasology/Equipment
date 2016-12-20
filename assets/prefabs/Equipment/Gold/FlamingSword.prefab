@@ -1,0 +1,23 @@
+{
+  "parent" : "engine:iconItem",
+  "Item" : {
+    "icon" : "Equipment:FlamingSword",
+    "damageType" : "swordDamage",
+    "baseCooldownTime" : 200,
+    "cooldownTime" : 200
+  },
+  "DisplayName" : {
+    "name" : "Flaming Sword",
+    "description" : "This sword, forged from the purest gold, can strike down all bu the toughest foes."
+  },
+  "EquipmentItem" : {
+    "level" : 40,
+    "quality" : 20,
+    "type" : "Melee Weapon",
+    "location" : "Weapon",
+    "attack" : 100,
+    "defense" : 100,
+    "weight" : 80,
+    "speed" : 1
+  }
+}

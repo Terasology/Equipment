@@ -52,6 +52,7 @@ Credits for images:
 * Lucky Copper Sword: https://openclipart.org/detail/2664/sword-or-yellow
 * LegendaryBrahmastra: https://pixabay.com/en/bow-arrow-shaft-bolt-weapon-sport-307275/
 * ArchangelFryingPan: https://pixabay.com/en/pan-cook-sear-frying-pan-554072/
+* Flaming Sword: made by BenjaminAmos (own work)
 
 Credits for sounds:
 
