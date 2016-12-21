@@ -10,8 +10,8 @@
     "EquipmentItem" : {
         "level" : 5,
         "quality" : 5,
-        "type" : "Armor",
-        "location" : "Armor",
+        "type" : "Shield",
+        "location" : "Arms",
         "attack" : 1,
         "defense" : 10,
         "weight" : 2,
