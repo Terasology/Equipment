@@ -54,6 +54,8 @@ Credits for images:
 * LegendaryBrahmastra: https://pixabay.com/en/bow-arrow-shaft-bolt-weapon-sport-307275/
 * ArchangelFryingPan: https://pixabay.com/en/pan-cook-sear-frying-pan-554072/
 * Flaming Sword: made by BenjaminAmos (own work)
+* Wooden Bo Staff: Made by TheJYKoder (own work)
+* Diamond Ring of Juggernauts: Made by TheJYKoder (own work)
 
 Credits for sounds:
 
