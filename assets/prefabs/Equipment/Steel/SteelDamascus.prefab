@@ -1,14 +1,14 @@
-
+{
     "parent" : "engine:iconItem",
     "Item" : {
         "icon" : "Equipment:SteelDamascus",
-        "damageType" : "KnifeDamage",
+        "damageType" : "knifeDamage",
         "baseCooldownTime" : 300,
         "cooldownTime" : 300
     },
     "DisplayName" : {
         "name" : "Steel Damascus",
-        "description" : "The most dangoures melee Weapon made of steel."
+        "description" : "The most dangerous melee weapon made out of steel."
     },
     "EquipmentItem" : {
         "level" : 15,
@@ -20,3 +20,4 @@
         "weight" : 14,
         "speed" : 20
     }
+}

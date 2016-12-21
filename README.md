@@ -28,7 +28,7 @@ Credits for images:
 * WalkingCane.png by ElBatanony
 * Maul Art by ElBatanony
 * Gold Ring of Survival by Mandar Juvekar (mjuvekar7) 
-* Gold Spear by Arpit Kamboj (digitalripperynr) 
+* Gold Spear, Gold Strength n Luck by Arpit Kamboj (digitalripperynr)
 * Iron War Hammer by Dane Claessen (Dane99)
 * Mystic Flower Ring by Dane Claessen (Dane99) 
 * WoodPendant.png, BronzePendant.png, CopperPendant.png, IronPendant.png, SteelPendant.png, SilverPendant.png, GoldPendant.png, and MysticPendant.png Created by: Patrick Wang
@@ -44,9 +44,17 @@ Credits for images:
 * Gold Katana, Diamond Katana and Magic Gold Necklace by Minege
 * DiamondShieldArmor : https://pixabay.com/en/shields-protection-armor-badge-150633/ (Resized)
 * SteelDamascus: https://pixabay.com/en/blade-knife-sharp-weapon-hunter-158221/ (Resized) 
+* MysticDigger by capybara512, original work (using color palette of existing mystic items)
+* SilverPen: https://pixabay.com/en/pen-compose-indite-writer-33237/
+* Gold Ring of Nimbleness: https://openclipart.org/detail/3967/ring
+* Mystic Espee bastard :https://openclipart.org/detail/4472/jeweled-sword
+* Steel Sabre made my SufurElite 
+* Steel Armor: https://pixabay.com/en/shield-swords-knight-medieval-309126/(Resized)
+* Lucky Copper Sword: https://openclipart.org/detail/2664/sword-or-yellow
+* LegendaryBrahmastra: https://pixabay.com/en/bow-arrow-shaft-bolt-weapon-sport-307275/
+* ArchangelFryingPan: https://pixabay.com/en/pan-cook-sear-frying-pan-554072/
+* Flaming Sword: made by BenjaminAmos (own work)
+
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
-
-
-
