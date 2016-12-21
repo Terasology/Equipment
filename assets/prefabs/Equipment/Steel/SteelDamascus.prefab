@@ -2,13 +2,13 @@
     "parent" : "engine:iconItem",
     "Item" : {
         "icon" : "Equipment:SteelDamascus",
-        "damageType" : "damascusDamage",
+        "damageType" : "KnifeDamage",
         "baseCooldownTime" : 300,
         "cooldownTime" : 300
     },
     "DisplayName" : {
         "name" : "Damascus",
-        "description" : "The most dangoures weapon made of steel."
+        "description" : "The most dangoures melee Weapon made of steel Damascus ."
     },
     "EquipmentItem" : {
         "level" : 15,
