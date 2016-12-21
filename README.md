@@ -43,10 +43,10 @@ Credits for images:
 * Steel Sword: https://pixabay.com/en/sword-knight-fantasy-middle-ages-1762560/ (Rezised)
 * Gold Katana, Diamond Katana and Magic Gold Necklace by Minege
 * DiamondShieldArmor : https://pixabay.com/en/shields-protection-armor-badge-150633/ (Resized)
-
+* SteelDamascus: https://pixabay.com/en/blade-knife-sharp-weapon-hunter-158221/ (Resized) 
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
 
-SteelDamascus:https://cdn.pixabay.com/photo/2013/07/12/13/54/knife-147545_960_720.png (Resized) 
+
 
