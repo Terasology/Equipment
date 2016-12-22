@@ -42,7 +42,8 @@ Credits for images:
 * Iron Espee bastard sword :https://openclipart.org/detail/169233/classic-medieval-sword
 * Steel Sword: https://pixabay.com/en/sword-knight-fantasy-middle-ages-1762560/ (Rezised)
 * Gold Katana, Diamond Katana and Magic Gold Necklace by Minege
-* SteelDamascus:https://cdn.pixabay.com/photo/2013/07/12/13/54/knife-147545_960_720.png (Resized)
+* DiamondShieldArmor : https://pixabay.com/en/shields-protection-armor-badge-150633/ (Resized)
+* SteelDamascus: https://pixabay.com/en/blade-knife-sharp-weapon-hunter-158221/ (Resized) 
 * MysticDigger by capybara512, original work (using color palette of existing mystic items)
 * SilverPen: https://pixabay.com/en/pen-compose-indite-writer-33237/
 * Gold Ring of Nimbleness: https://openclipart.org/detail/3967/ring

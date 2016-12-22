@@ -1,23 +1,23 @@
 {
-    "parent": "engine:iconItem",
-    "Item": {
-        "icon": "Equipment:SteelDamascus",
-        "damageType": "damascusDamage",
-        "baseCooldownTime": 300,
-        "cooldownTime": 300
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SteelDamascus",
+        "damageType" : "knifeDamage",
+        "baseCooldownTime" : 300,
+        "cooldownTime" : 300
     },
-    "DisplayName": {
-        "name": "Damascus",
-        "description": "The most dangerous weapon made of steel."
+    "DisplayName" : {
+        "name" : "Steel Damascus",
+        "description" : "The most dangerous melee weapon made out of steel."
     },
-    "EquipmentItem": {
-        "level": 15,
-        "quality": 2,
-        "type": "Melee Weapon",
-        "location": "Weapon",
-        "attack": 30,
-        "defense": 1,
-        "weight": 14,
-        "speed": 20
+    "EquipmentItem" : {
+        "level" : 15,
+        "quality" : 2,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 30,
+        "defense" : 1,
+        "weight" : 14,
+        "speed" : 20
     }
 }
