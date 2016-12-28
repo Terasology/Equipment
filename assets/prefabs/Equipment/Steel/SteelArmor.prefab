@@ -1,0 +1,30 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SteelArmor"
+    },
+    "DisplayName" : {
+        "name" : "Steel Armor",
+        "description" : "An armor made from steel.Increases your strength by 3 and endurance by 4."
+    },
+    "EquipmentItem" : {
+        "level" : 15,
+        "quality" : 20,
+        "type" : "Body Armor",
+        "location" : "Body",
+        "attack" : 0,
+        "defense" : 3,
+        "weight" : 2,
+        "speed" : 0
+    },
+    "PhysicalStatsModifier" : {
+        "id" : "Steel Armor",
+        "strength" : 3,
+        "dexterity" : 0,
+        "constitution" : 0,
+        "agility" : 0,
+        "endurance" : 4,
+        "charisma" : 0,
+        "luck" : 0
+    }
+}
