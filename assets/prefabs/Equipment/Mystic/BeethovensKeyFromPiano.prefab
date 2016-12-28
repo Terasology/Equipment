@@ -2,7 +2,7 @@
     "parent" : "engine:iconItem",
     "Item" : {
         "icon" : "Equipment:BeethovensKeyFromPiano"
-    }
+    },
     "DisplayName" : {
         "name" : "Beethovens key from piano",
         "description" : "This makes you charismatic almost like Beethoven"
