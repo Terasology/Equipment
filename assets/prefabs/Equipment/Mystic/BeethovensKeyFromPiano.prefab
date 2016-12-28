@@ -1,0 +1,30 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:BeethovensKeyFromPiano"
+    }
+    "DisplayName" : {
+        "name" : "Beethovens key from piano",
+        "description" : "This makes you charismatic almost like Beethoven"
+    },
+    "EquipmentItem" : {
+        "level" : 3,
+        "quality" : 4,
+        "type" : "Ring",
+        "location" : "Ring",
+        "attack" : 0,
+        "defense" : 2,
+        "weight" : 1,
+        "speed" : 1
+    },
+    "PhysicalStatsModifier" : {
+        "id" : "Beethovens key from piano",
+        "strength" : 1,
+        "dexterity" : 0,
+        "constitution" : 1,
+        "agility" : 1,
+        "endurance" : 0,
+        "charisma" : 7,
+        "luck" : 3
+    }
+}

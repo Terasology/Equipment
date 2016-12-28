@@ -14,7 +14,7 @@ Credits for images:
 * GoldDagger inspired by: https://www.pinterest.com/pin/109353097179198323/
 * Falchion: http://opengameart.org/content/32x-sword-icon
 * GoldRing.png by Camellia, original work
-* WoodenNunchaku.png, IronNunchaku.png, SilverChain.png and CentsGoldChain.png by gkaretka
+* WoodenNunchaku.png, IronNunchaku.png, SilverChain.png, CentsGoldChain.png and BeethovensKeyFromPiano.png by gkaretka
 * Gold and Wooden Mace Inspired by: http://poisonedaxiom.deviantart.com/art/Minecraft-Arsenal-303630313
 * Silver Mace Inspired by: http://lotrminecraftmod.wikia.com/wiki/File:Winged_Dalish_Mace.png
 * Steel Mace Inspired by: https://sites.google.com/site/auraofzephyr/gallery
