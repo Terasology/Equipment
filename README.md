@@ -48,7 +48,7 @@ Credits for images:
 * SilverPen: https://pixabay.com/en/pen-compose-indite-writer-33237/
 * Gold Ring of Nimbleness: https://openclipart.org/detail/3967/ring
 * Mystic Espee bastard :https://openclipart.org/detail/4472/jeweled-sword
-* Steel Sabre made my SufurElite 
+* Steel Sabre made by SufurElite
 * Steel Battle Axe of Agility is the steel battle axe edited by SufurElite
 * Steel Armor: https://pixabay.com/en/shield-swords-knight-medieval-309126/(Resized)
 * Lucky Copper Sword: https://openclipart.org/detail/2664/sword-or-yellow
@@ -57,7 +57,7 @@ Credits for images:
 * Flaming Sword: made by BenjaminAmos (own work)
 * Wooden Bo Staff: Made by TheJYKoder (own work)
 * Diamond Ring of Juggernauts: Made by TheJYKoder (own work)
-* Lightsaber: http://novask.in/4517260375359488.png
+* Legendary Lightsaber: Made by meganyyu (own work)
 
 Credits for sounds:
 
