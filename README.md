@@ -28,7 +28,36 @@ Credits for images:
 * WalkingCane.png by ElBatanony
 * Maul Art by ElBatanony
 * Gold Ring of Survival by Mandar Juvekar (mjuvekar7) 
-* Gold Spear by Arpit Kamboj (digitalripperynr) 
+* Gold Spear, Gold Strength n Luck by Arpit Kamboj (digitalripperynr)
+* Iron War Hammer by Dane Claessen (Dane99)
+* Mystic Flower Ring by Dane Claessen (Dane99) 
+* WoodPendant.png, BronzePendant.png, CopperPendant.png, IronPendant.png, SteelPendant.png, SilverPendant.png, GoldPendant.png, and MysticPendant.png Created by: Patrick Wang
+* Iron Scythe: https://openclipart.org/detail/86677/scythe-64x64-icon
+* Laser Sword: https://commons.wikimedia.org/wiki/File:Lightsaber_blue.svg 
+* Mystic Pendant of Endurance edited by NicholasBatesNZ from: https://pixabay.com/p-1430952/?no_redirect
+* Archangel's Fury: https://commons.wikimedia.org/wiki/File:Fist.svg (Resized)
+* Archangel's Heart: Original (Jellysnake)
+* Gold Ring of Swiftness by Jeff Sieu
+* Katana: https://pixabay.com/en/katana-japan-ninja-samurai-sword-154938/
+* Iron Espee bastard sword :https://openclipart.org/detail/169233/classic-medieval-sword
+* Steel Sword: https://pixabay.com/en/sword-knight-fantasy-middle-ages-1762560/ (Rezised)
+* Gold Katana, Diamond Katana and Magic Gold Necklace by Minege
+* DiamondShieldArmor : https://pixabay.com/en/shields-protection-armor-badge-150633/ (Resized)
+* SteelDamascus: https://pixabay.com/en/blade-knife-sharp-weapon-hunter-158221/ (Resized) 
+* MysticDigger by capybara512, original work (using color palette of existing mystic items)
+* SilverPen: https://pixabay.com/en/pen-compose-indite-writer-33237/
+* Gold Ring of Nimbleness: https://openclipart.org/detail/3967/ring
+* Mystic Espee bastard :https://openclipart.org/detail/4472/jeweled-sword
+* Steel Sabre made by SufurElite
+* Steel Battle Axe of Agility is the steel battle axe edited by SufurElite
+* Steel Armor: https://pixabay.com/en/shield-swords-knight-medieval-309126/(Resized)
+* Lucky Copper Sword: https://openclipart.org/detail/2664/sword-or-yellow
+* LegendaryBrahmastra: https://pixabay.com/en/bow-arrow-shaft-bolt-weapon-sport-307275/
+* ArchangelFryingPan: https://pixabay.com/en/pan-cook-sear-frying-pan-554072/
+* Flaming Sword: made by BenjaminAmos (own work)
+* Wooden Bo Staff: Made by TheJYKoder (own work)
+* Diamond Ring of Juggernauts: Made by TheJYKoder (own work)
+* Legendary Lightsaber: Made by meganyyu (own work)
 
 Credits for sounds:
 

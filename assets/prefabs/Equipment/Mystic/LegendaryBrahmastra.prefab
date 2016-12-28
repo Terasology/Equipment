@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:LegendaryBrahmastra",
+        "damageType" : "pierceDamage",
+        "baseCooldownTime" : 10000,
+        "cooldownTime" : 10000
+    },
+    "DisplayName" : {
+        "name" : "Legendary Brahmastra",
+        "description" : "A holy weapon created by God himself. Deals immense damage at the expense of cooldown time."
+    },
+    "EquipmentItem" : {
+        "level" : 50,
+        "quality" : 8,
+        "type" : "Ranged Weapon",
+        "location" : "Weapon",
+        "attack" : 50,
+        "defense" : 0,
+        "weight" : 10,
+        "speed" : 3
+    }
+}

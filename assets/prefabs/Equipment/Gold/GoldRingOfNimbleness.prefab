@@ -1,0 +1,30 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:GoldRingOfNimbleness"
+    },
+    "DisplayName" : {
+        "name" : "Gold Ring of Nimbleness",
+        "description" : "A gold ring with a blue embedded gem. Increases dexterity, agility, and endurance."
+    },
+    "EquipmentItem" : {
+        "level" : 10,
+        "quality" : 4,
+        "type" : "Ring",
+        "location" : "Ring",
+        "attack" : 5,
+        "defense" : 5,
+        "weight" : 0,
+        "speed" : 0
+    },
+    "PhysicalStatsModifier" : {
+        "id" : "Gold Ring of Nimbleness",
+        "strength" : 0,
+        "dexterity" : 10,
+        "constitution" : 0,
+        "agility" : 10,
+        "endurance" : 10,
+        "charisma" : 0,
+        "luck" : 0
+    }
+}

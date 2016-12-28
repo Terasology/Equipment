@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:GoldKatana",
+        "damageType" : "swordDamage",
+        "baseCooldownTime" : 450,
+        "cooldownTime" : 450
+    },
+    "DisplayName" : {
+        "name" : "Gold Katana",
+        "description" : "An traditionally made Japanese long double-handed sword."
+    },
+    "EquipmentItem" : {
+        "level" : 15,
+        "quality" : 5,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 30,
+        "defense" : 0,
+        "weight" : 15,
+        "speed" : 6
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:LegendaryLightsaber",
+        "damageType" : "swordDamage",
+        "baseCooldownTime" : 200,
+        "cooldownTime" : 200
+    },
+    "DisplayName" : {
+        "name" : "Legendary Lightsaber",
+        "description" : "A more powerful laser sword consisting of a plasma blade, powered by a special purple kyber crystal."
+    },
+    "EquipmentItem" : {
+        "level" : 35,
+        "quality" : 5,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 40,
+        "defense" : 40,
+        "weight" : 10,
+        "speed" : 20
+    }
+}
