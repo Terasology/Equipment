@@ -16,21 +16,30 @@
 package org.terasology.equipment.component;
 
 import org.terasology.entitySystem.Component;
+import org.terasology.network.Replicate;
+import org.terasology.reflection.MappedContainer;
 
+@MappedContainer
 public class EquipmentEffectComponent implements Component {
+    /**
+     * This stores this particular effect's ID. Each effect is normally intended to have a different ID, barring
+     * the scenario where certain effects can replace older ones.
+     */
+    @Replicate
+    public String effectID;
 
-    /** the duration for which the effect lasts */
+    /** The duration for which the effect lasts */
     public int duration;
 
-    /** the magnitude of the effect */
+    /** The magnitude of the effect */
     public int magnitude;
 
-    /** whether the effect affects the entity which equips the item */
+    /** Whether the effect affects the entity which equips the item */
     public boolean affectsUser;
 
-    /** whether the effect affects enemies damaged by the item */
+    /** Whether the effect affects enemies damaged by the item */
     public boolean affectsEnemies;
 
-    /** optional id for certain effects */
-    public String id;
+    /** Optional id for certain effects */
+    public String id = "";
 }
