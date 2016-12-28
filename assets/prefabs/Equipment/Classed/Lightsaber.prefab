@@ -1,0 +1,23 @@
+{
+  "parent" : "engine:iconItem",
+  "Item" : {
+    "icon" : "Equipment:Lightsaber",
+    "damageType" : "swordDamage",
+    "baseCooldownTime" : 200,
+    "cooldownTime" : 200
+  },
+  "DisplayName" : {
+    "name" : "Lightsaber",
+    "description" : "A laser sword consisting of a plasma blade, powered by a kyber crystal."
+  },
+  "EquipmentItem" : {
+    "level" : 35,
+    "quality" : 5,
+    "type" : "Melee Weapon",
+    "location" : "Weapon",
+    "attack" : 30,
+    "defense" : 30,
+    "weight" : 10,
+    "speed" : 20
+  }
+}
