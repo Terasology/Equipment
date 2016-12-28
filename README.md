@@ -14,7 +14,7 @@ Credits for images:
 * GoldDagger inspired by: https://www.pinterest.com/pin/109353097179198323/
 * Falchion: http://opengameart.org/content/32x-sword-icon
 * GoldRing.png by Camellia, original work
-* WoodenNunchaku.png, IronNunchaku.png, SilverChain.png by gkaretka
+* WoodenNunchaku.png, IronNunchaku.png, SilverChain.png and CentsGoldChain.png by gkaretka
 * Gold and Wooden Mace Inspired by: http://poisonedaxiom.deviantart.com/art/Minecraft-Arsenal-303630313
 * Silver Mace Inspired by: http://lotrminecraftmod.wikia.com/wiki/File:Winged_Dalish_Mace.png
 * Steel Mace Inspired by: https://sites.google.com/site/auraofzephyr/gallery
@@ -57,7 +57,6 @@ Credits for images:
 * Flaming Sword: made by BenjaminAmos (own work)
 * Wooden Bo Staff: Made by TheJYKoder (own work)
 * Diamond Ring of Juggernauts: Made by TheJYKoder (own work)
-
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
