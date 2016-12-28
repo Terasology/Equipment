@@ -57,6 +57,7 @@ Credits for images:
 * Flaming Sword: made by BenjaminAmos (own work)
 * Wooden Bo Staff: Made by TheJYKoder (own work)
 * Diamond Ring of Juggernauts: Made by TheJYKoder (own work)
+* Lightsaber: http://novask.in/4517260375359488.png
 
 Credits for sounds:
 
