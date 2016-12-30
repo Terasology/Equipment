@@ -1,7 +1,7 @@
 {
     "id" : "Equipment",
     "version" : "0.2.0-SNAPSHOT",
-    "author" : "XTariq, Aditya Singh, ElBatanony, Gautam Naik, iojw (Isaac), Mandar Juvekar, gkaretka, Patrick Wang, smsunarto, Arpit Kamboj(digitalripperynr), Tim Verhaegen (xTimPugz), kallentu, Minege, NicholasBatesNZ,SufurElite, He Who Shall Not Be Named (VaibhavBajaj)",
+    "author" : "XTariq, Aditya Singh, ElBatanony, Gautam Naik, iojw (Isaac), Mandar Juvekar, gkaretka, Patrick Wang, smsunarto, Arpit Kamboj(digitalripperynr), Tim Verhaegen (xTimPugz), kallentu, Minege, NicholasBatesNZ,SufurElite, He Who Shall Not Be Named (VaibhavBajaj), meganyyu",
     "displayName" : "Equipment",
     "description" : "A basic system allowing for characters to have equipment.",
     "dependencies" : [
