@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:DiamondAxe",
+        "damageType" : "axeDamage",
+        "baseCooldownTime" : 600,
+        "cooldownTime" : 600
+    },
+    "DisplayName" : {
+        "name" : "Diamond Axe",
+        "description" : "A diamond axe that can be used for woodcutting or hacking enemies."
+    },
+    "EquipmentItem" : {
+        "level" : 15,
+        "quality" : 5,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 20,
+        "defense" : 0,
+        "weight" : 5,
+        "speed" : 6
+    }
+}
