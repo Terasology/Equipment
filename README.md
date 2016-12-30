@@ -14,7 +14,7 @@ Credits for images:
 * GoldDagger inspired by: https://www.pinterest.com/pin/109353097179198323/
 * Falchion: http://opengameart.org/content/32x-sword-icon
 * GoldRing.png by Camellia, original work
-* WoodenNunchaku.png, IronNunchaku.png, SilverChain.png, CentsGoldChain.png and BeethovensKeyFromPiano.png by gkaretka
+* WoodenNunchaku.png, IronNunchaku.png, SilverChain.png by gkaretka
 * Gold and Wooden Mace Inspired by: http://poisonedaxiom.deviantart.com/art/Minecraft-Arsenal-303630313
 * Silver Mace Inspired by: http://lotrminecraftmod.wikia.com/wiki/File:Winged_Dalish_Mace.png
 * Steel Mace Inspired by: https://sites.google.com/site/auraofzephyr/gallery
@@ -42,13 +42,12 @@ Credits for images:
 * Iron Espee bastard sword :https://openclipart.org/detail/169233/classic-medieval-sword
 * Steel Sword: https://pixabay.com/en/sword-knight-fantasy-middle-ages-1762560/ (Rezised)
 * Gold Katana, Diamond Katana and Magic Gold Necklace by Minege
-* DiamondShieldArmor : https://pixabay.com/en/shields-protection-armor-badge-150633/ (Resized)
-* SteelDamascus: https://pixabay.com/en/blade-knife-sharp-weapon-hunter-158221/ (Resized) 
+* SteelDamascus:https://cdn.pixabay.com/photo/2013/07/12/13/54/knife-147545_960_720.png (Resized)
 * MysticDigger by capybara512, original work (using color palette of existing mystic items)
 * SilverPen: https://pixabay.com/en/pen-compose-indite-writer-33237/
 * Gold Ring of Nimbleness: https://openclipart.org/detail/3967/ring
 * Mystic Espee bastard :https://openclipart.org/detail/4472/jeweled-sword
-* Steel Sabre made by SufurElite
+* Steel Sabre made my SufurElite 
 * Steel Battle Axe of Agility is the steel battle axe edited by SufurElite
 * Steel Armor: https://pixabay.com/en/shield-swords-knight-medieval-309126/(Resized)
 * Lucky Copper Sword: https://openclipart.org/detail/2664/sword-or-yellow
@@ -56,8 +55,15 @@ Credits for images:
 * ArchangelFryingPan: https://pixabay.com/en/pan-cook-sear-frying-pan-554072/
 * Flaming Sword: made by BenjaminAmos (own work)
 * Wooden Bo Staff: Made by TheJYKoder (own work)
-* Diamond Ring of Juggernauts: Made by TheJYKoder (own work)
-* Legendary Lightsaber: Made by meganyyu (own work)
+* Diamond Axe: Made by TheJYKoder (own work)
+* Diamond Dagger: Made by TheJYKoder (own work)
+* Diamond Gloves: Made by TheJYKoder (own work)
+* Diamond Helmet: Made by TheJYKoder (own work)
+* Diamond Mace: Made by TheJYKoder (own work)
+* Diamond Maul: Made by TheJYKoder (own work)
+* Diamond Nunchaku: Made by TheJYKoder (own work)
+* Diamond Spear: Made by TheJYKoder (own work)
+
 
 Credits for sounds:
 
