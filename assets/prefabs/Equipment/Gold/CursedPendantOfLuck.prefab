@@ -22,9 +22,9 @@
         "strength" : 0,
         "dexterity" : 0,
         "constitution" : 0,
-        "agility" : -99999,
+        "agility" : -25,
         "endurance" : 0,
         "charisma" : 0,
-        "luck" : 99999
+        "luck" : 25
     }
 }
