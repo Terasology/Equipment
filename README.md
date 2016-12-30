@@ -55,7 +55,15 @@ Credits for images:
 * ArchangelFryingPan: https://pixabay.com/en/pan-cook-sear-frying-pan-554072/
 * Flaming Sword: made by BenjaminAmos (own work)
 * Wooden Bo Staff: Made by TheJYKoder (own work)
-* Diamond Ring of Juggernauts: Made by TheJYKoder (own work)
+* Diamond Axe: Made by TheJYKoder (own work)
+* Diamond Dagger: Made by TheJYKoder (own work)
+* Diamond Gloves: Made by TheJYKoder (own work)
+* Diamond Helmet: Made by TheJYKoder (own work)
+* Diamond Mace: Made by TheJYKoder (own work)
+* Diamond Maul: Made by TheJYKoder (own work)
+* Diamond Nunchaku: Made by TheJYKoder (own work)
+* Diamond Spear: Made by TheJYKoder (own work)
+
 
 Credits for sounds:
 
