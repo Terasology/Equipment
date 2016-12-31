@@ -4,7 +4,7 @@
         "icon" : "Equipment:WoodRingStrength"
     },
     "DisplayName" : {
-        "name" : "Wood Ring of Strength",
+        "name" : "Wooden Ring of Strength",
         "description" : "A ring made out of Wood that boosts strength by 1."
     },
     "EquipmentItem" : {
@@ -18,7 +18,7 @@
         "speed" : 0
     },
     "PhysicalStatsModifier" : {
-        "id" : "Wood Ring of Strength",
+        "id" : "Wooden Ring of Strength",
         "strength" : 1,
         "dexterity" : 0,
         "constitution" : 0,
