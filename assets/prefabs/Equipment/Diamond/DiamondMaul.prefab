@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:DiamondMaul",
+        "damageType" : "axeDamage",
+        "baseCooldownTime" : 600,
+        "cooldownTime" : 600
+    },
+    "DisplayName" : {
+        "name" : "Diamond Maul",
+        "description" : "A medival hammer made out of diamond designed to smash foes."
+    },
+    "EquipmentItem" : {
+        "level" : 15,
+        "quality" : 5,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 16,
+        "defense" : 0,
+        "weight" : 6,
+        "speed" : 4
+    }
+}
