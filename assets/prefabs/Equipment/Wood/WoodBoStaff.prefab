@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:WoodBoStaff",
+        "damageType" : "bluntDamage",
+        "baseCooldownTime" : 125,
+        "cooldownTime" : 125
+    },
+    "DisplayName" : {
+        "name" : "Wood Bo Staff",
+        "description" : "A Wooden Bo Staff used by many Martial Arts for Offense and Defense."
+    },
+    "EquipmentItem" : {
+        "level" : 0,
+        "quality" : 2,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 2,
+        "defense" : 2,
+        "weight" : 1,
+        "speed" : 3
+    }
+}

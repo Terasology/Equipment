@@ -1,0 +1,31 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:DiamondShieldArmor"
+    },
+    "DisplayName" : {
+        "name" : "Diamond Shield Armor",
+        "description" : "An Diamond Armor Protects the player and help player to fight back."
+    },
+    "EquipmentItem" : {
+        "level" : 5,
+        "quality" : 5,
+        "type" : "Shield",
+        "location" : "Arms",
+        "attack" : 1,
+        "defense" : 10,
+        "weight" : 2,
+        "speed" : 0
+    },
+    "PhysicalStatsModifier" : {
+        "id" : "Diamond Ring of Minor Strength",
+        "strength" : 2,
+        "dexterity" : 0,
+        "constitution" : 0,
+        "agility" : 1,
+        "endurance" : 1,
+        "charisma" : 0,
+        "luck" : 1
+    }
+}
+

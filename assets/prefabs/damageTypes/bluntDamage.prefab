@@ -1,7 +1,12 @@
 {
     "parent" : "physicalDamage",
     "blockDamageModifier" : {
-        "materialDamageMultiplier" : {"leaf" : 0.5, "plant" : 0.5}
+        "materialDamageMultiplier" : {
+        "leaf" : 0.5, 
+        "plant" : 0.5,
+        "rock" : 1.5,
+        "mineral" : 1.5
+        }
     }
 }
 
