@@ -60,6 +60,7 @@ Credits for images:
 * Legendary Lightsaber: Made by meganyyu (own work)
 * Cursed Pendant Of Luck: made by BenjaminAmos (own work)
 * Gold Badge of Luck: made by Anish Sharma
+
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
