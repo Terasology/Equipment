@@ -59,7 +59,7 @@ Credits for images:
 * Diamond Ring of Juggernauts: Made by TheJYKoder (own work)
 * Legendary Lightsaber: Made by meganyyu (own work)
 * Cursed Pendant Of Luck: made by BenjaminAmos (own work)
-* Gold Badge of Luck: made by Anish Sharma
+* Gold Badge of Luck: made by Anish Sharma (own work)
 
 Credits for sounds:
 
