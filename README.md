@@ -38,6 +38,7 @@ Credits for images:
 * Archangel's Fury: https://commons.wikimedia.org/wiki/File:Fist.svg (Resized)
 * Archangel's Heart: Original (Jellysnake)
 * Gold Ring of Swiftness by Jeff Sieu
+* Copper Sabre: https://pixabay.com/en/sea-%E2%80%8B%E2%80%8Bsword-saber-sheath-pendant-1530002/
 * Katana: https://pixabay.com/en/katana-japan-ninja-samurai-sword-154938/
 * Iron Espee bastard sword :https://openclipart.org/detail/169233/classic-medieval-sword
 * Steel Sword: https://pixabay.com/en/sword-knight-fantasy-middle-ages-1762560/ (Rezised)
