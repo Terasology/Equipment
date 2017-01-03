@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:CopperSabre",
+        "damageType" : "swordDamage",
+        "baseCooldownTime" : 600,
+        "cooldownTime" : 600
+    },
+    "DisplayName" : {
+        "name" : "Copper Sabre",
+        "description" : "A type of backsword which will help conquer."
+    },
+    "EquipmentItem" : {
+        "level" : 2,
+        "quality" : 4,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 10,
+        "defense" : 0,
+        "weight" : 4,
+        "speed" : 7
+    }
+}
