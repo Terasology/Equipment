@@ -14,7 +14,7 @@ Credits for images:
 * GoldDagger inspired by: https://www.pinterest.com/pin/109353097179198323/
 * Falchion: http://opengameart.org/content/32x-sword-icon
 * GoldRing.png by Camellia, original work
-* WoodenNunchaku.png, IronNunchaku.png, SilverChain.png by gkaretka
+* WoodenNunchaku.png, IronNunchaku.png, SilverChain.png, CentsGoldChain.png and BeethovensKeyFromPiano.png by gkaretka
 * Gold and Wooden Mace Inspired by: http://poisonedaxiom.deviantart.com/art/Minecraft-Arsenal-303630313
 * Silver Mace Inspired by: http://lotrminecraftmod.wikia.com/wiki/File:Winged_Dalish_Mace.png
 * Steel Mace Inspired by: https://sites.google.com/site/auraofzephyr/gallery
@@ -58,7 +58,10 @@ Credits for images:
 * Wooden Bo Staff: Made by TheJYKoder (own work)
 * Diamond Ring of Juggernauts: Made by TheJYKoder (own work)
 * Legendary Lightsaber: Made by meganyyu (own work)
-* Steel Infinity: https://cdn.pixabay.com/photo/2016/11/19/00/17/infinity-1837437_1280.png
+* Cursed Pendant Of Luck: made by BenjaminAmos (own work)
+* Gold Badge of Luck: made by Anish Sharma (own work)
+* Wooden Ring of Strength: made by PokeyOne (own work)
+* Gold Infinity: https://cdn.pixabay.com/photo/2016/11/19/00/17/infinity-1837437_1280.png
 
 Credits for sounds:
 
