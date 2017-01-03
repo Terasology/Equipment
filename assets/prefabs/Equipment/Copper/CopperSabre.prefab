@@ -6,7 +6,7 @@
 
         "icon" : "Equipment:CopperSabre",
 
-        "damageType" : "axeDamage",
+        "damageType" : "swordDamage",
 
         "baseCooldownTime" : 600,
 
