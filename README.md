@@ -27,6 +27,7 @@ Credits for images:
 * Walking Cane Inspired by: http://dontstarve.wikia.com/wiki/Walking_Cane
 * WalkingCane.png by ElBatanony
 * Maul Art by ElBatanony
+* Steel Hatchet by Ian Santin
 * Gold Ring of Survival by Mandar Juvekar (mjuvekar7) 
 * Gold Spear, Gold Strength n Luck by Arpit Kamboj (digitalripperynr)
 * Iron War Hammer by Dane Claessen (Dane99)
