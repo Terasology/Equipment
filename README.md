@@ -58,6 +58,7 @@ Credits for images:
 * Wooden Bo Staff: Made by TheJYKoder (own work)
 * Diamond Ring of Juggernauts: Made by TheJYKoder (own work)
 * Legendary Lightsaber: Made by meganyyu (own work)
+* Steel Infinity: https://cdn.pixabay.com/photo/2016/11/19/00/17/infinity-1837437_1280.png
 
 Credits for sounds:
 
