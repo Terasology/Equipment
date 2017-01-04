@@ -61,7 +61,7 @@ Credits for images:
 * Cursed Pendant Of Luck: made by BenjaminAmos (own work)
 * Gold Badge of Luck: made by Anish Sharma (own work)
 * Wooden Ring of Strength: made by PokeyOne (own work)
-* Gold Infinity: https://cdn.pixabay.com/photo/2016/11/19/00/17/infinity-1837437_1280.png
+* Gold Infinity: https://pixabay.com/en/infinity-infinite-repeating-loop-1837437/
 
 Credits for sounds:
 
