@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:GoldMace",
+        "damageType" : "bluntDamage",
+        "baseCooldownTime" : 900,
+        "cooldownTime" : 900
+    },
+    "DisplayName" : {
+        "name" : "Gold Mace",
+        "description" : "a weapon with a heavy head on a solid shaft used to bludgeon opponents, made out of gold."
+    },
+    "EquipmentItem" : {
+        "level" : 25,
+        "quality" : 5,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 50,
+        "defense" : 3,
+        "weight" : 15,
+        "speed" : 4
+    }
+}
