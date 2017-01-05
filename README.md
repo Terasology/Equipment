@@ -64,6 +64,7 @@ Credits for images:
 * Gold Badge of Luck: made by Anish Sharma (own work)
 * Wooden Ring of Strength: made by PokeyOne (own work)
 * Gold Infinity: https://pixabay.com/en/infinity-infinite-repeating-loop-1837437/
+* Diamond Longsword: Original by zehata
 
 Credits for sounds:
 
