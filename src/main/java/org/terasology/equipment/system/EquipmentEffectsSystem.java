@@ -162,7 +162,13 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
                     // I need a map of maps.
                     // Map<String, Map<String, EquipmentEffectComponent>>
 
+                    //TEST
+                    if (eec.affectsUser) {
+                        applyEffect(entry.getValue(), eec, entity, entity);
+                    }
+
                     // TODO: Move the following to a function!
+                    /*
                     if (eec.affectsUser) {
                         int duration = 0;
                         int magnitude = 0;
@@ -201,6 +207,7 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
 
                         applyEffect(entry.getValue(), eecCombined, entity, entity);
                     }
+                    */
                 }
             }
         }
@@ -249,7 +256,7 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
             }
         }
 
-        eecCombined.duration = duration;
+        eecCombined.duration = smallestDuration; //duration;
         eecCombined.magnitude = magnitude;
         eecCombined.id = eec.id;
         eecCombined.effectID = effectID; //eec.id;
@@ -284,7 +291,12 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
                         }
                     }
 
+                    //TEST
+                    if (eec.affectsUser) {
+                        removeEffect(entry.getValue(), eec, entity, entity);
+                    }
 
+                    /*
                     if (eec.affectsUser) {
                         removeEffect(entry.getValue(), eec, entity, entity);
 
@@ -327,9 +339,10 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
                         eecCombined.affectsEnemies = affectsEnemies;
 
                         if (duration > 0 && magnitude != 0) {
-                            applyEffect(entry.getValue(), eecCombined, entity, entity);
+                            //applyEffect(entry.getValue(), eecCombined, entity, entity);
                         }
                     }
+                    */
                 }
             }
         }
@@ -382,28 +395,26 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
 
 
     @ReceiveEvent
-    public void onRegenerationEffectApplied(OnEffectModifyEvent event, EntityRef entity) {
-        if (!entity.hasComponent(EquipmentEffectsListComponent.class)) {
+    public void onEquipmentEffectApplied(OnEffectModifyEvent event, EntityRef entity) {
+        EquipmentEffectsListComponent eq = entity.getComponent(EquipmentEffectsListComponent.class);
+        if (eq == null || eq.effects.size() == 0) {
             return;
         }
 
         Class component = alterationEffectComponents.get(event.getAlterationEffect().getClass().getTypeName());
-
-        if (component == null) {
+        if (component == null || eq.effects.get(component.getTypeName()) == null) {
             return;
         }
 
-        EquipmentEffectsListComponent eq = entity.getComponent(EquipmentEffectsListComponent.class);
         EquipmentEffectComponent applyThis = null;
 
-
         for (Entry<String, EquipmentEffectComponent> effectOfThisType :
-                entity.getComponent(EquipmentEffectsListComponent.class).effects.get(component.getTypeName()).entrySet()) {
+                eq.effects.get(component.getTypeName()).entrySet()) {
             applyThis = combineEffectValues(effectOfThisType.getValue(), entity.getComponent(EquipmentEffectsListComponent.class),
-                    component, entity); // NEED TO MOVE APPLY EFFECT TO HERE.
+                    component, entity);
 
             if (applyThis.duration <= 0) {
-                return;
+                //return;
             }
 
             event.addDuration(applyThis.duration, applyThis.effectID);
@@ -454,7 +465,7 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         EquipmentEffectsListComponent eq = entity.getComponent(EquipmentEffectsListComponent.class);
 
         if (eq.effects.get(component.getTypeName() + event.getId()) != null) {
-            eq.effects.remove(component.getTypeName() + event.getId()).remove(event.getEffectId());
+            eq.effects.get(component.getTypeName() + event.getId()).remove(event.getEffectId());
         } else {
             eq.effects.remove(component.getTypeName() + event.getId());
             // TODO: Until I figure out how to remove specific item effects. Perhaps send the item dsecription into the DelayManager ID?

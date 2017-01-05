@@ -19,7 +19,7 @@
     },
     "RegenEffect" : {
         "magnitude" : 30,
-        "duration" : 10000,
+        "duration" : 20000,
         "affectsUser" : true,
         "affectsEnemies" : false
     }
