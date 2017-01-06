@@ -65,6 +65,7 @@ Credits for images:
 * Wooden Ring of Strength: made by PokeyOne (own work)
 * Gold Infinity: https://pixabay.com/en/infinity-infinite-repeating-loop-1837437/
 * Diamond Longsword: Original by zehata
+* Zweihander: By Max Borsch (own work)
 
 Credits for sounds:
 
