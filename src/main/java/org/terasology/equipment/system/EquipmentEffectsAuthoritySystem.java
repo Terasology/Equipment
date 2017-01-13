@@ -59,6 +59,8 @@ public class EquipmentEffectsAuthoritySystem extends BaseComponentSystem impleme
         if (currentTime >= lastUpdated + CHECK_INTERVAL) {
             lastUpdated = currentTime;
 
+            // Iterate through all of the entities that have equipment-based effects, and reduce the duration remaining
+            // on each (as long as they have a finite amount of time).
             for (EntityRef entity : entityManager.getEntitiesWith(EquipmentEffectsListComponent.class)) {
                 final EquipmentEffectsListComponent effectsList = entity.getComponent(EquipmentEffectsListComponent.class);
 
@@ -77,6 +79,7 @@ public class EquipmentEffectsAuthoritySystem extends BaseComponentSystem impleme
 
                             // If this effect has no remaining time, remove it from the equipment effects map.
                             if (effect.getValue().duration <= 0) {
+                                effect.getValue().duration = 0;
                                 effectIter.remove();
                             }
                         }

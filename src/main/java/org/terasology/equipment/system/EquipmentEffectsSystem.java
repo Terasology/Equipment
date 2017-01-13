@@ -16,6 +16,7 @@
 package org.terasology.equipment.system;
 
 import org.terasology.alterationEffects.AlterationEffect;
+import org.terasology.alterationEffects.AlterationEffects;
 import org.terasology.alterationEffects.OnEffectModifyEvent;
 import org.terasology.alterationEffects.OnEffectRemoveEvent;
 import org.terasology.alterationEffects.boost.HealthBoostAlterationEffect;
@@ -87,8 +88,12 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
      * 2. the system knows which AlterationEffect to apply
      */
     private Map<Class, AlterationEffect> effectComponents = new HashMap<>();
+
+    /**
+     * Maps the AlterationEffect class type names to their corresponding EquipmentEffectComponents so that
+     * 1. The system knows what class type String maps to EquipmentEffectComponent.
+     */
     private Map<String, Class> alterationEffectComponents = new HashMap<>();
-    private Map<Class, Class> equipEffectToAlterationEffectMap = new HashMap<>();
 
     @Override
     public void initialise() {
@@ -105,25 +110,11 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         addEffect(SwimSpeedEffectComponent.class, new SwimSpeedAlterationEffect(context));
         addEffect(StunEffectComponent.class, new StunAlterationEffect(context));
         addEffect(WalkSpeedEffectComponent.class, new WalkSpeedAlterationEffect(context));
-
-        addEquipToAlterationRelation(BoostEffectComponent.class, HealthBoostComponent.class);
-        addEquipToAlterationRelation(BreathingEffectComponent.class, WaterBreathingComponent.class);
-        addEquipToAlterationRelation(CureDamageOverTimeEffectComponent.class, CureDamageOverTimeEffectComponent.class);
-        addEquipToAlterationRelation(DamageOverTimeEffectComponent.class, DamageOverTimeComponent.class);
-        addEquipToAlterationRelation(DecoverEffectComponent.class, DecoverComponent.class);
-        addEquipToAlterationRelation(RegenEffectComponent.class, RegenerationComponent.class);
-        addEquipToAlterationRelation(ResistEffectComponent.class, ResistDamageComponent.class);
-        addEquipToAlterationRelation(ItemUseSpeedEffectComponent.class, ItemUseSpeedComponent.class);
-        addEquipToAlterationRelation(JumpSpeedEffectComponent.class, JumpSpeedComponent.class);
-        addEquipToAlterationRelation(MultiJumpEffectComponent.class, MultiJumpComponent.class);
-        addEquipToAlterationRelation(SwimSpeedEffectComponent.class, SwimSpeedComponent.class);
-        addEquipToAlterationRelation(StunEffectComponent.class, StunComponent.class);
-        addEquipToAlterationRelation(WalkSpeedEffectComponent.class, WalkSpeedComponent.class);
     }
 
     @ReceiveEvent
     public void onEquip(EquipItemEvent event, EntityRef entity, EquipmentComponent eq) {
-        //loops through known EquipmentEffectComponents
+        // Loop through known EquipmentEffectComponents.
         for (Entry<Class, AlterationEffect> entry: effectComponents.entrySet()) {
             if (event.getItem().hasComponent(entry.getKey())) {
                 EquipmentEffectComponent eec = (EquipmentEffectComponent) event.getItem().getComponent(entry.getKey());
@@ -134,10 +125,12 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
                         entity.addComponent(new EquipmentEffectsListComponent());
                     }
 
+                    // Get the list of equipment effects on this entity, and set the effectID of this current equipment
+                    // effect to be the associated equipment item's full JSON description.
                     EquipmentEffectsListComponent eqEffectsList = entity.getComponent(EquipmentEffectsListComponent.class);
                     eec.effectID = event.getItem().toFullDescription();
 
-                    // In case of potions that use IDs, have another check. This so that that stuff like individual ResistEffects
+                    // In case of effects that use IDs, have another check. This so that that stuff like individual ResistEffects
                     // with different types of resists (e.g. Poison vs Fire vs Physical) are distinguished and tallied
                     // correctly.
                     if (eec.id.equals("")) {
@@ -157,63 +150,16 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
                         }
                     }
 
-                    // Now, I need to check to see if a list of this type of eq modifier already exists in the map.
-                    // If it does, sum the effects up.
-                    // I need a map of maps.
-                    // Map<String, Map<String, EquipmentEffectComponent>>
-
-                    //TEST
+                    // If this effect affects the user, apply it to the user.
                     if (eec.affectsUser) {
                         applyEffect(entry.getValue(), eec, entity, entity);
                     }
-
-                    // TODO: Move the following to a function!
-                    /*
-                    if (eec.affectsUser) {
-                        int duration = 0;
-                        int magnitude = 0;
-                        boolean affectsUser = true; // Assume this is always true for now.
-                        boolean affectsEnemies = false; // Assume this is always false for now.
-                        String id;
-
-                        EquipmentEffectComponent eecCombined = new EquipmentEffectComponent();
-
-                        // TODO: What happens if we have a poison DOT applied on the user AND enemies?
-                        // How will that be managed?
-                        // If this equip effect has an ID (like Resist or DOT), treat the looping differently.
-                        if (eec.id.equals("")) {
-                            for (Entry<String, EquipmentEffectComponent> effectOfThisType :
-                                    eqEffectsList.effects.get(entry.getKey().getTypeName()).entrySet()) {
-                                if (effectOfThisType.getValue().affectsUser) {
-                                    duration += effectOfThisType.getValue().duration;
-                                    magnitude += effectOfThisType.getValue().magnitude;
-                                }
-                            }
-                        } else {
-                            for (Entry<String, EquipmentEffectComponent> effectOfThisType :
-                                    eqEffectsList.effects.get(entry.getKey().getTypeName()).entrySet()) {
-                                if (effectOfThisType.getValue().id.equalsIgnoreCase(eec.id) && effectOfThisType.getValue().affectsUser) {
-                                    duration += effectOfThisType.getValue().duration;
-                                    magnitude += effectOfThisType.getValue().magnitude;
-                                }
-                            }
-                        }
-
-                        eecCombined.duration = duration;
-                        eecCombined.magnitude = magnitude;
-                        eecCombined.id = eec.id;
-                        eecCombined.affectsUser = affectsUser;
-                        eecCombined.affectsEnemies = affectsEnemies;
-
-                        applyEffect(entry.getValue(), eecCombined, entity, entity);
-                    }
-                    */
                 }
             }
         }
     }
 
-    // Tallies up the magnitude and duration of one type of equipment effect and apply it to the given entity.
+    // Tallies up the magnitude and duration of one type of equipment effect and returns it in one combined EquipmentEffectComponent.
     private EquipmentEffectComponent combineEffectValues(EquipmentEffectComponent eec, EquipmentEffectsListComponent eqEffectsList,
                                      Class effectClass, EntityRef entity) {
         int duration = 0;
@@ -223,52 +169,89 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         boolean affectsEnemies = false; // Assume this is always false for now.
         String effectID = eec.effectID;
 
+        // This flag is used for tracking whether an effect with infinite duration has been found.
+        boolean foundInfDuration = false;
+
         EquipmentEffectComponent eecCombined = new EquipmentEffectComponent();
 
         // TODO: What happens if we have a poison DOT applied on the user AND enemies?
         // How will that be managed?
         // If this equip effect has an ID (like Resist or DOT), treat the looping differently.
+
+        // In case of effects that use IDs, have another check. This so that that stuff like individual ResistEffects
+        // with different types of resists (e.g. Poison vs Fire vs Physical) are distinguished and tallied
+        // correctly.
         if (eec.id.equals("")) {
+            // Iterate through all effects that are under this particular effect class or type.
             for (Entry<String, EquipmentEffectComponent> effectOfThisType :
                     eqEffectsList.effects.get(effectClass.getTypeName()).entrySet()) {
+                // As long as it affects the user, tally up the duration and magnitude, as well as determine the effect
+                // with the shortestDuration and its effectIU.
                 if (effectOfThisType.getValue().affectsUser) {
-                    if (effectOfThisType.getValue().duration < smallestDuration) {
+                    // If the duration of this new effect is below the current tally, and the new duration is not
+                    // infinite, set the smallestDuration and effectID to refer to this effect.
+                    if (effectOfThisType.getValue().duration < smallestDuration
+                            && effectOfThisType.getValue().duration != AlterationEffects.DURATION_INDEFINITE) {
                         smallestDuration = effectOfThisType.getValue().duration;
                         effectID = effectOfThisType.getKey();
                     }
 
-                    duration += effectOfThisType.getValue().duration;
-                    magnitude += effectOfThisType.getValue().magnitude;
+                    // If the duration of this new effect is infinite, set the foundInfDuration flag to true.
+                    if (effectOfThisType.getValue().duration == AlterationEffects.DURATION_INDEFINITE) {
+                        foundInfDuration = true;
+                    }
+
+                    // If the duration of this new effect is non-zero, tally up the total duration and magnitude.
+                    if (effectOfThisType.getValue().duration != 0) {
+                        duration += effectOfThisType.getValue().duration;
+                        magnitude += effectOfThisType.getValue().magnitude;
+                    }
                 }
             }
         } else {
             for (Entry<String, EquipmentEffectComponent> effectOfThisType :
                     eqEffectsList.effects.get(effectClass.getTypeName() + eec.id).entrySet()) {
+                // As long as the effect has the correct type and it affects the user, tally up the duration and
+                // magnitude, as well as determine the effect with the shortestDuration and its effectIU.
                 if (effectOfThisType.getValue().id.equalsIgnoreCase(eec.id) && effectOfThisType.getValue().affectsUser) {
-                    if (effectOfThisType.getValue().duration < smallestDuration) {
+                    // If the duration of this new effect is below the current tally, and the new duration is not
+                    // infinite, set the smallestDuration and effectID to refer to this effect.
+                    if (effectOfThisType.getValue().duration < smallestDuration
+                            && effectOfThisType.getValue().duration != AlterationEffects.DURATION_INDEFINITE) {
                         smallestDuration = effectOfThisType.getValue().duration;
                         effectID = effectOfThisType.getKey();
                     }
 
-                    duration += effectOfThisType.getValue().duration;
-                    magnitude += effectOfThisType.getValue().magnitude;
+                    // If the duration of this new effect is infinite, set the foundInfDuration flag to true.
+                    if (effectOfThisType.getValue().duration == AlterationEffects.DURATION_INDEFINITE) {
+                        foundInfDuration = true;
+                    }
+
+                    // If the duration of this new effect is non-zero, tally up the total duration and magnitude.
+                    if (effectOfThisType.getValue().duration != 0) {
+                        duration += effectOfThisType.getValue().duration;
+                        magnitude += effectOfThisType.getValue().magnitude;
+                    }
                 }
             }
         }
 
-        eecCombined.duration = smallestDuration; //duration;
+        // If the smallestDuration is still at the max value, or it's at 0 amd there was an effect duration found that
+        // was infinite, set the smallestDuration to infinite.
+        if (smallestDuration == Integer.MAX_VALUE || (smallestDuration == 0 && foundInfDuration)) {
+            smallestDuration = AlterationEffects.DURATION_INDEFINITE;
+        }
+
+        // Set the important values of the combined EquipmentEffectComponent
+        eecCombined.duration = smallestDuration;
         eecCombined.magnitude = magnitude;
         eecCombined.id = eec.id;
-        eecCombined.effectID = effectID; //eec.id;
+        eecCombined.effectID = effectID;
         eecCombined.affectsUser = affectsUser;
         eecCombined.affectsEnemies = affectsEnemies;
 
+        // Return the combined EquipmentEffect component.
         return eecCombined;
-        /*
-        if (duration > 0 && magnitude != 0) {
-            applyEffect(entry.getValue(), eecCombined, entity, entity);
-        }
-        */
     }
 
     @ReceiveEvent
@@ -279,6 +262,9 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
                 if (eec != null) {
                     EquipmentEffectsListComponent eqEffectsList = entity.getComponent(EquipmentEffectsListComponent.class);
 
+                    // In case of effects that use IDs, have another check. This so that that stuff like individual ResistEffects
+                    // with different types of resists (e.g. Poison vs Fire vs Physical) are distinguished and tallied
+                    // correctly.
                     if (eqEffectsList != null) {
                         if (eec.id.equals("")) {
                             if (eqEffectsList.effects.containsKey(entry.getKey().getTypeName())) {
@@ -291,58 +277,10 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
                         }
                     }
 
-                    //TEST
+                    // If this effect affects the user, remove it from the user.
                     if (eec.affectsUser) {
                         removeEffect(entry.getValue(), eec, entity, entity);
                     }
-
-                    /*
-                    if (eec.affectsUser) {
-                        removeEffect(entry.getValue(), eec, entity, entity);
-
-                        // TODO: Move the following to a function!
-                        // ----
-
-                        int duration = 0;
-                        int magnitude = 0;
-                        boolean affectsUser = true; // Assume this is always true for now.
-                        boolean affectsEnemies = false; // Assume this is always false for now.
-                        String id;
-
-                        EquipmentEffectComponent eecCombined = new EquipmentEffectComponent();
-
-                        // TODO: What happens if we have a poison DOT applied on the user AND enemies?
-                        // How will that be managed?
-                        // If this equip effect has an ID (like Resist or DOT), treat the looping differently.
-                        if (eec.id.equals("")) {
-                            for (Entry<String, EquipmentEffectComponent> effectOfThisType :
-                                    eqEffectsList.effects.get(entry.getKey().getTypeName()).entrySet()) {
-                                if (effectOfThisType.getValue().affectsUser) {
-                                    duration += effectOfThisType.getValue().duration;
-                                    magnitude += effectOfThisType.getValue().magnitude;
-                                }
-                            }
-                        } else {
-                            for (Entry<String, EquipmentEffectComponent> effectOfThisType :
-                                    eqEffectsList.effects.get(entry.getKey().getTypeName()).entrySet()) {
-                                if (effectOfThisType.getValue().id.equalsIgnoreCase(eec.id) && effectOfThisType.getValue().affectsUser) {
-                                    duration += effectOfThisType.getValue().duration;
-                                    magnitude += effectOfThisType.getValue().magnitude;
-                                }
-                            }
-                        }
-
-                        eecCombined.duration = duration;
-                        eecCombined.magnitude = magnitude;
-                        eecCombined.id = eec.id;
-                        eecCombined.affectsUser = affectsUser;
-                        eecCombined.affectsEnemies = affectsEnemies;
-
-                        if (duration > 0 && magnitude != 0) {
-                            //applyEffect(entry.getValue(), eecCombined, entity, entity);
-                        }
-                    }
-                    */
                 }
             }
         }
@@ -366,10 +304,6 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         alterationEffectComponents.put(alterationEffect.getClass().getTypeName(), eec);
     }
 
-    public void addEquipToAlterationRelation(Class eec, Class aec) {
-        equipEffectToAlterationEffectMap.put(eec, aec);
-    }
-
     private void applyEffect(AlterationEffect alterationEffect, EquipmentEffectComponent eec, EntityRef instigator, EntityRef entity) {
             if (alterationEffect != null) {
                 if (eec.id != null) {
@@ -391,18 +325,20 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         }
     }
 
-    //----
-
-
     @ReceiveEvent
     public void onEquipmentEffectApplied(OnEffectModifyEvent event, EntityRef entity) {
         EquipmentEffectsListComponent eq = entity.getComponent(EquipmentEffectsListComponent.class);
+
+        // If there's no list of equipment effects, or the list is empty, return.
         if (eq == null || eq.effects.size() == 0) {
             return;
         }
 
+        // Get the effect component associated with this alteration effect.
         Class component = alterationEffectComponents.get(event.getAlterationEffect().getClass().getTypeName());
-        if (component == null || eq.effects.get(component.getTypeName()) == null) {
+
+        // If this component doesn't exist, or the given effect is not registered in the effects map, return.
+        if (component == null || eq.effects.get(component.getTypeName() + event.getId()) == null) {
             return;
         }
 
@@ -413,41 +349,11 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
             applyThis = combineEffectValues(effectOfThisType.getValue(), entity.getComponent(EquipmentEffectsListComponent.class),
                     component, entity);
 
-            if (applyThis.duration <= 0) {
-                //return;
-            }
-
             event.addDuration(applyThis.duration, applyThis.effectID);
             event.addMagnitude(applyThis.magnitude);
 
             return;
         }
-
-        /*
-        EquipmentComponent equipmentComponent = entity.getComponent(EquipmentComponent.class);
-
-
-        if (equipmentComponent != null ) {
-            float magnitude = 0;
-            long duration = 0;
-
-            for (EquipmentSlot eqSlot : equipmentComponent.equipmentSlots) {
-                if (eqSlot.itemRefs.get(0).hasComponent(RegenEffectComponent.class)) {
-                    RegenEffectComponent r = eqSlot.itemRefs.get(0).getComponent(RegenEffectComponent.class);
-
-                    magnitude += r.magnitude;
-                    duration += r.duration;
-                }
-            }
-
-            if (duration <= 0) {
-                return;
-            }
-
-            event.addDuration(duration);
-            event.addMagnitude(magnitude);
-        }
-        */
     }
 
     @ReceiveEvent
@@ -465,57 +371,11 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         EquipmentEffectsListComponent eq = entity.getComponent(EquipmentEffectsListComponent.class);
 
         if (eq.effects.get(component.getTypeName() + event.getId()) != null) {
+            String x = event.getEffectId();
+            eq.effects.get(component.getTypeName() + event.getId()).get(event.getEffectId()).duration = 0;
             eq.effects.get(component.getTypeName() + event.getId()).remove(event.getEffectId());
         } else {
             eq.effects.remove(component.getTypeName() + event.getId());
-            // TODO: Until I figure out how to remove specific item effects. Perhaps send the item dsecription into the DelayManager ID?
         }
     }
-    /*
-    @ReceiveEvent
-    public void onRegenerationEffectApplied(OnEffectModifyEvent event, EntityRef entity) {
-        if (!entity.hasComponent(RegenerationComponent.class)) {
-            //return;
-        }
-
-        Class component = alterationEffectComponents.get(event.getAlterationEffect().getClass().getTypeName());
-
-        if (component == null) {
-            return;
-        }
-
-        EquipmentEffectComponent applyThis = null;
-
-        for (Entry<String, EquipmentEffectComponent> effectOfThisType :
-                entity.getComponent(EquipmentEffectsListComponent.class).effects.get(component.getTypeName()).entrySet()) {
-            applyThis = combineEffectValues(effectOfThisType.getValue(), entity.getComponent(EquipmentEffectsListComponent.class),
-                    component, entity); // NEED TO MOVE APPLY EFFECT TO HERE.
-            break;
-        }
-
-        EquipmentComponent equipmentComponent = entity.getComponent(EquipmentComponent.class);
-
-        if (equipmentComponent != null ) {
-            float magnitude = 0;
-            long duration = 0;
-
-            for (EquipmentSlot eqSlot : equipmentComponent.equipmentSlots) {
-                if (eqSlot.itemRefs.get(0).hasComponent(RegenEffectComponent.class)) {
-                    RegenEffectComponent r = eqSlot.itemRefs.get(0).getComponent(RegenEffectComponent.class);
-
-                    magnitude += r.magnitude;
-                    duration += r.duration;
-                }
-            }
-
-            if (duration <= 0) {
-                return;
-            }
-
-            event.addDuration(duration);
-            event.addMagnitude(magnitude);
-        }
-    }
-    */
-
 }
