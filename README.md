@@ -42,6 +42,7 @@ Credits for images:
 * Iron Espee bastard sword :https://openclipart.org/detail/169233/classic-medieval-sword
 * Steel Sword: https://pixabay.com/en/sword-knight-fantasy-middle-ages-1762560/ (Rezised)
 * Mystic Espee bastard :https://openclipart.org/detail/4472/jeweled-sword
+* Gold axe: original work (mdj117)
 
 Credits for sounds:
 
