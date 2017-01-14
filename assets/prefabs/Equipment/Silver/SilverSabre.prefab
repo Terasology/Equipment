@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SilverSabre",
+        "damageType" : "swordDamage",
+        "baseCooldownTime" : 300,
+        "cooldownTime" : 300
+    },
+    "DisplayName" : {
+        "name" : "Silver Sabre",
+        "description" : "A balanceable elite scimitar"
+    },
+    "EquipmentItem" : {
+        "level" : 15,
+        "quality" : 5,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 20,
+        "defense" : 0,
+        "weight" : 10,
+        "speed" : 12
+    }
+}
