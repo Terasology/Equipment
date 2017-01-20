@@ -15,13 +15,10 @@
  */
 package org.terasology.equipment.system;
 
-import org.terasology.alterationEffects.AlterationEffect;
 import org.terasology.alterationEffects.AlterationEffects;
-import org.terasology.alterationEffects.regenerate.RegenerationComponent;
 import org.terasology.engine.Time;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.prefab.Prefab;
 import org.terasology.entitySystem.prefab.PrefabManager;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
@@ -29,34 +26,42 @@ import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.entitySystem.systems.UpdateSubscriberSystem;
 import org.terasology.equipment.component.EquipmentEffectComponent;
 import org.terasology.equipment.component.EquipmentEffectsListComponent;
-import org.terasology.logic.health.DoHealEvent;
-import org.terasology.logic.health.HealthComponent;
 import org.terasology.registry.In;
 
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * This authority system manages the duration updates of every equipment effect modifier in every entity.
+ */
 @RegisterSystem(value = RegisterMode.AUTHORITY)
 public class EquipmentEffectsAuthoritySystem extends BaseComponentSystem implements UpdateSubscriberSystem {
+    /** Integer storing when to check each effect. */
     private static final int CHECK_INTERVAL = 100;
-    private static final int REGENERATION_TICK = 1000;
 
+    /** Last time the list of regen effects were checked. */
     private long lastUpdated;
 
     @In
     private Time time;
-
     @In
     private EntityManager entityManager;
-
     @In
     private PrefabManager prefabManager;
 
+    /**
+     * For every update, check to see if the time's been over the CHECK_INTERVAL. If so, subtract the delta time from
+     * the remaining duration of each equipment effect modifier.
+     *
+     * @param delta The time (in seconds) since the last engine update.
+     */
     @Override
     public void update(float delta) {
         final long currentTime = time.getGameTimeInMs();
 
+        // If the current time passes the CHECK_INTERVAL threshold, continue.
         if (currentTime >= lastUpdated + CHECK_INTERVAL) {
+            // Set the lastUpdated time to be the currentTime.
             lastUpdated = currentTime;
 
             // Iterate through all of the entities that have equipment-based effects, and reduce the duration remaining
