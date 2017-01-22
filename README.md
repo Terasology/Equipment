@@ -66,7 +66,7 @@ Credits for images:
 * Gold Infinity: https://pixabay.com/en/infinity-infinite-repeating-loop-1837437/
 * Diamond Longsword: Original by zehata
 * Zweihander: By Max Borsch (own work)
-
+* GoldAxe: mdj117 own work
 Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
