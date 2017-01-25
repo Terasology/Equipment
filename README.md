@@ -66,6 +66,7 @@ Credits for images:
 * Gold Infinity: https://pixabay.com/en/infinity-infinite-repeating-loop-1837437/
 * Diamond Longsword: Original by zehata
 * Zweihander: By Max Borsch (own work)
+* GoldAxe: mdj117 own work
 * SilverSabre.png by Marvel0usx
 
 Credits for sounds:

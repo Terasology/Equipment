@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:GoldAxe",
+        "damageType" : "axeDamage",
+        "baseCooldownTime" : 600,
+        "cooldownTime" : 600
+    },
+    "DisplayName" : {
+        "name" : "Gold Axe",
+        "description" : "An axe that looks good."
+    },
+    "EquipmentItem" : {
+        "level" : 3,
+        "quality" : 5,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 7,
+        "defense" : 0,
+        "weight" :4,
+        "speed" :7
+    }
+}
