@@ -68,6 +68,14 @@ Credits for images:
 * Zweihander: By Max Borsch (own work)
 * GoldAxe: mdj117 own work
 * SilverSabre.png by Marvel0usx
+* Diamond Axe: Made by TheJYKoder (own work)
+* Diamond Dagger: Made by TheJYKoder (own work)
+* Diamond Gloves: Made by TheJYKoder (own work)
+* Diamond Helmet: Made by TheJYKoder (own work)
+* Diamond Mace: Made by TheJYKoder (own work)
+* Diamond Maul: Made by TheJYKoder (own work)
+* Diamond Nunchaku: Made by TheJYKoder (own work)
+* Diamond Spear: Made by TheJYKoder (own work)
 
 Credits for sounds:
 

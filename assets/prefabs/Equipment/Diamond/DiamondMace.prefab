@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:DiamondMace",
+        "damageType" : "bluntDamage",
+        "baseCooldownTime" : 1000,
+        "cooldownTime" : 1000
+    },
+    "DisplayName" : {
+        "name" : "Diamond Mace",
+        "description" : "A weapon, made out of a diamond mesh at the end of a stick, designed to smack opponents. "
+    },
+    "EquipmentItem" : {
+        "level" : 15,
+        "quality" : 5,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 25,
+        "defense" : 0,
+        "weight" : 6,
+        "speed" : 4
+    }
+}
