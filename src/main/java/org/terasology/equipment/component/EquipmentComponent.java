@@ -26,6 +26,7 @@ import java.util.List;
  * A component that allows an entity to equip items.
  */
 public final class EquipmentComponent implements Component {
+    @Replicate
     public EntityRef equipmentInventory = EntityRef.NULL;
 
     /** The total number of inventory slots. Should be updated when an element of 'equipmentSlots' (List) is changed. */

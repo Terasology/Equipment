@@ -26,16 +26,24 @@ import org.terasology.equipment.component.EquipmentInventoryComponent;
 import org.terasology.equipment.component.EquipmentItemComponent;
 import org.terasology.equipment.component.EquipmentSlot;
 import org.terasology.equipment.event.EquipItemEvent;
+import org.terasology.equipment.event.OnPlayerWithEquipSpawnedEvent;
 import org.terasology.equipment.event.UnequipItemEvent;
 import org.terasology.equipment.ui.CharacterScreenWindow;
+import org.terasology.logic.characters.CharacterComponent;
+import org.terasology.logic.characters.events.DeathEvent;
 import org.terasology.logic.common.DisplayNameComponent;
 import org.terasology.logic.health.BeforeDamagedEvent;
+import org.terasology.logic.health.DoDestroyEvent;
 import org.terasology.logic.inventory.InventoryComponent;
 import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.logic.inventory.InventoryUtils;
 import org.terasology.logic.inventory.events.BeforeItemPutInInventory;
 import org.terasology.logic.inventory.events.BeforeItemRemovedFromInventory;
+import org.terasology.logic.inventory.events.DropItemRequest;
+import org.terasology.logic.location.LocationComponent;
+import org.terasology.logic.players.LocalPlayer;
 import org.terasology.logic.players.event.OnPlayerSpawnedEvent;
+import org.terasology.math.geom.Vector3f;
 import org.terasology.physicalstats.component.PhysicalStatsModifierComponent;
 import org.terasology.physicalstats.component.PhysicalStatsModifiersListComponent;
 import org.terasology.physicalstats.event.OnPhysicalStatChangedEvent;
@@ -58,6 +66,9 @@ public class EquipmentSystem extends BaseComponentSystem {
 
     @In
     private NUIManager nuiManager;
+
+    @In
+    private LocalPlayer localPlayer;
 
     /**
      * Called on startup for initialization.
@@ -131,25 +142,124 @@ public class EquipmentSystem extends BaseComponentSystem {
     }
 
     /**
-     * Initializes equipment- and inventory-related components when the player spawns.
+     * Initializes equipment and inventory-related components when the player spawns.
      *
      * @param event  the event corresponding to the spawning of the player
      * @param player an EntityRef pointing to the player
      * @param eq     the player's equipment component
      */
-    // Instaniate the EquipmentInventory entity companion and store a refernce to it in the player's EquipmentComponent.
     @ReceiveEvent
     public void onPlayerSpawn(OnPlayerSpawnedEvent event, EntityRef player, EquipmentComponent eq) {
+        player.send(new OnPlayerWithEquipSpawnedEvent());
+        /*
         if (eq.equipmentInventory == EntityRef.NULL) {
+            // Instantiate the EquipmentInventory entity companion and store a reference to it in the player's
+            // EquipmentComponent.
             eq.equipmentInventory = entityManager.create("Equipment:EquipmentInventory");
-            InventoryComponent inv =  eq.equipmentInventory.getComponent(InventoryComponent.class);
+            InventoryComponent inv = eq.equipmentInventory.getComponent(InventoryComponent.class);
 
             for (int i = 0; i < eq.numberOfSlots; i++) {
                 inv.itemSlots.add(EntityRef.NULL);
             }
 
+            // Save the equipment components.
             eq.equipmentInventory.saveComponent(inv);
             player.saveComponent(eq);
+
+            // Toggle the CharacterScreen on in case it was NULL.
+            nuiManager.toggleScreen("Equipment:BackupScreen");
+            CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
+
+            // Reinitialize the CharacterScreen so the labels and references are setup properly.
+            if (screen != null) {
+                screen.initialise();
+                screen.updateStats();
+            }
+
+            // Toggle off the CharacterScreen.
+            nuiManager.toggleScreen("Equipment:BackupScreen");
+        }
+        */
+    }
+
+    @ReceiveEvent
+    public void onPlayerSpawn(OnPlayerWithEquipSpawnedEvent event, EntityRef player, EquipmentComponent eq) {
+        if (eq.equipmentInventory == EntityRef.NULL) {
+            // Instantiate the EquipmentInventory entity companion and store a reference to it in the player's
+            // EquipmentComponent.
+            eq.equipmentInventory = entityManager.create("Equipment:EquipmentInventory");
+            InventoryComponent inv = eq.equipmentInventory.getComponent(InventoryComponent.class);
+
+            for (int i = 0; i < eq.numberOfSlots; i++) {
+                inv.itemSlots.add(EntityRef.NULL);
+            }
+
+            // Save the equipment components.
+            eq.equipmentInventory.saveComponent(inv);
+            player.saveComponent(eq);
+
+            if (localPlayer != null) {
+                // Toggle the CharacterScreen on in case it was NULL.
+                nuiManager.toggleScreen("Equipment:BackupScreen");
+                CharacterScreenWindow screen = (CharacterScreenWindow) nuiManager.getScreen("Equipment:BackupScreen");
+
+                // Reinitialize the CharacterScreen so the labels and references are setup properly.
+                if (screen != null) {
+                    //screen.initialise();
+                    screen.reInit();
+                    screen.updateStats();
+                }
+
+                // Toggle off the CharacterScreen.
+                nuiManager.toggleScreen("Equipment:BackupScreen");
+            }
+        }
+    }
+
+    /**
+     * Drops all equipment to the ground and destroys the related equipment inventory entity.
+     *
+     * @param event  The event corresponding to the death of the player.
+     * @param player An EntityRef pointing to the player.
+     * @param eq     The player's equipment component.
+     */
+    @ReceiveEvent(components = {CharacterComponent.class})
+    public void onPlayerDeath(DoDestroyEvent event, EntityRef player, EquipmentComponent eq) {
+        if (eq.equipmentInventory != EntityRef.NULL) {
+            // Add a CharacterComponent and LocationComponent to the equipment inventory entity so that the items
+            // stored in it can be properly dropped onto the world.
+            //eq.equipmentInventory.addComponent(localPlayer.getCharacterEntity().getComponent(LocationComponent.class));
+            eq.equipmentInventory.addComponent(new LocationComponent());
+            eq.equipmentInventory.addComponent(new CharacterComponent());
+
+            InventoryComponent equipmentInv = eq.equipmentInventory.getComponent(InventoryComponent.class);
+
+            // Get the position and direction of the player, and calculate what the new position of the item should be.
+            Vector3f position = localPlayer.getViewPosition();
+            Vector3f direction = localPlayer.getViewDirection();
+            Vector3f newPosition = new Vector3f(position.x + direction.x * 1.5f,
+                    position.y + direction.y * 1.5f,
+                    position.z + direction.z * 1.5f
+            );
+
+            // Based on the direction, create the impulse vector.
+            Vector3f impulseVector = new Vector3f(direction);
+
+            // Drop every item stored in the equipment inventory entity.
+            for (int slot = 0; slot < eq.numberOfSlots; slot++) {
+                // Get the item stored in this slot of the equipment inventory, and if it exists, send a request to
+                // drop it into the world with the given impulse in a certain position.
+                EntityRef equipmentItem = equipmentInv.itemSlots.get(slot);
+                if (equipmentItem.exists()) {
+                    eq.equipmentInventory.send(new DropItemRequest(equipmentItem, eq.equipmentInventory,
+                            impulseVector,
+                            newPosition,
+                            1));
+                }
+            }
+
+            // Once all the items are dropped, destroy the equipment inventory entity.
+            eq.equipmentInventory.destroy();
         }
     }
 
@@ -460,8 +570,10 @@ public class EquipmentSystem extends BaseComponentSystem {
             int phyAtkTotal = 0;
 
             for (int i = 0; i < eq.equipmentSlots.size(); i++) {
-                if (eq.equipmentSlots.get(i).itemRef != EntityRef.NULL) {
-                    phyAtkTotal += eq.equipmentSlots.get(i).itemRef.getComponent(EquipmentItemComponent.class).attack;
+                for (int j = 0; j < eq.equipmentSlots.get(i).itemRefs.size(); j++) {
+                    if (eq.equipmentSlots.get(i).itemRefs.get(j) != EntityRef.NULL) {
+                        phyAtkTotal += eq.equipmentSlots.get(i).itemRefs.get(j).getComponent(EquipmentItemComponent.class).attack;
+                    }
                 }
             }
 

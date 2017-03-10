@@ -20,19 +20,24 @@ import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.equipment.component.EquipmentComponent;
 import org.terasology.equipment.component.EquipmentItemComponent;
 import org.terasology.equipment.component.EquipmentSlot;
+import org.terasology.logic.characters.CharacterComponent;
 import org.terasology.logic.common.DisplayNameComponent;
+import org.terasology.logic.inventory.InventoryComponent;
 import org.terasology.logic.players.LocalPlayer;
 import org.terasology.physicalstats.component.PhysicalStatsComponent;
 import org.terasology.physicalstats.component.PhysicalStatsModifierComponent;
 import org.terasology.physicalstats.component.PhysicalStatsModifiersListComponent;
+import org.terasology.protobuf.EntityData;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.BaseInteractionScreen;
+import org.terasology.rendering.nui.UIWidget;
 import org.terasology.rendering.nui.layers.ingame.inventory.InventoryGrid;
 import org.terasology.rendering.nui.layouts.ColumnLayout;
 import org.terasology.rendering.nui.widgets.UILabel;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -72,8 +77,9 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
     private InventoryGrid playerInventory;
     private InventoryGrid playerEQInventory;
 
-    private EntityRef player;
+    private EntityRef player = EntityRef.NULL;
     private float lastUpdate;
+    private boolean hasSetLabels = false;
 
     /**
      * Initializes the character screen
@@ -96,7 +102,9 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         magicalAttackPower = find("MagAttackPower", UILabel.class);
         magicalDefensePower = find("MagDefensePower", UILabel.class);
         speedPower = find("SpeedPower", UILabel.class);
+    }
 
+    public void reInit() {
         playerInventory = find("playerInventory", InventoryGrid.class);
         playerInventory.setTargetEntity(CoreRegistry.get(LocalPlayer.class).getCharacterEntity());
         playerInventory.setCellOffset(0);
@@ -104,10 +112,30 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
         playerEQInventory = find("playerEQInventory", InventoryGrid.class);
 
-
         player = CoreRegistry.get(LocalPlayer.class).getCharacterEntity();
 
+        // In case the player has been created yet, exit out early to prevent an error.
+        if (player == EntityRef.NULL) {
+            return;
+        }
+
         EquipmentComponent eqC = player.getComponent(EquipmentComponent.class);
+
+        // In case the equipment inventory entity wasn't instantiated back in the EquipmentSystem, instantiate it here.
+        if (eqC.equipmentInventory == EntityRef.NULL) {
+            eqC.equipmentInventory = entityManager.create("Equipment:EquipmentInventory");
+            InventoryComponent inv = eqC.equipmentInventory.getComponent(InventoryComponent.class);
+
+            for (int i = 0; i < eqC.numberOfSlots; i++) {
+                inv.itemSlots.add(EntityRef.NULL);
+            }
+
+            // Save the equipment components.
+            eqC.equipmentInventory.saveComponent(inv);
+            player.saveComponent(eqC);
+
+        }
+
         playerEQInventory.setTargetEntity(eqC.equipmentInventory);
         playerEQInventory.setCellOffset(0);
         playerEQInventory.setMaxCellCount(eqC.numberOfSlots);
@@ -115,6 +143,14 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
         // Create list of labels for each equipment slot.
         eqSlotLabels = new ArrayList<UILabel>();
         eqSlotLabelsLayout = find("eqSlotNamesLayout", ColumnLayout.class);
+
+        Iterator<UIWidget> labelWidgetsIter = eqSlotLabelsLayout.iterator();
+
+        // This is used to clear the old labels.
+        while (labelWidgetsIter.hasNext()) {
+            labelWidgetsIter.next();
+            labelWidgetsIter.remove();
+        }
 
         // Iterate through the list of equipment slots.
         for (EquipmentSlot equipmentSlot : eqC.equipmentSlots) {
@@ -131,6 +167,28 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
                 eqSlotLabelsLayout.addWidget(newLabel);
                 eqSlotLabels.add(newLabel);
             }
+        }
+    }
+
+    @Override
+    public void onOpened() {
+        EntityRef characterEntity = CoreRegistry.get(LocalPlayer.class).getCharacterEntity();
+        CharacterComponent characterComponent = characterEntity.getComponent(CharacterComponent.class);
+
+        // In case the player has been created yet, exit out early to prevent an error.
+        if (characterComponent == null) {
+            return;
+        }
+
+        // If the reference to the player entity hasn't been set yet, call the reInit() method to set it.
+        if (player == EntityRef.NULL || player == null) {
+            reInit();
+        }
+
+        // As long as there's an interaction target, open this window.
+        if (getInteractionTarget() != EntityRef.NULL) {
+            initializeWithInteractionTarget(getInteractionTarget());
+            super.onOpened();
         }
     }
 
@@ -167,6 +225,10 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
      * Updates the character's stats.
      */
     public void updateStats() {
+        if (player == null) {
+            return;
+        }
+
         if (player.hasComponent(EquipmentComponent.class)) {
             EquipmentComponent eq = player.getComponent(EquipmentComponent.class);
             PhysicalStatsComponent phy = player.getComponent(PhysicalStatsComponent.class);

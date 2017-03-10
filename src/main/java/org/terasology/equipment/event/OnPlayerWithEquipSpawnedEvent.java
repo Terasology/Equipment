@@ -13,14 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.equipment.component;
+package org.terasology.equipment.event;
 
-import org.terasology.entitySystem.Component;
-import org.terasology.network.Replicate;
+import org.terasology.entitySystem.event.Event;
+import org.terasology.network.OwnerEvent;
 
-/**
- * A component used to indicate that an entity is an equipment inventory holder.
- */
-@Replicate
-public class EquipmentInventoryComponent implements Component {
+@OwnerEvent
+public class OnPlayerWithEquipSpawnedEvent implements Event {
 }
