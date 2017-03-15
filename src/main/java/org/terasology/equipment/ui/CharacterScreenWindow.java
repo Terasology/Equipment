@@ -32,6 +32,7 @@ import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.BaseInteractionScreen;
 import org.terasology.rendering.nui.UIWidget;
+import org.terasology.rendering.nui.databinding.DefaultBinding;
 import org.terasology.rendering.nui.layers.ingame.inventory.InventoryGrid;
 import org.terasology.rendering.nui.layouts.ColumnLayout;
 import org.terasology.rendering.nui.widgets.UILabel;
@@ -86,6 +87,8 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
      */
     @Override
     public void initialise() {
+        player = EntityRef.NULL;
+
         ingredientsInventory = find("ingredientsInventory", InventoryGrid.class);
 
         strLabel = find("STR", UILabel.class);
@@ -135,8 +138,23 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
             player.saveComponent(eqC);
 
         }
+        // If the number of actual equipment inventory slots is lower than the intended number, create them here.
+        else {
+            InventoryComponent inv = eqC.equipmentInventory.getComponent(InventoryComponent.class);
 
-        playerEQInventory.setTargetEntity(eqC.equipmentInventory);
+            if (inv.itemSlots.size() < eqC.numberOfSlots) {
+                int oldSize = inv.itemSlots.size();
+                for (int i = 0; i < eqC.numberOfSlots - oldSize; i++) {
+                    inv.itemSlots.add(EntityRef.NULL);
+                }
+
+                // Save the equipment components.
+                eqC.equipmentInventory.saveComponent(inv);
+                player.saveComponent(eqC);
+            }
+        }
+
+        playerEQInventory.bindTargetEntity(new DefaultBinding<>(eqC.equipmentInventory));
         playerEQInventory.setCellOffset(0);
         playerEQInventory.setMaxCellCount(eqC.numberOfSlots);
 
@@ -180,8 +198,10 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
             return;
         }
 
-        // If the reference to the player entity hasn't been set yet, call the reInit() method to set it.
-        if (player == EntityRef.NULL || player == null) {
+        // If the reference to the player entity hasn't been set yet, or it refers to a NULL entity, call the reInit()
+        // method to set it. The getId() check is necessary for certain network entities whose ID is 0, but are
+        // erroneously marked as existent.
+        if (!player.exists() || (player.exists() && (player == EntityRef.NULL || player.getId() == 0 || player == null))) {
             reInit();
         }
 
@@ -190,6 +210,9 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
             initializeWithInteractionTarget(getInteractionTarget());
             super.onOpened();
         }
+
+        // Every time the character screen window is opened, update the stats.
+        updateStats();
     }
 
     @Override
@@ -225,7 +248,8 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
      * Updates the character's stats.
      */
     public void updateStats() {
-        if (player == null) {
+        // Only update the stats if the player character entity actually exists.
+        if (player == null || player == EntityRef.NULL || player.getId() == 0) {
             return;
         }
 
@@ -274,7 +298,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
             int thaumacity = 0;
             int resistance = 0;
 
-            int phyAtkTotal = 0;
+            int phyAtkTotal = 1; // Due to how BeforeDamageEvent starts with 1 base damage, this must start with 1 too.
             int phyDefTotal = 0;
             int speedTotal = Math.round(phy.dexterity / 2f);
 
