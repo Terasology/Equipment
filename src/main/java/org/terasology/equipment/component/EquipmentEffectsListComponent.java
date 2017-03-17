@@ -30,6 +30,7 @@ import java.util.Map;
  */
 public class EquipmentEffectsListComponent implements Component {
     /** A map of equipment-based effects being applied to an entity. */
+    @Replicate
     public Map<String, Map<String, EquipmentEffectComponent>> effects =
             new HashMap<String, Map<String, EquipmentEffectComponent>>();
 }

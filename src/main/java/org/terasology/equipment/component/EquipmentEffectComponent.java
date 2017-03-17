@@ -29,17 +29,22 @@ public class EquipmentEffectComponent implements Component {
     public String effectID;
 
     /** The duration for which the effect lasts */
+    @Replicate
     public int duration;
 
     /** The magnitude of the effect */
+    @Replicate
     public int magnitude;
 
     /** Whether the effect affects the entity which equips the item */
+    @Replicate
     public boolean affectsUser;
 
     /** Whether the effect affects enemies damaged by the item */
+    @Replicate
     public boolean affectsEnemies;
 
     /** Optional id for certain effects */
+    @Replicate
     public String id = "";
 }
