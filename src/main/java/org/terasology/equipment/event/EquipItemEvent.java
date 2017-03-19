@@ -18,10 +18,12 @@ package org.terasology.equipment.event;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.Event;
 import org.terasology.equipment.component.EquipmentSlot;
+import org.terasology.network.OwnerEvent;
 
 /**
  * This event is sent to indicate that an entity is about to equip an item.
  */
+@OwnerEvent
 public class EquipItemEvent implements Event {
     private EntityRef character;
     private EntityRef item;
