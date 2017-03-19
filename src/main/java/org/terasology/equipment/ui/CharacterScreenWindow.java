@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 MovingBlocks
+ * Copyright 2017 MovingBlocks
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import org.terasology.logic.players.LocalPlayer;
 import org.terasology.physicalstats.component.PhysicalStatsComponent;
 import org.terasology.physicalstats.component.PhysicalStatsModifierComponent;
 import org.terasology.physicalstats.component.PhysicalStatsModifiersListComponent;
-import org.terasology.protobuf.EntityData;
 import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.BaseInteractionScreen;
@@ -80,7 +79,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
 
     private EntityRef player = EntityRef.NULL;
     private float lastUpdate;
-    private boolean hasSetLabels = false;
+    private boolean hasSetLabels;
 
     /**
      * Initializes the character screen
@@ -137,9 +136,7 @@ public class CharacterScreenWindow extends BaseInteractionScreen {
             eqC.equipmentInventory.saveComponent(inv);
             player.saveComponent(eqC);
 
-        }
-        // If the number of actual equipment inventory slots is lower than the intended number, create them here.
-        else {
+        } else { // If the number of actual equipment inventory slots is lower than the intended number, create them here.
             InventoryComponent inv = eqC.equipmentInventory.getComponent(InventoryComponent.class);
 
             if (inv.itemSlots.size() < eqC.numberOfSlots) {

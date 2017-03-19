@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 MovingBlocks
+ * Copyright 2017 MovingBlocks
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -141,8 +141,7 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
                             eqEffectsList.effects.put(entry.getKey().getTypeName(), new HashMap<String, EquipmentEffectComponent>());
                             eqEffectsList.effects.get(entry.getKey().getTypeName()).put(eec.effectID, eec);
                         }
-                    }
-                    else {
+                    } else {
                         if (eqEffectsList.effects.containsKey(entry.getKey().getTypeName() + eec.id)) {
                             eqEffectsList.effects.get(entry.getKey().getTypeName() + eec.id).put(eec.effectID, eec);
                         } else {
@@ -191,8 +190,7 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         // correctly.
         if (eec.id.equals("")) {
             // Iterate through all effects that are under this particular effect class or type.
-            for (Entry<String, EquipmentEffectComponent> effectOfThisType :
-                    eqEffectsList.effects.get(effectClass.getTypeName()).entrySet()) {
+            for (Entry<String, EquipmentEffectComponent> effectOfThisType : eqEffectsList.effects.get(effectClass.getTypeName()).entrySet()) {
                 // As long as it affects the user, tally up the duration and magnitude, as well as determine the effect
                 // with the shortestDuration and its effectIU.
                 if (effectOfThisType.getValue().affectsUser) {
@@ -217,8 +215,7 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
                 }
             }
         } else {
-            for (Entry<String, EquipmentEffectComponent> effectOfThisType :
-                    eqEffectsList.effects.get(effectClass.getTypeName() + eec.id).entrySet()) {
+            for (Entry<String, EquipmentEffectComponent> effectOfThisType : eqEffectsList.effects.get(effectClass.getTypeName() + eec.id).entrySet()) {
                 // As long as the effect has the correct type and it affects the user, tally up the duration and
                 // magnitude, as well as determine the effect with the shortestDuration and its effectIU.
                 if (effectOfThisType.getValue().id.equalsIgnoreCase(eec.id) && effectOfThisType.getValue().affectsUser) {
@@ -411,8 +408,7 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         EquipmentEffectComponent applyThis = null;
 
         // This loop is only used to get the first element from the map of applicable equipment effects.
-        for (Entry<String, EquipmentEffectComponent> effectOfThisType :
-                eq.effects.get(component.getTypeName()).entrySet()) {
+        for (Entry<String, EquipmentEffectComponent> effectOfThisType : eq.effects.get(component.getTypeName()).entrySet()) {
             // Get the combination of all equipment effect values that have the same type (and subtype if applicable)
             // as this one.
             applyThis = combineEffectValues(effectOfThisType.getValue(), entity.getComponent(EquipmentEffectsListComponent.class),
