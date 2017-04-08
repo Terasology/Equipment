@@ -1,0 +1,23 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:SteelPernach",
+        "damageType" : "axeDamage",
+        "baseCooldownTime" : 500,
+        "cooldownTime" : 500
+    },
+    "DisplayName" : {
+        "name" : "SteelPernach",
+        "description" : "A type of flanged mace made out of steel."
+    },
+    "EquipmentItem" : {
+        "level" : 25,
+        "quality" : 6,
+        "type" : "Melee Weapon",
+        "location" : "Weapon",
+        "attack" : 70,
+        "defense" : 0,
+        "weight" : 34,
+        "speed" : 5
+    }
+}
