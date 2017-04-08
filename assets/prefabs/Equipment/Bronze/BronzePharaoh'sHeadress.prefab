@@ -1,0 +1,20 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:BronzePharaoh'sHeadress"
+    },
+    "DisplayName" : {
+        "name" : "Bronze Pharaoh's Headress",
+        "description" : "A helmet made out of bronze originally for ancient egyptian rulers."
+    },
+    "EquipmentItem" : {
+        "level" : 1,
+        "quality" : 3,
+        "type" : "Head Armor",
+        "location" : "Head",
+        "attack" : 0,
+        "defense" : 6,
+        "weight" : 6,
+        "speed" : -1
+    }
+}
