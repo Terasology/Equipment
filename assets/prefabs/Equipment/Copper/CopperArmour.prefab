@@ -1,0 +1,30 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:CopperArmour"
+    },
+    "DisplayName" : {
+        "name" : "Strong Copper Pendant",
+        "description" : "A copper armour that increase your strength by 4."
+    },
+    "EquipmentItem" : {
+        "level" : 8,
+        "quality" : 5,
+        "type" : "shield",
+        "location" : "shield",
+        "attack" : 1,
+        "defense" : 5,
+        "weight" : 7,
+        "speed" : 2
+    },
+    "PhysicalStatsModifier" : {
+        "id" : "Strong copper armour",
+        "strength" : 1,
+        "dexterity" : 2,
+        "constitution" : 2,
+        "agility" : 1,
+        "endurance" : 0,
+        "charisma" : 0,
+        "luck" : 2
+    }
+}
