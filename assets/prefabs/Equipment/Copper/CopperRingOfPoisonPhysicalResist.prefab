@@ -1,0 +1,36 @@
+{
+    "parent" : "engine:iconItem",
+    "Item" : {
+        "icon" : "Equipment:CopperRing"
+    },
+    "DisplayName" : {
+        "name" : "Copper Ring of Regen",
+        "description" : "An ornamental ring made out of copper. Increases poison and physical resist by 3 and 2 respectively while equipped."
+    },
+    "EquipmentItem" : {
+        "level" : 2,
+        "quality" : 3,
+        "type" : "Ring",
+        "location" : "Ring",
+        "attack" : 0,
+        "defense" : 2,
+        "weight" : 0,
+        "speed" : 0
+    },
+    "ResistEffect" : {
+        "magnitude" : 2,
+        "duration" : -1,
+        "affectsUser" : true,
+        "affectsEnemies" : false,
+        "resistances": {
+            "AlterationEffects:poisonDamage": {
+                "resistType": "AlterationEffects:poisonDamage",
+                "resistAmount": 3
+            },
+            "engine:physicalDamage": {
+                "resistType": "engine:physicalDamage",
+                "resistAmount": 2
+            }
+        }
+    }
+}
