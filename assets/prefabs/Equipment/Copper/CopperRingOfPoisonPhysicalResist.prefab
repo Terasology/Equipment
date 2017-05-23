@@ -23,13 +23,13 @@
         "affectsUser" : true,
         "affectsEnemies" : false,
         "resistances": {
-            "AlterationEffects:poisonDamage": {
-                "resistType": "AlterationEffects:poisonDamage",
-                "resistAmount": 3
-            },
-            "engine:physicalDamage": {
-                "resistType": "engine:physicalDamage",
+            "poisonDamage": {
+                "resistType": "poisonDamage",
                 "resistAmount": 2
+            },
+            "physicalDamage": {
+                "resistType": "physicalDamage",
+                "resistAmount": 5
             }
         }
     }
