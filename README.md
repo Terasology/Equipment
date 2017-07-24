@@ -28,13 +28,13 @@ Credits for images:
 * WalkingCane.png by ElBatanony
 * Maul Art by ElBatanony
 * Steel Hatchet by Ian Santin
-* Gold Ring of Survival by Mandar Juvekar (mjuvekar7) 
+* Gold Ring of Survival by Mandar Juvekar (mjuvekar7)
 * Gold Spear, Gold Strength n Luck by Arpit Kamboj (digitalripperynr)
 * Iron War Hammer by Dane Claessen (Dane99)
-* Mystic Flower Ring by Dane Claessen (Dane99) 
+* Mystic Flower Ring by Dane Claessen (Dane99)
 * WoodPendant.png, BronzePendant.png, CopperPendant.png, IronPendant.png, SteelPendant.png, SilverPendant.png, GoldPendant.png, and MysticPendant.png Created by: Patrick Wang
 * Iron Scythe: https://openclipart.org/detail/86677/scythe-64x64-icon
-* Laser Sword: https://commons.wikimedia.org/wiki/File:Lightsaber_blue.svg 
+* Laser Sword: https://commons.wikimedia.org/wiki/File:Lightsaber_blue.svg
 * Mystic Pendant of Endurance edited by NicholasBatesNZ from: https://pixabay.com/p-1430952/?no_redirect
 * Archangel's Fury: https://commons.wikimedia.org/wiki/File:Fist.svg (Resized)
 * Archangel's Heart: Original (Jellysnake)
@@ -45,7 +45,7 @@ Credits for images:
 * Steel Sword: https://pixabay.com/en/sword-knight-fantasy-middle-ages-1762560/ (Rezised)
 * Gold Katana, Diamond Katana and Magic Gold Necklace by Minege
 * DiamondShieldArmor : https://pixabay.com/en/shields-protection-armor-badge-150633/ (Resized)
-* SteelDamascus: https://pixabay.com/en/blade-knife-sharp-weapon-hunter-158221/ (Resized) 
+* SteelDamascus: https://pixabay.com/en/blade-knife-sharp-weapon-hunter-158221/ (Resized)
 * MysticDigger by capybara512, original work (using color palette of existing mystic items)
 * SilverPen: https://pixabay.com/en/pen-compose-indite-writer-33237/
 * Gold Ring of Nimbleness: https://openclipart.org/detail/3967/ring
@@ -76,6 +76,7 @@ Credits for images:
 * Diamond Maul: Made by TheJYKoder (own work)
 * Diamond Nunchaku: Made by TheJYKoder (own work)
 * Diamond Spear: Made by TheJYKoder (own work)
+* Lightsaber: https://minecraft.novaskin.me/skin/20405735/32X32-RED-LIGHTSABER
 
 Credits for sounds:
 
