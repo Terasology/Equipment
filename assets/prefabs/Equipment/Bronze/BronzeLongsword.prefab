@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:BronzeLongsword",
-        "damageType" : "axeDamage",
-        "baseCooldownTime" : 400,
-        "cooldownTime" : 400
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:BronzeLongsword",
+        "damageType": "axeDamage",
+        "baseCooldownTime": 400,
+        "cooldownTime": 400
     },
-    "DisplayName" : {
-        "name" : "Bronze Long Sword",
-        "description" : "A standard-issue long sword made out of bronze."
+    "DisplayName": {
+        "name": "Bronze Long Sword",
+        "description": "A standard-issue long sword made out of bronze."
     },
-    "EquipmentItem" : {
-        "level" : 1,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 7,
-        "defense" : 0,
-        "weight" : 3,
-        "speed" : 7
+    "EquipmentItem": {
+        "level": 1,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 7,
+        "defense": 0,
+        "weight": 3,
+        "speed": 7
     }
 }

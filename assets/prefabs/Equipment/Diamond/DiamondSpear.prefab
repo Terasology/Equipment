@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:DiamondSpear",
-        "damageType" : "spearDamage",
-        "baseCooldownTime" : 500,
-        "cooldownTime" : 500
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:DiamondSpear",
+        "damageType": "spearDamage",
+        "baseCooldownTime": 500,
+        "cooldownTime": 500
     },
-    "DisplayName" : {
-        "name" : "Diamond Spear",
-        "description" : "A standard-issue spear made out of diamond."
+    "DisplayName": {
+        "name": "Diamond Spear",
+        "description": "A standard-issue spear made out of diamond."
     },
-    "EquipmentItem" : {
-        "level" : 15,
-        "quality" : 5,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 12,
-        "defense" : 0,
-        "weight" : 3,
-        "speed" : 8
+    "EquipmentItem": {
+        "level": 15,
+        "quality": 5,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 12,
+        "defense": 0,
+        "weight": 3,
+        "speed": 8
     }
 }

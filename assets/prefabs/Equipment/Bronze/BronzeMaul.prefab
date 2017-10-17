@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:BronzeMaul",
-        "damageType" : "axeDamage",
-        "baseCooldownTime" : 600,
-        "cooldownTime" : 600
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:BronzeMaul",
+        "damageType": "axeDamage",
+        "baseCooldownTime": 600,
+        "cooldownTime": 600
     },
-    "DisplayName" : {
-        "name" : "Bronze Maul",
-        "description" : "A Mighty Maul to SMASH your foes."
+    "DisplayName": {
+        "name": "Bronze Maul",
+        "description": "A Mighty Maul to SMASH your foes."
     },
-    "EquipmentItem" : {
-        "level" : 1,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 11,
-        "defense" : 0,
-        "weight" : 6,
-        "speed" : 4
+    "EquipmentItem": {
+        "level": 1,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 11,
+        "defense": 0,
+        "weight": 6,
+        "speed": 4
     }
 }

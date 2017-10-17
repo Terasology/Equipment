@@ -1,20 +1,20 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:BronzeLeggings"
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:BronzeLeggings"
     },
-    "DisplayName" : {
-        "name" : "Bronze Leggings",
-        "description" : "Leggings made out of bronze for basic protection."
+    "DisplayName": {
+        "name": "Bronze Leggings",
+        "description": "Leggings made out of bronze for basic protection."
     },
-    "EquipmentItem" : {
-        "level" : 1,
-        "quality" : 3,
-        "type" : "Leg Armor",
-        "location" : "Legs",
-        "attack" : 0,
-        "defense" : 5,
-        "weight" : 5,
-        "speed" : -2
+    "EquipmentItem": {
+        "level": 1,
+        "quality": 3,
+        "type": "Leg Armor",
+        "location": "Legs",
+        "attack": 0,
+        "defense": 5,
+        "weight": 5,
+        "speed": -2
     }
 }

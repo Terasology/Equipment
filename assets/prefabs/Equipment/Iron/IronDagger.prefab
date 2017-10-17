@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:IronDagger",
-        "damageType" : "knifeDamage",
-        "baseCooldownTime" : 225,
-        "cooldownTime" : 225
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:IronDagger",
+        "damageType": "knifeDamage",
+        "baseCooldownTime": 225,
+        "cooldownTime": 225
     },
-    "DisplayName" : {
-        "name" : "Iron Dagger",
-        "description" : "A dagger made out of iron."
+    "DisplayName": {
+        "name": "Iron Dagger",
+        "description": "A dagger made out of iron."
     },
-    "EquipmentItem" : {
-        "level" : 10,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 6,
-        "defense" : 0,
-        "weight" : 3,
-        "speed" : 14
+    "EquipmentItem": {
+        "level": 10,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 6,
+        "defense": 0,
+        "weight": 3,
+        "speed": 14
     }
 }

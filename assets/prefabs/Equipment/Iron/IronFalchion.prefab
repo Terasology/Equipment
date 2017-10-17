@@ -1,23 +1,23 @@
 {
-  "parent" : "engine:iconItem",
-  "Item" : {
-    "icon" : "Equipment:Falchion",
-    "damageType" : "swordDamage",
-    "baseCooldownTime" : 400,
-    "cooldownTime" : 400
-  },
-  "DisplayName" : {
-    "name" : "Falchion",
-    "description" : "A long, one-handed and single-edged sword made of colored iron."
-  },
-  "EquipmentItem" : {
-    "level" : 15,
-    "quality" : 4,
-    "type" : "Melee Weapon",
-    "location" : "Weapon",
-    "attack" : 30,
-    "defense" : 0,
-    "weight" : 15,
-    "speed" : 6
-  }
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:Falchion",
+        "damageType": "swordDamage",
+        "baseCooldownTime": 400,
+        "cooldownTime": 400
+    },
+    "DisplayName": {
+        "name": "Falchion",
+        "description": "A long, one-handed and single-edged sword made of colored iron."
+    },
+    "EquipmentItem": {
+        "level": 15,
+        "quality": 4,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 30,
+        "defense": 0,
+        "weight": 15,
+        "speed": 6
+    }
 }

@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:IronScythe",
-        "damageType" : "knifeDamage",
-        "baseCooldownTime" : 200,
-        "cooldownTime" : 200
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:IronScythe",
+        "damageType": "knifeDamage",
+        "baseCooldownTime": 200,
+        "cooldownTime": 200
     },
-    "DisplayName" : {
-        "name" : "Iron Scythe",
-        "description" : "A long iron blade used for mowing down enemies. The tip can be used as a blade and a hook. A deadly and silent weapon."
+    "DisplayName": {
+        "name": "Iron Scythe",
+        "description": "A long iron blade used for mowing down enemies. The tip can be used as a blade and a hook. A deadly and silent weapon."
     },
-    "EquipmentItem" : {
-        "level" : 10,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 5,
-        "defense" : 2,
-        "weight" : 2,
-        "speed" : 10
+    "EquipmentItem": {
+        "level": 10,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 5,
+        "defense": 2,
+        "weight": 2,
+        "speed": 10
     }
 }

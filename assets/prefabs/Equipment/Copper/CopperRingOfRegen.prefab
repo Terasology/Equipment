@@ -1,26 +1,26 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:CopperRing"
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:CopperRing"
     },
-    "DisplayName" : {
-        "name" : "Copper Ring of Regen",
-        "description" : "An ornamental ring made out of copper. Applies 2 HP/s regen while equipped."
+    "DisplayName": {
+        "name": "Copper Ring of Regen",
+        "description": "An ornamental ring made out of copper. Applies 2 HP/s regen while equipped."
     },
-    "EquipmentItem" : {
-        "level" : 2,
-        "quality" : 3,
-        "type" : "Ring",
-        "location" : "Ring",
-        "attack" : 0,
-        "defense" : 2,
-        "weight" : 0,
-        "speed" : 0
+    "EquipmentItem": {
+        "level": 2,
+        "quality": 3,
+        "type": "Ring",
+        "location": "Ring",
+        "attack": 0,
+        "defense": 2,
+        "weight": 0,
+        "speed": 0
     },
-    "RegenEffect" : {
-        "magnitude" : 2,
-        "duration" : -1,
-        "affectsUser" : true,
-        "affectsEnemies" : false
+    "RegenEffect": {
+        "magnitude": 2,
+        "duration": -1,
+        "affectsUser": true,
+        "affectsEnemies": false
     }
 }

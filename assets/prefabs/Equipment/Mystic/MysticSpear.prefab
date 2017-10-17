@@ -1,27 +1,27 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:MysticSpear",
-        "damageType" : "spearDamage",
-        "baseCooldownTime" : 450,
-        "cooldownTime" : 450
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:MysticSpear",
+        "damageType": "spearDamage",
+        "baseCooldownTime": 450,
+        "cooldownTime": 450
     },
-    "DisplayName" : {
-        "name" : "Mystic Spear",
-        "description" : "A mystical spear."
+    "DisplayName": {
+        "name": "Mystic Spear",
+        "description": "A mystical spear."
     },
-    "EquipmentItem" : {
-        "level" : 20,
-        "quality" : 5,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 35,
-        "defense" : 3,
-        "weight" : 13,
-        "speed" : 10
+    "EquipmentItem": {
+        "level": 20,
+        "quality": 5,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 35,
+        "defense": 3,
+        "weight": 13,
+        "speed": 10
     },
-    "PlaySoundAction" : {
-        "sounds" : [
+    "PlaySoundAction": {
+        "sounds": [
             "Slime1",
             "Slime2",
             "Slime5",

@@ -1,27 +1,27 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:GooeyDagger",
-        "damageType" : "knifeDamage",
-        "baseCooldownTime" : 200,
-        "cooldownTime" : 200
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:GooeyDagger",
+        "damageType": "knifeDamage",
+        "baseCooldownTime": 200,
+        "cooldownTime": 200
     },
-    "DisplayName" : {
-        "name" : "Mystic Dagger",
-        "description" : "A mystical dagger."
+    "DisplayName": {
+        "name": "Mystic Dagger",
+        "description": "A mystical dagger."
     },
-    "EquipmentItem" : {
-        "level" : 15,
-        "quality" : 5,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 9,
-        "defense" : 1,
-        "weight" : 3,
-        "speed" : 16
+    "EquipmentItem": {
+        "level": 15,
+        "quality": 5,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 9,
+        "defense": 1,
+        "weight": 3,
+        "speed": 16
     },
-    "PlaySoundAction" : {
-        "sounds" : [
+    "PlaySoundAction": {
+        "sounds": [
             "Slime1",
             "Slime2",
             "Slime5",

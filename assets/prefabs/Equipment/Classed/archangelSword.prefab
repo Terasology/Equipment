@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:ArchangelSword",
-        "damageType" : "swordDamage",
-        "baseCooldownTime" : 225,
-        "cooldownTime" : 225
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:ArchangelSword",
+        "damageType": "swordDamage",
+        "baseCooldownTime": 225,
+        "cooldownTime": 225
     },
-    "DisplayName" : {
-        "name" : "Archangel Sword",
-        "description" : "A sword forged out of the most precious material, to serve the archangel."
+    "DisplayName": {
+        "name": "Archangel Sword",
+        "description": "A sword forged out of the most precious material, to serve the archangel."
     },
-    "EquipmentItem" : {
-        "level" : 10,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 6,
-        "defense" : 0,
-        "weight" : 3,
-        "speed" : 14
+    "EquipmentItem": {
+        "level": 10,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 6,
+        "defense": 0,
+        "weight": 3,
+        "speed": 14
     }
 }

@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:SteelSabre",
-        "damageType" : "swordDamage",
-        "baseCooldownTime" : 200,
-        "cooldownTime" : 200
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:SteelSabre",
+        "damageType": "swordDamage",
+        "baseCooldownTime": 200,
+        "cooldownTime": 200
     },
-    "DisplayName" : {
-        "name" : "Steel Sabre",
-        "description" : "A sword with a slightly curved blade without too much weight."
+    "DisplayName": {
+        "name": "Steel Sabre",
+        "description": "A sword with a slightly curved blade without too much weight."
     },
-    "EquipmentItem" : {
-        "level" : 20,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 21,
-        "defense" : 5,
-        "weight" : 10,
-        "speed" : 10
+    "EquipmentItem": {
+        "level": 20,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 21,
+        "defense": 5,
+        "weight": 10,
+        "speed": 10
     }
 }

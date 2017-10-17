@@ -1,20 +1,20 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:SteelRing"
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:SteelRing"
     },
-    "DisplayName" : {
-        "name" : "Steel Ring",
-        "description" : "An ornamental ring made out of steel."
+    "DisplayName": {
+        "name": "Steel Ring",
+        "description": "An ornamental ring made out of steel."
     },
-    "EquipmentItem" : {
-        "level" : 6,
-        "quality" : 7,
-        "type" : "Ring",
-        "location" : "Ring",
-        "attack" : 0,
-        "defense" : 6,
-        "weight" : 0,
-        "speed" : 0
+    "EquipmentItem": {
+        "level": 6,
+        "quality": 7,
+        "type": "Ring",
+        "location": "Ring",
+        "attack": 0,
+        "defense": 6,
+        "weight": 0,
+        "speed": 0
     }
 }

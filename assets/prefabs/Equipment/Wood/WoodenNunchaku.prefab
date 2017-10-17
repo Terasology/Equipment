@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:WoodenNunchaku",
-        "damageType" : "knifeDamage",
-        "baseCooldownTime" : 150,
-        "cooldownTime" : 150
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:WoodenNunchaku",
+        "damageType": "knifeDamage",
+        "baseCooldownTime": 150,
+        "cooldownTime": 150
     },
-    "DisplayName" : {
-        "name" : "Wooden Nunchaku",
-        "description" : "A traditional Okinawan martial arts weapon."
+    "DisplayName": {
+        "name": "Wooden Nunchaku",
+        "description": "A traditional Okinawan martial arts weapon."
     },
-    "EquipmentItem" : {
-        "level" : 0,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 3,
-        "defense" : 0,
-        "weight" : 2,
-        "speed" : 2
+    "EquipmentItem": {
+        "level": 0,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 3,
+        "defense": 0,
+        "weight": 2,
+        "speed": 2
     }
 }

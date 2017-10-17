@@ -1,30 +1,30 @@
 {
-  "parent" : "engine:iconItem",
-  "Item" : {
-    "icon" : "Equipment:ArchangelHeart"
-  },
-  "DisplayName" : {
-    "name" : "Archangel's Heart",
-    "description" : "A ring that amplifies the users heart, to serve the archangel"
-  },
-  "EquipmentItem" : {
-    "level" : 2,
-    "quality" : 3,
-    "type" : "Ring",
-    "location" : "Ring",
-    "attack" : 0,
-    "defense" : 2,
-    "weight" : 0,
-    "speed" : 0
-  },
-  "PhysicalStatsModifier" : {
-    "id" : "Archangel's Heart",
-    "strength" : 0,
-    "dexterity" : 0,
-    "constitution" : 5,
-    "agility" : 0,
-    "endurance" : 5,
-    "charisma" : 0,
-    "luck" : 2
-  }
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:ArchangelHeart"
+    },
+    "DisplayName": {
+        "name": "Archangel's Heart",
+        "description": "A ring that amplifies the users heart, to serve the archangel"
+    },
+    "EquipmentItem": {
+        "level": 2,
+        "quality": 3,
+        "type": "Ring",
+        "location": "Ring",
+        "attack": 0,
+        "defense": 2,
+        "weight": 0,
+        "speed": 0
+    },
+    "PhysicalStatsModifier": {
+        "id": "Archangel's Heart",
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 5,
+        "agility": 0,
+        "endurance": 5,
+        "charisma": 0,
+        "luck": 2
+    }
 }

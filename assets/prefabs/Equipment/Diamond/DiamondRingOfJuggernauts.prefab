@@ -1,30 +1,30 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:DiamondRingOfJuggernauts"
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:DiamondRingOfJuggernauts"
     },
-    "DisplayName" : {
-        "name" : "Diamond Ring of Juggernauts",
-        "description" : "The Diamond Ring that Juggernauts wore. Gives immense strength at the cost of movement"
+    "DisplayName": {
+        "name": "Diamond Ring of Juggernauts",
+        "description": "The Diamond Ring that Juggernauts wore. Gives immense strength at the cost of movement"
     },
-    "EquipmentItem" : {
-        "level" : 15,
-        "quality" : 5,
-        "type" : "Ring",
-        "location" : "Ring",
-        "attack" : 5,
-        "defense" : 5,
-        "weight" : 0,
-        "speed" : -1
+    "EquipmentItem": {
+        "level": 15,
+        "quality": 5,
+        "type": "Ring",
+        "location": "Ring",
+        "attack": 5,
+        "defense": 5,
+        "weight": 0,
+        "speed": -1
     },
-    "PhysicalStatsModifier" : {
-        "id" : "Diamond Ring of Juggernauts",
-        "strength" : 5,
-        "dexterity" : -1,
-        "constitution" : 0,
-        "agility" : -1,
-        "endurance" : 2,
-        "charisma" : 2,
-        "luck" : 0
+    "PhysicalStatsModifier": {
+        "id": "Diamond Ring of Juggernauts",
+        "strength": 5,
+        "dexterity": -1,
+        "constitution": 0,
+        "agility": -1,
+        "endurance": 2,
+        "charisma": 2,
+        "luck": 0
     }
 }

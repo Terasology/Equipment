@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:ArchangelFury",
-        "damageType" : "bluntDamage",
-        "baseCooldownTime" : 225    ,
-        "cooldownTime" : 225
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:ArchangelFury",
+        "damageType": "bluntDamage",
+        "baseCooldownTime": 225,
+        "cooldownTime": 225
     },
-    "DisplayName" : {
-        "name" : "Archangel Fury",
-        "description" : "A fury of an archangels raw fists, to serve the archangel."
+    "DisplayName": {
+        "name": "Archangel Fury",
+        "description": "A fury of an archangels raw fists, to serve the archangel."
     },
-    "EquipmentItem" : {
-        "level" : 10,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 4,
-        "defense" : 0,
-        "weight" : 1,
-        "speed" : 20
+    "EquipmentItem": {
+        "level": 10,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 4,
+        "defense": 0,
+        "weight": 1,
+        "speed": 20
     }
 }

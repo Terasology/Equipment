@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:SteelHatchet",
-        "damageType" : "bluntDamage",
-        "baseCooldownTime" : 450,
-        "cooldownTime" : 450
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:SteelHatchet",
+        "damageType": "bluntDamage",
+        "baseCooldownTime": 450,
+        "cooldownTime": 450
     },
-    "DisplayName" : {
-        "name" : "Steel Hatchet",
-        "description" : "A bi-functional tool that has both a hammer and an axe at it's head. Can be used to cut or flatten logs."
+    "DisplayName": {
+        "name": "Steel Hatchet",
+        "description": "A bi-functional tool that has both a hammer and an axe at it's head. Can be used to cut or flatten logs."
     },
-    "EquipmentItem" : {
-        "level" : 15,
-        "quality" : 4,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 25,
-        "defense" : 2,
-        "weight" : 17,
-        "speed" : 4
+    "EquipmentItem": {
+        "level": 15,
+        "quality": 4,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 25,
+        "defense": 2,
+        "weight": 17,
+        "speed": 4
     }
 }

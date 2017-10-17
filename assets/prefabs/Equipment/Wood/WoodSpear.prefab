@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:WoodSpear",
-        "damageType" : "spearDamage",
-        "baseCooldownTime" : 300,
-        "cooldownTime" : 300
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:WoodSpear",
+        "damageType": "spearDamage",
+        "baseCooldownTime": 300,
+        "cooldownTime": 300
     },
-    "DisplayName" : {
-        "name" : "Wood Spear",
-        "description" : "A spear made out of wood."
+    "DisplayName": {
+        "name": "Wood Spear",
+        "description": "A spear made out of wood."
     },
-    "EquipmentItem" : {
-        "level" : 0,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 7,
-        "defense" : 0,
-        "weight" : 1,
-        "speed" : 8
+    "EquipmentItem": {
+        "level": 0,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 7,
+        "defense": 0,
+        "weight": 1,
+        "speed": 8
     }
 }

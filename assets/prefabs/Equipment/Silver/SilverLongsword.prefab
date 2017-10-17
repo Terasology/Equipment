@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:SilverLongsword",
-        "damageType" : "axeDamage",
-        "baseCooldownTime" : 400,
-        "cooldownTime" : 400
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:SilverLongsword",
+        "damageType": "axeDamage",
+        "baseCooldownTime": 400,
+        "cooldownTime": 400
     },
-    "DisplayName" : {
-        "name" : "Silver Long Sword",
-        "description" : "A standard-issue long sword made out of silver."
+    "DisplayName": {
+        "name": "Silver Long Sword",
+        "description": "A standard-issue long sword made out of silver."
     },
-    "EquipmentItem" : {
-        "level" : 30,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 32,
-        "defense" : 5,
-        "weight" : 20,
-        "speed" : 7
+    "EquipmentItem": {
+        "level": 30,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 32,
+        "defense": 5,
+        "weight": 20,
+        "speed": 7
     }
 }

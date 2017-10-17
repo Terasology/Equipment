@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:MysticMaul",
-        "damageType" : "axeDamage",
-        "baseCooldownTime" : 600,
-        "cooldownTime" : 600
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:MysticMaul",
+        "damageType": "axeDamage",
+        "baseCooldownTime": 600,
+        "cooldownTime": 600
     },
-    "DisplayName" : {
-        "name" : "Mystic Maul",
-        "description" : "A Mighty Maul to SMASH your foes."
+    "DisplayName": {
+        "name": "Mystic Maul",
+        "description": "A Mighty Maul to SMASH your foes."
     },
-    "EquipmentItem" : {
-        "level" : 20,
-        "quality" : 5,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 30,
-        "defense" : 0,
-        "weight" : 6,
-        "speed" : 4
+    "EquipmentItem": {
+        "level": 20,
+        "quality": 5,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 30,
+        "defense": 0,
+        "weight": 6,
+        "speed": 4
     }
 }
