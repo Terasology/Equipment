@@ -1,0 +1,72 @@
+## **Image Credits:**
+* Mystic Axe, Silver Spear, Steel Dagger, Iron Spear, Wood Spear, Bronze Spear: http://opengameart.org/content/melee-weapons
+* Steel Scimitar: http://opengameart.org/content/scimitar-sword
+* Steel Battle Axe: http://opengameart.org/content/war-axe-64x64
+* GreatSword inspired by: https://www.amazon.com/Cold-Steel-Handed-Great-Sword/dp/B000Q9GD2Y
+* GoldDagger inspired by: https://www.pinterest.com/pin/109353097179198323/
+* Gold Mace, Wooden Mace Inspired by: http://poisonedaxiom.deviantart.com/art/Minecraft-Arsenal-303630313
+* Silver Mace Inspired by: http://lotrminecraftmod.wikia.com/wiki/File:Winged_Dalish_Mace.png
+* Steel Mace Inspired by: https://sites.google.com/site/auraofzephyr/gallery
+* Bronze Mace Inspired by: http://www.planetminecraft.com/blog/hackmine-motivation/
+* Copper Mace Inspired by: http://minecraft.novaskin.me/gallery/tag/mace?next=E-ABAOsB8gEKdm90ZV9jb3VudPoBAggA7AHrAfIBBWFkZGVk-gEJCMKIt4WvwbgC7AGCAh1qDHN-c2tpbmVkaXRvcnINCxIEU2tpbhi3uMwKDBQ=
+* Mystic Mace Inspired by: http://www.keyword-suggestions.com/cmVkIG1hdHRlciBoYW1tZXI/
+* Iron Mace Inspired by: http://www.keyword-suggestions.com/bWluZWNyYWZ0IG1hY2U/
+* Iron Keris (Resized & Modified): https://commons.wikimedia.org/wiki/File:Semar_Kris_(no_background).png
+* Mystic Necklace (Cropped & Resized): https://pixabay.com/p-665691/?no_redirect
+* Gold Infinity: https://pixabay.com/en/infinity-infinite-repeating-loop-1837437/
+* Walking Cane: http://dontstarve.wikia.com/wiki/Walking_Cane. Edited by ElBatanony
+* Iron Scythe: https://openclipart.org/detail/86677/scythe-64x64-icon
+* Laser Sword: https://commons.wikimedia.org/wiki/File:Lightsaber_blue.svg
+* Mystic Pendant of Endurance: https://pixabay.com/p-1430952/?no_redirect. Edited by NicholasBatesNZ. 
+* Archangel's Fury: https://commons.wikimedia.org/wiki/File:Fist.svg (Resized)
+* CopperSabre: https://pixabay.com/en/sabre-sword-poland-history-king-1859774/
+* Katana: https://pixabay.com/en/katana-japan-ninja-samurai-sword-154938/
+* Iron Espee Bastard Sword:https://openclipart.org/detail/169233/classic-medieval-sword
+* Steel Sword: https://pixabay.com/en/sword-knight-fantasy-middle-ages-1762560/ (Resized)
+* DiamondShieldArmor: https://pixabay.com/en/shields-protection-armor-badge-150633/ (Resized)
+* SteelDamascus: https://pixabay.com/en/blade-knife-sharp-weapon-hunter-158221/ (Resized)
+* SilverPen: https://pixabay.com/en/pen-compose-indite-writer-33237/
+* Gold Ring of Nimbleness: https://openclipart.org/detail/3967/ring
+* Mystic Espee Bastard: https://openclipart.org/detail/4472/jeweled-sword
+* Steel Battle Axe of Agility: http://opengameart.org/content/war-axe-64x64. Edited by SufurElite.
+* Steel Armor: https://pixabay.com/en/shield-swords-knight-medieval-309126/(Resized)
+* Lucky Copper Sword: https://openclipart.org/detail/2664/sword-or-yellow
+* LegendaryBrahmastra: https://pixabay.com/en/bow-arrow-shaft-bolt-weapon-sport-307275/
+* ArchangelFryingPan: https://pixabay.com/en/pan-cook-sear-frying-pan-554072/
+* Falchion: http://opengameart.org/content/32x-sword-iconGoldRing. Created by Camellia
+* Flaming Sword: Created by BenjaminAmos 
+* Wooden Bo Staff: Created by TheJYKoder 
+* Diamond Ring of Juggernauts: Created by TheJYKoder 
+* Legendary Lightsaber: Created by meganyyu 
+* Cursed Pendant Of Luck: Created by BenjaminAmos 
+* Gold Badge of Luck: Created by Anish Sharma 
+* Wooden Ring of Strength: Created by PokeyOne 
+* Diamond Longsword: Created by zehata
+* Zweihander: Created by Max Borsch 
+* GoldAxe: Created by mdj117 
+* Archangel's Heart: Created by Jellysnake
+* Gold Ring of Swiftness: Created by Jeff Sieu
+* MysticDigger: Created by capybara512
+* Silver Sabre: Created by Marvel0usx. Edited by SufurElite.
+* WoodenNunchaku, IronNunchaku, SilverChain, CentsGoldChain and BeethovensKeyFromPiano: Created by gkaretka
+* Maul Art: Created by ElBatanony
+* Steel Hatchet: Created by Ian Santin
+* Gold Katana, Diamond Katana, Magic Gold Necklace: Created by Minege
+* Gold Ring of Survival: Created by Mandar Juvekar (mjuvekar7)
+* Gold Spear, Gold Strength, Luck: Created by Arpit Kamboj (digitalripperynr)
+* Iron War Hammer: Created by Dane Claessen (Dane99)
+* Mystic Flower Ring: Created by Dane Claessen (Dane99)
+* WoodPendant, BronzePendant, CopperPendant, IronPendant, SteelPendant, SilverPendant, GoldPendant, MysticPendant: Created by Patrick Wang
+* Diamond Axe: Created by TheJYKoder 
+* Diamond Dagger: Created by TheJYKoder 
+* Diamond Gloves: Created by TheJYKoder 
+* Diamond Helmet: Created by TheJYKoder 
+* Diamond Mace: Created by TheJYKoder 
+* Diamond Maul: Created by TheJYKoder 
+* Diamond Nunchaku: Created by TheJYKoder 
+* Diamond Spear: Created by TheJYKoder
+* http://opengameart.org/content/pixelart-basic-hero-equipments-icons 
+* http://opengameart.org/content/golden-items-rip-upgrade-pack
+
+## **Sound Credits:**
+* Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
