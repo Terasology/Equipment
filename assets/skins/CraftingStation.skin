@@ -6,7 +6,7 @@
             "background" : "greyedBackground"
         },
         "UILabel" : {
-            "font" : "title"
+            "font" : "NotoSans-Regular-Title"
         },
         "ScrollableArea": {
             "background": "",
