@@ -6,7 +6,7 @@ This module adds a basic equipment system, a character screen, and a few pieces 
 ![Alt text](https://i.imgur.com/YX4JC0H.png)
 
 # Contribution
-Fork and clone this repository locally.
+To fetch and store the module locally, run `groovyw module recurse Equipment` while in the Terasology root folder. Then fork the module and a remote reference using the command `git remote add <remote-name> <your-fork>` in the `/module/Equipment` directory.
 
 ## Creating an Equipment
 To create an Equipment, create a prefab similar to the ones [here](https://github.com/Terasology/Equipment/tree/master/assets/prefabs/Equipment) in `Equipment/assets/prefabs/Equipment/` and add the associated icon to `Equipment/assets/textures/`. For instance, to create an Equipment called "DiamondAxe," the prefab should look like:
