@@ -9,7 +9,7 @@ This module adds a basic equipment system, a character screen, and a few pieces 
 Fork and clone this repository locally.
 
 ## Creating an Equipment
-To create an Equipment, create a prefab similar to the ones [here](https://github.com/Terasology/Equipment/tree/master/assets/prefabs/Equipment) at `Equipment/assets/prefabs/Equipment/` and add the associated icon to `Equipment/assets/textures/`. For instance, to create an Equipment called "DiamondAxe," the prefab should look like:
+To create an Equipment, create a prefab similar to the ones [here](https://github.com/Terasology/Equipment/tree/master/assets/prefabs/Equipment) in `Equipment/assets/prefabs/Equipment/` and add the associated icon to `Equipment/assets/textures/`. For instance, to create an Equipment called "DiamondAxe," the prefab should look like:
 ```
 {
     "parent": "engine:iconItem",
@@ -40,7 +40,7 @@ where "DiamondAxe.png" is the name of the icon file which resides in `Equipment/
 Each equipment has an associated `level`, `quality`, `type`, `location`, `attack`, `defense`, `weight` and `speed`.
 
 ## Creating a damageType
-To create a damageType, create a prefab similar to the ones [here](https://github.com/Terasology/Equipment/tree/master/assets/prefabs/damageTypes) at `Equipment/assets/prefabs/damageTypes/`. The "DiamondAxe" equipment uses the damageType "axeDamage". To create an Equipment called "swordDamage," the prefab should look like:
+To create a damageType, create a prefab similar to the ones [here](https://github.com/Terasology/Equipment/tree/master/assets/prefabs/damageTypes) in `Equipment/assets/prefabs/damageTypes/`. The "DiamondAxe" equipment uses the damageType "axeDamage". To create an Equipment called "swordDamage," the prefab should look like:
 ```
 {
     "parent": "physicalDamage",
