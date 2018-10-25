@@ -3,7 +3,60 @@ Equipment
 
 This module adds a basic equipment system, a character screen, and a few pieces of example equipment.
 
-Credits for images:
+![Alt text](https://i.imgur.com/YX4JC0H.png)
+
+# Contribution
+Fork and clone this repository locally.
+
+## Creating an Equipment
+To create an Equipment, create a prefab similar to the ones [here](https://github.com/Terasology/Equipment/tree/master/assets/prefabs/Equipment) at `Equipment/assets/prefabs/Equipment/` and add the associated icon to `Equipment/assets/textures/`. For instance, to create an Equipment called "DiamondAxe," the prefab should look like:
+```
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:DiamondAxe",
+        "damageType": "axeDamage",
+        "baseCooldownTime": 600,
+        "cooldownTime": 600
+    },
+    "DisplayName": {
+        "name": "Diamond Axe",
+        "description": "A diamond axe that can be used for woodcutting or hacking enemies."
+    },
+    "EquipmentItem": {
+        "level": 15,
+        "quality": 5,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 20,
+        "defense": 0,
+        "weight": 5,
+        "speed": 6
+    }
+}
+```
+where "DiamondAxe.png" is the name of the icon file which resides in `Equipment/assets/textures/`, and
+`DisplayName` carries information relevant to the equipment.
+Each equipment has an associated `level`, `quality`, `type`, `location`, `attack`, `defense`, `weight` and `speed`.
+
+## Creating a damageType
+To create a damageType, create a prefab similar to the ones [here](https://github.com/Terasology/Equipment/tree/master/assets/prefabs/damageTypes) at `Equipment/assets/prefabs/damageTypes/`. The "DiamondAxe" equipment uses the damageType "axeDamage". To create an Equipment called "swordDamage," the prefab should look like:
+```
+{
+    "parent": "physicalDamage",
+    "blockDamageModifier": {
+        "materialDamageMultiplier": {
+            "leaf": 1,
+            "plant": 1
+        }
+    }
+}
+```
+where the  `materialDamageMultiplier` field inside `blockDamageModifier` contains a list of modifiers the damageType contains.
+
+Send in PRs to this repository and feel free to add your name to the authors list in the [module.txt file](https://github.com/Terasology/Equipment/blob/master/module.txt). Also add credits to [this README](https://github.com/Terasology/Equipment/blob/master/README.md) citing sources for textures.
+
+# Credits for images:
 
 * http://opengameart.org/content/pixelart-basic-hero-equipments-icons
 * http://opengameart.org/content/melee-weapons
@@ -77,6 +130,6 @@ Credits for images:
 * Diamond Nunchaku: Made by TheJYKoder (own work)
 * Diamond Spear: Made by TheJYKoder (own work)
 
-Credits for sounds:
+## Credits for sounds:
 
 Inventory Sounds (by artisticdude): http://opengameart.org/content/inventory-sound-effects
