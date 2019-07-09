@@ -57,7 +57,7 @@ import org.terasology.equipment.component.effects.SwimSpeedEffectComponent;
 import org.terasology.equipment.component.effects.WalkSpeedEffectComponent;
 import org.terasology.equipment.event.EquipItemEvent;
 import org.terasology.equipment.event.UnequipItemEvent;
-import org.terasology.logic.health.BeforeDamagedEvent;
+import org.terasology.logic.health.event.BeforeDamagedEvent;
 import org.terasology.registry.In;
 
 import java.util.HashMap;
