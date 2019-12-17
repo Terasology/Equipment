@@ -6,6 +6,7 @@
     "description" : "A basic system allowing for characters to have equipment.",
     "dependencies" : [
         {"id" : "Core", "minVersion" : "2.0.0"},
+        {"id" : "Health", "minVersion" : "0.1.0-SNAPSHOT"},
         {"id" : "PhysicalStats", "minVersion" : "0.1.0"},
         {"id" : "AlterationEffects", "minVersion" : "1.0.0"}
     ],
