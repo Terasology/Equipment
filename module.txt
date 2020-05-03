@@ -7,7 +7,8 @@
     "dependencies" : [
         {"id" : "Health", "minVersion" : "0.1.0-SNAPSHOT"},
         {"id" : "PhysicalStats", "minVersion" : "0.1.0"},
-        {"id" : "AlterationEffects", "minVersion" : "1.0.0"}
+        {"id" : "AlterationEffects", "minVersion" : "1.0.0"},
+        {"id" : "Inventory", "minVersion" : "1.1.0"}
     ],
     "serverSideOnly" : false,
     "isLibrary": true
