@@ -5,10 +5,10 @@
     "displayName": "Equipment",
     "description": "A basic system allowing for characters to have equipment.",
     "dependencies": [
-        { "id": "AlterationEffects", "minVersion": "1.0.0" },
+        { "id": "AlterationEffects", "minVersion": "1.1.0" },
         { "id": "Health", "minVersion": "1.0.0" },
         { "id": "Inventory", "minVersion": "1.1.0" },
-        { "id": "PhysicalStats", "minVersion": "0.1.0" }
+        { "id": "PhysicalStats", "minVersion": "1.0.0" }
     ],
     "serverSideOnly": false,
     "isLibrary": true,
