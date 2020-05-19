@@ -22,6 +22,7 @@ import org.terasology.alterationEffects.OnEffectModifyEvent;
 import org.terasology.alterationEffects.OnEffectRemoveEvent;
 import org.terasology.alterationEffects.boost.HealthBoostAlterationEffect;
 import org.terasology.alterationEffects.breath.WaterBreathingAlterationEffect;
+import org.terasology.alterationEffects.buff.BuffDamageAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.CureAllDamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.damageOverTime.DamageOverTimeAlterationEffect;
 import org.terasology.alterationEffects.decover.DecoverAlterationEffect;
@@ -42,6 +43,7 @@ import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.equipment.component.EquipmentEffectsListComponent;
 import org.terasology.equipment.component.effects.BoostEffectComponent;
 import org.terasology.equipment.component.effects.BreathingEffectComponent;
+import org.terasology.equipment.component.effects.BuffEffectComponent;
 import org.terasology.equipment.component.effects.CureDamageOverTimeEffectComponent;
 import org.terasology.equipment.component.effects.DamageOverTimeEffectComponent;
 import org.terasology.equipment.component.effects.DecoverEffectComponent;
@@ -95,6 +97,7 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
     public void initialise() {
         addEffect(BoostEffectComponent.class, new HealthBoostAlterationEffect(context));
         addEffect(BreathingEffectComponent.class, new WaterBreathingAlterationEffect(context));
+        addEffect(BuffEffectComponent.class, new BuffDamageAlterationEffect(context));
         addEffect(CureDamageOverTimeEffectComponent.class, new CureAllDamageOverTimeAlterationEffect(context));
         addEffect(DamageOverTimeEffectComponent.class, new DamageOverTimeAlterationEffect(context));
         addEffect(DecoverEffectComponent.class, new DecoverAlterationEffect(context));
