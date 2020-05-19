@@ -1,20 +1,20 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:BronzeGloves"
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:BronzeGloves"
     },
-    "DisplayName" : {
-        "name" : "Bronze Gloves",
-        "description" : "Gloves made out of bronze for basic protection."
+    "DisplayName": {
+        "name": "Bronze Gloves",
+        "description": "Gloves made out of bronze for basic protection."
     },
-    "EquipmentItem" : {
-        "level" : 1,
-        "quality" : 3,
-        "type" : "Hand Armor",
-        "location" : "Hands",
-        "attack" : 0,
-        "defense" : 2,
-        "weight" : 1,
-        "speed" : 0
+    "EquipmentItem": {
+        "level": 1,
+        "quality": 3,
+        "type": "Hand Armor",
+        "location": "Hands",
+        "attack": 0,
+        "defense": 2,
+        "weight": 1,
+        "speed": 0
     }
 }

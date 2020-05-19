@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:IronSpear",
-        "damageType" : "spearDamage",
-        "baseCooldownTime" : 500,
-        "cooldownTime" : 500
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:IronSpear",
+        "damageType": "spearDamage",
+        "baseCooldownTime": 500,
+        "cooldownTime": 500
     },
-    "DisplayName" : {
-        "name" : "Iron Spear",
-        "description" : "A standard-issue spear made out of iron."
+    "DisplayName": {
+        "name": "Iron Spear",
+        "description": "A standard-issue spear made out of iron."
     },
-    "EquipmentItem" : {
-        "level" : 10,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 18,
-        "defense" : 0,
-        "weight" : 8,
-        "speed" : 8
+    "EquipmentItem": {
+        "level": 10,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 18,
+        "defense": 0,
+        "weight": 8,
+        "speed": 8
     }
 }

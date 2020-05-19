@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:SilverAxe",
-        "damageType" : "axeDamage",
-        "baseCooldownTime" : 600,
-        "cooldownTime" : 600
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:SilverAxe",
+        "damageType": "axeDamage",
+        "baseCooldownTime": 600,
+        "cooldownTime": 600
     },
-    "DisplayName" : {
-        "name" : "Silver Axe",
-        "description" : "An axe that can be used for woodcutting or even self-defense."
+    "DisplayName": {
+        "name": "Silver Axe",
+        "description": "An axe that can be used for woodcutting or even self-defense."
     },
-    "EquipmentItem" : {
-        "level" : 5,
-        "quality" : 7,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 13,
-        "defense" : 0,
-        "weight" : 1,
-        "speed" : 10
+    "EquipmentItem": {
+        "level": 5,
+        "quality": 7,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 13,
+        "defense": 0,
+        "weight": 1,
+        "speed": 10
     }
 }

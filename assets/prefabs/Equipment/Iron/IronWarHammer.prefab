@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:IronWarHammer",
-        "damageType" : "hammerDamage",
-        "baseCooldownTime" : 400,
-        "cooldownTime" : 400
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:IronWarHammer",
+        "damageType": "hammerDamage",
+        "baseCooldownTime": 400,
+        "cooldownTime": 400
     },
-    "DisplayName" : {
-        "name" : "War Hammer",
-        "description" : "A Hammer used primarily for combat."
+    "DisplayName": {
+        "name": "War Hammer",
+        "description": "A Hammer used primarily for combat."
     },
-    "EquipmentItem" : {
-        "level" : 4,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 15,
-        "defense" : 0,
-        "weight" :2,
-        "speed" :6
+    "EquipmentItem": {
+        "level": 4,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 15,
+        "defense": 0,
+        "weight": 2,
+        "speed": 6
     }
 }

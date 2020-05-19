@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:SteelScimitar",
-        "damageType" : "axeDamage",
-        "baseCooldownTime" : 300,
-        "cooldownTime" : 300
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:SteelScimitar",
+        "damageType": "axeDamage",
+        "baseCooldownTime": 300,
+        "cooldownTime": 300
     },
-    "DisplayName" : {
-        "name" : "Steel Scimitar",
-        "description" : "A curved steel sword of Middle Eastern origin."
+    "DisplayName": {
+        "name": "Steel Scimitar",
+        "description": "A curved steel sword of Middle Eastern origin."
     },
-    "EquipmentItem" : {
-        "level" : 20,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 28,
-        "defense" : 0,
-        "weight" : 13,
-        "speed" : 10
+    "EquipmentItem": {
+        "level": 20,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 28,
+        "defense": 0,
+        "weight": 13,
+        "speed": 10
     }
 }

@@ -15,6 +15,7 @@
  */
 package org.terasology.equipment.system;
 
+import com.google.common.collect.Lists;
 import org.terasology.alterationEffects.AlterationEffect;
 import org.terasology.alterationEffects.AlterationEffects;
 import org.terasology.alterationEffects.OnEffectModifyEvent;
@@ -27,6 +28,7 @@ import org.terasology.alterationEffects.damageOverTime.DamageOverTimeAlterationE
 import org.terasology.alterationEffects.decover.DecoverAlterationEffect;
 import org.terasology.alterationEffects.regenerate.RegenerationAlterationEffect;
 import org.terasology.alterationEffects.resist.ResistDamageAlterationEffect;
+import org.terasology.alterationEffects.resist.ResistDamageEffect;
 import org.terasology.alterationEffects.speed.ItemUseSpeedAlterationEffect;
 import org.terasology.alterationEffects.speed.JumpSpeedAlterationEffect;
 import org.terasology.alterationEffects.speed.MultiJumpAlterationEffect;
@@ -57,10 +59,11 @@ import org.terasology.equipment.component.effects.SwimSpeedEffectComponent;
 import org.terasology.equipment.component.effects.WalkSpeedEffectComponent;
 import org.terasology.equipment.event.EquipItemEvent;
 import org.terasology.equipment.event.UnequipItemEvent;
-import org.terasology.logic.health.BeforeDamagedEvent;
+import org.terasology.logic.health.event.BeforeDamagedEvent;
 import org.terasology.registry.In;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -69,7 +72,6 @@ import java.util.Map.Entry;
  */
 @RegisterSystem
 public class EquipmentEffectsSystem extends BaseComponentSystem {
-
     @In
     private Context context;
 
@@ -85,6 +87,8 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
      * 1. The system knows what class type String maps to EquipmentEffectComponent.
      */
     private Map<String, Class> alterationEffectComponents = new HashMap<>();
+
+    private List<Class> multiDamageEffects = Lists.newArrayList();
 
     /**
      * Initialize both maps.
@@ -105,6 +109,8 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         addEffect(SwimSpeedEffectComponent.class, new SwimSpeedAlterationEffect(context));
         addEffect(StunEffectComponent.class, new StunAlterationEffect(context));
         addEffect(WalkSpeedEffectComponent.class, new WalkSpeedAlterationEffect(context));
+
+        multiDamageEffects.add(ResistEffectComponent.class);
     }
 
     /**
@@ -191,7 +197,58 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         // In case of effects that use IDs, have another check. This so that that stuff like individual ResistEffects
         // with different types of resists (e.g. Poison vs Fire vs Physical) are distinguished and tallied
         // correctly.
-        if (eec.id.equals("")) {
+        if (multiDamageEffects.contains(eec.getClass())) {
+            ResistEffectComponent recCombined = new ResistEffectComponent();
+            // Iterate through all effects that are under this particular effect class or type.
+            for (Entry<String, EquipmentEffectComponent> effectOfThisType : eqEffectsList.effects.get(effectClass.getTypeName()).entrySet()) {
+                if (effectOfThisType.getValue().affectsUser) {
+                    ResistEffectComponent resistEffectOfThisType = (ResistEffectComponent) effectOfThisType.getValue();
+                    // If the duration of this new effect is below the current tally, and the new duration is not
+                    // infinite, set the smallestDuration and effectID to refer to this effect.
+                    if (effectOfThisType.getValue().duration < smallestDuration
+                            && effectOfThisType.getValue().duration != AlterationEffects.DURATION_INDEFINITE) {
+                        smallestDuration = effectOfThisType.getValue().duration;
+                        effectID = effectOfThisType.getKey();
+                    }
+
+                    // If the duration of this new effect is infinite, set the foundInfDuration flag to true.
+                    if (effectOfThisType.getValue().duration == AlterationEffects.DURATION_INDEFINITE) {
+                        foundInfDuration = true;
+                    }
+
+                    // If the duration of this new effect is non-zero, tally up the total duration and magnitude.
+                    if (effectOfThisType.getValue().duration != 0) {
+                        duration += effectOfThisType.getValue().duration;
+                        // Loop over individual damage resistances in each component.
+                        for (Entry<String, ResistDamageEffect> resistDamageType : resistEffectOfThisType.resistances.entrySet()) {
+                            ResistDamageEffect rde = recCombined.resistances.get(resistDamageType.getValue().resistType);
+                            if (rde == null) {
+                                ResistDamageEffect rdeCombined = new ResistDamageEffect();
+                                rdeCombined.resistType = resistDamageType.getValue().resistType;
+                                rdeCombined.resistAmount = resistDamageType.getValue().resistAmount;
+                                recCombined.resistances.put(resistDamageType.getValue().resistType, rdeCombined);
+                            } else {
+                                rde.resistAmount += resistDamageType.getValue().resistAmount;
+                            }
+                        }
+                    }
+                }
+            }
+            // If the smallestDuration is still at the max value, or it's at 0 amd there was an effect duration found that
+            // was infinite, set the smallestDuration to infinite.
+            if (smallestDuration == Integer.MAX_VALUE || (smallestDuration == 0 && foundInfDuration)) {
+                smallestDuration = AlterationEffects.DURATION_INDEFINITE;
+            }
+
+            // Set the important values of the combined EquipmentEffectComponent
+            recCombined.duration = smallestDuration;
+            recCombined.effectID = effectID;
+            recCombined.affectsUser = affectsUser;
+            recCombined.affectsEnemies = affectsEnemies;
+
+            // Return the combined EquipmentEffect component.
+            return recCombined;
+        } else if (eec.id.equals("")) {
             // Iterate through all effects that are under this particular effect class or type.
             for (Entry<String, EquipmentEffectComponent> effectOfThisType : eqEffectsList.effects.get(effectClass.getTypeName()).entrySet()) {
                 // As long as it affects the user, tally up the duration and magnitude, as well as determine the effect
@@ -353,7 +410,12 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
     private void applyEffect(AlterationEffect alterationEffect, EquipmentEffectComponent eec, EntityRef instigator, EntityRef entity) {
         // As long as the alteration effect is not NULL, apply the eec onto the entity.
         if (alterationEffect != null) {
-            if (eec.id != null) {
+            if (multiDamageEffects.contains(eec.getClass())) {
+                ResistEffectComponent rec = (ResistEffectComponent) eec;
+                for (Entry<String, ResistDamageEffect> resistance : rec.resistances.entrySet()) {
+                    alterationEffect.applyEffect(instigator, entity, resistance.getValue().resistType, resistance.getValue().resistAmount, eec.duration);
+                }
+            } else if (eec.id != null) {
                 alterationEffect.applyEffect(instigator, entity, eec.id, eec.magnitude, eec.duration);
             } else {
                 alterationEffect.applyEffect(instigator, entity, eec.magnitude, eec.duration);
@@ -375,7 +437,12 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
     private void removeEffect(AlterationEffect alterationEffect, EquipmentEffectComponent eec, EntityRef instigator, EntityRef entity) {
         // As long as the alteration effect is not NULL, apply the eec with a duration of 0 onto the entity.
         if (alterationEffect != null) {
-            if (eec.id != null) {
+            if (multiDamageEffects.contains(eec.getClass())) {
+                ResistEffectComponent rec = (ResistEffectComponent) eec;
+                for (Entry<String, ResistDamageEffect> resistance : rec.resistances.entrySet()) {
+                    alterationEffect.applyEffect(instigator, entity, resistance.getValue().resistType, resistance.getValue().resistAmount, 0);
+                }
+            } else if (eec.id != null) {
                 alterationEffect.applyEffect(instigator, entity, eec.id, eec.magnitude, 0);
             } else {
                 alterationEffect.applyEffect(instigator, entity, eec.magnitude, 0);
@@ -404,8 +471,18 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         Class component = alterationEffectComponents.get(event.getAlterationEffect().getClass().getTypeName());
 
         // If this component doesn't exist, or the given effect is not registered in the effects map, return.
-        if (component == null || eq.effects.get(component.getTypeName() + event.getId()) == null) {
+        if (component == null) {
             return;
+        }
+        // Check because for MultiDamage EEC id is not used.
+        if (multiDamageEffects.contains(component)) {
+            if (eq.effects.get(component.getTypeName()) == null) {
+                return;
+            }
+        } else {
+            if (eq.effects.get(component.getTypeName() + event.getId()) == null) {
+                return;
+            }
         }
 
         EquipmentEffectComponent applyThis = null;
@@ -416,11 +493,16 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
             // as this one.
             applyThis = combineEffectValues(effectOfThisType.getValue(), entity.getComponent(EquipmentEffectsListComponent.class),
                     component, entity);
-
             // Now, add the duration, effectID, and magnitude of the combined matching equipment effects into the
             // event's list of effect modifiers.
             event.addDuration(applyThis.duration, applyThis.effectID);
-            event.addMagnitude(applyThis.magnitude);
+            // Get the specific type damage in case of a multiDamage EEC.
+            if (multiDamageEffects.contains(component)) {
+                ResistEffectComponent rec = (ResistEffectComponent) applyThis;
+                event.addMagnitude(rec.resistances.get(event.getId()).resistAmount);
+            } else {
+                event.addMagnitude(applyThis.magnitude);
+            }
 
             return;
         }

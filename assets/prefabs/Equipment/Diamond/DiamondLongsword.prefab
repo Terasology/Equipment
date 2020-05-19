@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:DiamondLongsword",
-        "damageType" : "axeDamage",
-        "baseCooldownTime" : 300,
-        "cooldownTime" : 300
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:DiamondLongsword",
+        "damageType": "axeDamage",
+        "baseCooldownTime": 300,
+        "cooldownTime": 300
     },
-    "DisplayName" : {
-        "name" : "Diamond Long Sword",
-        "description" : "Crafted from dwarf-mined diamond, this mythical  sword destroys your enemies while they are distracted by its beauty."
+    "DisplayName": {
+        "name": "Diamond Long Sword",
+        "description": "Crafted from dwarf-mined diamond, this mythical  sword destroys your enemies while they are distracted by its beauty."
     },
-    "EquipmentItem" : {
-        "level" : 15,
-        "quality" : 5,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 30,
-        "defense" : 0,
-        "weight" : 14,
-        "speed" : 5
+    "EquipmentItem": {
+        "level": 15,
+        "quality": 5,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 30,
+        "defense": 0,
+        "weight": 14,
+        "speed": 5
     }
 }

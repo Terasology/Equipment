@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:DiamondNunchaku",
-        "damageType" : "bluntDamage",
-        "baseCooldownTime" : 250,
-        "cooldownTime" : 250
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:DiamondNunchaku",
+        "damageType": "bluntDamage",
+        "baseCooldownTime": 250,
+        "cooldownTime": 250
     },
-    "DisplayName" : {
-        "name" : "Diamond Nunchaku",
-        "description" : "A traditional Okinawan martial arts weapon but made with DIAMONDS."
+    "DisplayName": {
+        "name": "Diamond Nunchaku",
+        "description": "A traditional Okinawan martial arts weapon but made with DIAMONDS."
     },
-    "EquipmentItem" : {
-        "level" : 15,
-        "quality" : 5,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 15,
-        "defense" : 3,
-        "weight" :3,
-        "speed" :3
+    "EquipmentItem": {
+        "level": 15,
+        "quality": 5,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 15,
+        "defense": 3,
+        "weight": 3,
+        "speed": 3
     }
 }

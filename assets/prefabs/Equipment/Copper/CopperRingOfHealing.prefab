@@ -1,26 +1,26 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:CopperRing"
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:CopperRing"
     },
-    "DisplayName" : {
-        "name" : "Copper Ring of Health",
-        "description" : "An ornamental ring made out of copper. Applies 30 HP/s regen for 20 seconds of equipment time."
+    "DisplayName": {
+        "name": "Copper Ring of Health",
+        "description": "An ornamental ring made out of copper. Applies 30 HP/s regen for 20 seconds of equipment time."
     },
-    "EquipmentItem" : {
-        "level" : 2,
-        "quality" : 3,
-        "type" : "Ring",
-        "location" : "Ring",
-        "attack" : 0,
-        "defense" : 2,
-        "weight" : 0,
-        "speed" : 0
+    "EquipmentItem": {
+        "level": 2,
+        "quality": 3,
+        "type": "Ring",
+        "location": "Ring",
+        "attack": 0,
+        "defense": 2,
+        "weight": 0,
+        "speed": 0
     },
-    "RegenEffect" : {
-        "magnitude" : 30,
-        "duration" : 20000,
-        "affectsUser" : true,
-        "affectsEnemies" : false
+    "RegenEffect": {
+        "magnitude": 30,
+        "duration": 20000,
+        "affectsUser": true,
+        "affectsEnemies": false
     }
 }

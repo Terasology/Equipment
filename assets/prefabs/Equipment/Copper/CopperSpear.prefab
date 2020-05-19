@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:CopperSpear",
-        "damageType" : "spearDamage",
-        "baseCooldownTime" : 500,
-        "cooldownTime" : 500
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:CopperSpear",
+        "damageType": "spearDamage",
+        "baseCooldownTime": 500,
+        "cooldownTime": 500
     },
-    "DisplayName" : {
-        "name" : "Copper Spear",
-        "description" : "A standard-issue spear made out of Copper."
+    "DisplayName": {
+        "name": "Copper Spear",
+        "description": "A standard-issue spear made out of Copper."
     },
-    "EquipmentItem" : {
-        "level" : 3,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 8,
-        "defense" : 0,
-        "weight" : 3,
-        "speed" : 8
+    "EquipmentItem": {
+        "level": 3,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 8,
+        "defense": 0,
+        "weight": 3,
+        "speed": 8
     }
 }

@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:SilverMace",
-        "damageType" : "bluntDamage",
-        "baseCooldownTime" : 850,
-        "cooldownTime" : 850
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:SilverMace",
+        "damageType": "bluntDamage",
+        "baseCooldownTime": 850,
+        "cooldownTime": 850
     },
-    "DisplayName" : {
-        "name" : "Silver Mace",
-        "description" : "a weapon with a heavy head on a solid shaft used to bludgeon opponents, made out of silver."
+    "DisplayName": {
+        "name": "Silver Mace",
+        "description": "a weapon with a heavy head on a solid shaft used to bludgeon opponents, made out of silver."
     },
-    "EquipmentItem" : {
-        "level" : 20,
-        "quality" : 4,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 40,
-        "defense" : 2,
-        "weight" : 12,
-        "speed" : 5
+    "EquipmentItem": {
+        "level": 20,
+        "quality": 4,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 40,
+        "defense": 2,
+        "weight": 12,
+        "speed": 5
     }
 }

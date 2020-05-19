@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:DiamondKatana",
-        "damageType" : "swordDamage",
-        "baseCooldownTime" : 450,
-        "cooldownTime" : 450
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:DiamondKatana",
+        "damageType": "swordDamage",
+        "baseCooldownTime": 450,
+        "cooldownTime": 450
     },
-    "DisplayName" : {
-        "name" : "Diamond Katana",
-        "description" : "An traditionally made Japanese long double-handed sword."
+    "DisplayName": {
+        "name": "Diamond Katana",
+        "description": "An traditionally made Japanese long double-handed sword."
     },
-    "EquipmentItem" : {
-        "level" : 15,
-        "quality" : 5,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 30,
-        "defense" : 0,
-        "weight" : 15,
-        "speed" : 6
+    "EquipmentItem": {
+        "level": 15,
+        "quality": 5,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 30,
+        "defense": 0,
+        "weight": 15,
+        "speed": 6
     }
 }

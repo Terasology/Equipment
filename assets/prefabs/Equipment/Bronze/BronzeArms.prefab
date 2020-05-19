@@ -1,20 +1,20 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:BronzeArmguards"
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:BronzeArmguards"
     },
-    "DisplayName" : {
-        "name" : "Bronze Arms",
-        "description" : "Arm guards made out of bronze for basic protection."
+    "DisplayName": {
+        "name": "Bronze Arms",
+        "description": "Arm guards made out of bronze for basic protection."
     },
-    "EquipmentItem" : {
-        "level" : 1,
-        "quality" : 3,
-        "type" : "Arm Armor",
-        "location" : "Arms",
-        "attack" : 0,
-        "defense" : 3,
-        "weight" : 2,
-        "speed" : -1
+    "EquipmentItem": {
+        "level": 1,
+        "quality": 3,
+        "type": "Arm Armor",
+        "location": "Arms",
+        "attack": 0,
+        "defense": 3,
+        "weight": 2,
+        "speed": -1
     }
 }

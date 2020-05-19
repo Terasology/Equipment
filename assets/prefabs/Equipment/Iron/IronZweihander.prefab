@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:Zweihander",
-        "damageType" : "swordDamage",
-        "baseCooldownTime" : 500,
-        "cooldownTime" : 500
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:Zweihander",
+        "damageType": "swordDamage",
+        "baseCooldownTime": 500,
+        "cooldownTime": 500
     },
-    "DisplayName" : {
-        "name" : "Iron Zweihander",
-        "description" : "A large two-handed sword with a blunt section allowing it to be carried over the shoulder."
+    "DisplayName": {
+        "name": "Iron Zweihander",
+        "description": "A large two-handed sword with a blunt section allowing it to be carried over the shoulder."
     },
-    "EquipmentItem" : {
-        "level" : 10,
-        "quality" : 4,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 16,
-        "defense" : 0,
-        "weight" : 8,
-        "speed" : 10
+    "EquipmentItem": {
+        "level": 10,
+        "quality": 4,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 16,
+        "defense": 0,
+        "weight": 8,
+        "speed": 10
     }
 }

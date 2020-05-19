@@ -1,20 +1,20 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:MysticRing"
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:MysticRing"
     },
-    "DisplayName" : {
-        "name" : "Mystic Ring",
-        "description" : "An ornamental ring made out of mystic."
+    "DisplayName": {
+        "name": "Mystic Ring",
+        "description": "An ornamental ring made out of mystic."
     },
-    "EquipmentItem" : {
-        "level" : 4,
-        "quality" : 5,
-        "type" : "Ring",
-        "location" : "Ring",
-        "attack" : 0,
-        "defense" : 4,
-        "weight" : 0,
-        "speed" : 0
+    "EquipmentItem": {
+        "level": 4,
+        "quality": 5,
+        "type": "Ring",
+        "location": "Ring",
+        "attack": 0,
+        "defense": 4,
+        "weight": 0,
+        "speed": 0
     }
 }

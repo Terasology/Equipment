@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:MysticMace",
-        "damageType" : "bluntDamage",
-        "baseCooldownTime" : 750,
-        "cooldownTime" : 750
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:MysticMace",
+        "damageType": "bluntDamage",
+        "baseCooldownTime": 750,
+        "cooldownTime": 750
     },
-    "DisplayName" : {
-        "name" : "Mystic Mace",
-        "description" : "a weapon with a heavy head on a solid shaft used to bludgeon opponents, made out of mystical materials."
+    "DisplayName": {
+        "name": "Mystic Mace",
+        "description": "a weapon with a heavy head on a solid shaft used to bludgeon opponents, made out of mystical materials."
     },
-    "EquipmentItem" : {
-        "level" : 30,
-        "quality" : 5,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 55,
-        "defense" : 4,
-        "weight" : 13,
-        "speed" : 6
+    "EquipmentItem": {
+        "level": 30,
+        "quality": 5,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 55,
+        "defense": 4,
+        "weight": 13,
+        "speed": 6
     }
 }

@@ -1,24 +1,23 @@
 {
-  "parent" : "engine:iconItem",
-  "Item" : {
-    "icon" : "Equipment:GreatSword",
-    "damageType" : "swordDamage",
-    "baseCooldownTime" : 450,
-    "cooldownTime" : 450
-  },
-  "DisplayName" : {
-    "name" : "GreatSword",
-    "description" : "A long double-edged sword made of steel."
-  },
-  "EquipmentItem" : {
-    "level" : 16,
-    "quality" : 4,
-    "type" : "Melee Weapon",
-    "location" : "Weapon",
-    "attack" : 32,
-    "defense" : 0,
-    "weight" : 18,
-    "speed" : 5
-  }
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:GreatSword",
+        "damageType": "swordDamage",
+        "baseCooldownTime": 450,
+        "cooldownTime": 450
+    },
+    "DisplayName": {
+        "name": "GreatSword",
+        "description": "A long double-edged sword made of steel."
+    },
+    "EquipmentItem": {
+        "level": 16,
+        "quality": 4,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 32,
+        "defense": 0,
+        "weight": 18,
+        "speed": 5
+    }
 }
-

@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:WoodMace",
-        "damageType" : "bluntDamage",
-        "baseCooldownTime" : 1000,
-        "cooldownTime" : 1000
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:WoodMace",
+        "damageType": "bluntDamage",
+        "baseCooldownTime": 1000,
+        "cooldownTime": 1000
     },
-    "DisplayName" : {
-        "name" : "Wood Mace",
-        "description" : "a weapon with a heavy head on a solid shaft used to bludgeon opponents, made out of wood."
+    "DisplayName": {
+        "name": "Wood Mace",
+        "description": "a weapon with a heavy head on a solid shaft used to bludgeon opponents, made out of wood."
     },
-    "EquipmentItem" : {
-        "level" : 0,
-        "quality" : 3,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 7,
-        "defense" : 0,
-        "weight" : 5,
-        "speed" : 4
+    "EquipmentItem": {
+        "level": 0,
+        "quality": 3,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 7,
+        "defense": 0,
+        "weight": 5,
+        "speed": 4
     }
 }

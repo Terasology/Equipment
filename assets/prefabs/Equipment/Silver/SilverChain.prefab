@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:SilverChain",
-        "damageType" : "axeDamage",
-        "baseCooldownTime" : 600,
-        "cooldownTime" : 600
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:SilverChain",
+        "damageType": "axeDamage",
+        "baseCooldownTime": 600,
+        "cooldownTime": 600
     },
-    "DisplayName" : {
-        "name" : "Silver Chain",
-        "description" : "Magic chain for attack"
+    "DisplayName": {
+        "name": "Silver Chain",
+        "description": "Magic chain for attack"
     },
-    "EquipmentItem" : {
-        "level" : 5,
-        "quality" : 7,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 13,
-        "defense" : 0,
-        "weight" : 1,
-        "speed" : 10
+    "EquipmentItem": {
+        "level": 5,
+        "quality": 7,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 13,
+        "defense": 0,
+        "weight": 1,
+        "speed": 10
     }
 }

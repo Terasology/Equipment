@@ -1,23 +1,23 @@
 {
-    "parent" : "engine:iconItem",
-    "Item" : {
-        "icon" : "Equipment:GoldSpear",
-        "damageType" : "spearDamage",
-        "baseCooldownTime" : 200,
-        "cooldownTime" : 200
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "Equipment:GoldSpear",
+        "damageType": "spearDamage",
+        "baseCooldownTime": 200,
+        "cooldownTime": 200
     },
-    "DisplayName" : {
-        "name" : "Gold Spear",
-        "description" : "The most valuable spear!"
+    "DisplayName": {
+        "name": "Gold Spear",
+        "description": "The most valuable spear!"
     },
-    "EquipmentItem" : {
-        "level" : 0,
-        "quality" : 4,
-        "type" : "Melee Weapon",
-        "location" : "Weapon",
-        "attack" : 8,
-        "defense" : 0,
-        "weight" : 1,
-        "speed" : 8
+    "EquipmentItem": {
+        "level": 0,
+        "quality": 4,
+        "type": "Melee Weapon",
+        "location": "Weapon",
+        "attack": 8,
+        "defense": 0,
+        "weight": 1,
+        "speed": 8
     }
 }
