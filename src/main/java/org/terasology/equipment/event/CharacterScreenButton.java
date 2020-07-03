@@ -15,16 +15,16 @@
  */
 package org.terasology.equipment.event;
 
-import org.lwjgl.input.Keyboard;
 import org.terasology.input.BindButtonEvent;
 import org.terasology.input.DefaultBinding;
 import org.terasology.input.InputType;
+import org.terasology.input.Keyboard;
 import org.terasology.input.RegisterBindButton;
 
 /**
  * An event that is sent when the character screen button is pressed.
  */
 @RegisterBindButton(id = "characterScreen", description = "Character Screen", category = "interaction")
-@DefaultBinding(type = InputType.KEY, id = Keyboard.KEY_C)
+@DefaultBinding(type = InputType.KEY, id = Keyboard.KeyId.C)
 public class CharacterScreenButton extends BindButtonEvent {
 }
