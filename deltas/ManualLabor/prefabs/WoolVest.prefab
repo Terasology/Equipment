@@ -1,0 +1,19 @@
+{
+    "EquipmentItem": {
+            "level": 0,
+            "quality": 0,
+            "type": "Body Armor",
+            "location": "Body",
+            "attack": 0,
+            "defense": 0,
+            "weight": 0,
+            "speed": 0
+    },
+    "BodyTemperatureEffect": {
+            "magnitude": 0,
+            "duration": -1,
+            "affectsUser": true,
+            "affectsEnemies": false,
+            "id": "activateWhenEnvironmentColder"
+    }
+}
