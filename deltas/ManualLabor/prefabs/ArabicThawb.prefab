@@ -10,10 +10,9 @@
         "speed": 0
     },
     "BodyTemperatureEffect": {
-        "magnitude": 0,
+        "magnitude": -0.1,
         "duration": -1,
         "affectsUser": true,
-        "affectsEnemies": false,
-        "id": "activateWhenEnvironmentHotter"
+        "affectsEnemies": false
     }
 }

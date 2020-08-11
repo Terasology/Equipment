@@ -35,7 +35,7 @@ import org.terasology.alterationEffects.speed.MultiJumpAlterationEffect;
 import org.terasology.alterationEffects.speed.StunAlterationEffect;
 import org.terasology.alterationEffects.speed.SwimSpeedAlterationEffect;
 import org.terasology.alterationEffects.speed.WalkSpeedAlterationEffect;
-import org.terasology.climateConditions.alterationEffect.BodyTemperatureAlterationEffect;
+import org.terasology.climateConditions.alterationEffects.BodyTemperatureAlterationEffect;
 import org.terasology.context.Context;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
