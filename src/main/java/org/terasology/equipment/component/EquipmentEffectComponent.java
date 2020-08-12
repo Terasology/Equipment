@@ -34,7 +34,7 @@ public class EquipmentEffectComponent implements Component {
 
     /** The magnitude of the effect */
     @Replicate
-    public int magnitude;
+    public float magnitude;
 
     /** Whether the effect affects the entity which equips the item */
     @Replicate

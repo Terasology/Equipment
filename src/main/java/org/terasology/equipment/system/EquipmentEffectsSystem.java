@@ -185,7 +185,7 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
     private EquipmentEffectComponent combineEffectValues(EquipmentEffectComponent eec, EquipmentEffectsListComponent eqEffectsList,
                                                          Class effectClass, EntityRef entity) {
         int duration = 0;
-        int magnitude = 0;
+        float magnitude = 0;
         int smallestDuration = Integer.MAX_VALUE;
         boolean affectsUser = true; // Assume this is always true for now.
         boolean affectsEnemies = false; // Assume this is always false for now.

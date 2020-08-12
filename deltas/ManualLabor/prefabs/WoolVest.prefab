@@ -10,7 +10,7 @@
             "speed": 0
     },
     "BodyTemperatureEffect": {
-            "magnitude": 0.1,
+            "magnitude": 0.003,
             "duration": -1,
             "affectsUser": true,
             "affectsEnemies": false
