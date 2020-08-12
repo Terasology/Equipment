@@ -35,12 +35,14 @@ import org.terasology.alterationEffects.speed.MultiJumpAlterationEffect;
 import org.terasology.alterationEffects.speed.StunAlterationEffect;
 import org.terasology.alterationEffects.speed.SwimSpeedAlterationEffect;
 import org.terasology.alterationEffects.speed.WalkSpeedAlterationEffect;
+import org.terasology.climateConditions.alterationEffects.BodyTemperatureAlterationEffect;
 import org.terasology.context.Context;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.equipment.component.EquipmentEffectsListComponent;
+import org.terasology.equipment.component.effects.BodyTemperatureEffectComponent;
 import org.terasology.equipment.component.effects.BoostEffectComponent;
 import org.terasology.equipment.component.effects.BreathingEffectComponent;
 import org.terasology.equipment.component.effects.BuffEffectComponent;
@@ -95,6 +97,7 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
      */
     @Override
     public void initialise() {
+        addEffect(BodyTemperatureEffectComponent.class, new BodyTemperatureAlterationEffect(context));
         addEffect(BoostEffectComponent.class, new HealthBoostAlterationEffect(context));
         addEffect(BreathingEffectComponent.class, new WaterBreathingAlterationEffect(context));
         addEffect(BuffEffectComponent.class, new BuffDamageAlterationEffect(context));
@@ -180,9 +183,9 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
      *                      type (and subtype if any) as eec.
      */
     private EquipmentEffectComponent combineEffectValues(EquipmentEffectComponent eec, EquipmentEffectsListComponent eqEffectsList,
-                                     Class effectClass, EntityRef entity) {
+                                                         Class effectClass, EntityRef entity) {
         int duration = 0;
-        int magnitude = 0;
+        float magnitude = 0;
         int smallestDuration = Integer.MAX_VALUE;
         boolean affectsUser = true; // Assume this is always true for now.
         boolean affectsEnemies = false; // Assume this is always false for now.
