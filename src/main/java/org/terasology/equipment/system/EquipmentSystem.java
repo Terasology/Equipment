@@ -43,6 +43,7 @@ import org.terasology.logic.location.LocationComponent;
 import org.terasology.logic.players.LocalPlayer;
 import org.terasology.logic.players.event.OnPlayerSpawnedEvent;
 import org.terasology.math.geom.Vector3f;
+import org.terasology.nui.widgets.TooltipLine;
 import org.terasology.physicalstats.component.PhysicalStatsModifierComponent;
 import org.terasology.physicalstats.component.PhysicalStatsModifiersListComponent;
 import org.terasology.physicalstats.event.OnPhysicalStatChangedEvent;
@@ -52,7 +53,6 @@ import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.NUIManager;
 import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
-import org.terasology.rendering.nui.widgets.TooltipLine;
 import org.terasology.utilities.Assets;
 
 /**
