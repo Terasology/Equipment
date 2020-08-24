@@ -1,18 +1,5 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.equipment.system;
 
 import org.terasology.audio.AudioManager;
@@ -31,8 +18,8 @@ import org.terasology.equipment.event.UnequipItemEvent;
 import org.terasology.equipment.ui.CharacterScreenWindow;
 import org.terasology.logic.characters.CharacterComponent;
 import org.terasology.logic.common.DisplayNameComponent;
-import org.terasology.logic.health.event.BeforeDamagedEvent;
 import org.terasology.logic.health.DoDestroyEvent;
+import org.terasology.logic.health.event.BeforeDamagedEvent;
 import org.terasology.logic.inventory.InventoryComponent;
 import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.logic.inventory.InventoryUtils;
@@ -43,6 +30,7 @@ import org.terasology.logic.location.LocationComponent;
 import org.terasology.logic.players.LocalPlayer;
 import org.terasology.logic.players.event.OnPlayerSpawnedEvent;
 import org.terasology.math.geom.Vector3f;
+import org.terasology.nui.widgets.TooltipLine;
 import org.terasology.physicalstats.component.PhysicalStatsModifierComponent;
 import org.terasology.physicalstats.component.PhysicalStatsModifiersListComponent;
 import org.terasology.physicalstats.event.OnPhysicalStatChangedEvent;
@@ -52,7 +40,6 @@ import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.NUIManager;
 import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
-import org.terasology.rendering.nui.widgets.TooltipLine;
 import org.terasology.utilities.Assets;
 
 /**
