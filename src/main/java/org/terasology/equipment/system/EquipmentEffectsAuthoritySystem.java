@@ -1,32 +1,19 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.equipment.system;
 
 import org.terasology.alterationEffects.AlterationEffects;
-import org.terasology.engine.Time;
-import org.terasology.entitySystem.entity.EntityManager;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.prefab.PrefabManager;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterMode;
-import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.entitySystem.systems.UpdateSubscriberSystem;
+import org.terasology.engine.core.Time;
+import org.terasology.engine.entitySystem.entity.EntityManager;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.prefab.PrefabManager;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterMode;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.entitySystem.systems.UpdateSubscriberSystem;
+import org.terasology.engine.registry.In;
 import org.terasology.equipment.component.EquipmentEffectComponent;
 import org.terasology.equipment.component.EquipmentEffectsListComponent;
-import org.terasology.registry.In;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -36,10 +23,14 @@ import java.util.Map;
  */
 @RegisterSystem(value = RegisterMode.AUTHORITY)
 public class EquipmentEffectsAuthoritySystem extends BaseComponentSystem implements UpdateSubscriberSystem {
-    /** Integer storing when to check each effect. */
+    /**
+     * Integer storing when to check each effect.
+     */
     private static final int CHECK_INTERVAL = 100;
 
-    /** Last time the list of regen effects were checked. */
+    /**
+     * Last time the list of regen effects were checked.
+     */
     private long lastUpdated;
 
     @In
@@ -67,14 +58,17 @@ public class EquipmentEffectsAuthoritySystem extends BaseComponentSystem impleme
             // Iterate through all of the entities that have equipment-based effects, and reduce the duration remaining
             // on each (as long as they have a finite amount of time).
             for (EntityRef entity : entityManager.getEntitiesWith(EquipmentEffectsListComponent.class)) {
-                final EquipmentEffectsListComponent effectsList = entity.getComponent(EquipmentEffectsListComponent.class);
+                final EquipmentEffectsListComponent effectsList =
+                        entity.getComponent(EquipmentEffectsListComponent.class);
 
                 // Search through each type of equipment-based AlterationEffects.
-                Iterator<Map.Entry<String, Map<String, EquipmentEffectComponent>>> typeIter = effectsList.effects.entrySet().iterator();
+                Iterator<Map.Entry<String, Map<String, EquipmentEffectComponent>>> typeIter =
+                        effectsList.effects.entrySet().iterator();
                 while (typeIter.hasNext()) {
 
                     // Search through each equipment-based effect under this effect type.
-                    Iterator<Map.Entry<String, EquipmentEffectComponent>> effectIter = typeIter.next().getValue().entrySet().iterator();
+                    Iterator<Map.Entry<String, EquipmentEffectComponent>> effectIter =
+                            typeIter.next().getValue().entrySet().iterator();
                     while (effectIter.hasNext()) {
                         Map.Entry<String, EquipmentEffectComponent> effect = effectIter.next();
 

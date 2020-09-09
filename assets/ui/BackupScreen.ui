@@ -1,233 +1,242 @@
 {
-    "type" : "CharacterScreenWindow",
-    "skin" : "Equipment:CharacterScreen",
-    "contents" : {
-        "type" : "relativeLayout",
-        "contents" : [
-            {
-                "type" : "columnLayout",
-                "verticalSpacing" : 4,
-                "contents" : [
-                    {
-                        "type" : "UILabel",
-                        "text" : "Character Attributes"
-                    },
-                    {
-                        "type" : "UISpace",
-                        "size" : [1, 16]
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "STR",
-                        "text" : "Strength: 10"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "DEX",
-                        "text" : "Dexterity: 14"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "CON",
-                        "text" : "Constitution: 10"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "END",
-                        "text" : "Endurance: 10"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "AGI",
-                        "text" : "Agility: 8"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "CHA",
-                        "text" : "Charisma: 10"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "LUK",
-                        "text" : "Luck: 8"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "THA",
-                        "text" : "Thaumacity: 6"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "DEF",
-                        "text" : "Defense: 10"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "RES",
-                        "text" : "Resistance: 4"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "INT",
-                        "text" : "Intelligence: 14"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "WIS",
-                        "text" : "Wisdom: 12"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "WIL",
-                        "text" : "Will: 12"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "FOR",
-                        "text" : "Fortitude: 12"
-                    }
-                ],
-                "layoutInfo" : {
-                    "use-content-width" : true,
-                    "use-content-height" : true,
-                    "position-left": {
-                        "offset": 5
-                    },
-                    "position-top": {
-                        "offset": 15
-                    }
-                }
-            },
-            {
-                "type" : "columnLayout",
-                "verticalSpacing" : 4,
-                "contents" : [
-                    {
-                        "type" : "UILabel",
-                        "text" : "Character Statistics"
-                    },
-                    {
-                        "type" : "UISpace",
-                        "size" : [1, 16]
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "HealthPoints",
-                        "text" : "Health: 100"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "ManaPoints",
-                        "text" : "Mana: 0"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "PhyAttackPower",
-                        "text" : "Physical Attack: 17"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "PhyDefensePower",
-                        "text" : "Physical Defense: 12"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "MagAttackPower",
-                        "text" : "Magic Attack: 3"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "MagDefensePower",
-                        "text" : "Magic Defense: 2"
-                    },
-                    {
-                        "type" : "UILabel",
-                        "id" : "SpeedPower",
-                        "text" : "Speed: 0"
-                    }
-                ],
-                "layoutInfo" : {
-                    "use-content-width" : true,
-                    "use-content-height" : true,
-                    "position-left": {
-                        "offset": 300
-                    },
-                    "position-top": {
-                        "offset": 15
-                    }
-                }
-            },
-            {
-                "type" : "columnLayout",
-                "id" : "eqSlotNamesLayout",
-                "verticalSpacing" : 4,
-                "contents" : [
-                    {
-                        "type" : "UILabel",
-                        "text" : "Equipment"
-                    },
-                    {
-                        "type" : "UISpace",
-                        "size" : [1, 16]
-                    }
-                ],
-                "layoutInfo" : {
-                    "width": 450,
-                    "use-content-height" : true,
-                    "position-left": {
-                        "offset": 425
-                    },
-                    "position-top": {
-                        "offset": 15
-                    }
-                }
-            },
-            {
-                "type": "relativeLayout",
-                "contents": [
-                    {
-                        "type": "InventoryGrid",
-                        "id": "playerInventory",
-                        "layoutInfo": {
-                            "width": 560,
-                            "height": 168,
-                            "position-left": {
-                                "offset": 52
-                            },
-                            "position-top": {
-                                "offset": 377
-                            }
-                        }
-                    },
-                    {
-                        "type": "InventoryGrid",
-                        "id": "playerEQInventory",
-                        "maxHorizontalCells" : 2,
-                        "layoutInfo": {
-                            "width": 560,
-                            "height": 168,
-                            "position-left": {
-                                "offset": 700
-                            },
-                            "position-top": {
-                                "offset": 0
-                            }
-                        }
-                    }
-                ],
-                "layoutInfo": {
-                    "width": 665,
-                    "use-content-height" : true,
-                    "position-horizontal-center": {},
-                    "position-vertical-center": {}
-                }
-            }
+  "type": "CharacterScreenWindow",
+  "skin": "Equipment:CharacterScreen",
+  "contents": {
+    "type": "relativeLayout",
+    "contents": [
+      {
+        "type": "columnLayout",
+        "verticalSpacing": 4,
+        "contents": [
+          {
+            "type": "UILabel",
+            "text": "Character Attributes"
+          },
+          {
+            "type": "UISpace",
+            "size": [
+              1,
+              16
+            ]
+          },
+          {
+            "type": "UILabel",
+            "id": "STR",
+            "text": "Strength: 10"
+          },
+          {
+            "type": "UILabel",
+            "id": "DEX",
+            "text": "Dexterity: 14"
+          },
+          {
+            "type": "UILabel",
+            "id": "CON",
+            "text": "Constitution: 10"
+          },
+          {
+            "type": "UILabel",
+            "id": "END",
+            "text": "Endurance: 10"
+          },
+          {
+            "type": "UILabel",
+            "id": "AGI",
+            "text": "Agility: 8"
+          },
+          {
+            "type": "UILabel",
+            "id": "CHA",
+            "text": "Charisma: 10"
+          },
+          {
+            "type": "UILabel",
+            "id": "LUK",
+            "text": "Luck: 8"
+          },
+          {
+            "type": "UILabel",
+            "id": "THA",
+            "text": "Thaumacity: 6"
+          },
+          {
+            "type": "UILabel",
+            "id": "DEF",
+            "text": "Defense: 10"
+          },
+          {
+            "type": "UILabel",
+            "id": "RES",
+            "text": "Resistance: 4"
+          },
+          {
+            "type": "UILabel",
+            "id": "INT",
+            "text": "Intelligence: 14"
+          },
+          {
+            "type": "UILabel",
+            "id": "WIS",
+            "text": "Wisdom: 12"
+          },
+          {
+            "type": "UILabel",
+            "id": "WIL",
+            "text": "Will: 12"
+          },
+          {
+            "type": "UILabel",
+            "id": "FOR",
+            "text": "Fortitude: 12"
+          }
         ],
         "layoutInfo": {
-            "width": 720,
-            "height": 740,
-            "position-horizontal-center": {},
-            "position-vertical-center": {}
+          "use-content-width": true,
+          "use-content-height": true,
+          "position-left": {
+            "offset": 5
+          },
+          "position-top": {
+            "offset": 15
+          }
         }
+      },
+      {
+        "type": "columnLayout",
+        "verticalSpacing": 4,
+        "contents": [
+          {
+            "type": "UILabel",
+            "text": "Character Statistics"
+          },
+          {
+            "type": "UISpace",
+            "size": [
+              1,
+              16
+            ]
+          },
+          {
+            "type": "UILabel",
+            "id": "HealthPoints",
+            "text": "Health: 100"
+          },
+          {
+            "type": "UILabel",
+            "id": "ManaPoints",
+            "text": "Mana: 0"
+          },
+          {
+            "type": "UILabel",
+            "id": "PhyAttackPower",
+            "text": "Physical Attack: 17"
+          },
+          {
+            "type": "UILabel",
+            "id": "PhyDefensePower",
+            "text": "Physical Defense: 12"
+          },
+          {
+            "type": "UILabel",
+            "id": "MagAttackPower",
+            "text": "Magic Attack: 3"
+          },
+          {
+            "type": "UILabel",
+            "id": "MagDefensePower",
+            "text": "Magic Defense: 2"
+          },
+          {
+            "type": "UILabel",
+            "id": "SpeedPower",
+            "text": "Speed: 0"
+          }
+        ],
+        "layoutInfo": {
+          "use-content-width": true,
+          "use-content-height": true,
+          "position-left": {
+            "offset": 300
+          },
+          "position-top": {
+            "offset": 15
+          }
+        }
+      },
+      {
+        "type": "columnLayout",
+        "id": "eqSlotNamesLayout",
+        "verticalSpacing": 4,
+        "contents": [
+          {
+            "type": "UILabel",
+            "text": "Equipment"
+          },
+          {
+            "type": "UISpace",
+            "size": [
+              1,
+              16
+            ]
+          }
+        ],
+        "layoutInfo": {
+          "width": 450,
+          "use-content-height": true,
+          "position-left": {
+            "offset": 425
+          },
+          "position-top": {
+            "offset": 15
+          }
+        }
+      },
+      {
+        "type": "relativeLayout",
+        "contents": [
+          {
+            "type": "InventoryGrid",
+            "id": "playerInventory",
+            "layoutInfo": {
+              "width": 560,
+              "height": 168,
+              "position-left": {
+                "offset": 52
+              },
+              "position-top": {
+                "offset": 377
+              }
+            }
+          },
+          {
+            "type": "InventoryGrid",
+            "id": "playerEQInventory",
+            "maxHorizontalCells": 2,
+            "layoutInfo": {
+              "width": 560,
+              "height": 168,
+              "position-left": {
+                "offset": 700
+              },
+              "position-top": {
+                "offset": 0
+              }
+            }
+          }
+        ],
+        "layoutInfo": {
+          "width": 665,
+          "use-content-height": true,
+          "position-horizontal-center": {},
+          "position-vertical-center": {}
+        }
+      }
+    ],
+    "layoutInfo": {
+      "width": 720,
+      "height": 740,
+      "position-horizontal-center": {},
+      "position-vertical-center": {}
     }
+  }
 }

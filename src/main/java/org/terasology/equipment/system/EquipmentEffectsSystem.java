@@ -1,18 +1,5 @@
-/*
- * Copyright 2017 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.equipment.system;
 
 import com.google.common.collect.Lists;
@@ -36,11 +23,14 @@ import org.terasology.alterationEffects.speed.StunAlterationEffect;
 import org.terasology.alterationEffects.speed.SwimSpeedAlterationEffect;
 import org.terasology.alterationEffects.speed.WalkSpeedAlterationEffect;
 import org.terasology.climateConditions.alterationEffects.BodyTemperatureAlterationEffect;
-import org.terasology.context.Context;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.event.ReceiveEvent;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.context.Context;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.event.ReceiveEvent;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.registry.In;
+import org.terasology.equipment.component.EquipmentComponent;
+import org.terasology.equipment.component.EquipmentEffectComponent;
 import org.terasology.equipment.component.EquipmentEffectsListComponent;
 import org.terasology.equipment.component.effects.BodyTemperatureEffectComponent;
 import org.terasology.equipment.component.effects.BoostEffectComponent;
@@ -55,14 +45,11 @@ import org.terasology.equipment.component.effects.MultiJumpEffectComponent;
 import org.terasology.equipment.component.effects.RegenEffectComponent;
 import org.terasology.equipment.component.effects.ResistEffectComponent;
 import org.terasology.equipment.component.effects.StunEffectComponent;
-import org.terasology.equipment.component.EquipmentComponent;
-import org.terasology.equipment.component.EquipmentEffectComponent;
 import org.terasology.equipment.component.effects.SwimSpeedEffectComponent;
 import org.terasology.equipment.component.effects.WalkSpeedEffectComponent;
 import org.terasology.equipment.event.EquipItemEvent;
 import org.terasology.equipment.event.UnequipItemEvent;
-import org.terasology.logic.health.event.BeforeDamagedEvent;
-import org.terasology.registry.In;
+import org.terasology.health.logic.event.BeforeDamagedEvent;
 
 import java.util.HashMap;
 import java.util.List;
@@ -74,23 +61,19 @@ import java.util.Map.Entry;
  */
 @RegisterSystem
 public class EquipmentEffectsSystem extends BaseComponentSystem {
+    /**
+     * Maps the EquipmentEffectComponents to their corresponding EffectComponents so that 1. the system knows which
+     * EquipmentEffectComponents to look out for 2. the system knows which AlterationEffect to apply
+     */
+    private final Map<Class, AlterationEffect> effectComponents = new HashMap<>();
+    /**
+     * Maps the AlterationEffect class type names to their corresponding EquipmentEffectComponents so that 1. The system
+     * knows what class type String maps to EquipmentEffectComponent.
+     */
+    private final Map<String, Class> alterationEffectComponents = new HashMap<>();
+    private final List<Class> multiDamageEffects = Lists.newArrayList();
     @In
     private Context context;
-
-    /**
-     * Maps the EquipmentEffectComponents to their corresponding EffectComponents so that
-     * 1. the system knows which EquipmentEffectComponents to look out for
-     * 2. the system knows which AlterationEffect to apply
-     */
-    private Map<Class, AlterationEffect> effectComponents = new HashMap<>();
-
-    /**
-     * Maps the AlterationEffect class type names to their corresponding EquipmentEffectComponents so that
-     * 1. The system knows what class type String maps to EquipmentEffectComponent.
-     */
-    private Map<String, Class> alterationEffectComponents = new HashMap<>();
-
-    private List<Class> multiDamageEffects = Lists.newArrayList();
 
     /**
      * Initialize both maps.
@@ -120,14 +103,14 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
      * When an equipment item has been equipped, add all of its equipment effect components into the equipment effect
      * modifiers double map.
      *
-     * @param event     Event containing information about the item equipped.
-     * @param entity    Entity that equipped this item.
-     * @param eq        Reference to the entity's equipment component. Used as a delimiter/filter.
+     * @param event Event containing information about the item equipped.
+     * @param entity Entity that equipped this item.
+     * @param eq Reference to the entity's equipment component. Used as a delimiter/filter.
      */
     @ReceiveEvent
     public void onEquip(EquipItemEvent event, EntityRef entity, EquipmentComponent eq) {
         // Loop through known EquipmentEffectComponents.
-        for (Entry<Class, AlterationEffect> entry: effectComponents.entrySet()) {
+        for (Entry<Class, AlterationEffect> entry : effectComponents.entrySet()) {
             // If the item has one of the equipment effect components.
             if (event.getItem().hasComponent(entry.getKey())) {
                 EquipmentEffectComponent eec = (EquipmentEffectComponent) event.getItem().getComponent(entry.getKey());
@@ -140,24 +123,28 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
 
                     // Get the list of equipment effects on this entity, and set the effectID of this current equipment
                     // effect to be the associated equipment item's full JSON description.
-                    EquipmentEffectsListComponent eqEffectsList = entity.getComponent(EquipmentEffectsListComponent.class);
+                    EquipmentEffectsListComponent eqEffectsList =
+                            entity.getComponent(EquipmentEffectsListComponent.class);
                     eec.effectID = event.getItem().toFullDescription();
 
-                    // In case of effects that use IDs, have another check. This so that that stuff like individual ResistEffects
+                    // In case of effects that use IDs, have another check. This so that that stuff like individual 
+                    // ResistEffects
                     // with different types of resists (e.g. Poison vs Fire vs Physical) are distinguished and tallied
                     // correctly.
                     if (eec.id.equals("")) {
                         if (eqEffectsList.effects.containsKey(entry.getKey().getTypeName())) {
                             eqEffectsList.effects.get(entry.getKey().getTypeName()).put(eec.effectID, eec);
                         } else {
-                            eqEffectsList.effects.put(entry.getKey().getTypeName(), new HashMap<String, EquipmentEffectComponent>());
+                            eqEffectsList.effects.put(entry.getKey().getTypeName(), new HashMap<String,
+                                    EquipmentEffectComponent>());
                             eqEffectsList.effects.get(entry.getKey().getTypeName()).put(eec.effectID, eec);
                         }
                     } else {
                         if (eqEffectsList.effects.containsKey(entry.getKey().getTypeName() + eec.id)) {
                             eqEffectsList.effects.get(entry.getKey().getTypeName() + eec.id).put(eec.effectID, eec);
                         } else {
-                            eqEffectsList.effects.put(entry.getKey().getTypeName() + eec.id, new HashMap<String, EquipmentEffectComponent>());
+                            eqEffectsList.effects.put(entry.getKey().getTypeName() + eec.id, new HashMap<String,
+                                    EquipmentEffectComponent>());
                             eqEffectsList.effects.get(entry.getKey().getTypeName() + eec.id).put(eec.effectID, eec);
                         }
                     }
@@ -175,14 +162,15 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
      * Tallies up the magnitude and duration of one type of equipment effect and returns it in one combined
      * EquipmentEffectComponent.
      *
-     * @param eec           The base EquipmentEffectComponent to be used. The only thing that'll be used is its type.
+     * @param eec The base EquipmentEffectComponent to be used. The only thing that'll be used is its type.
      * @param eqEffectsList The list of equipment effects present on the entity.
-     * @param effectClass   The base class of effect that's being tallied for.
-     * @param entity        The entity that either has this effect or will have this applied soon.
-     * @return              A EquipmentEffectComponent with the combination of all magnitudes and durations of the same
-     *                      type (and subtype if any) as eec.
+     * @param effectClass The base class of effect that's being tallied for.
+     * @param entity The entity that either has this effect or will have this applied soon.
+     * @return A EquipmentEffectComponent with the combination of all magnitudes and durations of the same type (and
+     *         subtype if any) as eec.
      */
-    private EquipmentEffectComponent combineEffectValues(EquipmentEffectComponent eec, EquipmentEffectsListComponent eqEffectsList,
+    private EquipmentEffectComponent combineEffectValues(EquipmentEffectComponent eec,
+                                                         EquipmentEffectsListComponent eqEffectsList,
                                                          Class effectClass, EntityRef entity) {
         int duration = 0;
         float magnitude = 0;
@@ -203,7 +191,8 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         if (multiDamageEffects.contains(eec.getClass())) {
             ResistEffectComponent recCombined = new ResistEffectComponent();
             // Iterate through all effects that are under this particular effect class or type.
-            for (Entry<String, EquipmentEffectComponent> effectOfThisType : eqEffectsList.effects.get(effectClass.getTypeName()).entrySet()) {
+            for (Entry<String, EquipmentEffectComponent> effectOfThisType :
+                    eqEffectsList.effects.get(effectClass.getTypeName()).entrySet()) {
                 if (effectOfThisType.getValue().affectsUser) {
                     ResistEffectComponent resistEffectOfThisType = (ResistEffectComponent) effectOfThisType.getValue();
                     // If the duration of this new effect is below the current tally, and the new duration is not
@@ -223,8 +212,10 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
                     if (effectOfThisType.getValue().duration != 0) {
                         duration += effectOfThisType.getValue().duration;
                         // Loop over individual damage resistances in each component.
-                        for (Entry<String, ResistDamageEffect> resistDamageType : resistEffectOfThisType.resistances.entrySet()) {
-                            ResistDamageEffect rde = recCombined.resistances.get(resistDamageType.getValue().resistType);
+                        for (Entry<String, ResistDamageEffect> resistDamageType :
+                                resistEffectOfThisType.resistances.entrySet()) {
+                            ResistDamageEffect rde =
+                                    recCombined.resistances.get(resistDamageType.getValue().resistType);
                             if (rde == null) {
                                 ResistDamageEffect rdeCombined = new ResistDamageEffect();
                                 rdeCombined.resistType = resistDamageType.getValue().resistType;
@@ -237,7 +228,8 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
                     }
                 }
             }
-            // If the smallestDuration is still at the max value, or it's at 0 amd there was an effect duration found that
+            // If the smallestDuration is still at the max value, or it's at 0 amd there was an effect duration found
+            // that
             // was infinite, set the smallestDuration to infinite.
             if (smallestDuration == Integer.MAX_VALUE || (smallestDuration == 0 && foundInfDuration)) {
                 smallestDuration = AlterationEffects.DURATION_INDEFINITE;
@@ -253,7 +245,8 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
             return recCombined;
         } else if (eec.id.equals("")) {
             // Iterate through all effects that are under this particular effect class or type.
-            for (Entry<String, EquipmentEffectComponent> effectOfThisType : eqEffectsList.effects.get(effectClass.getTypeName()).entrySet()) {
+            for (Entry<String, EquipmentEffectComponent> effectOfThisType :
+                    eqEffectsList.effects.get(effectClass.getTypeName()).entrySet()) {
                 // As long as it affects the user, tally up the duration and magnitude, as well as determine the effect
                 // with the shortestDuration and its effectIU.
                 if (effectOfThisType.getValue().affectsUser) {
@@ -278,7 +271,8 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
                 }
             }
         } else {
-            for (Entry<String, EquipmentEffectComponent> effectOfThisType : eqEffectsList.effects.get(effectClass.getTypeName() + eec.id).entrySet()) {
+            for (Entry<String, EquipmentEffectComponent> effectOfThisType :
+                    eqEffectsList.effects.get(effectClass.getTypeName() + eec.id).entrySet()) {
                 // As long as the effect has the correct type and it affects the user, tally up the duration and
                 // magnitude, as well as determine the effect with the shortestDuration and its effectIU.
                 if (effectOfThisType.getValue().id.equalsIgnoreCase(eec.id) && effectOfThisType.getValue().affectsUser) {
@@ -326,21 +320,23 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
      * When an equipment item has been unequipped, remove all of its equipment effect components from the equipment
      * effect modifiers double map.
      *
-     * @param event     Event containing information about the item unequipped.
-     * @param entity    The entity that unequipped this item.
-     * @param eq        Reference to the entity's equipment component. Used as a delimiter/filter.
+     * @param event Event containing information about the item unequipped.
+     * @param entity The entity that unequipped this item.
+     * @param eq Reference to the entity's equipment component. Used as a delimiter/filter.
      */
     @ReceiveEvent
     public void onUnequip(UnequipItemEvent event, EntityRef entity, EquipmentComponent eq) {
         // Loop through known EquipmentEffectComponents.
-        for (Entry<Class, AlterationEffect> entry: effectComponents.entrySet()) {
+        for (Entry<Class, AlterationEffect> entry : effectComponents.entrySet()) {
             // If the item has one of the equipment effect components.
             if (event.getItem().hasComponent(entry.getKey())) {
                 EquipmentEffectComponent eec = (EquipmentEffectComponent) event.getItem().getComponent(entry.getKey());
                 if (eec != null) {
-                    EquipmentEffectsListComponent eqEffectsList = entity.getComponent(EquipmentEffectsListComponent.class);
+                    EquipmentEffectsListComponent eqEffectsList =
+                            entity.getComponent(EquipmentEffectsListComponent.class);
 
-                    // In case of effects that use IDs, have another check. This so that that stuff like individual ResistEffects
+                    // In case of effects that use IDs, have another check. This so that that stuff like individual 
+                    // ResistEffects
                     // with different types of resists (e.g. Poison vs Fire vs Physical) are distinguished and tallied
                     // correctly.
                     if (eqEffectsList != null) {
@@ -368,8 +364,8 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
      * Before the damageTarget takes damage, apply any applicable effects to the target. That is, any effects that
      * affect enemies.
      *
-     * @param event         Event containing information about what item caused the damage.
-     * @param damageTarget  The entity that will be impacted by damage and any effects present on the item.
+     * @param event Event containing information about what item caused the damage.
+     * @param damageTarget The entity that will be impacted by damage and any effects present on the item.
      */
     @ReceiveEvent
     public void takingDamage(BeforeDamagedEvent event, EntityRef damageTarget) {
@@ -377,7 +373,7 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         EntityRef item = event.getDirectCause();
 
         // Iterate through all possible equipment effect components, to see if any of them are present in the item.
-        for (Entry<Class, AlterationEffect> entry: effectComponents.entrySet()) {
+        for (Entry<Class, AlterationEffect> entry : effectComponents.entrySet()) {
             // If an equipment effect was found on this item.
             if (event.getDirectCause().hasComponent(entry.getKey())) {
                 // Get the equipment effect from the item.
@@ -394,8 +390,8 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
     /**
      * Add an element to the two maps.
      *
-     * @param eec               The base class of the equipment effect component.
-     * @param alterationEffect  The alteration effect associated with that effect type.
+     * @param eec The base class of the equipment effect component.
+     * @param alterationEffect The alteration effect associated with that effect type.
      */
     public void addEffect(Class eec, AlterationEffect alterationEffect) {
         effectComponents.put(eec, alterationEffect);
@@ -405,18 +401,20 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
     /**
      * Apply the equipment effect on the entity.
      *
-     * @param alterationEffect  The alteration effect that will create this effect.
-     * @param eec               The equipment effect whose attributes will be used for the magnitude and duration.
-     * @param instigator        The instigator of this effect application.
-     * @param entity            The entity who will have the eec added to it.
+     * @param alterationEffect The alteration effect that will create this effect.
+     * @param eec The equipment effect whose attributes will be used for the magnitude and duration.
+     * @param instigator The instigator of this effect application.
+     * @param entity The entity who will have the eec added to it.
      */
-    private void applyEffect(AlterationEffect alterationEffect, EquipmentEffectComponent eec, EntityRef instigator, EntityRef entity) {
+    private void applyEffect(AlterationEffect alterationEffect, EquipmentEffectComponent eec, EntityRef instigator,
+                             EntityRef entity) {
         // As long as the alteration effect is not NULL, apply the eec onto the entity.
         if (alterationEffect != null) {
             if (multiDamageEffects.contains(eec.getClass())) {
                 ResistEffectComponent rec = (ResistEffectComponent) eec;
                 for (Entry<String, ResistDamageEffect> resistance : rec.resistances.entrySet()) {
-                    alterationEffect.applyEffect(instigator, entity, resistance.getValue().resistType, resistance.getValue().resistAmount, eec.duration);
+                    alterationEffect.applyEffect(instigator, entity, resistance.getValue().resistType,
+                            resistance.getValue().resistAmount, eec.duration);
                 }
             } else if (eec.id != null) {
                 alterationEffect.applyEffect(instigator, entity, eec.id, eec.magnitude, eec.duration);
@@ -431,19 +429,21 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
      * removing this particular equipment effect. So, the base alteration effect may still be applied, but without this
      * particular equipment effect contributing.
      *
-     * @param alterationEffect  The alteration effect that created this effect.
-     * @param eec               The equipment effect whose attributes will be used for the magnitude and duration.
-     * @param instigator        The instigator of this effect removal.
-     * @param entity            The entity who will have the eec removed from it.
+     * @param alterationEffect The alteration effect that created this effect.
+     * @param eec The equipment effect whose attributes will be used for the magnitude and duration.
+     * @param instigator The instigator of this effect removal.
+     * @param entity The entity who will have the eec removed from it.
      */
     //workaround to remove effect by setting duration to 0
-    private void removeEffect(AlterationEffect alterationEffect, EquipmentEffectComponent eec, EntityRef instigator, EntityRef entity) {
+    private void removeEffect(AlterationEffect alterationEffect, EquipmentEffectComponent eec, EntityRef instigator,
+                              EntityRef entity) {
         // As long as the alteration effect is not NULL, apply the eec with a duration of 0 onto the entity.
         if (alterationEffect != null) {
             if (multiDamageEffects.contains(eec.getClass())) {
                 ResistEffectComponent rec = (ResistEffectComponent) eec;
                 for (Entry<String, ResistDamageEffect> resistance : rec.resistances.entrySet()) {
-                    alterationEffect.applyEffect(instigator, entity, resistance.getValue().resistType, resistance.getValue().resistAmount, 0);
+                    alterationEffect.applyEffect(instigator, entity, resistance.getValue().resistType,
+                            resistance.getValue().resistAmount, 0);
                 }
             } else if (eec.id != null) {
                 alterationEffect.applyEffect(instigator, entity, eec.id, eec.magnitude, 0);
@@ -457,9 +457,9 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
      * When an alteration effect is going to be applied, add all the equipment effects that can contribute to it as
      * modifiers.
      *
-     * @param event     Event containing information on what alteration effect is being applied, as well as a list of
-     *                  effect modifiers that can be added to.
-     * @param entity    The entity who the effect is being applied on.
+     * @param event Event containing information on what alteration effect is being applied, as well as a list
+     *         of effect modifiers that can be added to.
+     * @param entity The entity who the effect is being applied on.
      */
     @ReceiveEvent
     public void onEquipmentEffectApplied(OnEffectModifyEvent event, EntityRef entity) {
@@ -491,10 +491,12 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
         EquipmentEffectComponent applyThis = null;
 
         // This loop is only used to get the first element from the map of applicable equipment effects.
-        for (Entry<String, EquipmentEffectComponent> effectOfThisType : eq.effects.get(component.getTypeName()).entrySet()) {
+        for (Entry<String, EquipmentEffectComponent> effectOfThisType :
+                eq.effects.get(component.getTypeName()).entrySet()) {
             // Get the combination of all equipment effect values that have the same type (and subtype if applicable)
             // as this one.
-            applyThis = combineEffectValues(effectOfThisType.getValue(), entity.getComponent(EquipmentEffectsListComponent.class),
+            applyThis = combineEffectValues(effectOfThisType.getValue(),
+                    entity.getComponent(EquipmentEffectsListComponent.class),
                     component, entity);
             // Now, add the duration, effectID, and magnitude of the combined matching equipment effects into the
             // event's list of effect modifiers.
@@ -517,9 +519,9 @@ public class EquipmentEffectsSystem extends BaseComponentSystem {
      * the entire alteration effect may or may not be removed following this. It depends on whether there are any
      * remaining effect modifiers that contribute to the base alteration effect.
      *
-     * @param event     Event containing information on what was the alteration effect being applied, and some details
-     *                  on the effect modifier expiring.
-     * @param entity    The entity who had this effect.
+     * @param event Event containing information on what was the alteration effect being applied, and some
+     *         details on the effect modifier expiring.
+     * @param entity The entity who had this effect.
      */
     @ReceiveEvent
     public void onEffectRemoved(OnEffectRemoveEvent event, EntityRef entity) {
