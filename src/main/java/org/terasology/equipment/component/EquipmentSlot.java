@@ -5,7 +5,7 @@ package org.terasology.equipment.component;
 import com.google.common.collect.Lists;
 import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.engine.network.Replicate;
-import org.terasology.reflection.MappedContainer;
+import org.terasology.nui.reflection.MappedContainer;
 
 import java.util.List;
 
