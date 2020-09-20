@@ -29,6 +29,7 @@ import org.terasology.logic.inventory.events.DropItemRequest;
 import org.terasology.logic.location.LocationComponent;
 import org.terasology.logic.players.LocalPlayer;
 import org.terasology.logic.players.event.OnPlayerSpawnedEvent;
+import org.terasology.math.JomlUtil;
 import org.terasology.math.geom.Vector3f;
 import org.terasology.nui.widgets.TooltipLine;
 import org.terasology.physicalstats.component.PhysicalStatsModifierComponent;
@@ -238,9 +239,9 @@ public class EquipmentSystem extends BaseComponentSystem {
                 EntityRef equipmentItem = equipmentInv.itemSlots.get(slot);
                 if (equipmentItem.exists()) {
                     eq.equipmentInventory.send(new DropItemRequest(equipmentItem, eq.equipmentInventory,
-                            impulseVector,
-                            newPosition,
-                            1));
+                        JomlUtil.from(impulseVector),
+                        JomlUtil.from(newPosition),
+                        1));
                 }
             }
 
