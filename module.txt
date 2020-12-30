@@ -1,18 +1,37 @@
 {
-    "id": "Equipment",
-    "version": "1.2.0",
-    "author": "XTariq, Aditya Singh, ElBatanony, Gautam Naik, iojw (Isaac), Mandar Juvekar, gkaretka, Patrick Wang, smsunarto, Arpit Kamboj(digitalripperynr), Tim Verhaegen (xTimPugz), kallentu, Minege, NicholasBatesNZ,SufurElite, He Who Shall Not Be Named (VaibhavBajaj), meganyyu, PokeyOne, Marvel0usx",
-    "displayName": "Equipment",
-    "description": "A basic system allowing for characters to have equipment.\n\nAlso, lots of equipment assets.",
-    "dependencies": [
-        { "id": "AlterationEffects", "minVersion": "1.1.0" },
-        { "id": "ClimateConditions", "minVersion": "1.0.0" },
-        { "id": "Health", "minVersion": "1.0.0" },
-        { "id": "Inventory", "minVersion": "1.1.0" },
-        { "id": "ManualLabor", "minVersion": "1.3.0", "optional": true },
-        { "id": "PhysicalStats", "minVersion": "1.0.0" }
-    ],
-    "serverSideOnly": false,
-    "isLibrary": true,
-    "isAsset": true
+  "id": "Equipment",
+  "version": "1.3.0-SNAPSHOT",
+  "author": "XTariq, Aditya Singh, ElBatanony, Gautam Naik, iojw (Isaac), Mandar Juvekar, gkaretka, Patrick Wang, smsunarto, Arpit Kamboj(digitalripperynr), Tim Verhaegen (xTimPugz), kallentu, Minege, NicholasBatesNZ,SufurElite, He Who Shall Not Be Named (VaibhavBajaj), meganyyu, PokeyOne, Marvel0usx",
+  "displayName": "Equipment",
+  "description": "A basic system allowing for characters to have equipment.\n\nAlso, lots of equipment assets.",
+  "dependencies": [
+    {
+      "id": "AlterationEffects",
+      "minVersion": "1.1.0"
+    },
+    {
+      "id": "ClimateConditions",
+      "minVersion": "1.0.0"
+    },
+    {
+      "id": "Health",
+      "minVersion": "1.0.0"
+    },
+    {
+      "id": "Inventory",
+      "minVersion": "1.1.0"
+    },
+    {
+      "id": "ManualLabor",
+      "minVersion": "1.3.0",
+      "optional": true
+    },
+    {
+      "id": "PhysicalStats",
+      "minVersion": "1.0.0"
+    }
+  ],
+  "serverSideOnly": false,
+  "isLibrary": true,
+  "isAsset": true
 }
