@@ -30,7 +30,6 @@ import org.terasology.logic.inventory.events.DropItemRequest;
 import org.terasology.logic.location.LocationComponent;
 import org.terasology.logic.players.LocalPlayer;
 import org.terasology.logic.players.event.OnPlayerSpawnedEvent;
-import org.terasology.math.JomlUtil;
 import org.terasology.nui.widgets.TooltipLine;
 import org.terasology.physicalstats.component.PhysicalStatsModifierComponent;
 import org.terasology.physicalstats.component.PhysicalStatsModifiersListComponent;
