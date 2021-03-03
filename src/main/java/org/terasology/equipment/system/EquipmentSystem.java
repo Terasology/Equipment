@@ -1,20 +1,8 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.equipment.system;
 
+import org.joml.Vector3f;
 import org.terasology.audio.AudioManager;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
@@ -31,8 +19,8 @@ import org.terasology.equipment.event.UnequipItemEvent;
 import org.terasology.equipment.ui.CharacterScreenWindow;
 import org.terasology.logic.characters.CharacterComponent;
 import org.terasology.logic.common.DisplayNameComponent;
-import org.terasology.logic.health.event.BeforeDamagedEvent;
 import org.terasology.logic.health.DoDestroyEvent;
+import org.terasology.logic.health.event.BeforeDamagedEvent;
 import org.terasology.logic.inventory.InventoryComponent;
 import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.logic.inventory.InventoryUtils;
@@ -42,7 +30,7 @@ import org.terasology.logic.inventory.events.DropItemRequest;
 import org.terasology.logic.location.LocationComponent;
 import org.terasology.logic.players.LocalPlayer;
 import org.terasology.logic.players.event.OnPlayerSpawnedEvent;
-import org.terasology.math.geom.Vector3f;
+import org.terasology.nui.widgets.TooltipLine;
 import org.terasology.physicalstats.component.PhysicalStatsModifierComponent;
 import org.terasology.physicalstats.component.PhysicalStatsModifiersListComponent;
 import org.terasology.physicalstats.event.OnPhysicalStatChangedEvent;
@@ -52,7 +40,6 @@ import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.NUIManager;
 import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
-import org.terasology.rendering.nui.widgets.TooltipLine;
 import org.terasology.utilities.Assets;
 
 /**
@@ -79,9 +66,9 @@ public class EquipmentSystem extends BaseComponentSystem {
     /**
      * Method that defines what happens when an item is put into an equipment slot.
      *
-     * @param event     the event associated with the insertion of the item into the equipment slot
-     * @param entity    the entity who has inserted the item into the slot
-     * @param eqInv     the equipment inventory component containing the equipment slot
+     * @param event the event associated with the insertion of the item into the equipment slot
+     * @param entity the entity who has inserted the item into the slot
+     * @param eqInv the equipment inventory component containing the equipment slot
      * @param inventory the inventory component assiciated with the entity
      */
     @ReceiveEvent
@@ -111,9 +98,9 @@ public class EquipmentSystem extends BaseComponentSystem {
     /**
      * Defines what to do when an item is removed from an equipment slot.
      *
-     * @param event     the event corresponding to the removal of the item from the equipment slot
-     * @param entity    the entity who has removed the item from the equipment slot
-     * @param eqInv     the equipment inventory component containing the equipment slot
+     * @param event the event corresponding to the removal of the item from the equipment slot
+     * @param entity the entity who has removed the item from the equipment slot
+     * @param eqInv the equipment inventory component containing the equipment slot
      * @param inventory the inventory component assiciated with the entity
      */
     @ReceiveEvent
@@ -143,9 +130,9 @@ public class EquipmentSystem extends BaseComponentSystem {
     /**
      * Initializes equipment and inventory-related components when the player spawns.
      *
-     * @param event  the event corresponding to the spawning of the player
+     * @param event the event corresponding to the spawning of the player
      * @param player an EntityRef pointing to the player
-     * @param eq     the player's equipment component
+     * @param eq the player's equipment component
      */
     @ReceiveEvent
     public void onPlayerSpawn(OnPlayerSpawnedEvent event, EntityRef player, EquipmentComponent eq) {
@@ -218,31 +205,27 @@ public class EquipmentSystem extends BaseComponentSystem {
     /**
      * Drops all equipment to the ground and destroys the related equipment inventory entity.
      *
-     * @param event  The event corresponding to the death of the player.
+     * @param event The event corresponding to the death of the player.
      * @param player An EntityRef pointing to the player.
-     * @param eq     The player's equipment component.
+     * @param eq The player's equipment component.
      */
     @ReceiveEvent(components = {CharacterComponent.class})
     public void onPlayerDeath(DoDestroyEvent event, EntityRef player, EquipmentComponent eq) {
         if (eq.equipmentInventory != EntityRef.NULL) {
             // Add a CharacterComponent and LocationComponent to the equipment inventory entity so that the items
             // stored in it can be properly dropped onto the world.
-            //eq.equipmentInventory.addComponent(localPlayer.getCharacterEntity().getComponent(LocationComponent.class));
+            //eq.equipmentInventory.addComponent(localPlayer.getCharacterEntity().getComponent(LocationComponent
+            // .class));
             eq.equipmentInventory.addComponent(new LocationComponent());
             eq.equipmentInventory.addComponent(new CharacterComponent());
 
             InventoryComponent equipmentInv = eq.equipmentInventory.getComponent(InventoryComponent.class);
 
             // Get the position and direction of the player, and calculate what the new position of the item should be.
-            Vector3f position = localPlayer.getViewPosition();
-            Vector3f direction = localPlayer.getViewDirection();
-            Vector3f newPosition = new Vector3f(position.x + direction.x * 1.5f,
-                    position.y + direction.y * 1.5f,
-                    position.z + direction.z * 1.5f
-            );
-
-            // Based on the direction, create the impulse vector.
-            Vector3f impulseVector = new Vector3f(direction);
+            //TODO: how can we re-use code from InventoryUtils#dropItems here?
+            Vector3f direction = localPlayer.getViewDirection(new Vector3f());
+            Vector3f newPosition = localPlayer.getViewPosition(new Vector3f())
+                    .add(direction.mul(1.5f, 1.5f, 1.5f), new Vector3f());
 
             // Drop every item stored in the equipment inventory entity.
             for (int slot = 0; slot < eq.numberOfSlots; slot++) {
@@ -251,7 +234,7 @@ public class EquipmentSystem extends BaseComponentSystem {
                 EntityRef equipmentItem = equipmentInv.itemSlots.get(slot);
                 if (equipmentItem.exists()) {
                     eq.equipmentInventory.send(new DropItemRequest(equipmentItem, eq.equipmentInventory,
-                            impulseVector,
+                            direction,
                             newPosition,
                             1));
                 }
@@ -265,8 +248,8 @@ public class EquipmentSystem extends BaseComponentSystem {
     /**
      * Sets an item's tooltip based on its stats.
      *
-     * @param event  the event corresponding to a request to get the tooltip for an item
-     * @param item   the item who's tooltip is to be set
+     * @param event the event corresponding to a request to get the tooltip for an item
+     * @param item the item who's tooltip is to be set
      * @param eqItem the equipment item component associated with the item
      */
     @ReceiveEvent
@@ -291,8 +274,8 @@ public class EquipmentSystem extends BaseComponentSystem {
     /**
      * Defines what to do when a request to equip an item is received.
      *
-     * @param eEvent      the event corresponding to the equipment of the item
-     * @param instigator  the entity instigating the item's equipment
+     * @param eEvent the event corresponding to the equipment of the item
+     * @param instigator the entity instigating the item's equipment
      * @param eqComponent the equipment component associated with the entity
      */
     @ReceiveEvent
@@ -332,7 +315,8 @@ public class EquipmentSystem extends BaseComponentSystem {
                     }
                 }
 
-                // If all of the slots of this type are already filled, swap the one in the first slot with the new item.
+                // If all of the slots of this type are already filled, swap the one in the first slot with the new
+                // item.
                 if (!isSlotEmpty) {
                     InventoryManager inventoryManager = CoreRegistry.get(InventoryManager.class);
 
@@ -349,8 +333,10 @@ public class EquipmentSystem extends BaseComponentSystem {
 
                     // If an empty spot was found in the character's inventory.
                     if (found) {
-                        // Move the equipped item in the first available slot of this equipment slot to the character's inventory.
-                        inventoryManager.moveItem(eqInvEntRef, eqInvEntRef, InventoryUtils.getSlotWithItem(eqInvEntRef, eSlot.itemRefs.get(0)),
+                        // Move the equipped item in the first available slot of this equipment slot to the
+                        // character's inventory.
+                        inventoryManager.moveItem(eqInvEntRef, eqInvEntRef,
+                                InventoryUtils.getSlotWithItem(eqInvEntRef, eSlot.itemRefs.get(0)),
                                 character, index, 1);
 
                         // Unequip the moved item.
@@ -363,9 +349,11 @@ public class EquipmentSystem extends BaseComponentSystem {
                         eSlot.itemRefs.set(atIndex, item);
                         character.saveComponent(eq);
 
-                        // Send an EquipItemEvent, play a sound, and return true, indicating that the equip action was successful.
+                        // Send an EquipItemEvent, play a sound, and return true, indicating that the equip action
+                        // was successful.
                         character.send(new EquipItemEvent(character, item, eSlot));
-                        CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash").get(), 1.0f);
+                        CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash").get()
+                                , 1.0f);
                         return true;
                     }
                 } else { // If there's an empty slot available in this equipment slot.
@@ -378,15 +366,18 @@ public class EquipmentSystem extends BaseComponentSystem {
                     // Add item's stat modifier (if any) to the character.
                     addModifier(character, item);
 
-                    // Send an EquipItemEvent, play a sound, and return true, indicating that the equip action was successful.
+                    // Send an EquipItemEvent, play a sound, and return true, indicating that the equip action was
+                    // successful.
                     character.send(new EquipItemEvent(character, item, eSlot));
-                    CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash").get(), 1.0f);
+                    CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash").get(),
+                            1.0f);
                     return true;
                 }
             }
         }
 
-        // If the execution reaches here, that means the equip action failed due to either no space left in the character's inventory, or no appropriate
+        // If the execution reaches here, that means the equip action failed due to either no space left in the
+        // character's inventory, or no appropriate
         // slot type.
         return false;
     }
@@ -413,9 +404,11 @@ public class EquipmentSystem extends BaseComponentSystem {
 
                         removeModifier(character, item);
 
-                        // Send an UnequipItemEvent, play a sound, and return true, indicating that the unequip action was successful.
+                        // Send an UnequipItemEvent, play a sound, and return true, indicating that the unequip
+                        // action was successful.
                         character.send(new UnequipItemEvent(character, item, eSlot));
-                        CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash-reverse").get(), 1.0f);
+                        CoreRegistry.get(AudioManager.class).playSound(Assets.getSound("Equipment:metal-clash-reverse"
+                        ).get(), 1.0f);
                         return true;
                     }
                 }
@@ -430,7 +423,7 @@ public class EquipmentSystem extends BaseComponentSystem {
      * Adds physical stat modifiers of an item (if any) to a character.
      *
      * @param character the character to whom the stat modifiers are to be applied
-     * @param item      the item whose stat modifiers are to be applied
+     * @param item the item whose stat modifiers are to be applied
      */
     public void addModifier(EntityRef character, EntityRef item) {
         // If this equipment item has a physical stats modifier.
@@ -441,7 +434,8 @@ public class EquipmentSystem extends BaseComponentSystem {
             }
 
             // Add the item modifier to the character.
-            PhysicalStatsModifiersListComponent pStatsMod = character.getComponent(PhysicalStatsModifiersListComponent.class);
+            PhysicalStatsModifiersListComponent pStatsMod =
+                    character.getComponent(PhysicalStatsModifiersListComponent.class);
             PhysicalStatsModifierComponent eqStatsMod = item.getComponent(PhysicalStatsModifierComponent.class);
 
             if (eqStatsMod != null) {
@@ -459,12 +453,13 @@ public class EquipmentSystem extends BaseComponentSystem {
      * Removes an item's physical stat modifiers (if any) from a character.
      *
      * @param character the character from whom the stat modifiers are to be removed
-     * @param item      the item whose stat modifiers are to be removed
+     * @param item the item whose stat modifiers are to be removed
      */
     public void removeModifier(EntityRef character, EntityRef item) {
         if (character.getComponent(PhysicalStatsModifiersListComponent.class) != null) {
 
-            PhysicalStatsModifiersListComponent pStatsModList = character.getComponent(PhysicalStatsModifiersListComponent.class);
+            PhysicalStatsModifiersListComponent pStatsModList =
+                    character.getComponent(PhysicalStatsModifiersListComponent.class);
             PhysicalStatsModifierComponent eqStatsMod = item.getComponent(PhysicalStatsModifierComponent.class);
 
             if (eqStatsMod != null) {
@@ -478,9 +473,9 @@ public class EquipmentSystem extends BaseComponentSystem {
     /**
      * Defines what to do when a stat of an entity is changed.
      *
-     * @param event  the event corresponding to the changing of the stat
+     * @param event the event corresponding to the changing of the stat
      * @param entity the entity who's stat has been changed
-     * @param eq     the equipment component associated with the entity
+     * @param eq the equipment component associated with the entity
      */
     @ReceiveEvent
     public void onStatChanged(OnPhysicalStatChangedEvent event, EntityRef entity, EquipmentComponent eq) {
@@ -494,9 +489,9 @@ public class EquipmentSystem extends BaseComponentSystem {
     /**
      * Defines what to do when a physical stat modifier is added to an entity.
      *
-     * @param event  the event corresponding to the adding of the physical stat modifier
+     * @param event the event corresponding to the adding of the physical stat modifier
      * @param entity the entity to whom the stat modifier has been added
-     * @param eq     the equipment component associated with the entity
+     * @param eq the equipment component associated with the entity
      */
     @ReceiveEvent
     public void onStatChanged(OnPhysicalStatsModifierAddedEvent event, EntityRef entity, EquipmentComponent eq) {
@@ -510,9 +505,9 @@ public class EquipmentSystem extends BaseComponentSystem {
     /**
      * Defines what to do when a physical stat modifier is removed from an entity.
      *
-     * @param event  the event corresponding to the removal of the physical stat modifier
+     * @param event the event corresponding to the removal of the physical stat modifier
      * @param entity the entity from whom the stat modifier has been removed
-     * @param eq     the equipment component associated with the entity
+     * @param eq the equipment component associated with the entity
      */
     @ReceiveEvent
     public void onStatChanged(OnPhysicalStatsModifierRemovedEvent event, EntityRef entity, EquipmentComponent eq) {
@@ -526,9 +521,9 @@ public class EquipmentSystem extends BaseComponentSystem {
     /**
      * Defines what to do when an item is equipped by an entity.
      *
-     * @param event  the event corresponding to the equipment of the item
+     * @param event the event corresponding to the equipment of the item
      * @param entity the entity who has equipped the item
-     * @param eq     the equipment component associated with the entity
+     * @param eq the equipment component associated with the entity
      */
     @ReceiveEvent
     public void onEquipChanged(EquipItemEvent event, EntityRef entity, EquipmentComponent eq) {
@@ -542,9 +537,9 @@ public class EquipmentSystem extends BaseComponentSystem {
     /**
      * Defines what to do when an item is unequipped by an entity.
      *
-     * @param event  the event corresponding to the unequipment of the item
+     * @param event the event corresponding to the unequipment of the item
      * @param entity the entity who has unequipped the item
-     * @param eq     the equipment component associated with the entity
+     * @param eq the equipment component associated with the entity
      */
     @ReceiveEvent
     public void onEquipChanged(UnequipItemEvent event, EntityRef entity, EquipmentComponent eq) {
@@ -558,7 +553,7 @@ public class EquipmentSystem extends BaseComponentSystem {
     /**
      * Applies item stats (attack boosts, for example) while dealing damage.
      *
-     * @param event        the event corresponding to the attack on the target
+     * @param event the event corresponding to the attack on the target
      * @param damageTarget an entity reference to the target of the attack
      */
     @ReceiveEvent
@@ -583,7 +578,7 @@ public class EquipmentSystem extends BaseComponentSystem {
     /**
      * Applies item stats (defense boosts, for example) while taking damage.
      *
-     * @param event        the event corresponding to the entity taking damage
+     * @param event the event corresponding to the entity taking damage
      * @param damageTarget the entity dealing damage
      */
     @ReceiveEvent
