@@ -16,8 +16,8 @@
 package org.terasology.equipment.component.effects;
 
 import org.terasology.alterationEffects.resist.ResistDamageEffect;
+import org.terasology.engine.network.Replicate;
 import org.terasology.equipment.component.EquipmentEffectComponent;
-import org.terasology.network.Replicate;
 
 import java.util.HashMap;
 import java.util.Map;

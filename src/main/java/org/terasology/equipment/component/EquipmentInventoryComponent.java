@@ -15,8 +15,8 @@
  */
 package org.terasology.equipment.component;
 
-import org.terasology.entitySystem.Component;
-import org.terasology.network.Replicate;
+import org.terasology.engine.entitySystem.Component;
+import org.terasology.engine.network.Replicate;
 
 /**
  * A component used to indicate that an entity is an equipment inventory holder.

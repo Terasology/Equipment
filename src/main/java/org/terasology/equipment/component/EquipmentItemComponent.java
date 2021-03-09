@@ -15,8 +15,8 @@
  */
 package org.terasology.equipment.component;
 
-import org.terasology.entitySystem.Component;
-import org.terasology.network.Replicate;
+import org.terasology.engine.entitySystem.Component;
+import org.terasology.engine.network.Replicate;
 
 /**
  * A component that indicates that an entity is an equipment item. It stores all attributes of the item.

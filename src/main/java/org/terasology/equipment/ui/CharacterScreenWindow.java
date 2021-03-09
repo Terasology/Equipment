@@ -2,15 +2,19 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.equipment.ui;
 
-import org.terasology.entitySystem.entity.EntityManager;
-import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.entity.EntityManager;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.logic.characters.CharacterComponent;
+import org.terasology.engine.logic.common.DisplayNameComponent;
+import org.terasology.engine.logic.inventory.InventoryComponent;
+import org.terasology.engine.logic.players.LocalPlayer;
+import org.terasology.engine.registry.CoreRegistry;
+import org.terasology.engine.registry.In;
+import org.terasology.engine.rendering.nui.BaseInteractionScreen;
+import org.terasology.engine.rendering.nui.layers.ingame.inventory.InventoryGrid;
 import org.terasology.equipment.component.EquipmentComponent;
 import org.terasology.equipment.component.EquipmentItemComponent;
 import org.terasology.equipment.component.EquipmentSlot;
-import org.terasology.logic.characters.CharacterComponent;
-import org.terasology.logic.common.DisplayNameComponent;
-import org.terasology.logic.inventory.InventoryComponent;
-import org.terasology.logic.players.LocalPlayer;
 import org.terasology.nui.UIWidget;
 import org.terasology.nui.databinding.DefaultBinding;
 import org.terasology.nui.layouts.ColumnLayout;
@@ -18,10 +22,6 @@ import org.terasology.nui.widgets.UILabel;
 import org.terasology.physicalstats.component.PhysicalStatsComponent;
 import org.terasology.physicalstats.component.PhysicalStatsModifierComponent;
 import org.terasology.physicalstats.component.PhysicalStatsModifiersListComponent;
-import org.terasology.registry.CoreRegistry;
-import org.terasology.registry.In;
-import org.terasology.rendering.nui.BaseInteractionScreen;
-import org.terasology.rendering.nui.layers.ingame.inventory.InventoryGrid;
 
 import java.util.ArrayList;
 import java.util.Iterator;
