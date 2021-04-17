@@ -12,7 +12,7 @@ import org.terasology.engine.entitySystem.systems.RegisterSystem;
 import org.terasology.engine.logic.characters.CharacterComponent;
 import org.terasology.engine.logic.common.DisplayNameComponent;
 import org.terasology.engine.logic.health.DoDestroyEvent;
-import org.terasology.logic.health.event.BeforeDamagedEvent;
+import org.terasology.module.health.events.BeforeDamagedEvent;
 import org.terasology.module.inventory.components.InventoryComponent;
 import org.terasology.module.inventory.systems.InventoryManager;
 import org.terasology.module.inventory.systems.InventoryUtils;

@@ -41,7 +41,7 @@ import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.engine.entitySystem.event.ReceiveEvent;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
-import org.terasology.logic.health.event.BeforeDamagedEvent;
+import org.terasology.module.health.events.BeforeDamagedEvent;
 import org.terasology.engine.registry.In;
 import org.terasology.equipment.component.EquipmentComponent;
 import org.terasology.equipment.component.EquipmentEffectComponent;
