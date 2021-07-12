@@ -23,4 +23,11 @@ public final class EquipmentComponent implements Component<EquipmentComponent> {
     // Replace or add a map?
     @Replicate
     public List<EquipmentSlot> equipmentSlots = Lists.newArrayList();
+
+    @Override
+    public void copy(EquipmentComponent other) {
+        this.equipmentInventory = other.equipmentInventory;
+        this.numberOfSlots = other.numberOfSlots;
+        this.equipmentSlots = Lists.newArrayList(other.equipmentSlots);
+    }
 }

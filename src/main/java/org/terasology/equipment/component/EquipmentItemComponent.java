@@ -26,4 +26,16 @@ public class EquipmentItemComponent implements Component<EquipmentItemComponent>
     public int weight;
     @Replicate
     public int speed;
+
+    @Override
+    public void copy(EquipmentItemComponent other) {
+        this.level = other.level;
+        this.quality = other.quality;
+        this.type = other.type;
+        this.location = other.location;
+        this.attack = other.attack;
+        this.defense = other.defense;
+        this.weight = other.weight;
+        this.speed = other.speed;
+    }
 }

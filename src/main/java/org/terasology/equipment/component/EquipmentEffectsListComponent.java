@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.equipment.component;
 
+import com.google.common.collect.Maps;
 import org.terasology.engine.network.Replicate;
 import org.terasology.gestalt.entitysystem.component.Component;
 
@@ -20,4 +21,9 @@ public class EquipmentEffectsListComponent implements Component<EquipmentEffects
     @Replicate
     public Map<String, Map<String, EquipmentEffectComponent>> effects =
             new HashMap<String, Map<String, EquipmentEffectComponent>>();
+
+    @Override
+    public void copy(EquipmentEffectsListComponent other) {
+        this.effects = Maps.newHashMap(other.effects);
+    }
 }

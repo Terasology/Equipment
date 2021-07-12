@@ -10,4 +10,8 @@ import org.terasology.gestalt.entitysystem.component.Component;
  */
 @Replicate
 public class EquipmentInventoryComponent implements Component<EquipmentInventoryComponent> {
+    @Override
+    public void copy(EquipmentInventoryComponent other) {
+
+    }
 }

@@ -34,4 +34,14 @@ public class EquipmentEffectComponent implements Component<EquipmentEffectCompon
     /** Optional id for certain effects */
     @Replicate
     public String id = "";
+
+    @Override
+    public void copy(EquipmentEffectComponent other) {
+        this.effectID = other.effectID;
+        this.duration = other.duration;
+        this.magnitude = other.magnitude;
+        this.affectsUser = other.affectsUser;
+        this.affectsEnemies = other.affectsEnemies;
+        this.id = other.id;
+    }
 }
