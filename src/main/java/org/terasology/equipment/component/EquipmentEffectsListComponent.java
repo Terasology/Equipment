@@ -23,7 +23,7 @@ public class EquipmentEffectsListComponent implements Component<EquipmentEffects
             new HashMap<String, Map<String, EquipmentEffectComponent>>();
 
     @Override
-    public void copy(EquipmentEffectsListComponent other) {
+    public void copyFrom(EquipmentEffectsListComponent other) {
         this.effects = Maps.newHashMap(other.effects);
     }
 }

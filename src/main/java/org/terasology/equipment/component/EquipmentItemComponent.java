@@ -28,7 +28,7 @@ public class EquipmentItemComponent implements Component<EquipmentItemComponent>
     public int speed;
 
     @Override
-    public void copy(EquipmentItemComponent other) {
+    public void copyFrom(EquipmentItemComponent other) {
         this.level = other.level;
         this.quality = other.quality;
         this.type = other.type;

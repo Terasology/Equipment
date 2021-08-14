@@ -36,7 +36,7 @@ public class EquipmentEffectComponent implements Component<EquipmentEffectCompon
     public String id = "";
 
     @Override
-    public void copy(EquipmentEffectComponent other) {
+    public void copyFrom(EquipmentEffectComponent other) {
         this.effectID = other.effectID;
         this.duration = other.duration;
         this.magnitude = other.magnitude;

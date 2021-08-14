@@ -25,7 +25,7 @@ public final class EquipmentComponent implements Component<EquipmentComponent> {
     public List<EquipmentSlot> equipmentSlots = Lists.newArrayList();
 
     @Override
-    public void copy(EquipmentComponent other) {
+    public void copyFrom(EquipmentComponent other) {
         this.equipmentInventory = other.equipmentInventory;
         this.numberOfSlots = other.numberOfSlots;
         this.equipmentSlots = Lists.newArrayList(other.equipmentSlots);
