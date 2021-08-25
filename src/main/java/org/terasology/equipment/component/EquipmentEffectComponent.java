@@ -1,26 +1,13 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2021 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.equipment.component;
 
-import org.terasology.engine.entitySystem.Component;
 import org.terasology.engine.network.Replicate;
+import org.terasology.gestalt.entitysystem.component.Component;
 import org.terasology.reflection.MappedContainer;
 
 @MappedContainer
-public class EquipmentEffectComponent implements Component {
+public class EquipmentEffectComponent implements Component<EquipmentEffectComponent> {
     /**
      * This stores this particular effect's ID. Each effect is normally intended to have a different ID, barring
      * the scenario where certain effects can replace older ones.
@@ -47,4 +34,14 @@ public class EquipmentEffectComponent implements Component {
     /** Optional id for certain effects */
     @Replicate
     public String id = "";
+
+    @Override
+    public void copyFrom(EquipmentEffectComponent other) {
+        this.effectID = other.effectID;
+        this.duration = other.duration;
+        this.magnitude = other.magnitude;
+        this.affectsUser = other.affectsUser;
+        this.affectsEnemies = other.affectsEnemies;
+        this.id = other.id;
+    }
 }

@@ -1,27 +1,14 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2021 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.equipment.component;
 
-import org.terasology.engine.entitySystem.Component;
 import org.terasology.engine.network.Replicate;
+import org.terasology.gestalt.entitysystem.component.Component;
 
 /**
  * A component that indicates that an entity is an equipment item. It stores all attributes of the item.
  */
-public class EquipmentItemComponent implements Component {
+public class EquipmentItemComponent implements Component<EquipmentItemComponent> {
     // Dummy stats for now.
     @Replicate
     public int level;
@@ -39,4 +26,16 @@ public class EquipmentItemComponent implements Component {
     public int weight;
     @Replicate
     public int speed;
+
+    @Override
+    public void copyFrom(EquipmentItemComponent other) {
+        this.level = other.level;
+        this.quality = other.quality;
+        this.type = other.type;
+        this.location = other.location;
+        this.attack = other.attack;
+        this.defense = other.defense;
+        this.weight = other.weight;
+        this.speed = other.speed;
+    }
 }
