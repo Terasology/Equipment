@@ -16,9 +16,9 @@
 package org.terasology.equipment.event;
 
 import org.terasology.engine.entitySystem.entity.EntityRef;
-import org.terasology.engine.entitySystem.event.Event;
 import org.terasology.engine.network.OwnerEvent;
 import org.terasology.equipment.component.EquipmentSlot;
+import org.terasology.gestalt.entitysystem.event.Event;
 
 /**
  * This event is sent to indicate that an entity is about to equip an item.

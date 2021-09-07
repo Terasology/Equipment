@@ -15,8 +15,8 @@
  */
 package org.terasology.equipment.event;
 
-import org.terasology.engine.entitySystem.event.Event;
 import org.terasology.engine.network.OwnerEvent;
+import org.terasology.gestalt.entitysystem.event.Event;
 
 @OwnerEvent
 public class OnPlayerWithEquipSpawnedEvent implements Event {
