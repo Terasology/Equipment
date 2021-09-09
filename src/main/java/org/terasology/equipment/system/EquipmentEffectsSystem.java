@@ -41,7 +41,6 @@ import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.engine.entitySystem.event.ReceiveEvent;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
-import org.terasology.module.health.events.BeforeDamagedEvent;
 import org.terasology.engine.registry.In;
 import org.terasology.equipment.component.EquipmentComponent;
 import org.terasology.equipment.component.EquipmentEffectComponent;
@@ -63,6 +62,7 @@ import org.terasology.equipment.component.effects.SwimSpeedEffectComponent;
 import org.terasology.equipment.component.effects.WalkSpeedEffectComponent;
 import org.terasology.equipment.event.EquipItemEvent;
 import org.terasology.equipment.event.UnequipItemEvent;
+import org.terasology.module.health.events.BeforeDamagedEvent;
 
 import java.util.HashMap;
 import java.util.List;
