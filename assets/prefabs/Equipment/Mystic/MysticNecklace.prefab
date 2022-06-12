@@ -10,8 +10,8 @@
     "EquipmentItem": {
         "level": 4,
         "quality": 5,
-        "type": "Ring",
-        "location": "Ring",
+        "type": "Pendant",
+        "location": "Pendant",
         "attack": 0,
         "defense": 4,
         "weight": 0,
