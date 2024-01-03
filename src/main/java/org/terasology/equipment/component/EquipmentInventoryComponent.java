@@ -3,15 +3,11 @@
 package org.terasology.equipment.component;
 
 import org.terasology.engine.network.Replicate;
-import org.terasology.gestalt.entitysystem.component.Component;
+import org.terasology.gestalt.entitysystem.component.EmptyComponent;
 
 /**
  * A component used to indicate that an entity is an equipment inventory holder.
  */
 @Replicate
-public class EquipmentInventoryComponent implements Component<EquipmentInventoryComponent> {
-    @Override
-    public void copyFrom(EquipmentInventoryComponent other) {
-
-    }
+public class EquipmentInventoryComponent extends EmptyComponent<EquipmentInventoryComponent> {
 }
